@@ -1,0 +1,29 @@
+---
+layout: activity-lecture.html
+---
+:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/10.dependency-injection-and-providers
+= Activity
+
+Convert the Joke application into an application that uses a service to store the jokes.
+
+Also support a max jokes provider which we inject into this service and we can configure with different values.
+
+Make sure the number of jokes doesn't exceed this max value.
+
+
+== Steps
+
+Fork this plunker:
+
+include::{section}/@activity/.link[]
+
+Complete the `JokeService` class with the required functionality.
+
+Read any *TODO* comments in the plunker for hints.
+
+== Solution
+
+
+When you are ready compare your answer to the solution in this plunker:
+
+include::{section}/@solution/.link[]

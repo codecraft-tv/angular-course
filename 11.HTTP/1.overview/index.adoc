@@ -1,0 +1,22 @@
+---
+lecture_video: 
+---
+= Overview
+
+To build a web application these days we need to make a number of calls to external HTTP APIs.
+
+Angular comes with its own HTTP client library which we can use to make those calls.
+
+In JavaScript making HTTP requests is an _asynchronous_ operation. It just sends the HTTP request to the API and _doesn't_ wait for a response before continuing with the next line of code.
+
+When the API responds milliseconds or seconds or minutes later then we get notified and we can start processing the response.
+
+In Angular there are two ways of handling these asynchronous operations. We can use _Promises_ which we covered in the lecture on TypeScript & ES6, or we can use _Observables_ which we covered in the section on RxJS and Observables.
+
+In this chapter you are going to learn:
+
+* How to setup your application to make HTTP Calls.
+* How to use the core HTTP APIs.
+* How to architect your application to use HTTP via Promises.
+* How to architect your application to use HTTP via Observables.
+* What is JSONP and how to architect your application to use JSONP via Observables.

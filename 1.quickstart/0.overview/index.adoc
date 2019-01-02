@@ -1,0 +1,9 @@
+= Overview
+
+The course is going to begin with a quickstart.
+
+We use a web editor called http://plnkr.co[plunker] and create a basic Angular application from scratch.
+
+In this quickstart you get a 50,000 foot view of the major features of Angular and since we use a web editor it means you can start writing code ASAP without having to spend time setting up your computer.
+
+Let's get started!

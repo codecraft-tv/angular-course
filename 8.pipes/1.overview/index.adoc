@@ -1,0 +1,37 @@
+---
+lecture_video: 
+---
+= Overview
+
+Pipes are used to transform data, when we _only_ need that data transformed in a template.
+
+If we need the data transformed _generally_ we would implement it in our model, for example we have a number `1234.56` and want to display it as a currency such as `$1,234.56`.
+
+We could convert the number into a string and store that string in the model but if the only place we want to show that number is in a view we can use a pipe instead.
+
+We use a pipe with the `|` syntax in the template, the `|` character is called the _pipe_ character, like so:
+
+
+[source,typescript]
+----
+{{ 1234.56 | }}
+{{ 1234.56 | currency : 'USD' }}
+----
+
+This would take the number `1234.56` and convert it into a _currency string_ for display in the template like `USD1,234.56`.
+
+We can even _chain_ pipes together like so:
+
+
+----
+{{ 1234.56 | currency: 'USD' | lowercase }}
+----
+
+The above would print out `usd1,234.56`.
+
+TIP: Pipes are just like `filters` in Angular 1
+
+In this section you will learn:
+
+* How to use the set of built-in pipes provided by Angular.
+* How to create your own custom pipes.

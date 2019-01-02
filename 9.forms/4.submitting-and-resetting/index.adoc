@@ -1,0 +1,99 @@
+---
+lecture_video: ly5WSXQFWAM
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Submitting & Resetting
+
+== Learning Objectives
+
+* How to call a function on our component when the user clicks submit.
+* How to reset the form back to it's original state.
+
+== Submitting
+
+To submit a form in Angular we need a button with a `type` of `submit` in our form markup in between the `<form> ... </form>` tags, like so:
+
+[source,html]
+----
+<form>
+  .
+  .
+  .
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+----
+
+When we press this submit button this triggers the normal HTML5 form submission mechanism, so it tries to _POST_ the form to the current URL.
+
+However instead of issuing a standard POST we want to call a function on our component instead, to do that we use the `ngSubmit` directive and add it to the form element, like so:
+
+[source,html]
+----
+<form (ngSubmit)="onSubmit()">
+  .
+  .
+  .
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+----
+
+This _hijacks_ the normal form submission mechanism and instead calls the function `onSubmit()` on our component. Let's implement `onSubmit()` with a simple console.log line like so:
+
+[source,typescript]
+.script.ts
+----
+onSubmit() {
+  if (this.myform.valid) {
+    console.log("Form Submitted!");
+  }
+}
+----
+
+Now when we press the _Submit_ button `Form Submitted!` gets printed to the console.
+
+[TIP]
+=====
+We can do anything we want in this function.
+
+
+To get the current value of the form model we can call `myform.value`.
+
+
+In a later section we cover how to make HTTP requests, after learning that we will be able to make an API request passing in values from our form model.
+=====
+
+== Resetting
+
+In a model driven form to _reset_ the form we just need to call the function `reset()` on our `myform` model.
+
+For our sample form lets reset the form in the `onSubmit()` function, like so:
+
+[source,typescript]
+.script.ts
+----
+onSubmit() {
+  if (this.myform.valid) {
+    console.log("Form Submitted!");
+    this.myform.reset();
+  }
+}
+----
+
+The form now resets, all the input fields go back to their initial state and any `valid`, `touched` or `dirty` properties are also reset to their starting values.
+
+== Summary
+
+We can bind to the _ngSubmit_ directives output event to call a function on our component when the user submits a form.
+
+Calling the `reset` function on a form model resets the form back to it's original pristine state.
+
+We can call functions on our component to process a form. However Angular gives us _another_ way to process a forms values, by using reactive programming and RxJS, we'll cover that in the next lecture.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

@@ -1,0 +1,12 @@
+---
+lecture_video: 
+---
+= Wrapping Up
+
+Pipes are a way of having a different _visual representation_ for the same piece of data without storing unnecessary intermediate data on the component.
+
+We could solve the same problems without using pipes. We can transform the data ourselves on the component into different property, in all the different permutations they are required in all the views they are consumed in.
+
+But that's wasteful and a fertile feeding ground for bugs.
+
+Instead we use pipes which are used in templates and transform the data passed to it on demand in the format the consumer of the data wants without needing to store any intermediate values on our component.

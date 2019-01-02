@@ -1,0 +1,23 @@
+---
+lecture_video: 
+---
+= Wrapping Up
+
+In this section on testing in Angular we covered the basics of unit testing with Jasmine and Karma as well as testing by using the Angular Test Bed.
+
+We initially covered the basics of how to test classes with just Jasmine and in itself that gives us the ability to test 50% of our code.
+
+But to go deeper we need to be able to test behaviours that require the Angular framework and that is where the Angular Test Bed comes in.
+
+It lets us test behaviours that require a component interacting with it's view and gives us fine grained control on change detection and asynchronous processing.
+
+We covered specific recipes for testing:
+
+* Using Mocks and Spys.
+* Asynchronous code.
+* Dependency injection.
+* Components.
+* Directives.
+* Model Driven Forms
+* Http and Jsonp.
+* Routing.

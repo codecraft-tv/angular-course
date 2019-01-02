@@ -1,0 +1,257 @@
+---
+lecture_video: zulQMNg5ymQ
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Provider
+
+== Learning Objectives
+
+* Know how we can configure injectors with providers.
+* Know the 4 different types of dependencies we can configure provider to provide.
+
+== Providers
+
+As mentioned in the previous lecture we can _configure_ injectors with _providers_ and a provider links a _token_ to a _dependency_.
+
+But so far we seem to be configuring our injector with just a list of classes, like so:
+
+[source,typescript]
+----
+let injector = ReflectiveInjector.resolveAndCreate([
+  MandrillService,
+  SendGridService
+]);
+----
+
+The above code is in fact a shortcut for:
+
+[source,typescript]
+----
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: MandrillService, useClass: MandrillService },
+  { provide: SendGridService, useClass: SendGridService },
+]);
+----
+
+The real configuration for a provider is an object which describes a _token_ and configuration for how to create the associated _dependency_.
+
+The `provide` property is the _token_ and can either be a _type_, a _string_ or an instance of something called an `InjectionToken`.
+
+The other properties of the provider configuration object depend on the _kind_ of dependency we are configuring, since we are configuring classes in this instance we the `useClass` property.
+
+TIP: If all we want to do is providing classes, it's such a common pattern that Angular lets you define a list of class names as the providers.
+
+=== Switching dependencies
+
+The above is an excellent example of how we can use the DI framework to architect our application for _ease of re-use_, _ease of testing_ and less _brittle_ code.
+
+If we wanted to _re-use_ our application and move from `Mandrill` to `SendGrid` without using DI we would have to search through all the code for where we have requested `MandrillService` to be injected and replace with `SendGridService`.
+
+A better solution is to configure the DI framework to return either `MandrilService` or `SendGridService` depending on the context, like so:
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core';
+
+class MandrillService {};
+class SendGridService {};
+
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: "EmailService", useClass: MandrillService }  # <1>
+]);
+
+let emailService = injector.get("EmailService");
+console.log(emailService); // new MandrillService()
+----
+<1> The token is `"EmailService"` and the dependency is the class `MandrillService`
+
+The above is configured so when code requests the token `"EmailService"` it returns an instance of the class `MandrillService`.
+
+To switch to using the `SendGridService` throughout our application we can just configure our injector with a different provider, like so:
+
+[source,typescript]
+----
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: "EmailService", useClass: SendGridService } # <1>
+]);
+----
+<1> The token is `"EmailService"` and the dependency is the class `SendGridService`
+
+Now the DI framework just returns instances of `SendGridService` whenever the token `"EmailService"` is requested.
+
+=== Provider configurations
+
+So far we've only seen how we can configure a provider to provide classes however there are 4 types of dependencies providers can provide in Angular.
+
+==== useClass
+
+We can have a provider which maps a _token_ to a _class_, like so:
+
+[source,typescript]
+----
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: Car, useClass: Car },
+]);
+----
+
+The above is so common that there is a shortcut, if all we want to provide is a class we can simply pass in the class name, like so:
+
+[source,typescript]
+----
+let injector = ReflectiveInjector.resolveAndCreate([Car]);
+----
+
+==== useExisting
+
+We can make two tokens map to the same _thing_ via aliases, like so:
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core';
+
+class MandrillService {};
+class SendGridService {};
+class GenericEmailService {};
+
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: GenericEmailService, useClass: GenericEmailService }, # <1>
+  { provide: MandrillService, useExisting: GenericEmailService }, # <2>
+  { provide: SendGridService, useExisting: GenericEmailService } # <3>
+]);
+
+let emailService1 = injector.get(SendGridService); # <4>
+console.log(emailService1); // GenericEmailService {}
+let emailService2 = injector.get(MandrillService); # <4>
+console.log(emailService2); // GenericEmailService {}
+let emailService3 = injector.get(GenericEmailService); # <4>
+console.log(emailService3); // GenericEmailService {}
+console.log(emailService1 === emailService2 &&  emailService2 === emailService3); // true # <5>
+----
+<1> The token `GenericEmailService` resolves to an instance of `GenericEmailService`.
+<2> This provider maps the token `MandrillService` to whatever the existing `GenericEmailService` provider points to.
+<3> This provider maps the token `SendGridService` to whatever the existing `GenericEmailService` provider points to.
+<4> Requesting a resolve of `SendGridService`, `MandrillService` or `GenericEmailService` return an instance of `GenericEmailService`.
+<5> All three instances of `GenericEmailService` returned are _the same instance_.
+
+Whenever anyone requests `MandrillService` or `SendGridService` we return an instance of `GenericEmailService` instead.
+
+//[IMPORTANT]
+//====
+//It doesn't actually return the _same_ instance as we can see from the last line.
+// +
+// +
+//All three instances are not equal to each other, the injector created three separate instances using the `new` keyword.
+// +
+// +
+//This provider is just a useful convenience for when you want to make a token point to the _configuration_ of another token versus copying and pasting the configuration multiple times to different providers.
+//====
+
+==== useValue
+
+We can also provide a simple _value_, like so:
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core';
+
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: "APIKey", useValue: 'XYZ1234ABC' }
+]);
+
+let apiKey = injector.get("APIKey");
+console.log(apiKey); // "XYZ1234ABC"
+----
+
+Or if we wanted to pass in an object we can, like so:
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core';
+
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: "Config",
+    useValue: {
+      'APIKey': 'XYZ1234ABC',
+      'APISecret': '555-123-111'
+    }
+  }
+]);
+
+let config = injector.get("Config");
+console.log(config); // Object {APIKey: "XYZ1234ABC", APISecret: "555-123-111"}
+----
+
+If the intention however is to pass around _read-only_ constant values then passing an object is a problem since any code in your application will be able to _change_ properties on that object. What `Config` points to _can't_ be changed but the properties of `Config` _can_ be changed.
+
+So when passing in an object that you intend to be _immutable_ (unchanging over time) then use the `Object.freeze` method to stop client code from being able to _change_ the config object, like so:
+
+[source,typescript]
+----
+let injector = ReflectiveInjector.resolveAndCreate([
+  { provide: "Config",
+    useValue: Object.freeze({ # <1>
+      'APIKey': 'XYZ1234ABC',
+      'APISecret': '555-123-111'
+    })
+  }
+]);
+----
+<1> By using `Object.freeze` that objects values can't be changed, in effect it's read-only.
+
+
+==== useFactory
+
+We can also configure a provider to call a function every-time a token is requested, leaving it to the provider to figure out _what_ to return, like so:
+
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core';
+
+class MandrillService {};
+class SendGridService {};
+const isProd = true;
+
+let injector = ReflectiveInjector.resolveAndCreate([
+  {
+    provide: "EmailService",
+    useFactory: () => { # <1>
+      if (isProd) {
+        return new MandrillService();
+      } else {
+        return new SendGridService();
+      }
+    }
+  },
+]);
+
+let emailService1 = injector.get("EmailService");
+console.log(emailService1); // MandrillService {}
+----
+<1> When the injector resolves to this provider, it calls the `useFactory` function and returns whatever is returned by this function as the dependency.
+
+
+Just like other providers the result of the call is _cached_. So even though we are using a factory and creating an instance with `new` ourselves calling `injector.get(EmailService)` again will still return the _same_ instance of `MandrillService` that was created with the first call.
+
+[source,typescript]
+----
+let emailService1 = injector.get(EmailService);
+let emailService2 = injector.get(EmailService);
+console.log(emailService2 === emailService2); // true # <1>
+----
+<1> Returns the same instance
+
+== Summary
+
+We can configure providers to return 4 different kinds of dependencies: classes, values, aliases and factories.
+
+In the next lecture we will look at the different ways we can define _tokens_.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

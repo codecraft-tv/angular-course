@@ -1,0 +1,177 @@
+---
+lecture_video: PtCAXLn2S1Q
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Content Projection
+
+== Goals
+
+Change our application so that a developer who is re-using our `JokeComponent` can also configure _how_ a joke will be rendered on the screen.
+
+== Learning Objectives
+
+* What is content projection and why might we want to use it.
+* How to project content using the `ng-content` tag.
+* How to project multiple pieces of content using css selectors.
+
+== Motivation
+
+Lets say someone else wanted to use our `JokeComponent` but instead of displaying the punchline in a `<p>`  tag they wanted to display it in a larger `<h1>` tag.
+
+Our component right now doesn't let itself be _reused_ like that.
+
+However we can design our component with something called _content projection_ to enable it to be customised by the component or developer who is using it.
+
+== Content projection
+
+If we add the tag `<ng-content></ng-content>` anywhere in our template HTML for our component. The inner content of the tags that define our component are then _projected_ into this space.
+
+So if we changed the template for our `JokeComponent` to be something like:
+
+[source,html]
+----
+<div class="card card-block">
+  <h4 class="card-title">{{ data.setup }}</h4>
+  <p class="card-text"
+     [hidden]="data.hide">
+    <ng-content></ng-content> <1>
+  </p>
+  <a class="btn btn-primary"
+     (click)="data.toggle()">Tell Me
+  </a>
+</div>
+----
+<1> We've replaced  `{{data.punchline}}`  with `<ng-content></ng-content>`
+
+Then if we changed our `JokeListComponent` template from this:
+
+[source,html]
+----
+<joke *ngFor="let j of jokes" [joke]="j"></joke>
+----
+
+To this:
+
+[source,html]
+----
+<joke *ngFor="let j of jokes" [joke]="j">
+  <h1>{{ j.punchline }}</h1> <1>
+</joke>
+----
+<1> In-between the opening and closing `joke` tags we've added some HTML to describe _how_ we want the punchline to be presented on the screen, with a `<h1>` tag.
+
+
+The `<h1>{{ j.punchline }}</h1>` defined in the parent `JokeListComponent`, replaces the `<ng-content></ng-content>` tag in the `JokeComponent`.
+
+This is called _Content Projection_ we _project_ content from the parent Component to our Component.
+
+If we create our components to support content projection then it enables the consumer of our component to configure _exactly_ how they want the component to be rendered.
+
+The downside of content projection is that the `JokeListComponent` doesn't have access to the properties or methods on the JokeComponent.
+
+So the content we are projecting we can't bind to properties or methods of our `JokeComponent`, only the `JokeListComponent`.
+
+== Multi-content projection
+
+What if we wanted to define _multiple_ content areas, we've got a setup and a punchline lets make both of those content projectable.
+
+Specifically want the setup line to always end with a `?` character.
+
+NOTE: We are using this example for demonstration purposes only. This problem could easily be solved in a number of other ways, all of them easier than using content projection.
+
+We might change our `JokeListComponent` template to be something like:
+
+[source,html]
+----
+<joke *ngFor="let j of jokes" [joke]="j">
+  <span>{{ j.setup }} ?</span>
+  <h1>{{ j.punchline }}</h1> <1>
+</joke>
+----
+
+But in our JokeComponent template we _can't_ simply add two `<ng-content></ng-content>` tags, like so:
+
+[source,html]
+----
+<div class="card card-block">
+  <h4 class="card-title">
+    <ng-content></ng-content>
+  </h4>
+  <p class="card-text"
+     [hidden]="data.hide">
+    <ng-content></ng-content>
+  </p>
+  <a class="btn btn-primary"
+     (click)="data.toggle()">Tell Me
+  </a>
+</div>
+----
+
+Angular doesn't know _which_ content from the parent `JokeListComponent` to project into which `ng-content` tag in `JokeComponent`.
+
+To solve this `ng-content` has another attribute called `select`.
+
+If you pass to `select` a css matching selector, it will extract _only_ the elements matching the selector from the passed in content to be projected.
+
+Let's explain with an example:
+
+[source,html]
+----
+<div class="card card-block">
+  <h4 class="card-title">
+    <ng-content select="span"></ng-content> <1>
+  </h4>
+  <p class="card-text"
+     [hidden]="data.hide">
+    <ng-content select="h1"></ng-content> <2>
+  </p>
+  <a class="btn btn-primary"
+     (click)="data.toggle()">Tell Me
+  </a>
+</div>
+----
+<1> `<ng-content select="span"></ng-content>` will match `<span>{{ j.setup }} ?</span>`.
+<2> `<ng-content select="h1"></ng-content>` will match  `<h1>{{ j.punchline }}</h1>`.
+
+That however can be a bit tricky to manage, lets use some more meaningful rules matching perhaps by class name.
+
+[source,html]
+----
+<div class="card card-block">
+  <h4 class="card-title">
+    <ng-content select=".setup"></ng-content> <1>
+  </h4>
+  <p class="card-text"
+     [hidden]="data.hide">
+    <ng-content select=".punchline"></ng-content> <2>
+  </p>
+  <a class="btn btn-primary"
+     (click)="data.toggle()">Tell Me
+  </a>
+</div>
+----
+
+To support this lets change our parent components content to identify the different elements by classnames, like so:
+
+[source,html]
+----
+<joke *ngFor="let j of jokes" [joke]="j">
+  <span class="setup">{{ j.setup }} ?</span>
+  <h1 class="punchline">{{ j.punchline }}</h1> <1>
+</joke>
+----
+
+== Summary
+
+Sometimes the nature of a component means that the consumer would like to customise the view, the presentation of data, in a unique way for each use case.
+
+Rather than trying to predict all the different configuration properties to support all the use cases we can instead use content projection. Giving the consumer the power to configure the presentation of the component as they want.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

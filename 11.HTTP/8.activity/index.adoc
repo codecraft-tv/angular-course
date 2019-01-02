@@ -1,0 +1,23 @@
+---
+layout: activity-lecture.html
+---
+:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/11.http
+= Activity
+
+Change the Http example app we created using Promises into one that uses Jsonp instead.
+
+== Steps
+
+
+Fork this plunker:
+
+include::{section}/@activity/.link[]
+
+Change the code to use `Jsonp` instead of `Http`.
+
+== Solution
+
+
+When you are ready compare your answer to the solution in this plunker:
+
+include::{section}/@solution/.link[]

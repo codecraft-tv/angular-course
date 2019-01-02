@@ -1,0 +1,102 @@
+---
+lecture_video: V-p-hHjmiac
+---
+:toc:
+= TypeScript Setup
+
+== Transpilation
+
+Since browsers don't know about TypeScript we need to convert our TypeScript code into something they do understand.
+
+The current version of JavaScript with the broadest support across all browsers is still ES5, so that's what we currently convert our TypeScript code into.
+
+The process of converting TypeScript into ES5 is called _transpilation_ and we use a tool called `tsc` to compile on the command line.
+
+[NOTE]
+====
+It's useful to have the `tsc` tool so you can try out TypeScript yourself and transpile on the command line but it's _not_ necessary to do this in your everyday Angular development.
+
+Projects built using the Angular command line tools use the webpack bundler which handles transpilation of your TypeScript for you.
+
+It is good however to have `tsc` installed especially if you want quickly try our some TypeScript features and see how they are transpiled into ES5 or ES6.
+====
+== Installing TypeScript
+
+We can install typescript via `npm`
+
+[source]
+----
+npm install -g typescript
+----
+
+The preceding command will install the TypeScript compiler and add its executable `tsc` to your path.
+
+To make sure everything worked correctly type:
+
+[source]
+----
+tsc –v
+----
+
+And it should print something like
+
+[source]
+----
+Version 1.8.0
+----
+
+== Running TypeScript
+
+Create a file called `hello.ts`.
+
+Inside that file add `console.log(&#39;hello world&#39;);`
+
+We can compile a typescript file into a javascript file by calling:
+
+[source]
+----
+tsc hello.ts
+----
+
+This generates a file called `hello.js`
+
+And we can execute that file by using node, like so:
+
+[source]
+----
+node hello.js
+----
+
+We can watch a typescript file for changes and compile it automatically with:
+
+[source]
+----
+tsc -w hello.ts
+----
+
+We can provide configuration on the command line, like so:
+
+[source]
+----
+tsc -t ES6 -w hello.ts
+----
+
+TIP: The above `-t ES6` is a flag to tell typescript to transpile into ES6 instead of the default ES5.
+
+However if we are want to watch a whole directory we need to use a configuration file.
+
+We can create a config file with the most common settings like so:
+
+[source]
+----
+tsc --init
+----
+
+If we want to watch all files in a directory we can just type:
+
+[source]
+----
+tsc -w
+----
+
+WARNING: If there are errors, by default TypeScript will still output the javascript file if it can, this behaviour can be changed in the config.

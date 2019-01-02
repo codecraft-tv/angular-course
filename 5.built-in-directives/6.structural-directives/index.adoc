@@ -1,0 +1,112 @@
+---
+lecture_video: THvZfVee4qc
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Structural Directives
+
+== Learning Objectives
+
+* Understand what a structural directive is.
+* Know why we use the `\*` character for some directives only.
+
+== Long form structural directives
+
+_Structural Directives_ are directives which _change_ the structure of the DOM by adding or removing elements.
+
+There are three built in structural directives, `NgIf`, `NgFor` and `NgSwitch`.
+
+These directives work by using the HTML5 `<ng-template>` tag. This is a new tag in HTML which is specifically designed to hold _template_ code. It can sit under the `body` element but any content inside it is not shown in the browser.
+
+Using `ng-template` we can write an `ngIf` expression as:
+
+[source,typescript]
+----
+<ng-template [ngIf]='condition'>
+  <p>I am the content to show</p>
+</ng-template>
+----
+
+If we go back to our joke app example and replace the hiding and showing of a joke with this _template_ version of `ngIf` we would end up with:
+
+[source,typescript]
+----
+<ng-template [ngIf]="!data.hide">
+  <p class="card-text">
+  {{ data.punchline }}
+  </p>
+</ng-template>
+----
+
+The `NgFor` version is slightly more complex:
+
+[source,typescript]
+----
+<ng-template ngFor # <1>
+          let-j # <2>
+          [ngForOf]="jokes"> # <3>
+  <joke [joke]="j"></joke>
+</ng-template>
+----
+<1> This is the `NgFor` directive itself.
+<2> This is another way of declaring a template local reference variable, equivalent to `#j`.
+<3> `[ngForOf]` is an _input property_ of the `NgFor` directive.
+
+== Syntax sugar and `*`
+
+So if we can write `ngIf` with `ng-template` what is al the fuss about `*`.
+
+When we _prepend_ a directive with `*` we are telling it to use the element it's attached to _as_ the template.
+
+Looking at the `NgIf` example from above, these two snippets of code are equivalent:
+
+[source,typescript]
+----
+<ng-template [ngIf]="!data.hide">
+  <p class="card-text">
+    {{ data.punchline }}
+  </p>
+</ng-template>
+----
+
+[source,typescript]
+----
+<p class="card-text"
+   *ngIf="!data.hide">
+  {{ data.punchline }}
+</p>
+----
+
+Finally looking at the more complex `NgFor` example from above, these two snippets of code are also equivalent:
+
+[source,typescript]
+----
+<ng-template ngFor
+          let-j
+          [ngForOf]="jokes">
+  <joke [joke]="j"></joke>
+</ng-template>
+----
+
+[source,typescript]
+----
+<joke *ngFor="let j of jokes"
+      [joke]="j">
+</joke>
+----
+
+== Summary
+
+Structural directives are a type of directive which changes the structure of the DOM.
+
+We use the `<ng-template>` tag to define the element we want to insert into the DOM.
+
+We can prepend the directive name with `*` to skip having to define a `<ng-template>` and have the directive use the element it's attached to as the template.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

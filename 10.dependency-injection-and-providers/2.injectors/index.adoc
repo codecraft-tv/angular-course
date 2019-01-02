@@ -1,0 +1,155 @@
+---
+lecture_video: V3d1X6Kucsg
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Injectors
+
+== Learning Objectives
+
+* Know how an injector resolves a _token_ into a _dependency_.
+* Know how child injectors work.
+
+== Creating Injectors
+
+At the core of the DI framework is an _injector_.
+
+An injector is passed a _token_ and returns a _dependency_ (or list of).
+
+We say that an injector _resolves_ a token into a dependency.
+
+Normally we never need to implement an _injector_. Angular handles low level injectable implementation details for us and typically we just configure it to give us to behaviour we want.
+
+However to explain how injectors work we will implement some injectable code, like so:
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core'; # <1>
+
+class MandrillService {}; # <2>
+class SendGridService {};
+
+let injector = ReflectiveInjector.resolveAndCreate([  # <3>
+  MandrillService,
+  SendGridService
+]);
+
+let emailService = injector.get(MandrillService); # <4>
+console.log(emailService);
+----
+<1> We import our injector class.
+<2> We create two service classes, a `MandrillService` which sends email via the Mandrill platform and the `SendGridService` which sends email via the SendGrid platform.
+<3> We configure our injector by providing an array of classes.
+<4> We pass in a token, the class name, into our injector and ask it to _resolve_ to a dependency. In this case it simply returns an instance of `MandrillService`.
+
+
+[NOTE]
+====
+The injector doesn't return the class, but an _instance_ of the class instantiated with `new`, like so:
+[source,typescript]
+----
+emailService = new MandrillService()
+----
+====
+
+== Dependency caching
+
+The dependencies returned from injectors are cached. So multiple calls to the _same_ injector for the _same_ token will return the _same_ instance, like so:
+
+[source,typescript]
+----
+let emailService1 = injector.get(MandrillService);
+let emailService2 = injector.get(MandrillService);
+console.log(emailService1 === emailService2); // true
+----
+
+IMPORTANT: A _different_ injector for the _same_ token might return a _different_ instance of a dependency but the _same_ injector will always return the _same_ instance.
+
+`emailService1` and `emailService2` point to exactly the same thing, therefore we can share _state_ between two different parts of our application by injecting the same dependency, like so:
+
+[source,typescript]
+----
+let emailService1 = injector.get(MandrillService);
+emailService1.foo = "moo";
+
+let emailService2 = injector.get(MandrillService);
+console.log(emailService2.foo); // moo # <1>
+----
+<1> Since `emailService1` and `emailService2` are the same instance, setting a property on one will mean it can be read from the other and vice versa.
+
+== Child Injectors
+
+Injectors can have one or more _child_ injectors. These behave just like the parent injector with a few additions.
+
+[upperalpha]
+1. Each injector creates it's own _instance_ of a dependency
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core';
+
+class EmailService {}
+
+let injector = ReflectiveInjector.resolveAndCreate([EmailService]); # <1>
+let childInjector = injector.resolveAndCreateChild([EmailService]);
+
+console.log(injector.get(EmailService) === childInjector.get(EmailService)); // false # <2>
+----
+<1> The `childInjector` and parent `injector` are both configured with the same providers.
+<2> The `childInjector` resolves to a different _instance_ of the dependency compared to the parent `injector`.
+
+Both injectors are configured with the _same_ `EmailService`. They each resolved the dependency and returned different instances.
+
+
+I've mentioned previously that different injectors return different instances of dependencies, this is also true even if the injector is a _child_ injector, it will still resolve to a different instance to the parent.
+
+
+[upperalpha]
+[start=2]
+1. Child injectors forward requests to their parent injector if they can't resolve the token locally.
+
+[source,typescript]
+----
+import { ReflectiveInjector } from '@angular/core';
+
+class EmailService {}
+
+let injector = ReflectiveInjector.resolveAndCreate([EmailService]); # <1>
+let childInjector = injector.resolveAndCreateChild([]); # <2>
+
+console.log(injector.get(EmailService) === childInjector.get(EmailService)); // true # <3>
+----
+<1> We configure a parent injector with `EmailService`.
+<2> We create a child injector from the parent injector, this child injector is not configured with any providers.
+<3> The parent and child injectors resolve the same token and both return the _same_ instance of the dependency.
+
+We request the token `EmailService` from the `childInjector`, it can't find that token locally so it asks it's parent injector which returns the instance it had cached from a previous direct reqeust.
+
+Therefore the dependency returned by the child and the parent is exactly the same instance .
+
+TIP: Don't worry if the significance of this isn't clear yet, it'll become clear in the lecture on configuring DI in Angular.
+
+
+== Summary
+
+We configure injectors with providers.
+
+We pass to injectors a token and then resolve this into a dependancy.
+
+Injectors cache dependancies, so multiple calls result in the same instance being returned.
+
+Different injectors hold different caches, so resolving the same token from a different injector will return a different instance.
+
+We create child injectors from parent injectors.
+
+A child injector will forward a request to their parent if it can't resolve the token itself.
+
+So far we've only covered providers that provide _classes_ providers can provide other types of dependencies which is the topic of the next lecture.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

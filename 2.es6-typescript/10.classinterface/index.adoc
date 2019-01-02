@@ -1,0 +1,269 @@
+---
+lecture_video: SnqoJlHxF40
+---
+:sourcedir: {docdir}/content/{filedir}/code
+
+= Class &amp; Interface
+
+How do we write object orientated code in ES6?
+
+== Object Orientation in JavaScript
+
+JavaScript has a prototype-based, object-oriented programming model. It creates objects using other objects as blueprints and to implement inheritance it manipulates what's called a _prototype chain_.
+
+We normally call the way object orientation is implemented in C++ or Java as the _Classical OO Pattern_ and the way it's implemented in JavaScript as the _Prototype Pattern_.
+
+Although the prototype pattern is a valid way to implement object orientation it can be confusing for newer javascript developers or developers used to the classical pattern. 
+
+So in ES6 we have an alternative syntax, one that closer matches the classical object orientated pattern as is seen in other languages.
+
+TIP: Under the hood the new syntax still uses the prototype pattern with constructor functions and the prototype-chain. However, it provides a more common and convenient syntax with less boilerplate code.
+
+NOTE: TypeScript supports the ES6 `class` syntax but also adds some other feature like access modifiers and interfaces, so in this lecture we'll be writing TypeScript rather than pure ES6.
+
+// We'll also be coding locally instead of plunker so we can use `tsc` to transpile our typescript into javascript and we'll be using node to execute.
+
+
+
+== Class
+
+A `class` is a blueprint for creating objects with specific functions and properties already attached to it, lets go through a simple example line by line:
+
+[source,typescript]
+----
+class Person { # <1>
+    firstName = ""; # <2>
+    lastName = "";
+    constructor(firstName, lastName) {  # <3>
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    name() { # <4>
+        return `${this.firstName} ${this.lastName}`;
+    }
+ 
+    whoAreYou() {
+        return `Hi i'm ${this.name()}`; # <5>
+    }
+}
+----
+<1> We define a class using then `class` keyword.
+<2> We describe the properties we want on our class instance.
+<3> Each class has a special `constructor` function, this is called when we create an instance of a class with `new`
+<4> We describe the functions, also known as methods, that we want on our class instance.
+<5> `this` in a method points to the class instance, the object that is created using this class.
+
+=== Class Instance
+
+A class is a _blueprint_ for creating an object, we call that created object an _instance of a class_, or a _class instance_ or just _instance_ for short.
+
+We instantiate a class by using the `new` keyword and when that happens javascript calls the `constructor` function. We can pass to the constructer arguments which it uses to initialise properties or call other function, like so:
+
+[source,typescript]
+----
+let asim = new Person("Asim","Hussain");
+----
+
+The above creates an instance of the _Person_ class called _asim_.
+
+The _asim_ instance has the same properties and functions that are described on the Person class:
+
+[source,typescript]
+----
+let asim = new Person("Asim","Hussain");
+asim.whoAreYou() 
+// "Hi i'm Asim Hussain"
+----
+
+= Inheritance
+
+A class can inherit from another class. We can create a class blue-print that _extends_ an existing class blue-print by adding other methods or properties.
+
+We do this by using the `extends` keyword, like so:
+
+[source,typescript]
+----
+class Student extends Person { # <1>
+    course; # <2>
+    
+    constructor(firstName, lastName, course) { 
+        super(firstName, lastName); # <3>
+        this.course = course;
+    }
+
+    whoAreYou() { 	# <4>
+        return `${super.whoAreYou()} and i'm studying ${this.course}`; # <5>
+    }
+}
+----
+<1> We use the `extends` keyword to signal that this class inherits all the properties and methods from the _parent_ Person class.
+<2> We can describe additional properties.
+<3> We use the `super` function to call the constructor of the parent class
+<4> We can _override_ member functions of the parent class with our own versions.
+<5> In member functions `super` refers to the `parent` instance.
+
+We can then instantiate this derived class like so:
+
+[source,typescript]
+----
+let asim = new Student("Asim", "Hussain", "Angular 2");
+console.log(asim.whoAreYou());
+// Hi i'm Asim Hussain and i'm studying Angular 2
+----
+
+== Access Modifiers
+
+Everything we have learned so far about classes is pure ES6 JavaScript.
+
+However TypeScript adds some nice functionality on top of ES6 classes, namely function and property _visibility_ via _access modifiers_.
+
+For example we can define the properties of our Person class as `private`, like so:
+
+[source,typescript]
+----
+class Person {
+    private firstName = "";
+    private lastName = "";
+    
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+----
+
+
+And we create a function on our Student class called `test()` which tries to access one of these properties, like so:
+
+[source,typescript]
+----
+class Student extends Person {
+  .
+  .
+  .
+  test() {
+    console.log(this.firstName);
+  }
+}
+----
+
+And we tried to call this function from our `Student` instance, like so:
+
+[source,typescript]
+----
+let asim = new Student("Asim", "Hussain", "Angular 2");
+console.log(asim.test());
+----
+
+Compiling the above with typescript prints out this error:
+
+[source]
+----
+error TS2341: Property 'firstName' is private and only accessible within class 'Person'.
+----
+
+By marking the `firstName` property as `private` it is now only visible from one of the methods on `Person` class.
+
+We can also define _class methods_ as `private` with the same effect. If we tried to call a `private` method from _outside_ of a Person class, the typescript transpiler throws an error.
+
+There are 3 access modifiers:
+
+public:: This is the default and means its visible everywhere.
+private:: Only member functions of the class it's declared in can see this.
+protected:: Only the class it's declared in and any class that _inherits_ from that class can see this.
+
+== Constructor shortcut
+
+A really common pattern in constructors is to use them to initialise properties via arguments you pass into the constructor, like in our example:
+
+[source,typescript]
+----
+class Person {
+    private firstName = "";
+    private lastName = "";
+    
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+----
+
+As long as you are using an _access modifier_ TypeScript lets us shorten this to:
+
+[source,typescript]
+----
+class Person {
+    constructor(private firstName, private lastName) {
+    }
+}
+----
+
+== Interfaces
+
+TypeScript has another feature called an `interface`. An interface can be used in a number of scenarios but by far the most common is when used with classes.
+
+When used with classes the syntax looks like this:
+
+[source,typescript]
+----
+class Person implements Human {
+}
+----
+
+`Human` in the example above is an _interface_. An interface lets you describe the _minimum_ set of *public* facing properties or methods that a `class` has. 
+
+Another way interfaces are explained is that they describe a set of rules the class has to follow, a _contract_ it has to adhere to.
+
+So for us a `Human` interface might look like:
+
+[source,typescript]
+----
+interface Human {
+    firstName: string;
+    lastName: string;
+}
+----
+
+IMPORTANT: Since interfaces are all about the *public* interface of a class they can't have access modifiers, the properties above have to be _public_.
+
+If the Person class then doesn't implement at least a `firstName` and a `lastName` then typescript throws an error like so:
+
+[source]
+----
+error TS2420: Class 'Person' incorrectly implements interface 'Human'. Property 'firstName' is missing in type 'Person'.
+----
+
+Sometimes however we might want an interface to describe an optional contract. We can append `?` to the _name_ of the property or function to mark it as _optional_, like so:
+
+[source,typescript]
+----
+interface Human {
+    firstName: string;
+    lastName: string;
+		name?: Function;
+		isLate?(time: Date): Function;
+}
+----
+
+== Summary
+
+In ES6 we now have a new way of writing object oriented code with the `class` syntax.
+
+We can inherit methods and properties of one class into another by using the `extends` keyword.
+
+Under the hood we are still using prototype based inheritance but the syntax is easier to understand and more familiar for developers who are coming from other languages.
+
+TypeScript adds some extra functionality on-top of ES6 classes such as _access modifiers_ and _interfaces_
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/main.ts[]
+----
+
+
+

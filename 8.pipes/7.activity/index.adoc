@@ -1,0 +1,31 @@
+---
+layout: activity-lecture.html
+---
+:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/8.pipes
+= Activity
+
+Create a custom _Pipe_ called `CleanPipe` for use in the Joke application which replaces instances of a _bad_ word with `$%#@!` instead.
+
+We want to pass into the pipe the list of bad words which we want replace, like so:
+
+[source,html]
+----
+<p>{{data.punchline | clean:'boo,damn,hell'}}</p>
+----
+
+== Steps
+
+Fork this plunker:
+
+include::{section}/@activity/.link[]
+
+Flesh out the `CleanPipe` class to implement the functionality.
+
+Read any *TODO* comments in the plunker for hints.
+
+== Solution
+
+
+When you are ready compare your answer to the solution in this plunker:
+
+include::{section}/@solution/.link[]

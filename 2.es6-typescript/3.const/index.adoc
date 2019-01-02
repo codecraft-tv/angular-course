@@ -1,0 +1,129 @@
+---
+lecture_video: LpTi1OIsbFI
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Const
+
+`const` is a new keyword which declares a variable as _constant over time_.
+
+== Declaring a const variable
+
+We can use `const` to declare a variable but unlike `let` and `var` it must be _immediately_ initialised, with a value that can’t be changed afterwards.
+
+If we try to declare it without initialising it we get a `SyntaxError`, like so:
+
+[source,javascript]
+----
+const foo; // SyntaxError: Missing initializer in const declaration
+----
+
+If we try to change it after we have declared and initialised it we get a `TypeError`, like so:
+
+[source,javascript]
+----
+const foo = 1;
+foo = 2; // TypeError: Assignment to constant variable
+----
+
+== Block scoping
+
+Both `let` and `const` create variables that are block-scoped – they only exist within the innermost block that surrounds them.
+
+[source,javascript]
+----
+function func() {
+    if (true) {
+        const tmp = 123;
+    }
+    console.log(tmp); // Uncaught ReferenceError: tmp is not defined
+}
+func();
+----
+
+== Immutable variable
+
+Variables created by `let` and `var` are _mutable_:
+
+[source,javascript]
+----
+let foo = "foo";
+foo = "moo";
+console.log(foo);
+----
+
+TIP: _Mutable_ in this case means _can change over time_.
+
+Variables created by `const` however are _immutable_, they don't change over time, specifically the the const variable can't _point to_ another thing later on.
+
+[source,javascript]
+----
+const foo = 'abc';
+foo = 'def'; // TypeError: Assignment to constant variable
+----
+
+== Mutable Value
+
+There is one big pitfall with `const` however.
+
+When we say "`const` variables are immutable" it only means that the variable always has to _point to_ the same thing. It does not mean than the _thing_ it points to can't change over time.
+
+For example, if the variable `foo` is a `const` that points to an object - we can't make `foo` point to another object later on:
+
+[source,javascript]
+----
+const foo = {};
+foo = {}; // TypeError: Assignment to constant variable.
+----
+
+But we can however _mutate_, make changes to, the object `foo` points to, like so:
+
+[source,javascript]
+----
+const foo = {};
+foo['prop'] = "Moo"; // This works!
+console.log(foo); 
+----
+
+If we want the _value_ of `foo` to be immutable we have to freeze it using `Object.freeze(...)`. 
+
+When we freeze an object we can't change it, we can't add properties or change the values of properties, like so:
+
+[source,javascript]
+----
+const foo = Object.freeze({});
+foo.prop = 123;
+console.log(foo.prop) // undefined
+----
+
+However by default the above doesn't throw an error, it just _silently_ ignores the issue. So in the example above it didn't throw an error when we tried to set `foo.prop = 123` but when we try to print out the value on the next line we just get `undefined`.
+
+To force `Object.freeze(...)` to throw an error we must remember to be in `&quot;use strict&quot;` mode, like so:
+
+[source,javascript]
+----
+"use strict";
+const foo = Object.freeze({});
+foo.prop = 123; // SyntaxError: Identifier 'foo' has already been declared
+----
+
+== Summary
+
+`const` lets us declare variables which don't change over time, which are immutable.
+
+The important _gotcha_ with const is that the variable is immutable, but not the value, the thing the variable points to.
+
+This means that if we declare an object as `const`, confusingly we can still change properties of the object later on.
+
+To solve this and make an object immutable we use the `Object.freeze(...)` function which together with the `&quot;use strict&quot;;` param throws an error if we try to change the object.
+
+
+== Listing
+
+include::{sourcedir}/.link[]
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/main.ts[]
+----

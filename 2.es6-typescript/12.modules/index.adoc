@@ -1,0 +1,159 @@
+---
+lecture_video: uLWFjOysvn8
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Modules
+
+== Module Loading
+
+By default javascript doesn't have a module system like other languages, e.g. Java or Python.
+
+This means that if you wanted to call a function in some other file, you have to remember to _explicitly_ load that file via script tags _before_ you call the function. 
+
+If you tried to use code that you forgot to add via a script tag, then javascript would complain.
+
+Other languages have a module loading system e.g. in python if you wanted to use some code from another file you would type something like
+
+[source,python]
+----
+import foo from bar; 
+foo();
+----
+
+The language itself figured out _where_ `bar` was, loaded it up from the filesystem, extracted the function `foo` and made it available to you in your file to use.
+
+This feature was missing in JavaScript so the community developed their own solutions, such as _CommonJS_ which is used in node.
+
+== ES6 Modules
+
+ES6 took the best of the existing module systems and introduced this concept on a language level.
+
+Although it's made it into the ES6 standard it's up to the javascript engine makers to _actually_ implement it natively and they _haven't_… _yet_.
+
+So until that happens we code using the ES6 module syntax in TypeScript. When typescript transpiles the code to ES5 it uses the CommonJS module loading system which we touched on above.
+
+
+NOTE: We can configure TypeScript to use other module loaders, but the default is CommonJS.
+
+== Exporting
+
+[source,typescript]
+----
+// utils.ts
+function square(x) {
+    return Math.pow(x,2)
+}
+
+function cow() {
+    console.log("Mooooo!!!")
+}
+
+export {square, cow};
+----
+
+We declare some functions in a file.
+
+By using the `export` keyword we say _which_ of those functions can be exported, and therefore imported and used in other modules.
+
+
+NOTE: `{square, cow}` is just destructuring syntax and is short for `{square: square, cow: cow}`.
+
+
+== Importing
+
+[source,typescript]
+----
+// script.ts
+import {square, cow} from './utils';
+
+console.log(square(2));
+cow();
+----
+
+TIP: To compile with typescript we need to provide both files on the command line `tsc -t ES5 -w utils.ts script.ts`
+
+We again use that destructuring syntax to import the functions we want from the utils module, we provide a path relative to _this_ module.
+
+== Aliases
+
+We may want to import a function with one name but then use it via another name. Perhaps to avoid name collisions or just to have a more convenient naming, like so:
+
+[source,typescript]
+----
+import {square as sqr} from './utils';
+sqr(2);
+----
+
+Or we can import everything in a file like so:
+
+[source,typescript]
+----
+import * as utils from './utils';
+console.log(utils.square(2));
+utils.cow();
+----
+
+== Alternative export syntax
+
+As well as describing the exports by using the export keyword, like so:
+
+[source,typescript]
+----
+export {square, cow};
+----
+
+We can also export functions or variables as they are defined by prepended the word `export` to the front of their declarations:
+
+[source,typescript]
+----
+export function square(x) {
+    return Math.pow(x,2)
+}
+----
+
+= Default exports
+
+If a module defines one export which is the most common, we can take advantage of the _default export_ syntax, like so:
+
+[source,typescript]
+----
+export default function square(x) {
+    return Math.pow(x,2)
+}
+----
+
+And then when we import it we don't need to use `{` `}`, like so:
+
+[source,typescript]
+----
+import square from './utils';
+----
+
+Or, if we want to import the default export as well as some other exports, we can use:
+
+[source,typescript]
+----
+import square, { cow } from './utils';
+----
+
+== Summary
+
+With ES6 modules we finally have a mechanism for letting the language deal with loading of dependant files for us.
+
+This isn't baked into javascript engines yet. So to solve this problem in Angular we still use the ES6 module loading syntax but leave it to TypeScript to transpile to CommonJS.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/main.ts[]
+----
+
+
+.utils.ts
+[source,typescript]
+----
+include::{sourcedir}/utils.ts[]
+----

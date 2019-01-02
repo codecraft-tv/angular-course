@@ -1,0 +1,16 @@
+{
+  "9.forms": "Forms",
+  "13.unit-testing": "Unit Testing",
+  "14.advanced-topics": "Advanced Topics",
+  "5.built-in-directives": "Built-in Directives",
+  "11.HTTP": "HTTP",
+  "1.quickstart": "Quickstart",
+  "8.pipes": "Pipes",
+  "4.components": "Components",
+  "10.dependency-injection-and-providers": "Dependency Injection & Providers",
+  "12.routing": "Routing",
+  "3.angular-cli": "Angular CLI",
+  "7.reactive-programming-with-rxjs": "Reactive Programming with RxJS",
+  "6.custom-directives": "Custom Directives",
+  "2.es6-typescript": "ES6 JavaScript & TypeScript"
+}

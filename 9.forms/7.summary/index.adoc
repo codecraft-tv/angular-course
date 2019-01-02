@@ -1,0 +1,14 @@
+---
+lecture_video: 
+---
+= Wrapping Up
+
+In this section we covered the two main methods of implementing forms in Angular, the template driven and model driven approach.
+
+The template driven approach is easier to setup and use. It uses two way data binding between the template input controls and your domain model with the `ngModel` directive which saves a lot of development time.
+
+However the logic of the form is described in the HTML template so _testing_ requires a more complex setup with a full end to end testing environment in a browser simulating user interactions.
+
+In the model driven approach the definition of the form and most of the logic exists on the component as javascript. It's harder to setup but can be unit tested in isolation without needing to interact with the form template making it much easier to test. It also provides convenient features to validate and post-process input in real-time via the `valuesChanged` observable.
+
+In future advanced chapters we'll cover topics such as custom validation and generalised error handling.

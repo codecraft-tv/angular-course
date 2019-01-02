@@ -1,0 +1,252 @@
+---
+lecture_video: 94tga-hESIk
+---
+:sourcedir: {docdir}/content/{filedir}/code
+
+= Promises
+
+When you execute a task _synchronously_, you wait for it to finish before moving on to the next line of code. 
+
+When you execute a task _asynchronously_, the program moves to the next line of code before the task finishes.
+
+Think of synchronous programming like waiting in line and asynchronous programming like taking a ticket. When you take a ticket you can go do other things and then be notified when ready.
+
+== Callbacks
+
+One way to program asynchronously is to use _callbacks_. We pass to an asynchronous function a function which it will call when the task is completed.
+
+[source,typescript]
+----
+function doAsyncTask(cb) {
+  setTimeout(() => {
+    console.log("Async Task Calling Callback");
+    cb();
+  }, 1000);
+}
+
+doAsyncTask(() => console.log("Callback Called"));
+----
+
+The `doAsyncTask` function when called kicks of an asynchronous task and _returns immediately_.
+
+To get notified when the async task completes we pass to `doAsyncTask` a function which it will call when the task completes.
+
+It's called a _callback_ function, `cb` for short, because it _calls-you-back_.
+
+== Promise API
+
+In ES6 we have an alternative mechanism built into the language called a _promise_. 
+
+A _promise_ is a _placeholder_ for a future value.
+
+It serves the same function as callbacks but has a nicer syntax and makes it easier to handle errors.
+
+== Creating a Promise
+
+We create an instance of a promise by calling `new` on the `Promise` class, like so:
+
+[source,typescript]
+----
+var promise = new Promise((resolve, reject) => {
+});
+----
+
+We pass to Promise an inner function that takes two arguments `(resolve, reject)`.
+
+Since we are defining the function we can call these arguments whatever we want but the convention is to call them `resolve` and `reject`. 
+
+`resolve` and `reject` are in fact functions themselves.
+
+Inside this inner function we perform our asynchronous processing and then when we are ready we call `resolve()`, like so:
+
+[source,typescript]
+----
+var promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("Async Work Complete");
+    resolve();
+  }, 1000);
+});
+----
+
+We usually return this promise from a function, like so:
+
+[source,typescript]
+----
+function doAsyncTask() {
+  var promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Async Work Complete");
+      resolve();
+    }, 1000);
+  });
+  return promise;
+}
+----
+
+If there was an error in the async task then we call the `reject()` function like so:
+
+[source,typescript]
+----
+function doAsyncTask() {
+  var promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Async Work Complete");
+      if (error) {
+        reject();
+      } else {
+        resolve();  
+      }
+    }, 1000);
+  });
+  return promise;
+}
+----
+
+== Promise Notifications
+
+We can get notified when a promise `resolves` by attaching a _success_ handler to its `then` function, like so:
+
+[source,typescript]
+----
+doAsyncTask().then(() => console.log("Task Complete!"));
+----
+
+`then` can take two arguments, the second argument is a _error_ handler that gets called if the promise is `rejected`, like so:
+
+[source,typescript]
+----
+doAsyncTask().then(
+  () => console.log("Task Complete!"),
+  () => console.log("Task Errored!"),
+);
+----
+
+Any values we pass to the `resolve` and `reject` functions are passed along to the _error_ and _success_ handlers, like so:
+
+[source,typescript]
+----
+let error = true;
+function doAsyncTask() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (error) {
+        reject('error'); // pass values
+      } else {
+        resolve('done'); // pass values
+      }
+    }, 1000);
+  });
+}
+
+doAsyncTask().then(
+  (val) => console.log(val),
+  (err) => console.error(err)
+);
+----
+
+== Immediate Resolution or Rejection
+
+We can create an immediately _resolved_ Promise by using the `Promise.resolve()` method, like so:
+
+[source,typescript]
+----
+let promise = Promise.resolve('done');  
+----
+
+And an immediately _rejected_ Promise by using the `Promise.reject()` method, like so:
+
+[source,typescript]
+----
+let promise = Promise.reject('fail');  
+----
+
+One of the nice things about Promises is that if we add a `then` handler *after* the promise resolves or rejects the handler *still* gets called. 
+
+[source,typescript]
+----
+let promise = Promise.resolve('done');  
+promise.then((val) => console.log(val)); // 'done'
+----
+
+In the above example, even though the Promise has resolved _before_ we added the success handler, the promise framework still calls the success handler.
+
+== Chaining
+
+We can also connect a series of `then` handlers together in a chain, like so:
+
+[source,typescript]
+----
+Promise.resolve("done")
+  .then(
+    (val) => {
+      console.log(val);
+      return 'done2';
+    },
+    (err) => console.error(err)
+  )
+  .then(
+    (val) => console.log(val),
+    (err) => console.error(err)
+  );
+// 'done'
+// 'done2'
+----
+
+Promises pass an error along the chain till it finds an error handler. So we don't need to define an error handler for each `then` function, we can just add one at the end like so:
+
+[source,typescript]
+----
+Promise.reject('fail')
+  .then((val) => console.log(val))
+  .then(
+    (val) => console.log(val),
+    (err) => console.error(err)
+  );
+----
+
+If we throw an exception from our promise function or one of the success handlers, the promise gets rejected and the error handler is called, like so:
+
+[source,typescript]
+----
+Promise.resolve('done')
+  .then((val) => {
+    throw new Error("fail")
+  })
+  .then(
+    (val) => console.log(val),
+    (err) => console.error(err)
+  );
+// [Error: fail]
+----
+
+== Catch
+
+The `catch` function works exactly the same way as the `then` error handler, it's just clearer and more explicitly describes our intent to handle errors.
+
+[source,typescript]
+----
+Promise.resolve('done')
+  .then((val) => {throw new Error("fail")})
+  .then((val) => console.log(val))
+  .catch((err) => console.error(err));
+----
+
+== Summary
+
+Promises are a far cleaner solution to writing asynchronous code than callbacks.
+
+The resulting code that's created is easier to read and is often written the order the application will execute.
+
+So it can be easier to trace through code in your head.
+
+With the `catch` handler it also gives us a single place where we can handle errors.
+
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/main.ts[]
+----

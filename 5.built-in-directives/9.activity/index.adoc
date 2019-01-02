@@ -1,0 +1,36 @@
+---
+layout: activity-lecture.html
+---
+
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Activity
+
+Create a component which shows the articles from a list. If the article is a text article show a component like this:
+
+image::./images/activity_example_1.png[]
+
+TIP: To get the blue border use the class `card-outline-primary`
+
+If the article is an image article show a component like this:
+
+image::./images/activity_example_2.png[]
+
+TIP: To get the red border use the class `card-outline-danger`
+
+TIP: Use the `shortDate` date format string to get the date formatted as we want.
+
+== Steps
+
+Fork this plunker:
+
+include::{sourcedir}/@activity/.link[]
+
+Use the built-in directives you've just learned to finish off the `RecentArticlesComponent`.
+
+== Solution
+
+
+When you are ready compare your answer to the solution in this plunker:
+
+include::{sourcedir}/@solution/.link[]

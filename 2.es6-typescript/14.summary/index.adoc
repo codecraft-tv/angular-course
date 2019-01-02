@@ -1,0 +1,19 @@
+= Wrapping Up
+
+In this section we covered the basics of ES6 JavaScript and TypeScript.
+
+We discussed how TypeScript is a super-set of ES6 JavaScript.
+
+We explained how to install the command line tools so you can transpile TypeScript locally on your computer.
+
+We covered the core features of ES6 such as `let`, `const`, template strings, fat arrow functions; `for-of` loops, Map and Set; as well as how to deal with asynchronous programming by using Promises. 
+
+With TypeScript we covered classes, class access modifiers, interfaces; decorators, modules and types including generic types.
+
+We've covered a lot of topics but still this is just the _essentials_ required to build Angular applications, there is more to learn in each of these areas.
+
+== Further Reading
+
+If you would like to learn more about ES6 I recommend reading this book (it's free): https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20%26%20beyond[https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20%26%20beyond]
+
+If you would like to learn more about TypeScript the official documentation is a good place to start: https://www.typescriptlang.org/docs/tutorial.html[https://www.typescriptlang.org/docs/tutorial.html]

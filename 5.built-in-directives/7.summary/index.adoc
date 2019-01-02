@@ -1,0 +1,15 @@
+= Wrapping Up
+
+Directives are just components but without views.
+
+We _attach_ directives to elements by adding them as attributes.
+
+Angular provides a small number of built-in directives and in this section we covered all of them, including:
+
+* `NgFor`
+* `NgIf`
+* `NgSwitch`
+* `NgClass`
+* `NgNonBindable`
+
+In the next section we will create our own custom directives.

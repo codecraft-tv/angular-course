@@ -1,0 +1,20 @@
+= Wrapping Up
+
+In this section we learnt how to build a _Single Page Application_ (SPA) in Angular.
+
+An SPA is one were the client application in the browser handles changes to the URL instead og the browser requesting the URL from a server.
+
+With Angular we map the URL in the browser to _components_ we display on the page, this is called the _Component Router_.
+
+We use directives called `router-outlet` to tell Angular where we want those components inserted into the page.
+
+The mapping above is what we call a _Route_ and we configure Angular with a series of routes by _providing_ it to the main `NgModule` using the `RouterModule.forRoot(routes)` function.
+
+We can have part of the URL be a variable which we can pass into the component when it gets inserted into the page via the `ActivatedRoute` service, this is called a _Parameterised Route_.
+
+We can _nest_ routes, i.e. have a tree of Components nested one inside another by having multiple `router-outlet` directives and also configuring child routes in the router configuration.
+
+
+We can block access to certain routes by using _Router Guards_. Using _Router Guards_ we can even warn the user if they are about to leave a page with unsaved changes.
+
+There are two strategies we can use for performing client side routing in Angular, the HashLocationStrategies which makes use of the _hash fragment_ part of a URL or we can use the `PathLocationStrategy` which takes advantages of the `pushstate` HTML5 API.

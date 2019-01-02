@@ -1,0 +1,233 @@
+---
+lecture_video: R4bQETYxgKU
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Testing Http
+
+== Learning Objectives
+
+* How to configure a test suite so we can mock the Http service to send back fake responses.
+
+== Test setup
+
+To demonstrate how to test http requests we will add a test for our iTunes `SearchService` which we created in the section on Http.
+
+We will use the promise version of the search service that uses JSONP to get around the issue of CORS.
+
+[source,typescript]
+----
+import {Injectable} from '@angular/core';
+import {Jsonp} from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
+class SearchItem {
+  constructor(public name: string,
+              public artist: string,
+              public thumbnail: string,
+              public artistId: string) {
+  }
+}
+
+@Injectable()
+export class SearchService {
+  apiRoot: string = 'https://itunes.apple.com/search';
+  results: SearchItem[];
+
+  constructor(private jsonp: Jsonp) {
+    this.results = [];
+  }
+
+  search(term: string) {
+    return new Promise((resolve, reject) => {
+      this.results = [];
+      let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`;
+      this.jsonp.request(apiURL)
+          .toPromise()
+          .then(
+              res => { // Success
+                this.results = res.json().results.map(item => {
+                  console.log(item);
+                  return new SearchItem(
+                      item.trackName,
+                      item.artistName,
+                      item.artworkUrl60,
+                      item.artistId
+                  );
+                });
+                resolve(this.results);
+              },
+              msg => { // Error
+                reject(msg);
+              }
+          );
+    });
+  }
+}
+----
+
+NOTE: Although we are using JSONP here, testing Http and Jsonp is exactly the same. We just replace instances of `Jsonp` with `Http`.
+
+=== Configuring the test suite
+
+We want the `Jsonp` and `Http` services to use the `MockBackend` instead of the _real_ `Backend`, this is the underling code that actually sends and handles http.
+
+By using the `MockBackend` we can intercept real requests and simulate responses with test data.
+
+The configuration is slightly more complex since we are using a _factory provider_:
+
+[source,typescript]
+----
+{
+  provide: Http, # <1>
+  useFactory: (backend, options) => new Http(backend, options), # <2>
+  deps: [MockBackend, BaseRequestOptions] # <3>
+}
+----
+<1> We are configuring a dependency for the token `Http`.
+<2> The injector calls this function in order to return a new instance of the `Http` class. The arguments to the `useFactory` function are themselves _injected_ in, see (3).
+<3> We define the dependencies to our `useFactory` function via the `deps` property.
+
+For our API however we are using `Jsonp`, we can just replace all mention of `Http` with `Jsonp` like so:
+
+[source,typescript]
+----
+{
+  provide: Jsonp,
+  useFactory: (backend, options) => new Jsonp(backend, options),
+  deps: [MockBackend, BaseRequestOptions]
+}
+----
+
+The above configuration ensures that the `Jsonp` service is constructed using the `MockBackend` so we can control it later on in testing.
+
+Together with the other providers and modules we need our initial test suite file looks like so:
+
+[source,typescript]
+----
+describe('Service: Search', () => {
+
+  let service: SearchService;
+  let backend: MockBackend;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [JsonpModule],
+      providers: [
+        SearchService,
+        MockBackend,
+        BaseRequestOptions,
+        {
+          provide: Jsonp,
+          useFactory: (backend, options) => new Jsonp(backend, options),
+          deps: [MockBackend, BaseRequestOptions]
+        }
+      ]
+    });
+
+    backend = TestBed.get(MockBackend); # <1>
+
+    service = TestBed.get(SearchService); # <2>
+  });
+});
+----
+<1> We grab a reference to the _mock backend_ so we can control the http responses from our test specs.
+<2> We grab a reference to the `SearchService`, this has been created using the `MockBackend` above.
+
+== Using the `MockBackend` to simulate a response
+
+Just by using the `MockBackend` instead of the real `Backend` we have stopped the tests from triggering real http requests from being sent out.
+
+Now we need to configure the `MockBackend` to return dummy test data instead, like so:
+
+[source,typescript]
+----
+it('search should return SearchItems', fakeAsync(() => {
+  let response = { # <1>
+    "resultCount": 1,
+    "results": [
+      {
+        "artistId": 78500,
+        "artistName": "U2",
+        "trackName": "Beautiful Day",
+        "artworkUrl60": "image.jpg",
+      }]
+  };
+
+  backend.connections.subscribe(connection => { # <2>
+    connection.mockRespond(new Response(<ResponseOptions>{ # <3>
+      body: JSON.stringify(response)
+    }));
+  });
+}));
+----
+<1> We create some fake data we want the API to response with.
+<2> The mock backend `connections` property is an observable that emits an `connection` every time an API request is made.
+<3> For every connection that is requested we tell it to `mockRespond` with our dummy data.
+
+The above code returns the same dummy data for _every_ API request, regardless of the URL.
+
+== Testing the response
+
+Using HTTP is asynchronous so in order to test we need to use one of the asynchronous testing methods, we'll use the `fakeAsync` method.
+
+[source,typescript]
+----
+it('search should return SearchItems', fakeAsync(() => { # <1>
+  let response = {
+    "resultCount": 1,
+    "results": [
+      {
+        "artistId": 78500,
+        "artistName": "U2",
+        "trackName": "Beautiful Day",
+        "artworkUrl60": "image.jpg",
+      }]
+  };
+
+  // When the request subscribes for results on a connection, return a fake response
+  backend.connections.subscribe(connection => {
+    connection.mockRespond(new Response(<ResponseOptions>{
+      body: JSON.stringify(response)
+    }));
+  });
+
+  // Perform a request and make sure we get the response we expect
+  service.search("U2"); # <2>
+  tick(); # <3>
+
+  expect(service.results.length).toBe(1); # <4>
+  expect(service.results[0].artist).toBe("U2");
+  expect(service.results[0].name).toBe("Beautiful Day");
+  expect(service.results[0].thumbnail).toBe("image.jpg");
+  expect(service.results[0].artistId).toBe(78500);
+}));
+----
+<1> We use the `fakeAsync` method to execute in the special _fake async zone_ and track pending promises.
+<2> We make the _asynchronous_ call to `service.search(...)`
+<3> We issue a `tick()` which blocks execution and waits for all the pending promises to be resolved.
+<4> We now _know_ that the service has received and parsed the response so we can write some expectations.
+
+== Summary
+
+We can test code that makes Http requests by using a `MockBackend`.
+
+This requires that we configure our `TestBed` so that the `Jsonp` or `Http` services are created using the `MockBackend`.
+
+We grab a reference to the instance of `MockBackend` that was injected and use it to simulate responses.
+
+Since _Http_ is asynchronous we use of one of the _async_ testing mechanisms so we can write tests specs for our code.
+
+== Listing
+
+.search.service.ts
+[source,typescript]
+----
+include::{sourcedir}/app/search.service.ts[]
+----
+
+.script.ts
+[source,typescript]
+----
+include::{sourcedir}/app/search.service.spec.ts[]
+----

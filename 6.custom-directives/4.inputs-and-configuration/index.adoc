@@ -1,0 +1,132 @@
+---
+lecture_video: CT-dx7iIB4I
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Inputs & Configuration
+
+== Learning Objectives
+
+* How to make a directive configurable.
+
+== Configuration
+
+In the last lecture we finished off our `ccCardHover` directive. But its not very re-usable; we now want to be able to _configure_ it so that it can be used in other situations.
+
+One such configuration parameter is the query selector for the elemenent we want to hide or show, currently it's hard coded to `.card-text`, like so:
+
+[source,typescript]
+----
+let part = this.el.nativeElement.querySelector('.card-text');
+----
+
+The first thing to do is move the query selector to a _property_ of our directive, but to future-proof ourselves i'm going to set it to a property of an _object_, like so:
+
+[source,typescript]
+----
+config: Object = {
+  querySelector: '.card-text'
+}
+----
+
+This way if we wanted to add further config params in the future we can just add them as properties to our config object.
+
+Next up lets use this config object instead of our hard coded selector.
+
+[source,typescript]
+----
+let part = this.el.nativeElement.querySelector(this.config.querySelector);
+----
+
+
+Finally lets make our `config` property an _input binding_ on the directive.
+
+[source,typescript]
+----
+@Input() config: Object = {
+  querySelector: '.card-text'
+}
+----
+
+Now to configure our directive we can add an input property binding on the _same element_ the directive, like so:
+
+[source,html]
+----
+<div class="card card-block"
+     ccCardHover
+     [config]="{querySelector:'p'}"> <1>
+     ...
+<div>
+----
+<1> We've configured the `querySelector` to select on `.card-text` again, just like before but this time it's configurable.
+
+
+But what if we wanted to use our directive like this:
+
+[source,html]
+----
+<div class="card card-block"
+     [ccCardHover]="{querySelector:'.card-text'}"> <1>
+     ...
+<div>
+----
+
+Just like how we've seen other built-in directives work.
+
+That's pretty simple to do, we just need to add an _alias_ to the input decorator which matches this decorators _selector_, like so:
+
+[source,typescript]
+----
+@Input('ccCardHover') config: Object = {
+  querySelector: '.card-text'
+}
+----
+
+Now we can use and configure our directive in one statement!
+
+The code for our completed directive looks like this:
+
+[source,typescript]
+----
+@Directive({
+  selector: "[ccCardHover]"
+})
+class CardHoverDirective {
+  @HostBinding('class.card-outline-primary') private ishovering: boolean;
+
+  @Input('ccCardHover') config: Object = {
+    querySelector: '.card-text'
+  };
+
+  constructor(private el: ElementRef,
+              private renderer: Renderer) {
+    // renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'gray');
+  }
+
+  @HostListener('mouseover') onMouseOver() {
+    let part = this.el.nativeElement.querySelector(this.config.querySelector);
+    this.renderer.setElementStyle(part, 'display', 'block');
+    this.ishovering = true;
+  }
+
+  @HostListener('mouseout') onMouseOut() {
+    let part = this.el.nativeElement.querySelector(this.config.querySelector);
+    this.renderer.setElementStyle(part, 'display', 'none');
+    this.ishovering = false;
+  }
+}
+----
+
+== Summary
+
+We can configure our directives with standard input property bindings.
+
+To make the syntax look similar to the built-in directives we use an _alias_ for the `@Input` decorator to match the directives selector.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

@@ -1,0 +1,23 @@
+---
+layout: activity-lecture.html
+---
+:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/1.quickstart
+= Activity
+
+== Steps
+
+
+Fork this plunker:
+
+include::{section}/@activity/.link[]
+
+Extend the joke application in the above plunker so the user can delete a joke from the list.
+
+Read any *TODO* comments in the plunker for hints.
+
+== Solution
+
+
+When you are ready compare your answer to the solution in this plunker:
+
+include::{section}/@solution/.link[]

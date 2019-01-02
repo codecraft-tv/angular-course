@@ -1,0 +1,159 @@
+---
+lecture_video: qu-TUWtqRlc
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= JSONP Example with Observables
+
+== Learning Objectives
+
+* Know what JSONP is and how it overcomes CORS.
+* Know how to make JSONP requests in Angular.
+
+== What is JSONP?
+
+JSONP is a method of performing API requests which go around the issue of _CORS_.
+
+This is a security measure implemented in all browsers that stops you from using an API in a potentially unsolicited way and most APIs, including the iTunes API, are protected by it.
+
+Because of CORS if we tried to make a request to the iTunes API url with the http client library the browser would issue a _CORS_ error.
+
+The explanation is deep and complex but a quick summary is that unless an API sets certain headers in the response a browser will reject the response, the iTune API we use _doesn't_ set those headers so by default any response gets rejected.
+
+So far in this section we've solved this by installing a chrome plugin which intercepts the response and adds the needed headers _tricking_ the browser into thinking everything is ok but it's not a solution you can use if you want to release you app to the public.
+
+If we switch _off_ the plugin and try our application again we get this error in the console
+
+----
+XMLHttpRequest cannot load https://itunes.apple.com/search?term=love&media=music&limit=20. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://run.plnkr.co' is therefore not allowed access.
+----
+
+`JSONP` is a solution to this problem, it treats the API as if it was a _javascript file_. It dynamically adds `https://itunes.apple.com/search?term=love&media=music&limit=20` as if it were a `script` tag in our our HTML like so:
+
+[source,html]
+----
+<script src="https://itunes.apple.com/search?term=love&media=music&limit=20"></script>
+----
+
+The browser then just downloads the javascript file and since browsers don't check for CORS when downloading javascript files it a works around the issue of CORS.
+
+Imagine the response from the server was `{hello:'world'}`, we don't just want to download the file because:
+
+1. The browser would download the json and try to _execute_ it, since json isn't javascript _nothing_ would actually happen.
+2. We want to do something with the json once it's downloaded, ideally call a function passing it the json data.
+
+So APIs that support JSONP return something that looks like javascript, for example it might return something like so:
+
+[source,javascript]
+----
+process_response({hello:'world'});
+----
+
+When the file is downloaded it's executed as if it was javascript and calls a function called `process_response` passing in the json data from the API.
+
+Of course we need a function called `process_response` ready and waiting in our application so it can be called but if we are using a framework that supports JSONP these details are handled for us.
+
+That's is JSONP in a nutshell.
+
+1. We treat the API as a javascript file.
+2. The API wraps the JSON response in a function who's name we define.
+3. When the browser downloads the _fake_ API script it runs it, it calls the function passing it the JSON data.
+
+We can only use JSONP when:
+
+1. The API itself supports JSONP. It needs to return the JSON response wrapped in a function and it usually lets us pass in the function name we want it to use as one of the query params.
+2. We can only use it for GET requests, it doesn't work for PUT/POST/DELETE and so on.
+
+== Refactor to JSONP
+
+Now we know a little bit about JSONP and since the iTunes API supports JSONP lets refactor our observable application to one that uses JSONP instead.
+
+For the most part the functionality is the same as our `Http` example but we use another client lib called `Jsonp` and the providers for our `Jsonp` solution is in the `JsonpModule`.
+
+So firstly lets import and the new `JsonpModule` and replace all instances of `Http` with `Jsonp`.
+
+[source,typescript]
+----
+import {JsonpModule, Jsonp, Response} from '@angular/http';
+.
+.
+.
+@NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    JsonpModule # <1>
+  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  providers: [SearchService]
+})
+class AppModule { }
+----
+<1>  Add `JsonpModule` to the module imports.
+
+Then lets change our `SearchService` to use the `Jsonp` library instead of `Http`, like so:
+
+[source,typescript]
+----
+@Injectable()
+export class SearchService {
+  apiRoot: string = 'https://itunes.apple.com/search';
+
+  constructor(private jsonp: Jsonp) { # <1>
+  }
+
+  search(term: string) {
+    let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20&callback=JSONP_CALLBACK`; # <2>
+    return this.jsonp.request(apiURL)  # <3>
+        .map(res => {
+          return res.json().results.map(item => {
+            return new SearchItem(
+                item.trackName,
+                item.artistName,
+                item.trackViewUrl,
+                item.artworkUrl30,
+                item.artistId
+            );
+          });
+        });
+  }
+}
+----
+<1>  We injected `Jsonp` into the constructor and stored it on a property called `jsonp`.
+<2>  We changed our apiURL by adding in `callback=JSONP_CALLBACK`.
+<3>  We call `jsonp.request(...)` instead of `http.get(...)`
+
+[IMPORTANT]
+====
+The iTunes API supports JSONP, we just need to tell it what name to use via the callback query parameter.
+ +
+ +
+We passed it the special string `JSONP_CALLBACK`.
+ +
+ +
+Angular will replace `JSONP_CALLBACK` with an automatically generated function name every time we make a  request
+====
+
+That's it, the rest of the code is exactly the same and the application works like before.
+
+IMPORTANT: Remember if you installed the CORS plugin or added some other work around then you can switch them off, you don't need them any more.
+
+== Summary
+
+JSONP is a common solution in the web world to get around the issue of CORS.
+
+We can only use JSONP with APIs that support JSONP.
+
+To use JSONP in Angular we use the `Jsonp` client lib which is configured by importing the `JsonpModule` and adding it to our `NgModule` imports.
+
+We make a JSONP request by calling the `request` function, it still returns an `Observable` so for the rest of your application that fact you are using `Jsonp` instead of `Http` should be invisible.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

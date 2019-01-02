@@ -1,0 +1,13 @@
+= Wrapping Up
+
+In this section we covered Components in much more detail than the quickstart.
+
+We discussed how to architect your application using components in Angular. We explained one method of breaking down your applications design into components with clear responsibilities, inputs and outputs.
+
+We covered some of of the ways we can configure a component via the `@Component` decorator, specifically the `templateUrl`, `styles`, `styleUrls` and `encapsulation` configuration properties.
+
+We covered the mechanism of content projection in Angular with the `ng-content` tag.
+
+We explained the various component lifecycle phases, when they are run and how to hook into them with functions on the component.
+
+Finally we covered the idea of view and content children and how to get references to each in a component.

@@ -1,0 +1,31 @@
+---
+lecture_video: 
+---
+= Wrapping Up
+
+Dependency Injection is a way of architecting an application so code is easier to re-use, easier to test and easier to maintain.
+
+It a method of decoupling a piece of code from the dependencies it needs in order to run.
+
+It uses _Inversion of Control_ so the responsibility of creating dependencies and and passing them in to dependant pieces of code is handled by something else.
+
+Angular comes with a Dependency Injection (DI) framework of it's own and it's used throughout Angulars code.
+
+To understand how to use Angular and architect your application you need to have a very good understanding of the DI framework.
+
+The DI framework in Angular consists of 4 concepts working together:
+
+Token:: This uniquely identifies something that we want injected. A _dependancy_ of our code.
+Dependancy:: The actual code we want injected.
+Provider:: This is a map between a _token_ and a list of _dependancies_.
+Injector:: This is a function which when passed a _token_ returns a _dependancy_ (or a list of dependencies)
+
+We configure injectors with providers, Angular then uses these injectors to resolve dependencies using tokens and injecting them into constructors as arguments.
+
+There are 4 types of providers, a class provider, a value provider, a factory function provider and an alias provider.
+
+If we want a dependency to be shared across our entire application we would configure it on our `NgModule`.
+
+If we want a separate instance of a dependency to be shared across each instance of a component and it's children we configure it on the components `providers` property.
+
+If we want a separate instance of a dependency to be shared across each instance of a component and only it's view children we configure it on the components `viewProviders` property.

@@ -1,0 +1,33 @@
+:toc:
+= Overview
+
+TypeScript is an open source programming language that is developed and maintained by Microsoft. 
+
+It was initially released in 2012.
+
+TypeScript is a super-set of ES6.
+That means whatever features we have in ES6 are also in TypeScript with some extra features on top, such as static typing and richer syntax.
+
+In this section will cover both; we will go over some of the key features of ES6 and then we will cover some of the key features of TypeScript.
+
+== ES6 Support
+
+ES6 is an _agreement_ for how JavaScript should function in the future.
+
+Its up to each browser manufacturer to implement those features according to that agreement.
+
+Therefore all browsers don't support all the features of ES6 _yet_.
+
+Chrome has the best support by far and so does Node.
+
+Sometimes ES6 features are only _switched on_ when we are in "use strict" mode, so to test our ES6 code my recommendation is to always add "use strict" to the top of your files.
+
+A list of all the ES6 features and current support across a variety of platforms can be found here: http://kangax.github.io/compat-table/es6/[http://kangax.github.io/compat-table/es6/]
+
+IMPORTANT: We should be using at least node version 6 to support most of the ES6 features we will be demonstrating in this section.
+
+== TypeScript Support
+
+TypeScript transpiles down into ES5 so we don't need to worry about browser support.
+
+Code will be provided for all the examples, but also we'll explain how to how to compile typescript locally on your computer with the command line tools.

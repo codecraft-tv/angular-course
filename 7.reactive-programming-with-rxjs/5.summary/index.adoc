@@ -1,0 +1,14 @@
+---
+lecture_video: 
+---
+= Wrapping Up
+
+Reactive programming is about conceptualising our application as _streams_ and _operations_ that are performed on those streams.
+
+_Observables_ are a blueprint for creating streams and _plumbing_ them together with _operators_ to create _observable chains_.
+
+RxJS is a library that lets us create and work with observables.
+
+Angular has a few public facing APIs that use Observables, the EventEmitter, Forms and HTTP.
+
+You are not forced to use observables in Angular, you can use as much RxJS or as little as you want.

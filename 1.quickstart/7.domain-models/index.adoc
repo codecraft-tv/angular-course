@@ -1,0 +1,114 @@
+---
+lecture_video: arUwKpSfauY
+lecture_plan_level: free
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Domain Model
+
+The goal of this lecture is to use a https://en.wikipedia.org/wiki/Domain_model[domain model] to store our data instead of plain old objects.
+
+== Learning Outcomes
+
+* Why domain models are better for storing application state.
+* How to structure our application to use a domain model.
+
+== What are Domain Models?
+
+A good practice when writing Angular code is to try to isolate the data structures you are using from the component code.
+
+Right now our data structure is just an array of objects which we initialised on the component. 
+
+We also have this `toggle` function which doesn't do anything other than modify a property of the object passed in, i.e. the function could exist outside of the component completely and still do it's job just fine.
+
+Imagine if this was a much larger application, if all the data was stored inside components as plain objects it would be hard for a new developer to find out _where_ the data is stored and _which_ function to edit.
+
+To solve this, let’s create a class that represents a single joke and attach the toggle function to that class.
+
+This class is what we call a _Domain Model_, it's just a plain class which we will use to store data and functions.
+
+== Our Domain Model
+
+We create a simple class with 3 properties, a constructor and a toggle function, like so:
+
+[source,typescript]
+----
+class Joke {
+  setup: string;
+  punchline: string;
+  hide: boolean;
+
+  constructor(setup: string, punchline: string) {
+    this.setup = setup;
+    this.punchline = punchline;
+    this.hide = true;
+  }
+
+  toggle() {
+    this.hide = !this.hide;
+  }
+}
+----
+
+As we've mentioned before we can instantiate a class by using the `new` keyword and when that happens javascript calls the `constructor` function where we can have code that initialises the properties.
+
+However the constructors we've used so far have not had any arguments, the one for the joke class above does. It initialises the properties of the joke instance from the arguments passed into the constructor.
+
+We can pass those arguments in when we instantiate a joke like so:
+
+[source,javascript]
+----
+let joke = new Joke("What did the cheese say when it looked in the mirror?", "Hello-Me (Halloumi)");
+----
+
+We also added a toggle function which just flips the value of the `hide` property.
+
+NOTE: We use `this` in a class function to distinguish between properties that are _owned_ by the class instance vs. arguments that are passed in or declared locally by the function.
+ +
+ +
+So `this.joke` in our toggle function is explicitly saying the `joke` property on the class instance.
+
+
+Now lets change our `JokeListComponent` so it uses our domain model, like so:
+
+[source,javascript]
+----
+class JokeListComponent {
+  jokes: Joke[]; # <1>
+
+  constructor() {
+    this.jokes = [ # <2>
+      new Joke("What did the cheese say when it looked in the mirror?", "Hello-me (Halloumi)"),
+      new Joke("What kind of cheese do you use to disguise a small horse?", "Mask-a-pony (Mascarpone)"),
+      new Joke("A kid threw a lump of cheddar at me", "I thought ‘That’s not very mature’"),
+    ];
+  }
+
+  toggle(joke) {
+    joke.hide = !joke.hide;
+  }
+}
+----
+<1> We changed the type of our `jokes` property to `Joke[]`. Now TypeScript will throw an error if we accidentally insert something other than an instance of a Joke class in this array.
+<2> We also converted our `jokes` array to now contain instance of the `Joke` class instead of plain objects.
+
+The final thing to do is to change the markup in the template so we call the `joke.toggle()` function on the joke instance and not the `toggle(joke)` function on the component, like so:
+
+[source,html]
+----
+<a class="btn btn-warning" (click)="joke.toggle()">Tell Me</a>
+----
+
+== Summary
+
+Although its possible to store all your data as objects it's both recommend and simple to encapsulate your data into domain models in Angular.
+
+Using a domain model clarifies for all developers where you should put functions that need to act on the data, like our toggle function.
+
+== Listing
+
+.src/main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

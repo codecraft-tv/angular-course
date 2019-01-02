@@ -1,0 +1,161 @@
+---
+lecture_video: 13f_EhTjf2Y
+---
+:toc:
+= Routing Strategies
+
+With client side SPA's we have two strategies we can use to implement client side routing, one is called the `HashLocationStrategy` and the other is called the PathLocationStrategy.
+
+The default in Angular is the `PathLocationStrategy`, if we do nothing that is the strategy Angular will employ.
+
+== Learning Objectives
+
+* Know the difference between the `HashLocationStrategy` and `PathLocationStrategy`.
+* Know the pros and cons of each and be able to make a judgement call for when to use each.
+
+== HashLocationStrategy
+
+To enable `HashLocationStrategy` in an Angular application we pass `{useHash: true}` when we are providing our routes with `RouterModule`, like so:
+
+[source,typescript]
+----
+RouterModule.forRoot(routes, {useHash: true})
+----
+
+URL can contain some data prepended with a `#` character.
+
+The `#` part of the url is called the _hash fragment_.
+
+It's normally used so that people can link to a particular section in a HTML page, specifically anchor tags, for example if there is an anchor tag with an name attribute of `routing-strategies` like so:
+
+[source,html]
+----
+<a name="routing-strategies"></a>
+----
+
+Then if you created a bookmark of
+
+----
+http://somedomain.com/page#routing-strategies
+----
+
+Then the browser would open `somedomain.com/page` and then _scroll down_ so that the `<a name="routing-strategies"></a>` tag is at the top of the page.
+
+However it has another very important characteristic in that anything past the `#` in a URL _never gets sent to the server_.
+
+So if your URL was `https://codecraft.tv/contact/#/foo/moo/loo` then the browser makes a GET request to `https://codecraft.tv/contact/` *only*.
+
+The `#/foo/moo/loo` part of the URL is *never* sent.
+
+If you were to look at your logs on the server you would never see any reference to `#/foo/moo/loo`
+
+Another way to think about the _hash fragment_, since it's never sent to the server, is that its for storing the state of your _client_ application.
+
+It's therefore an ideal solution for implementing _client_ side routing:-
+
+* It's part of the URL so can be bookmarked and sent to other people.
+* It won't confuse the server side since the hash fragment is never sent to the server.
+* It can be programmatically changed via JavaScript.
+
+And that's exactly why, for a number of years, the primary way of implementing client side routing was via hash fragments.
+
+Taking a look at the app we've built so far, if running locally the URLs look something like:
+
+----
+localhost:4040/#/search
+localhost:4040/#/artist/1234/tracks
+----
+
+According to the the server there is only ever one _URL_ `localhost:4040`, the other _hash fragment_ stuff is ignored by the server.
+
+This is why we call what we are building a _Single Page Application_, there is only ever one _page_ requested from the server. In the above example it's `localhost:4040` - the other pages are just changes to the hash fragment which the client application deals with, from the perspective of the server the whole site is just a single page.
+
+
+== PathLocationStrategy
+
+This is the _default_ strategy in Angular so we need to do nothing to enable it.
+
+It takes advantage of a relatively new HTML5 API called `pushstate` (from the HTML5 history API).
+
+By using `pushstate` we can change the URL and *not* have the browser request the page from the server and _without_ needing to use a hash fragment.
+
+// DEMO
+
+So if we were at
+
+----
+localhost:4040/search
+----
+
+By using the `pushstate` API we can change the URL to
+
+----
+localhost:4040/artist/1234/tracks
+----
+
+And the browser *won't* make a GET request to the server for `/artist/1234/tracks`
+
+// END DEMO
+
+That sounds perfect for client side routing right?
+
+* We get a URL that looks just like any other URL so can be bookmarked, shared and so on.
+* The browser doesn't send the request to the server so the routing is handled on the client side.
+
+// DEMO
+
+Unfortunately it has one big downside, if we then reloaded the page or bookmarked and opened it later the browser *would* make a request to
+the server for e.g. `localhost:4040/artist/1234/tracks`
+
+
+
+By using a hash fragment the server _never_ needs to know about any application URL, it will only ever get asked for the root page and it will only ever return the root page.
+
+But by using a `PathLocationStrategy` the server needs to be able to return the main application code for every URL, not just the root URL.
+
+So with `PathLocationStrategy` we need to co-operate with a server side that supports this functionality, it's possible and quite easy to implement a server side like this but it does require some effort and cooperation.
+
+TIP: The local development server started by the Angular CLI _does_ support this functionality so if you wanted to try it out you can.
+
+=== base href
+
+When using the `PathLocationStrategy` we need to tell the browser what will be prefixed to the requested path to generate the URL.
+
+We do that by specifying a base href, either in the head section of our HTML like so:
+
+[source,html]
+----
+<base href='/my/app'/>
+----
+
+Or you can _provide_ it to the DI framework it via the symbol `APP_BASE_HREF`.
+
+The value of the base href gets prepended to every navigation request we make, so if we ask to navigate to `['moo','foo']` with the above href the URL would change to `/my/app/moo/foo`
+
+=== Angular Universal
+
+What if we could build an app that rendered the page on the server side and returned that to the client, and from that point on let the client handle the routing?
+
+What if we reloaded the page at `localhost:4040/artist/1234/tracks` and the server at `localhost:4040` rendered the page.
+
+The server called the iTunes APIs and generated the HTML for the tracks page, it returned it to the browser and the browser just displayed it. Then if the user clicked on search the client application takes over and handles the routing on the client side.
+
+That is something called _Angular Universal_, or _Isomorphic Rendering_ but essentially it's the ability to run Angular in both the _browser_ and the _server side_.
+
+The big benefit of Angular Universal is that pages can be cached on the server side and applications will then load much faster.
+
+For Angular Universal to work URLs need to be passed to the server side which is why it can only work with a `PathLocationStrategy` and not a `HashLocationStrategy`.
+
+== Summary
+
+The default client side routing strategy used in Angular is the `PathLocationStrategy`.
+
+This changes the URL programmatically using the HTML5 History API in such a way that the browser doesn't make a request to the server for the new URL.
+
+For this to work we do need to serve our Angular application from a server that supports requests on multiple different URLs, at a minimum all this server side needs to do is return the same page for all the different URLs that's requested from it.
+
+It's not a lot of work but does need some co-operation from the server side.
+
+`PathLocationStrategy` also sets us up for a future architecture where we can speed up loading time by pre-rendering the pages with Angular running on the server side and then once it's downloaded to the browser the client can take over routing. This is called _Angular Universal_ and it's currently in development.
+
+`HashLocationStrategy` uses the hash fragment part of the URL to store state for the client, it easier to setup and doesn't require any co-operation from the server side but has the downside that it won't work with _Angular Universal_ once that's released.

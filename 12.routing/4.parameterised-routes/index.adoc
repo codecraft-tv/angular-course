@@ -1,0 +1,293 @@
+---
+lecture_video: Id1QMmfabxU
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+= Parameterised Routes
+
+== Learning Objectives
+
+* How to configure parameterised routes in our route definition object.
+* How components can be notified with what the parameter values are when the URL gets visited.
+* How to have optional parameters in routes.
+
+== Configuration
+
+Sometimes we need part of the path in one or more of our routes (the URLs) to be a _variable_, a common example of this is an _ID_.
+
+Lets say we have a blog and each article in our blog has an ID, the URLs for each blog article might look like
+
+----
+/blog/1
+/blog/2
+/blog/3
+/blog/4
+and so on...
+----
+
+Now we could write a route for each article like so:
+
+[source,typescript]
+----
+const routes: Routes = [
+ { path: 'blog/1', component: Blog1Component },
+ { path: 'blog/2', component: Blog2Component },
+ { path: 'blog/3', component: Blog3Component },
+ { path: 'blog/4', component: Blog4Component },
+];
+----
+
+But a better solution is to have _one_ route with _one_ component called `BlogComponent` and pass to the `BlogComponent` the _number_ part of the URL.
+
+That's called a _parameterised route_ and we would implement it like so:
+
+[source,typescript]
+----
+const routes: Routes = [
+ { path: 'blog/:id', component: BlogComponent } # <1>
+];
+----
+<1>  The path has a variable called `id`, we know it's a variable since it begins with a colon `:`
+
+A path can have any number of variables as long as they all start with `:` and have different names.
+
+Non-parameterised routes _always_ take priority over parameterised routes, so in the below config:
+
+[source,typescript]
+----
+const routes: Routes = [
+ { path: 'blog/:id', component: BlogComponent },
+ { path: 'blog/moo', component: MooComponent },
+];
+----
+
+If we visited `/blog/moo` we would show `MooComponent` even though it matches the path for the first `blog/:id` route as well.
+
+IMPORTANT: Non-parameterised routes take precedence over parameterised routes.
+
+== Activated route
+
+So how do we pass into `BlogComponent` the value of the _id_ variable? If we visited `/blog/1` how does `BlogComponent` know the `id` is `1` and therefore to show the appropriate article.
+
+To do that we use something called an `ActivatedRoute`.
+
+We import it first and then inject it into the constructor of `BlogComponent`. It exposes an Observable which we can subscribe to, like so:
+
+[source,typescript]
+----
+import {ActivatedRoute} from "@angular/router";
+.
+.
+.
+constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe( params => console.log(params) );
+}
+----
+
+
+Now if we navigated to `/blog/1` the number `1` would get emitted on the observable and this would get printed to the console as:
+----
+{ id: 1 }
+----
+
+== Example
+
+For the rest of this lecture we are going to continue building the iTunes search app we've been working on in the other lectures.
+
+As we perform searches with the app the URL doesn't change. Therefore if I refresh the page _after_ I perform a search then I lose all my search results - the _state_ of my app is lost.
+
+Lets turn the search route into a _parameterised_ route where the search term is in the URL, so if I refresh the page it will perform the same search and get us back to where we were.
+
+=== Parameterised Route Configuration
+
+We begin with just adding a variable called `term` to our route configuration, like so:
+
+[source,typescript]
+----
+{path: 'search/:term', component: SearchComponent},
+----
+
+But if we now load the app and try to go to the search page nothing happens, the URL changes to `/search` but we are still shown the `HomeComponent`.
+
+The reason for that is that now our url `/search` doesn't match a route so we are falling back to the catch all route which just shows the `HomeComponent`.
+
+To match our new parameterised route we would have to navigate to something like `/search/U2`. We would actually need to pass a parameter to match that route.
+
+So to support both `/search` and `/search/U2` we need _two_ routes in our configuration, like so:
+
+[source,typescript]
+----
+{path: 'search', component: SearchComponent},
+{path: 'search/:term', component: SearchComponent},
+----
+
+Now our app supports both `/search` and `/search/U2`.
+
+=== Activated route
+
+Next lets import `ActivatedRoute` and inject it into the constructor of our `SearchComponent`, like so:
+
+[source,typescript]
+----
+constructor(private itunes:SearchService,
+            private route: ActivatedRoute) {
+    this.route.params.subscribe( params => console.log(params));
+}
+----
+
+We subscribe for updates to the params of the currently active route and just print them out to the console.
+
+Now if we navigate to `/search/U2` we get `{ term: 'U2' }` printed in our console as expected but we are not actually performing a search for `U2`. To do that all we need to do is call `doSearch(...)` from the activated route subscribe callback, like so:
+
+[source,typescript]
+----
+constructor(private itunes:SearchService,
+            private route: ActivatedRoute) {
+  this.route.params.subscribe( params => this.doSearch(params['term'])); # <1>
+}
+----
+<1>  We call `doSearch` and pass in the `term` parameter from the URL.
+
+Now when we visit `/search/U2` the `SearchComponent` is notified via the `ActivatedRoute` and we perform the query and show the user the search results for `U2`.
+
+But now if we now search for another term, for example `Foo`, we get the results we expect but the URL _doesn't change_, it's still `/search/U2`.
+
+[IMPORTANT]
+====
+When using routing if some part of the state of your application is in the URL then you need to update your application by navigating to the URL.
+ +
+ +
+That way the URL matches the state of your app and if you bookmarked or shared the URL then visiting it again would get you back to the same state.
+====
+
+In our case what this means is that when the user submits a search, instead of calling `doSearch(...)` we instead navigate to the appropriate search URL and then let the `ActivatedRoute` service notify the `SearchComponent` the route changed and let that perform the search.
+
+This way the URL changes _every-time_ we do a search.
+
+First we make the click handler on the _Search_ button point to another function called `onSearch(...)` instead of `doSearch(...)`.
+
+[source,html]
+----
+<button type="button"
+        class="btn btn-primary"
+        (click)="onSearch(search.value)">
+        Search
+</button>
+----
+
+And in our `onSearch` function we just _navigate_ to the correct search URL.
+
+[source,typescript]
+----
+onSearch(term:string) {
+  this.router.navigate(['search', term]); # <1>
+}
+----
+<1>  The second parameter to the link params array is a variable, it's the search `term` the user typed in.
+
+Now when we search `Foo` the url changes to `/search/Foo` the `SearchComponent` gets notified through the `ActivatedRoute` service and performs the search, therefore the URL and the _state_ of our application are now in sync.
+
+=== Optional params
+
+Going back to the route config and the solution of having _two_ routes configured, one for when there is a search term and another for when there isn't a search term.
+
+[source,json]
+----
+{path: 'search', component: SearchComponent},
+{path: 'search/:term', component: SearchComponent}
+----
+
+Another way to think about the above is that the variable `term` is _optional_. It might be present and it might not and we want the app to function correctly in either case.
+
+Angular has a mechanism to support _optional_ params with only one route defined.
+
+Firstly lets get rid of the second route with the fixed term variable, leaving us with just one route to support our search like so:
+
+[source,typescript]
+----
+const routes:Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'find', redirectTo: 'search'},
+  {path: 'home', component: HomeComponent},
+  {path: 'search', component: SearchComponent},
+  {path: '**', component: HomeComponent}
+];
+----
+
+Next in the `onSearch(...)` function instead of navigating to a route with the fixed term param, we can instead pass in an object containing whatever params we want, like so:
+
+[source,typescript]
+----
+onSearch(term:string) {
+  this.router.navigate(['search', {term: term}]);
+}
+----
+
+Now when we perform a search the URL changes, _but_ it doesn't quite looks like something we are used to, instead of `/search/U2` we see `/search;term=U2`
+
+NOTE: This is called Matrix URL notation, a series of _optional_ key=value pairs separated with the semicolon ; character.
+
+We can see that the param `term` still gets passed along via the `ActivatedRoute` as `{term: "U2"}`.
+
+In-fact if we added some other params to the mix via the URL they also get printed to the console, like so:
+
+----
+/search;term=U2;foo=moo
+----
+
+Will print out
+
+----
+Object {term: "U2", foo: "moo"}
+----
+
+And also if we pass nothing we get an empty object printed out to the console
+
+----
+/search
+----
+
+Will print out
+
+----
+Object {}
+----
+
+So now the `term` param is optional, but since it's optional it sometimes can be blank. Lets add a little bit of defensive coding in our subscribe function so we don't call `doSearch` if no term has been provided, like so:
+
+[source,typescript]
+----
+  constructor(private itunes: SearchService,
+              private route: ActivatedRoute,
+              private router: Router) {
+    this.route.params.subscribe(params => {
+      console.log(params);
+      if (params['term']) { # <1>
+        this.doSearch(params['term'])
+      }
+    });
+  }
+----
+<1>  Only call `doSearch(...)` if `term` has a value.
+
+Now if we visit `/search` we are shown a blank screen ready for a search.
+
+* If we perform a search for e.g. `U2` the url changes to `/search;term=U2`
+* If we _refresh_ the page then the application performs a search for `U2` again.
+
+
+== Summary
+
+With parameterised routes we can support variable paths in our routes.
+
+Angular also supports _optional_ routes via passing in an object to the navigate function and the matrix url notation.
+
+So far we've only shown how we can output _one_ component on the page depending on the route. In the next lecture we are going to show how we can have nested routes and output multiple different components on the page depending on the URL.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/src/main.ts[]
+----

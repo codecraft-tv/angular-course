@@ -1,0 +1,21 @@
+= Overview
+
+This is a quick introduction into the concept of Reactive Programming in Angular with RxJS.
+
+The subject of _Reactive Programming_ is large enough to warrant it's own course and indeed there are a number of books and courses which deal with nothing other than reactive programming with RxJS.
+
+So the goal of this section _isn't_ to give you a _complete_ understanding, the goal is to _demystify_ the concepts so you understand what it is and _where_ you can learn more.
+
+Angular uses RxJS for some parts of it's internal functioning. If you want you _can_ also choose to use RxJS but you don't need to at all.
+
+IMPORTANT: You do _not_ need to know Reactive Programming or RxJS in order to build even the _most complex_ applications with Angular. It can however make some types of applications easier to architect.
+
+At the end of this section you will:
+
+* Understand the terms _Stream_ & _Reactive Programming_.
+* Know what _Observables_ are and how they are related to _RxJS_.
+* Know how to write reactive code using pure RxJS.
+* Know what operators are, where to read up on the breadth of available operators and how to understand them by using marble diagrams.
+* Know the places you can use reactive programming in Angular and code up a simple form using RxJS.
+
+

@@ -1,0 +1,114 @@
+---
+lecture_video: 7xAhRkOYYeg
+---
+:sourcedir: {docdir}/content/{filedir}/code
+:toc:
+
+= Template Strings
+
+
+== Multi-Line Strings
+
+With ES5 and ES6 we can specify a string with either the `&#39;` or `&quot;` characters.
+
+[source,javascript]
+----
+let single = "hello world";
+----
+
+But in ES5 if we wanted to make that string span _multiple lines_ it quickly becomes a pain.
+
+[source,javascript]
+----
+let single = 'hello ' +
+    'world ' +
+    'my ' +
+    'name ' +
+    'is ' +
+    'asim';
+----
+
+If we wanted each line in the string to contain new line characters, matching how it was written, we had to remember to add `\n` to the end of each string.
+
+[source,javascript]
+----
+let single = 'hello\n' +
+    'world\n' +
+    'my\n' +
+    'name\n' +
+    'is\n' +
+    'asim\n';
+----
+
+In ES6 we have another way of defining strings, using the _back-tick_ character ```
+
+[source,javascript]
+----
+let multi = `
+hello
+world
+my
+name
+is
+asim`;
+console.log(multi);
+----
+
+The above prints out:
+
+[source]
+----
+hello
+world
+my
+name
+is
+asim
+----
+
+With ``` strings can now span _multiple lines_ and they are also formatted with new line characters.
+
+== Variable Substitution
+
+Another really interesting feature of declaring strings with ``` is that they can now expand variables using the `${variable_name}` syntax, like so:
+
+[source,javascript]
+----
+let name = "asim";
+
+let multi = `
+hello
+world
+my
+name
+is
+${name}
+`;
+console.log(multi);
+----
+
+prints out:
+
+[source]
+----
+hello
+world
+my
+name
+is
+asim
+----
+
+== Summary
+
+Template strings are a small change to JavaScript in ES6 but the convenience of multi-line strings and variable substitution is substantial.
+
+== Listing
+
+.main.ts
+[source,typescript]
+----
+include::{sourcedir}/main.ts[]
+----
+
+

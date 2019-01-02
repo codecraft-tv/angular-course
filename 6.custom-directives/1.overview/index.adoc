@@ -1,0 +1,19 @@
+= Overview
+
+By this point you should be able to create your own custom component as well as use a set of _built-in_ Angular directives.
+
+Now it's time to learn how to build your own _custom_ directives.
+
+But you might be surprised to hear that you've _already_ created a custom directive. That's because _Components are Directives_.
+
+Components have all the features of Directives but also have a view, that is to say they have a template and some HTML that is injected into the DOM when we use it.
+
+Another difference is that a single HTML element can only have a _single component_ associated with it. However a single element can have _multiple directives_ associated with it.
+
+Lets continue with our joke example app and create a directive which shows the punchline of the joke when the user hovers over the card.
+
+In this section you will learn:
+
+* How to create custom directives using the `@Directive` decorator.
+* How directives can both listen to events and change properties of the host element they are associated with.
+* How we can configure a directive so that it can take `inputs` when it's defined on an element, like `[aDirective]={config:'value'}`

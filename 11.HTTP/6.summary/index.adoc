@@ -1,0 +1,18 @@
+---
+lecture_video: 
+---
+= Wrapping Up
+
+We use the `Http` client library in Angular to make HTTP requests.
+
+We use the library by injecting it into classes and as such it needs to be configured via Anuglars DI framework.
+
+To setup all the necessary providers we just need to import the `HttpModule` and add it to the imports property of our `NgModule`.
+
+When architecting Angular application we don't call the `Http` library directly from components but instead create intermediate services which call the APIs on our behalf.
+
+We also also prefer to convert the responses into domain models and return those instead of the raw response from the API.
+
+The request functions return `Observables`, we can implement any required processing by using an _observable chain_ or we can convert the observable into promises and handle the processing in a more classically procedural way.
+
+We can use JSONP to bypass CORS with supported APIs, to do we we just need to replace instances of `Http` with `Jsonp` and `HttpModule` with `JsonpModule`.

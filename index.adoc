@@ -1,0 +1,65 @@
+---
+layout: course-landing.html
+course_path: courses/angular/
+course_title: Angular 5
+course_description: Build the web applications of tomorrow using the new Angular web framework from Google.
+course_slug: angular
+course_cover: /assets/images/courses/angular/angular.w555.playicon.noptim.jpg
+course_promo_video: //www.youtube.com/watch?v=PMkdiZU6kVc
+course_book: yes
+reviews:
+ - name: Max Lam
+   image: 10738078_2fff.jpg
+   review: I'm a big fan of Asim's courses. This course is power punch pack if you want to learn about Angular2.
+   subject: Angular
+ - name: John Amuesi
+   image: generic1.png
+   review: I don't normally leave reviews on anything but what Asim has produced warrants a review. This is a fantastic course that will help lower the learning curve into Angular for beginners as well as experienced developers.
+   subject: Angular
+ - name: Randy
+   image: 318181_677e.jpg
+   review: Asim has once again shown why his courses are always a MUST BUY! He is in the top echelon of teachers! Excellent presentation of content, overview and examples of features!
+   subject: Angular
+ - name: Evan
+   image: generic2.png
+   review: I'll update this as I continue the course but I'm absolutely impressed. It is clear how much thought, work, and professional experience is put in. Update Halfway - I understand why you use Plunker, its awesome. and THANK YOU for including the angular-cli!
+   subject: Angular
+---
+
+After taking this course, you are going to be able to:
+
+- Understand the latest features of *ES6 JavaScript* and *TypeScript*.
+- Build an Angular application from scratch using TypeScript and the Angular command line interface.
+- Write code using the paradigm of reactive programming with RxJS and Observables.
+- Know how to Unit Test Angular using Jasmine, Karma and the Angular Test Bed
+
+IMPORTANT: This courses teaches you Angular v2+ from scratch, you don't need to know AngularJS 1.x.
+
+The first chapter in the course is a _quickstart_ where you dive straight into writing your first Angular application. We use the web editor plunker so you can get stuck in writing code ASAP.
+
+In this quickstart you'll get a 50,000 foot view of the major features of Angular v2+.
+
+Then chapter by chapter we go much deeper into each of these features. We first cover the theory, using plunker as much as possible so you can try out the code yourself in a browser. Then you'll practice what you've learnt with either an online quiz or a set of flash cards.
+
+You are going to learn all about:
+
+- Typescript & ES6 Javascript.
+- Components & Binding
+- Directives
+- Dependency Injection & Services
+- Angular Modules & Bootstrapping your Angular application.
+- SPAs & Routing
+- Angular CLI
+- Forms
+- Reactive Programming with RXJs
+- HTTP
+- Testing
+- Packaging & Releasing
+
+The ideal student for this course is an _existing web developer_, with some JavaScript knowledge that wants to add Angular to their skill set.
+
+Or perhaps you are an existing Angular 1 developer who wants to level up to Angular.
+
+You do need to be comfortable with at least the ES5 version of JavaScript.
+
+We'll be using a UI framework called twitter bootstrap throughout the course but you still _must know HTML and some CSS_.

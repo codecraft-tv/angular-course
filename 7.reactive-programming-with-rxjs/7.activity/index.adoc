@@ -1,0 +1,30 @@
+---
+layout: activity-lecture.html
+---
+:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/7.reactive-programming-with-rxjs
+= Activity
+
+There are two more very useful RxJS operators we could use in our sample Angular RxJS application.
+
+`distinctUntilChanged` - http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-distinctUntilChanged
+
+`debounceTime` - http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-debounceTime
+
+Research both of these operators and extend the application so use them.
+
+== Steps
+
+Fork this plunker:
+
+include::{section}/@activity/.link[]
+
+Implement both the operators.
+
+Read any *TODO* comments in the plunker for hints.
+
+== Solution
+
+
+When you are ready compare your answer to the solution in this plunker:
+
+include::{section}/@solution/.link[]

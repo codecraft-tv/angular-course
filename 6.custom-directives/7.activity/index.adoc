@@ -1,0 +1,41 @@
+---
+layout: activity-lecture.html
+---
+
+
+:sourcedir: {docdir}/content/{filedir}/code
+= Activity
+
+Create a custom _rollover_ image directive which shows one image normally and another when the user hovers over it.
+
+ifndef::ebook[]
+image::./images/activity-example.gif[]
+endif::ebook[]
+
+The directive will be used like so:
+
+[source,html]
+----
+<img [ccRollover]="{
+  'initial':'https://unsplash.it/200/300?image=201',
+  'over':'https://unsplash.it/200/300?image=202'
+}"/>
+----
+
+
+== Steps
+
+Fork this plunker:
+
+include::{sourcedir}/@activity/.link[]
+
+Flesh out the `RolloverImageDirective` class to implement the functionality you need.
+
+Read any *TODO* comments in the plunker for hints.
+
+== Solution
+
+
+When you are ready compare your answer to the solution in this plunker:
+
+include::{sourcedir}/@solution/.link[]

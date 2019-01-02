@@ -1,0 +1,21 @@
+= Overview
+
+Components are the fundamental building block of Angular applications.
+
+Components are _composable_, we can build larger Components from smaller ones.
+
+An Angular application is therefore just a tree of such Components, when each Component renders, it recursively renders its children Components.
+
+At the root of that tree is the top level Component, the _root_ Component.
+
+When we _bootstrap_ an Angular application we are telling the browser to render that top level _root_ Component which renders it's child Components and so on.
+
+In this section we build upon the knowledge learned in the quickstart and cover:
+
+* How to architect an application using Components.
+* The Component decorator in more depth.
+* Content Projection
+* Component Lifecycle Hooks
+* View Children vs. Content Children
+
+

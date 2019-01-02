@@ -1,0 +1,25 @@
+= Overview
+
+We've covered Components in the last section, in this section and the next we'll cover the concept of _Directives_.
+
+We've touched on a few directives already, such as `NgFor`.
+
+Directives are components _without_ a view. They are components without a template. Or to put it another way, components are directives _with_ a view.
+
+Everything you can do with a directive you can also do with a component. But not everything you can do with a component you can do with a directive.
+
+We typically _associate_ directives to existing elements by use _attribute_ selectors, like so:
+
+[source,html]
+----
+<elemenent aDirective></element>
+----
+
+[TIP]
+====
+We capitalise the name of directives when we are talking about the directive _class_. For example when we say `NgFor` we mean the class which defines the `NgFor` directive.
+ +
+
+When we are talking about either an _instance_ of a directive or the _attribute_ we use to associate a directive to an element we lowercase the first letter. So `ngFor` refers to both the _instance_ of a directive and the _attribut_e name used to associate a directive with an element.
+====
+In this section we are going to cover the built in directives that come bundled with Angular.

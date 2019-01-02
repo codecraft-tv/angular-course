@@ -1,0 +1,10 @@
+= Wrapping Up
+
+In this section we covered how to create a custom directive.
+
+We learned:
+
+* That components _are_ directives, but directives with views and templates.
+* How to define a directive with the `@Directive` decorator.
+* How to listen to the output events and bind to the input properties of a host element from within a directive.
+* How to configure a directive to make it more re-usable.
