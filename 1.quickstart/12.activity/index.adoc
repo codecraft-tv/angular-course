@@ -1,23 +1,20 @@
 ---
 layout: activity-lecture.html
 ---
-:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/1.quickstart
 = Activity
 
 == Steps
 
+Fork this blitz:
 
-Fork this plunker:
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity, window="_blank"]
 
-include::{section}/@activity/.link[]
+Extend the joke application in the above code so the user can delete a joke from the list.
 
-Extend the joke application in the above plunker so the user can delete a joke from the list.
-
-Read any *TODO* comments in the plunker for hints.
+Read any *TODO* comments in the code for hints.
 
 == Solution
 
+When you are ready compare your answer to the solution in this blitz:
 
-When you are ready compare your answer to the solution in this plunker:
-
-include::{section}/@solution/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution, window="_blank"]

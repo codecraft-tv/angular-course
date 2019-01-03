@@ -1,11 +1,9 @@
 ---
 layout: activity-lecture.html
 ---
-
-:quickstart_section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/1.quickstart
 = Activity
 
-In this activity you will re-create the Joke application we've ran using Plunker as an Angular CLI project instead.
+In this activity you will re-create the Joke application we've ran using stackbliz as an Angular CLI project instead.
 
 == Steps
 
@@ -15,9 +13,9 @@ In this activity you will re-create the Joke application we've ran using Plunker
 
 . Crete a project locally on your computer.
 
-. Mirror the functionality of the Joke application in the plunker below in your Angular CLI powered project.
+. Mirror the functionality of the Joke application in the blitz below in your Angular CLI powered project.
 
-include::{quickstart_section}/@solution/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution, window="_blank"]
 
 == Solution
 

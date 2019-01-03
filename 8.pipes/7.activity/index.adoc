@@ -1,7 +1,6 @@
 ---
 layout: activity-lecture.html
 ---
-:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/8.pipes
 = Activity
 
 Create a custom _Pipe_ called `CleanPipe` for use in the Joke application which replaces instances of a _bad_ word with `$%#@!` instead.
@@ -15,17 +14,16 @@ We want to pass into the pipe the list of bad words which we want replace, like 
 
 == Steps
 
-Fork this plunker:
+Fork this blitz:
 
-include::{section}/@activity/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity, window="_blank"]
 
 Flesh out the `CleanPipe` class to implement the functionality.
 
-Read any *TODO* comments in the plunker for hints.
+Read any *TODO* comments in the blitz for hints.
 
 == Solution
 
+When you are ready compare your answer to the solution in this blitz:
 
-When you are ready compare your answer to the solution in this plunker:
-
-include::{section}/@solution/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution, window="_blank"]

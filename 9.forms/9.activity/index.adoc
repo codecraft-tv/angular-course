@@ -1,7 +1,6 @@
 ---
 layout: activity-lecture.html
 ---
-:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/9.forms
 = Activity
 
 Change the simple form we had in our Joke application into a _Model Driven_ form with both form validation styling and validation error messages, like so:
@@ -11,17 +10,17 @@ image::./images/activity_example.png[]
 == Steps
 
 
-Fork this plunker:
+Fork this blitz:
 
-include::{section}/@activity/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity, window="_blank"]
 
 Change the `JokeFormComponent` so the form is implemented using model driven forms.
 
-Read any *TODO* comments in the plunker for hints.
+Read any *TODO* comments in the blitz for hints.
 
 == Solution
 
 
-When you are ready compare your answer to the solution in this plunker:
+When you are ready compare your answer to the solution in this blitz:
 
-include::{section}/@solution/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution, window="_blank"]

@@ -1,8 +1,6 @@
 ---
 layout: activity-lecture.html
 ---
-
-:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/4.components
 = Activity
 
 Create a set of components with work together to create a _Carousel_ which we can use to display different images in rotation.
@@ -34,17 +32,17 @@ The markup for our carousel will look like so:
 == Steps
 
 
-Fork this plunker:
+Fork this blitz:
 
-include::{section}/@activity/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity, window="_blank"]
 
 Finish off the components to implement the carousel.
 
-Read any *TODO* comments in the plunker for hints.
+Read any *TODO* comments in the blitz for hints.
 
 == Solution
 
 
-When you are ready compare your answer to the solution in this plunker:
+When you are ready compare your answer to the solution in this blitz:
 
-include::{section}/@solution/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution, window="_blank"]

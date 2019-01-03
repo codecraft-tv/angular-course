@@ -1,7 +1,6 @@
 ---
 layout: activity-lecture.html
 ---
-:section: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/10.dependency-injection-and-providers
 = Activity
 
 Convert the Joke application into an application that uses a service to store the jokes.
@@ -13,17 +12,17 @@ Make sure the number of jokes doesn't exceed this max value.
 
 == Steps
 
-Fork this plunker:
+Fork this blitz:
 
-include::{section}/@activity/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity, window="_blank"]
 
 Complete the `JokeService` class with the required functionality.
 
-Read any *TODO* comments in the plunker for hints.
+Read any *TODO* comments in the blitz for hints.
 
 == Solution
 
 
-When you are ready compare your answer to the solution in this plunker:
+When you are ready compare your answer to the solution in this blitz:
 
-include::{section}/@solution/.link[]
+https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@solution, window="_blank"]
