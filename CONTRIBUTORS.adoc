@@ -1,0 +1,5 @@
+= Core Contributors
+
+Shantanu Kulkarni 
+- Updated all the code for all lectures to work with StackBlitz and Angular 6.
+
