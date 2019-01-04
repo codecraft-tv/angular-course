@@ -1,6 +1,6 @@
 ---
 lecture_video: YmbKJfc3Yas
-has_code: false
+has_code: 'false'
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
