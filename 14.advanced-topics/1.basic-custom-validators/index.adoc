@@ -2,8 +2,6 @@
 lecture_video: JP5Y-Uie1qo
 ---
 :sourcedir: {docdir}/content/{filedir}/code
-
-// :templatesourcedir: /Users/jawache/Dropbox/Business/CodeCraft/Courses/Angular-2/Workspace/Code/14.advanced-topics/1.custom-validators/template-driven
 :toc:
 = Custom Form Validators
 
@@ -54,7 +52,7 @@ Angular does this by secretly creating special _validator_ directives which have
 
 // DEMO CODE
 
-So if you have imported `FormsModule` into your `NgModule` then anytime Angular sees a `required` tag in the HTML it will link it to an instance of a directive called https://github.com/angular/angular/blob/master/modules/%40angular/forms/src/directives/validators.ts#L59[RequiredValidator]
+So if you have imported `FormsModule` into your `NgModule` then anytime Angular sees a `required` tag in the HTML it will link it to an instance of a directive called `RequiredValidator`.
 
 This directive validator applies the same `Validators.required` function as we use in model driven forms.
 

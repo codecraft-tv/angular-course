@@ -1,9 +1,17 @@
 ---
 lecture_video: YmbKJfc3Yas
+has_code: false
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
 = Configurable Custom Form Validators
+
+++++
+<p><span id="replaceMe">Sample content</span> replaced by Javascript</p>
+<script>
+document.getElementById('replaceMe').innerHTML = 'New content!'
+</script>
+++++
 
 == Learning Objectives
 

@@ -1,9 +1,102 @@
+---
+lecture_video: gW0R4Bic8gw
+---
 = Overview
+:toc:
 
-The course is going to begin with a quickstart.
-
-We use a web editor called http://plnkr.co[plunker] and create a basic Angular application from scratch.
-
-In this quickstart you get a 50,000 foot view of the major features of Angular and since we use a web editor it means you can start writing code ASAP without having to spend time setting up your computer.
+The course is going to begin with a quickstart to give you a high level view of the major features of Angular.
 
 Let's get started!
+
+== StackBlitz
+
+Angular comes with a command line tool which greatly eases the process of creating and building Angular applications locally on your computer.
+
+We cover how to use the CLI in this course however for most of the lectures we will be using an online web editor called http://stackblitz.com[StackBlitz] to edit and run our Angular applications.
+
+* No setup required, everyone can code in the browser instantly.
+* StackBlitz is the name of the site, a *blitz* is an individual project hosted on StackBlitz.
+* Each blitz has it's own unique URL which you can share with others so it's a useful way to show others your work or ask why something isn't working.
+* You _can't_ edit someone elses blitz but you can _fork_ it. Forking creates a new blitz that you own with all the files copied across.
+
+=== Structure of a Blitz
+
+The file structure of a blitz conform mostly to the standard Angular layout with the key exception that we put as much code as possible into a *single file*. This is so in the associated videos we scroll up and down rather than flip between files. It's far easier to keep a track of where I am in the code if i'm scrolling up and down a file, it's far harder to keep a track of where I am in the code if they are split in multiple files and you blinked for a second when I clicked on a tab to change files.
+
+WARNING: This is *BAD* practice to do in production applications but a *GREAT* practice for teaching especially via video content.
+
+This isn't going to be to everyone's tastes, but many years of teaching programming has led me to conclude this is the best compromise that appeases most developers.
+
+
+----
+├── angular.json <1>
+├── package.json <2>
+├── src
+│   ├── index.html 
+│   ├── main.ts <3>
+│   ├── polyfills.ts <4>
+│   ├── styles.css <5>
+│   ├── tsconfig.app.json <6>
+│   └── tslint.json <7>
+├── tsconfig.json <8>
+└── tslint.json <9>
+----
+<1> This is the main configuration file for Angular, you need this to run the Angular CLI.
+<2> `package.json` is a configuration file that npm uses to install the required dependant libraries (These are libraries that you need in order to *build* your project, the code you need to deploy for your web app will be much smaller)
+<3> This is the file where all our code is going to go.
+<4> Polyfills to support older browsers
+<5> The CSS for this web application (we are using Bootstrap 4 *Alpha* Release)
+<6> A configuration file to tell TypeScript how to compile into JavaScript.
+<7> Configuration for the linter, so you can control what warnings you want to see when compiling.
+<8> A top level TypeScript configuration file (subfolders can override, like above)
+<9> A top level TypeScript linter file (subfolders can override, like above)
+
+
+=== Running the same code locally
+
+All the code examples can also be run locally on your computer with the Angular CLI.
+
+IMPORTANT: Do *NOT* download the project directly from StackBlitz and try to run that locally. 
+
+That would work for most StackBlitz Angular projects but since our project structure is a little different it doesn't work for us without some changes to the `angular.json` file.
+
+Instead clone the official repository for this course and run from there, like so:
+
+----
+
+git clone https://github.com/codecraft-tv/angular-course
+cd angular-course
+cd 1.quickstart/3.first-app/code
+npm install
+npm start
+----
+
+This will use the Angular CLI to compile the project and run a local devserver listening to port 4200. 
+
+If you visit http://localhost:4200 in your browser you will see your project running.
+
+== Plunker vs StackBlitz
+
+Previous versions of this course used to use a similar service called Plunker to edit and run the code online.
+
+We've since migrated all the code to work on StackBlitz however most of the videos still show Plunker.
+
+IMPORTANT: We won't be re-recording the videos to show StackBlitz unless there has been a material change in the source code. The `main.ts` in the old plunkers and in the new blitzs are *exactly the same*.
+
+We moved from Plunker mainly for these reasons:
+
+* Plunker based projects don't work with the Angular CLI, so there was a disconnect. 
+* The Angular team adopted StackBlitz for the official documentation so it's better supported.
+
+NOTE: If you see references to Plunker in any of the docs feel free to submit a PR to fix! All the documentation in this site and source code is open source.
+
+== Summary
+
+We can code up Angular in the browser using an online editor called StackBlitz. It gives us the ability to try our Angular quickly without requiring complex setup.
+
+It also gives us a unique URL so:
+
+1. We can quickly take a look at some code another person has written.
+2. We can share our code with other people, which is especially useful when we are stuck with some broken code and need help.
+
+If however you wanted to run the code locally that's ok as well, just clone the source code repository rather than downloading from StackBlitz.

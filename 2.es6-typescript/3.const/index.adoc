@@ -120,8 +120,6 @@ To solve this and make an object immutable we use the `Object.freeze(...)` funct
 
 == Listing
 
-include::{sourcedir}/.link[]
-
 .main.ts
 [source,typescript]
 ----

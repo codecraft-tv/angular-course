@@ -1,6 +1,6 @@
 ---
 lecture_video: 6YDi6nSA_YQ
-lecture_plan_level: free
+disable_run_code: true
 ---
 :toc:
 :sourcedir: {docdir}/content/{filedir}/code

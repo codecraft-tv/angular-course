@@ -19,6 +19,6 @@ https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_
 
 == Solution
 
-When you are ready compare your answer to the solution in this repository: https://github.com/codecraftpro/angular-2-book-cli-activity
+When you are ready compare your answer to the solution in this repository: https://github.com/codecraft-tv/angular-2-book-cli-activity
 
 

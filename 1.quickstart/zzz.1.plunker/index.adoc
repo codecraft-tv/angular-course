@@ -1,5 +1,7 @@
 ---
 lecture_video: -es-Ciy5_2g
+depreciated: true
+redirect_to: /quickstart/overview/
 ---
 :toc:
 = Plunker
