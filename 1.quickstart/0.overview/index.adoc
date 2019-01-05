@@ -1,5 +1,6 @@
 ---
 lecture_video: gW0R4Bic8gw
+video_uses_stackblitz: true
 ---
 = Overview
 :toc:
