@@ -27,7 +27,7 @@ I believe our form component is best placed in the `JokeListComponent` template,
 
 [source,html]
 ----
-<joke-form # <1>
+<joke-form> # <1>
   (jokeCreated)="addJoke($event)"> # <2>
 </joke-form>
 <joke *ngFor="let j of jokes" [joke]="j"></joke>
