@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "update-course": {
+      "root": "",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "index": "index.html",
+            "main": "main.ts",
+            "polyfills": "polyfills.ts",
+            "assets": [],
+            "styles": [
+              "styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {}
+        },
+        "serve": {},
+        "test": {},
+        "lint": {}
+      }
+    }
+  },
+  "defaultProject": "update-course"
+}
