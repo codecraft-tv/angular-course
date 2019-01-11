@@ -1,7 +1,8 @@
-= Contributors
+== Contributors
 
-This file contains information about people who have made a significant and material updates to this Angular book. 
-A huge thanks to everyone in this list, the book would not be the awesome resource it is without you!
+This book is open source (https://github.com/codecraft-tv/angular-course) and maintained with the generous help of developers like you.
+
+I would like to especially thank the people in the list below.
 
 https://github.com/shant24k[Shantanu Kulkarni]
-- Updated all the code for all lectures to work with StackBlitz and Angular 6.
+- For updating all the code for all lectures to work with StackBlitz and Angular 6.

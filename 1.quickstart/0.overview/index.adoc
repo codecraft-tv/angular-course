@@ -9,6 +9,8 @@ The course is going to begin with a quickstart to give you a high level view of 
 
 Let's get started!
 
+include::{docdir}/content/courses/angular/CONTRIBUTORS.adoc[]
+
 == StackBlitz
 
 Angular comes with a command line tool which greatly eases the process of creating and building Angular applications locally on your computer.
