@@ -6,8 +6,11 @@ layout: activity-lecture.html
 Create a set of components with work together to create a _Carousel_ which we can use to display different images in rotation.
 
 ifndef::ebook[]
+
 Like so:
+
 image::./images/activity_example.gif[]
+
 endif::ebook[]
 
 We also want the carousel delay between rotations to be configurable.
