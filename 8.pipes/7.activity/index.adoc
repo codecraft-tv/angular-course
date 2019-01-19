@@ -1,5 +1,5 @@
 ---
-layout: activity-lecture.html
+layout: activity-lecture.hbs
 ---
 = Activity
 

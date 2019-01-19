@@ -1,5 +1,5 @@
 ---
-layout: course-landing.html
+layout: course-landing.hbs
 course_path: courses/angular/
 course_title: Angular 5
 course_description: Build the web applications of tomorrow using the new Angular web framework from Google.
