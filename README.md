@@ -11,7 +11,7 @@ This is the official repository for the Angular course on https://angular.codecr
 
 Any contributions you make to this effort are greatly appreciated, from a typo to a code change.
 
-Contributors added to the CONTRIBUTORS.adoc will be added to the published book on Amazon the next timme the book is released (it's not pushed real-time to Amazon)
+Contributors added to the CONTRIBUTORS.adoc will be added to the published book on Amazon the next time the book is released (it's not pushed real-time to Amazon)
 
 ## License & Copyright
 

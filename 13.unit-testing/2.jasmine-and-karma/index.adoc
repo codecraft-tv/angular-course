@@ -274,7 +274,7 @@ var __spec_files__ = [
 
 === Disabled and focused tests
 
-You can disable tests without commenting them our by just pre-pending `x` to the `describe` or `it` functions, like so:
+You can disable tests without commenting them out by just pre-pending `x` to the `describe` or `it` functions, like so:
 
 [source,typescript]
 ----
