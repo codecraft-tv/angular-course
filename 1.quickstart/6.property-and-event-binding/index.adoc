@@ -182,7 +182,7 @@ Now when we click the button, we set the show property to true which then _unhid
 
 == Summary
 
-The way think about these two different ways of binding is in terms of inputs and outputs.
+The way to think about these two different ways of binding is in terms of inputs and outputs.
 
 * With the `[]` we are binding to an input of a Component.
 * With the `()` we are binding to an output of a Component.
