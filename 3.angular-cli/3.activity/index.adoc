@@ -11,7 +11,7 @@ In this activity you will re-create the Joke application we've ran using stackbl
 
 . Follow the instructions in the previous lectures and on the Angular CLI repository https://github.com/angular/angular-cli[site] to install the Angular CLI on your computer.
 
-. Crete a project locally on your computer.
+. Create a project locally on your computer.
 
 . Mirror the functionality of the Joke application in the blitz below in your Angular CLI powered project.
 
