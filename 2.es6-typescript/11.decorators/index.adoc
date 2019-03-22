@@ -76,7 +76,7 @@ We create a function that _returns_ a decorator, like so:
 
 [source,typescript]
 ----
-function Course(config) { // 1
+function Student(config) { // 1
   return function (target) {
     Object.defineProperty(
         target.prototype,
@@ -87,7 +87,7 @@ function Course(config) { // 1
 }
 ----
 
-. We pass a `config` object to the _outer_ `Course` function.
+. We pass a `config` object to the _outer_ `Student` function.
 . Then use that `config` in the returned _inner_ decorator function.
 
 Now we can use this decorator like so:
