@@ -8,7 +8,7 @@ lecture_video: THvZfVee4qc
 == Learning Objectives
 
 * Understand what a structural directive is.
-* Know why we use the `\*` character for some directives only.
+* Know why we use the `*` character for some directives only.
 
 == Long form structural directives
 
@@ -54,7 +54,7 @@ The `NgFor` version is slightly more complex:
 
 == Syntax sugar and `*`
 
-So if we can write `ngIf` with `ng-template` what is al the fuss about `*`.
+So if we can write `ngIf` with `ng-template` what is all the fuss about `*`.
 
 When we _prepend_ a directive with `*` we are telling it to use the element it's attached to _as_ the template.
 
