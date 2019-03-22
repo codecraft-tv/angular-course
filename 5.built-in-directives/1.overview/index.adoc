@@ -12,7 +12,7 @@ We typically _associate_ directives to existing elements by use _attribute_ sele
 
 [source,html]
 ----
-<elemenent aDirective></element>
+<element aDirective></element>
 ----
 
 [TIP]
@@ -20,6 +20,6 @@ We typically _associate_ directives to existing elements by use _attribute_ sele
 We capitalise the name of directives when we are talking about the directive _class_. For example when we say `NgFor` we mean the class which defines the `NgFor` directive.
  +
 
-When we are talking about either an _instance_ of a directive or the _attribute_ we use to associate a directive to an element we lowercase the first letter. So `ngFor` refers to both the _instance_ of a directive and the _attribut_e name used to associate a directive with an element.
+When we are talking about either an _instance_ of a directive or the _attribute_ we use to associate a directive to an element we lowercase the first letter. So `ngFor` refers to both the _instance_ of a directive and the _attribute_ name used to associate a directive with an element.
 ====
 In this section we are going to cover the built in directives that come bundled with Angular.
