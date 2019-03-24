@@ -101,7 +101,7 @@ The final thing to do is to change the markup in the template so we call the `jo
 
 == Summary
 
-Although its possible to store all your data as objects it's both recommend and simple to encapsulate your data into domain models in Angular.
+Although it's possible to store all your data as objects it's both recommend and simple to encapsulate your data into domain models in Angular.
 
 Using a domain model clarifies for all developers where you should put functions that need to act on the data, like our toggle function.
 
