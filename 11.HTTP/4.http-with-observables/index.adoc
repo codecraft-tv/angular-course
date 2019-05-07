@@ -21,7 +21,7 @@ In the previous lecture we architected an application which made HTTP calls and 
 
 In this lecture we are going to implement exactly the same application but using _Observables_ instead.
 
-IMPORTANT: Please note we still need to use the CORS plugin, or one of the other work arrounds, that we discussed in the previous lecture.
+IMPORTANT: Please note we still need to use the CORS plugin, or one of the other workarounds, that we discussed in the previous lecture.
 
 == Learning Objectives
 
@@ -31,7 +31,7 @@ Working with Observables does require a different way of thinking about programm
 
 == Returning an Observable from the service
 
-In the promise example we stored the returned results on the service itself in the `results` propery.
+In the promise example we stored the returned results on the service itself in the `results` property.
 
 In this observable example we are instead going to make the `search` function _return_ an observable which the AppComponent is going to subscribe to, like so:
 
@@ -61,7 +61,7 @@ We've removed the Promise code and since `http.get(...)` returns an `Observable`
 However the above has two problems:
 
 . The return type of `http.get(...)` is `Observable<Response>` and not `Observable<SearchItem[]>`
-. It's missing the code to convert the raw json to our `SearchItem` domain model.
+. It's missing the code to convert the raw JSON to our `SearchItem` domain model.
 
 Basically we still need to convert the `Response` to an array of `SearchItems`.
 
@@ -86,7 +86,7 @@ search(term: string): Observable<SearchItem[]> {
 }
 ----
 <1> `this.http.get(apiURL)` returns an `Observable`.
-<2> `map` is an observable operator which calls a function for each item on its input stream and pushes the result of the function to it's output stream. In this case each input item is a `Response` object.
+<2> `map` is an observable operator which calls a function for each item on its input stream and pushes the result of the function to its output stream. In this case each input item is a `Response` object.
 <3> We loop over each item in the `results` property of the `Response` object and transform the item via a function.
 <4> We convert the raw data returned from the iTunes API into an instance of `SearchItem`
 
@@ -166,7 +166,7 @@ To make the above work we need to use the `async` pipe in our template, like so:
 
 == Observables all the way down
 
-Pressing a _Search_ button every-time we want to make a search is so _2012_, lets change our application so it uses a _reactive_ form and performs a search as we type. We've covered reactive forms before so we just need to change our `AppComponent` to add a search field, like so:
+Pressing a _Search_ button every time we want to make a search is so _2012_, let's change our application so it uses a _reactive_ form and performs a search as we type. We've covered reactive forms before so we just need to change our `AppComponent` to add a search field, like so:
 
 
 [source,html]
@@ -286,7 +286,7 @@ The `valueChanges` observable on our `searchField` is of type `Observable<string
 
 Through a chain of operators we want to convert that `Observable<string>` into an `Observable<SearchItem[]>`.
 
-To start with lets use the `map` operator, like so:
+To start with let's use the `map` operator, like so:
 
 [source,typescript]
 ----
@@ -336,9 +336,9 @@ One workaround would then be to just try doing two subscribes, like so:
 
 This is a common problem with `Observables` so there is a better way, we can use another operator called `switch`.
 
-`switch` expects a stream of `Observables`, when it get an `Observable` pushed onto it's input stream it _unsubscribes_ from any previous `Observables` and _subscribes_ to the new one and then emits any values from that `Observable` onto it's output stream.
+`switch` expects a stream of `Observables`, when it gets an `Observable` pushed onto its input stream it _unsubscribes_ from any previous `Observables` and _subscribes_ to the new one and then emits any values from that `Observable` onto its output stream.
 
-To put it another way it coverts `Observable<Observable<SearchItem[]>>` into `Observable<SearchItem[]>` which is exactly the problem we are solving with the two `subscribes` above.
+To put it another way it converts `Observable<Observable<SearchItem[]>>` into `Observable<SearchItem[]>` which is exactly the problem we are solving with the two `subscribes` above.
 
 image::./images/switch-animation.gif[]
 
@@ -422,7 +422,7 @@ import 'rxjs/add/operator/do';
 ----
 ====
 
-Finally if we run our application we should see something like this:
+Finally, if we run our application we should see something like this:
 
 image::./images/http-observable.gif[]
 
@@ -435,7 +435,7 @@ The goal of this lecture was to show you how you can _evolve_ your application f
 
 Hopefully you now have a much better idea of _how_ to architect your application using observables.
 
-We could go even further, for instance the `loading` property could be it's own observable, how far and how deep to go is up to you. Depending on how comfortable you feel with Observables and how well they match to your use case.
+We could go even further, for instance the `loading` property could be its own observable, how far and how deep to go is up to you. Depending on how comfortable you feel with Observables and how well they match to your use case.
 
 They can be really powerful but at other times they can be a big hindrance with little benefit. In Angular you can use as much or as little reactive programming as you want, it doesn't prescribe one way or the other.
 

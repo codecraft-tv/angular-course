@@ -85,7 +85,7 @@ image::./images/default-pipe-part1.png[]
 
 == Multiple parameters
 
-Finally we want to support an _optional_ third param to our pipe called `forceHttps`, if the image selected doesn't use _https_ the pipe will convert the url to one that does use _https_.
+Finally, we want to support an _optional_ third parameter to our pipe called `forceHttps`, if the image selected doesn't use _HTTPS_ the pipe will convert the URL to one that does use _HTTPS_.
 
 To support additional parameters in pipes we just add more parameters to our _transform_ function.
 
@@ -119,7 +119,7 @@ And to use this optional param we just extend the pipe syntax in our template wi
 ----
 <1> Notice the last `:true` at the end of the pipe expression.
 
-Now we force the image url to use the https protocol.
+Now we force the image URL to use the HTTPS protocol.
 
 == Summary
 

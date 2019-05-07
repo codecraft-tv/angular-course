@@ -62,7 +62,7 @@ TIP: In the first example we write `return a + b` but in the _fat arrow_ version
 
 == this
 
-Lets imagine we have an `object` with a function called `sayLater`, like so:
+Let's imagine we have an `object` with a function called `sayLater`, like so:
 
 [source,typecript]
 ----
@@ -79,7 +79,7 @@ In the `sayLater` function `this` points to `obj`
 
 So `console.log(`${this.name}`);` prints out `asim`. 
 
-Now lets imagine that we log the message using the `setTimeout` function.
+Now let's imagine that we log the message using the `setTimeout` function.
 
 [source,typescript]
 ----
@@ -119,7 +119,7 @@ In the browser it's either `undefined` or the `global` object depending on if yo
 
 In all cases however it _isn't_ going to be `obj`, so `this.name` is not going to return _asim_, it's going to return `undefined` or raise an error.
 
-This _instability_ of `this` is an incredibly common problem in javascript that has affected it since the early days.
+This _instability_ of `this` is an incredibly common problem in JavaScript that has affected it since the early days.
 
 In ES5 there are a number of methods we can use to stabilise the value of `this`. One common solution is to assign `this` to another variable at the top, usually called `self` or `vm`, and then always use `self` in the function body, like so:
 
@@ -164,7 +164,7 @@ If we ran the above code we would see that the value of `this` in the `setTimout
 
 The new fat arrow function syntax in ES6 is far more than just a slightly shorter way of writing anonymous functions.
 
-It has finally solved the thorny issue of stabilising the value of `this` that has affected javascript since the start and caused so many work arounds to be discussed and applied in code.
+It has finally solved the thorny issue of stabilising the value of `this` that has affected JavaScript since the start and caused so many work arounds to be discussed and applied in code.
 
 
 == Listing

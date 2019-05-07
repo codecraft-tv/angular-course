@@ -3,7 +3,7 @@ layout: activity-lecture.hbs
 ---
 = Activity
 
-Change the simple form we had in our Joke application into a _Model Driven_ form with both form validation styling and validation error messages, like so:
+Change the simple form we had in our Joke application into a _model-driven_ form with both form validation styling and validation error messages, like so:
 
 image::./images/activity_example.png[]
 
@@ -14,7 +14,7 @@ Fork this blitz:
 
 https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity[https://stackblitz.com/github/codecraft-tv/angular-course/tree/current/{chapter_num}.{chapter_slug}/{lecture_num}.{lecture_slug}/code/@activity, window="_blank"]
 
-Change the `JokeFormComponent` so the form is implemented using model driven forms.
+Change the `JokeFormComponent` so the form is implemented using model-driven forms.
 
 Read any *TODO* comments in the blitz for hints.
 

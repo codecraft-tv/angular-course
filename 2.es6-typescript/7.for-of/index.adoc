@@ -8,7 +8,7 @@ In this lecture we are going to examine how we can loop over arrays, using the m
 
 == For &amp; ForEach
 
-We have a couple of ways of looping through Arrays in ES5 javascript.
+We have a couple of ways of looping through Arrays in ES5 JavaScript.
 
 For one we have the classic `for` loop, like so:
 

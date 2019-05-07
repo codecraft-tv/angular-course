@@ -10,19 +10,19 @@ Later on I'll be showing you how to install Angular and run the required develop
 
 But for now we are going to use an online editor called http://plnkr.co/[plunker].
 
-The goal of this chapter is to explain how plunker works and the different files that make up an Angular plunker.
+The goal of this chapter is to explain how Plunker works and the different files that make up an Angular plunker.
 
 == Learning Outcomes
 
-* Understand what plunker is, why and how we use it.
+* Understand what Plunker is, why and how we use it.
 * Understand the structure of an Angular plunker.
 * Know what each of the included libraries do.
 
-== What is plunker and how to use it?
+== What is Plunker and how to use it?
 
-* It's a web based editor and development environment. With it you can create, edit and run HTML, css and JavaScript files directly from your browser.
+* It's a web-based editor and development environment. With it you can create, edit and run HTML, CSS and JavaScript files directly from your browser.
 * No setup required, everyone can code in the browser instantly.
-* Each plunker has it's own unique URL which you can share with others so it's a useful way to show others your work.
+* Each plunker has its own unique URL which you can share with others so it's a useful way to show others your work.
 * You _can't_ edit someone else's plunker but you can _fork_ it. Forking creates a new plunker that you own with all the files copied across.
 * If your plunker has an `index.html` file pressing the _Run_ button will preview the plunker in the preview pane.
 
@@ -37,7 +37,7 @@ tsconfig.json:: Configuration for the TypeScript transpiler (*)
 
 _(*) We will be covering these topics in more detail later._
 
-In our index.html we are including 4 javascript files, like so:
+In our index.html we are including four JavaScript files, like so:
 
 [source,html]
 ----
@@ -49,19 +49,19 @@ In our index.html we are including 4 javascript files, like so:
 
 === core-js
 
-The version of javascript that has the broadest support across all browsers is ES5.
+The version of JavaScript that has the broadest support across all browsers is ES5.
 
-Then next version of javascript is ES6. ES6 does not have full support across _all_ browsers yet. (See https://kangax.github.io/compat-table/es6/)[https://kangax.github.io/compat-table/es6/].
+The next version of JavaScript is ES6. ES6 does not have full support across _all_ browsers yet. (See https://kangax.github.io/compat-table/es6/).
 
-This library enables a browser which doesn't have support for ES6 to run ES6 code, just maybe not in the most  efficient way
+This library enables a browser which doesn't have support for ES6 to run ES6 code, just maybe not in the most efficient way.
 
-For further details take a look at the project homepage: https://github.com/zloirock/core-js[https://github.com/zloirock/core-js]
+For further details take a look at the project homepage: https://github.com/zloirock/core-js
 
 === zone
 
-"Zone is a mechanism for intercepting and keeping track of asynchronous work" - https://github.com/angular/zone.js[https://github.com/angular/zone.js]
+"Zone is a mechanism for intercepting and keeping track of asynchronous work" - https://github.com/angular/zone.js
 
-You don't need to know details about this yet, it's an advanced topic, but to summarise.
+You don't need to know details about this yet, it's an advanced topic, but to summarise:
 
 One of the problems with Angular 1 was that Angular didn't know when things happened outside of Angular, for example in asynchronous callbacks.
 
@@ -69,7 +69,7 @@ When Angular 1 knew about callbacks it could do wonderful things, like automatic
 
 No matter how experienced you were with Angular 1 bugs with these kinds of issues cropped up time and time again.
 
-_Zones_ solves this problem, it keeps track of all _pending_ asynchronous work and tells Angular when things happen. So in Angular you don't have to worry about whether Angular knows about your callback or not, zones tracks this for you and notifies Angular when something happens.
+_Zone_ solves this problem, it keeps track of all _pending_ asynchronous work and tells Angular when things happen. So in Angular you don't have to worry about whether Angular knows about your callback or not, Zone tracks this for you and notifies Angular when something happens.
 
 === reflect
 
@@ -85,7 +85,7 @@ It's a complicated problem, in a browser we can't make hundreds of requests to l
 
 It will become part of the core JavaScript language but until then we use a _module loader_, there are several available but the one we use in our plunker is SystemJS.
 
-NOTE: If we build an application locally with the Angular command line tools it will use another module loader called https://webpack.github.io/[Webpack].
+NOTE: If we build an application locally with the Angular command-line tools it will use another module loader called https://webpack.github.io/[Webpack].
 
 === systemjs.config.js
 
@@ -109,13 +109,13 @@ _Why not just add script.ts as a script tag?:_
 <script src="script.ts"></script>
 ----
 
-Because in `script.ts` we include other modules, if we loaded via a script tag the browser doesn't know how to load those other dependant js files.
+Because in `script.ts` we include other modules, if we loaded it via a `script` tag the browser doesn't know how to load those other dependent JS files.
 
-By loading with `System.import` we make SystemJS figure out which dependant modules are required and loads the files for those automatically.
+By loading with `System.import` we make SystemJS figure out which dependent modules are required and loads the files for those automatically.
 
 == Summary
 
-We can code up Angular in the browser using an online editor called plunker. It gives us the ability to try our Angular quickly without requiring complex setup.
+We can code up Angular in the browser using an online editor called Plunker. It gives us the ability to try our Angular quickly without requiring complex setup.
 
 It also gives us a unique URL so:
 

@@ -4,7 +4,7 @@ In this section we covered the basics of ES6 JavaScript and TypeScript.
 
 We discussed how TypeScript is a super-set of ES6 JavaScript.
 
-We explained how to install the command line tools so you can transpile TypeScript locally on your computer.
+We explained how to install the command-line tools so you can transpile TypeScript locally on your computer.
 
 We covered the core features of ES6 such as `let`, `const`, template strings, fat arrow functions; `for-of` loops, Map and Set; as well as how to deal with asynchronous programming by using Promises. 
 

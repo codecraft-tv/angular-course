@@ -11,7 +11,7 @@ lecture_video: GsSpiwSFwp8
 
 == Test setup
 
-We are going to test a directive called the `HoverFocusDirective`. It has an attribute selector of `hoverfocus` and if its attached to an element hovering over that element sets the background color to `blue`.
+We are going to test a directive called the `HoverFocusDirective`. It has an attribute selector of `hoverfocus` and if it's attached to an element hovering over that element sets the background color to `blue`.
 
 [source,typescript]
 ----
@@ -38,7 +38,7 @@ export class HoverFocusDirective {
 }
 ----
 
-It uses `@HostListener` to listen to `mouseover` and `mouseout` events on it's host element and it also uses `@HostBinding` to set the style property of it's host element.
+It uses `@HostListener` to listen to `mouseover` and `mouseout` events on its host element and it also uses `@HostBinding` to set the style property of its host element.
 
 The starting point for our test suite is very similar to our previous examples:
 
@@ -58,7 +58,7 @@ describe('Directive: HoverFocus', () => {
 
 == Test wrapper component
 
-To test a directive we typically create a _dummy_ testing component so we can interact with the directive and test it's effect on the components view, like so:
+To test a directive we typically create a _dummy_ testing component so we can interact with the directive and test it's effect on the component's view, like so:
 
 [source,typescript]
 ----
@@ -68,7 +68,7 @@ To test a directive we typically create a _dummy_ testing component so we can in
 class TestHoverFocusComponent {
 }
 ----
-<1> The directive is associated with an `input` control in the components view.
+<1> The directive is associated with an `input` control in the component's view.
 
 Now we have a component to work with we can configure the test bed and get the required references for the tests, like so:
 
@@ -91,7 +91,7 @@ describe('Directive: HoverFocus', () => {
 });
 ----
 <1> We declare _both_ the directive we want to test and the dummy test component.
-<2> We grab a reference to the component fixture as well as the component and a the input `DebugElement` from the component view.
+<2> We grab a reference to the component fixture as well as the component and the input `DebugElement` from the component view.
 
 
 == Interacting and inspecting the the view

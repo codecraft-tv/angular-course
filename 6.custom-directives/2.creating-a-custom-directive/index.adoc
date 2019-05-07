@@ -26,7 +26,7 @@ TIP: The Angular team recommends using directives as attributes, prefixed with a
 
 We create directives by annotating a class with the `@Directive` decorator.
 
-Lets create a class called `CardHoverDirective` and use the `@Directive` dectorator to associate this class with our attribute `ccCardHover`, like so:
+Let's create a class called `CardHoverDirective` and use the `@Directive` dectorator to associate this class with our attribute `ccCardHover`, like so:
 
 [source,typescript]
 ----

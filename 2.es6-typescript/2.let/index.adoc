@@ -107,7 +107,7 @@ If this syntax looks a bit strange to you:
 })();
 ----
 
-Know its just a shorter way of writing:
+Know it's just a shorter way of writing:
 
 [source,javascript]
 ----
@@ -233,7 +233,7 @@ Even though `let i = 0` is strictly declared _outside_ of the for block `{ }`, a
 
 == Summary
 
-`let` is a very important addition the javascript language in ES6.
+`let` is a very important addition the JavaScript language in ES6.
 
 It's not a replacement to `var`, `var` can still be used even in ES6 and has the same semantics as ES5.
 

@@ -3,7 +3,7 @@ lecture_video: g9s6vTMbf7Y
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
-= Model Driven Forms
+= Model-Driven Forms
 
 == Learning Objectives
 
@@ -12,16 +12,16 @@ lecture_video: g9s6vTMbf7Y
 
 == Form setup
 
-Whether we are template driven or model driven we need some basic form HTML to begin with.
+Whether we are template-driven or model-driven we need some basic form HTML to begin with.
 
 [IMPORTANT]
 ====
-In model driven forms contrary to what you might think the HTML for our form isn't automatically created for us.
+In model-driven forms, contrary to what you might think, the HTML for our form isn't automatically created for us.
 
 We _still_ need to write the HTML that represents our form and then explicitly link the HTML form elements to code on our component.
 ====
 
-We create a simple bootstrap form with a first name, last name, email, password and language select box controls.
+We create a simple Bootstrap form with a first name, last name, email, password and language select box controls.
 
 image::./images/form-setup.png[]
 
@@ -65,7 +65,7 @@ image::./images/form-setup.png[]
 
 We've added the `novalidate` attribute to the `form` element, by default browsers perform their own validation and show their own error popups. Since we want to handle the form validation ourselves we can switch off this behaviour by adding novalidate to the form element.
 
-NOTE: We are using the markup and styles from the twitter bootstrap UI framework to structure our form.
+NOTE: We are using the markup and styles from the Twitter Bootstrap UI framework to structure our form.
 
 === Dynamic select controls
 
@@ -112,7 +112,7 @@ To set the value of our select box we just bind to the input property of our opt
 
 We represent the form as a _model_ composed of instances of `FormGroups` and `FormControls`.
 
-Lets create the model for our form on our component, like so:
+Let's create the model for our form on our component, like so:
 
 [source,typescript]
 ----
@@ -142,19 +142,19 @@ class ModelFormComponent implements OnInit {
 
 The `myform` property is an instance of a `FormGroup` class and this represents our form itself.
 
-Each _form control_ in the template is represented by an instance of `FormControl`. This encapsulates the state of the control, such as if it's valid or invalid and even it's current value.
+Each _form control_ in the template is represented by an instance of `FormControl`. This encapsulates the state of the control, such as if it's valid or invalid and even its current value.
 
-These instances of `FormControls` nest inside our top level `myform: FormGroup`, but what's interesting is that we can _nest_ `FormGroups` inside other `FormGroups`.
+These instances of `FormControls` nest inside our top-level `myform: FormGroup`, but what's interesting is that we can _nest_ `FormGroups` inside other `FormGroups`.
 
-In our model we've grouped the `firstName` and `lastName` controls under a `FormGroup` called `name` which itself is nested under our top level `myform: FormGroup`.
+In our model we've grouped the `firstName` and `lastName` controls under a `FormGroup` called `name` which itself is nested under our top-level `myform: FormGroup`.
 
-Like the `FormControl` instance, `FormGroup` instances encapsulates the state of all of it's inner controls, for example an instance of a `FormGroup` is valid only if _all_ of it's inner controls are also valid.
+Like the `FormControl` instance, `FormGroup` instances encapsulates the state of all of its inner controls, for example an instance of a `FormGroup` is valid only if _all_ of its inner controls are also valid.
 
 == Linking the form model to the form template
 
 We have the HTML template for our form and the form model on our component, next up we need to link the two together.
 
-We do this using a number of directives which are found in the `ReactiveFormsModule`, so lets import that and add it to the imports on our `NgModule`.
+We do this using a number of directives which are found in the `ReactiveFormsModule`, so let's import that and add it to the imports on our `NgModule`.
 
 [source,typescript]
 ----
@@ -163,7 +163,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 === formGroup
 
-Firstly we bind the `<form>` element to our top level `myform` property using the `formGroup` directive, like so:
+Firstly we bind the `<form>` element to our top-level `myform` property using the `formGroup` directive, like so:
 
 [source,html]
 ----
@@ -300,13 +300,13 @@ Now each form control in the template is mapped to form controls in our model an
 
 Now we've added validators to our model we can start giving visual feedback to the end user to the validity of the form and give helpful error messages hinting at them on how to fix them.
 
-But before that lets try to make the code that builds our model less verbose, we can use a higher level API called `FormBuilder` which saves us from writing `new FormGroup` and `new FormControl` multiple times.
+But before that let's try to make the code that builds our model less verbose, we can use a higher level API called `FormBuilder` which saves us from writing `new FormGroup` and `new FormControl` multiple times.
 
 We import `FormBuilder` and then _inject_ it into our constructor which stores it on a property of our component so we can use it in other functions.
 
-IMPORTANT: What is _injection_? This is something called dependency injection and we cover it in much more detail in the next section. For now just know its a way of getting passed an instance of something, we ask Angular to give us something called a `FormBuilder` and it does.
+IMPORTANT: What is _injection_? This is something called dependency injection and we cover it in much more detail in the next section. For now just know it's a way of getting passed an instance of something, we ask Angular to give us something called a `FormBuilder` and it does.
 
-Let's re-write our model to use `FormBuilder` instead, but since we need to use the injected instance of FormBuilder we need to do it in the constructor or preferably on the ngOnInit lifecycle hook, like so:
+Let's re-write our model to use `FormBuilder` instead, but since we need to use the injected instance of FormBuilder we need to do it in the constructor or preferably on the `ngOnInit` lifecycle hook, like so:
 
 [source,typescript]
 ----

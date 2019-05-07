@@ -67,7 +67,7 @@ describe('Service: Auth', () => {
 
 == Creating test specs
 
-Now we create some test specs, the first spec I want to create should check if the `isAuthenticated` function returns `true` when there is a token.
+Now we create some test specs. The first spec I want to create should check if the `isAuthenticated` function returns `true` when there is a token.
 
 [source,typescript]
 ----
@@ -173,7 +173,7 @@ TIP: If your _Pipe_ requires dependencies to be injected into the constructor it
 
 == Summary
 
-That's it really, we can test any _isolated_ class that doesn't require anything else with a simple jasmine spec file, nothing more complex required.
+That's it really, we can test any _isolated_ class that doesn't require anything else with a simple Jasmine spec file, nothing more complex required.
 
 Since everything in Angular is represented as classes, we could stop here - you have most of the tools already to write tests for directives, components, pipes and so on.
 

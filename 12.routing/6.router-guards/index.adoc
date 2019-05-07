@@ -5,11 +5,11 @@ lecture_video: Nb2rDNbRP-M
 :toc:
 = Router Guards
 
-In traditional server side applications the application would check permissions on the server and return a `403` error page if the user didn't have permissions, or perhaps redirect them to a login/register page if they were not signed up.
+In traditional server-side applications the application would check permissions on the server and return a `403` error page if the user didn't have permissions, or perhaps redirect them to a login/register page if they were not signed up.
 
-NOTE: `403` is a HTTP error code specifically this one means _Permission Denied_
+NOTE: `403` is a HTTP error code. Specifically, this one means _Permission Denied_.
 
-We want to have the same functionality in our client side SPA, and with _Router Guards_ we can.
+We want to have the same functionality in our client-side SPA, and with _Router Guards_ we can.
 
 With _Router Guards_ we can prevent users from accessing areas that they’re not allowed to access, or, we can ask them for confirmation when leaving a certain area.
 
@@ -17,7 +17,7 @@ With _Router Guards_ we can prevent users from accessing areas that they’re no
 
 In this lecture you will learn:
 
-* The 4 different types of Router Guards
+* The four different types of Router Guards
 * Implementing Router Guards as classes
 * How to implement a login guard for our iTunes app
 
@@ -49,7 +49,7 @@ Guards return either `true` if the user can access a route or `false` if they ca
 
 They can also return an `Observable` or `Promise` that later on resolves to a boolean in case the guard can't answer the question straight away, for example it might need to call an API. Angular will keep the user waiting until the guard returns `true` or `false`.
 
-Lets create a simple `CanActivate` guard.
+Let's create a simple `CanActivate` guard.
 
 First we need to import the `CanActivate` interface, like so:
 
@@ -58,7 +58,7 @@ First we need to import the `CanActivate` interface, like so:
 import {CanActivate} from "@angular/router";
 ----
 
-Then lets create an Injectable class called `AlwaysAuthGuard` which implements the `canActivate` function, like so:
+Then let's create an Injectable class called `AlwaysAuthGuard` which implements the `canActivate` function, like so:
 
 [source,typescript]
 ----
@@ -72,7 +72,7 @@ class AlwaysAuthGuard implements CanActivate {
 
 This guard returns `true` _all the time_, so doesn't really guard anything. It lets all users through but at the same time our guard logs `"AlwaysAuthGuard"` to the console so we can at least see when it's being used.
 
-We need to provide this guard, for this example lets configure it via our `NgModule`, like so:
+We need to provide this guard, for this example let's configure it via our `NgModule`, like so:
 
 [source,typescript]
 ----
@@ -88,7 +88,7 @@ We need to provide this guard, for this example lets configure it via our `NgMod
 ----
 
 
-Finally we need to add this guard to one or more of our routes, lets add it to our `ArtistComponent` route like so:
+Finally, we need to add this guard to one or more of our routes, let's add it to our `ArtistComponent` route like so:
 
 [source,typescript]
 ----
@@ -117,7 +117,7 @@ NOTE: Since it holds an array we could have multiple guards for a single route.
 NOTE: If this was a `canActivateChild` guard we would be adding it to the `canActivateChild` property and so on for the other guard types.
 
 
-Now every-time we navigate to the `ArtistComponent` route we get `"AlwaysAuthGuard"` printed to the console so we know that the `AlwaysAuthGuard` is working.
+Now every time we navigate to the `ArtistComponent` route we get `"AlwaysAuthGuard"` printed to the console so we know that the `AlwaysAuthGuard` is working.
 
 === OnlyLoggedInUsersGuard
 
@@ -138,7 +138,7 @@ class UserService {
 
 This service has one function `isLoggedIn()` which always returns `false`.
 
-Lets create another guard called `OnlyLoggedInUsersGuard` which only allows logged in users to view a route.
+Let's create another guard called `OnlyLoggedInUsersGuard` which only allows logged in users to view a route.
 
 [source,typescript]
 ----
@@ -162,7 +162,7 @@ class OnlyLoggedInUsersGuard implements CanActivate { # <1>
 <3> If the user is logged in the guard passes and lets the user through.
 <4> If the user is _not_ logged in the guard fails, we show the user an alert and the page doesn't navigate to the new URL.
 
-Finally we need to add this guard to the list of guards for our search route, like so:
+Finally, we need to add this guard to the list of guards for our search route, like so:
 
 [source,json]
 ----
@@ -193,7 +193,7 @@ NOTE: So the rest of the samples in this chapter work we will change the `isLogg
 
 As well as `CanActivate` we also have `CanActivateChild` which we implement in similar way.
 
-Lets do the same as the `CanActivate` example and create a guard called `AlwaysAuthChildrenGuard`.
+Let's do the same as the `CanActivate` example and create a guard called `AlwaysAuthChildrenGuard`.
 
 
 [source,typescript]
@@ -228,7 +228,7 @@ We add the guard to the `canActivateChild` child property on our `ArtistComponen
 ----
 
 
-Now every-time we try to activate either the `ArtistTrackListComponent` or `ArtistAlbumListComponent` child routes it checks the `AlwaysAuthChildrenGuard` to see if the user has permission.
+Now every time we try to activate either the `ArtistTrackListComponent` or `ArtistAlbumListComponent` child routes it checks the `AlwaysAuthChildrenGuard` to see if the user has permission.
 
 == Guard function parameters
 
@@ -242,9 +242,9 @@ To help in determining whether or not a guard should accept or deny access the g
 
 A third type of guard we can add to our application is a `CanDeactivate` guard which is usually used to warn people if they are navigating away from a page where they have some unsaved changes.
 
-Lets create a simple `CanDeactivate` guard which checks to see if the user navigates _away_ from the search page without actually performing a search.
+Let's create a simple `CanDeactivate` guard which checks to see if the user navigates _away_ from the search page without actually performing a search.
 
-Firstly lets create a function called `canDeactivate` on our `SearchComponent`, it should be the component that decides whether or not it has unsaved changes.
+Firstly let's create a function called `canDeactivate` on our `SearchComponent`, it should be the component that decides whether or not it has unsaved changes.
 
 [source,typescript]
 ----
@@ -255,7 +255,7 @@ canDeactivate() {
 
 As a proxy for unsaved changes we are just seeing if the user has performed a search, if so then the results array should be > 0.
 
-Next lets create a `CanDeactivate` guard.
+Next let's create a `CanDeactivate` guard.
 
 [source,typescript]
 ----

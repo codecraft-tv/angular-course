@@ -30,7 +30,7 @@ Until then we need to use a library that gives us the _Observable_ primitive and
 == RxJS
 
 
-_RxJS_ stands for *R*eactive E*x*tensions for *J*ava*S*cript, and its a library that gives us an implementation of Observables for JavaScript.
+_RxJS_ stands for *R*eactive E*x*tensions for *J*ava*S*cript, and it's a library that gives us an implementation of Observables for JavaScript.
 
 NOTE: Observables might become a core part of the JavaScript language in the future, so we can think of RxJS as a placeholder for when that arrives.
 
@@ -175,7 +175,7 @@ Subscriber: 2
 
 === map
 
-Finally I want to add another operator called `map`, this takes as input the output stream from `take`, convert each value to a date and pushes that out onto a third stream like so:
+Finally, I want to add another operator called `map`, this takes as input the output stream from `take`, convert each value to a date and pushes that out onto a third stream like so:
 
 ifndef::ebook[]
 image::./images/rxjs-map-lq.gif[RxJS Map]

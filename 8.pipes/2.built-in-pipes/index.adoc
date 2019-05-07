@@ -6,7 +6,7 @@ lecture_video: lOLnLdzpIj0
 
 = Built-in Pipes
 
-In this lecture we will cover all of the built-in pipes provided by Angular appart from the _async pipe_ which we will cover in detail in a later lecture.
+In this lecture we will cover all of the built-in pipes provided by Angular apart from the _async pipe_ which we will cover in detail in a later lecture.
 
 == Learning Objectives
 

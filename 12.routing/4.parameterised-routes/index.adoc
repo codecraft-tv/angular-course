@@ -15,7 +15,7 @@ lecture_video: Id1QMmfabxU
 
 Sometimes we need part of the path in one or more of our routes (the URLs) to be a _variable_, a common example of this is an _ID_.
 
-Lets say we have a blog and each article in our blog has an ID, the URLs for each blog article might look like
+Let's say we have a blog and each article in our blog has an ID, the URLs for each blog article might look like
 
 ----
 /blog/1
@@ -96,7 +96,7 @@ For the rest of this lecture we are going to continue building the iTunes search
 
 As we perform searches with the app the URL doesn't change. Therefore if I refresh the page _after_ I perform a search then I lose all my search results - the _state_ of my app is lost.
 
-Lets turn the search route into a _parameterised_ route where the search term is in the URL, so if I refresh the page it will perform the same search and get us back to where we were.
+Let's turn the search route into a _parameterised_ route where the search term is in the URL, so if I refresh the page it will perform the same search and get us back to where we were.
 
 === Parameterised Route Configuration
 
@@ -109,7 +109,7 @@ We begin with just adding a variable called `term` to our route configuration, l
 
 But if we now load the app and try to go to the search page nothing happens, the URL changes to `/search` but we are still shown the `HomeComponent`.
 
-The reason for that is that now our url `/search` doesn't match a route so we are falling back to the catch all route which just shows the `HomeComponent`.
+The reason for that is that now our URL `/search` doesn't match a route so we are falling back to the catch-all route which just shows the `HomeComponent`.
 
 To match our new parameterised route we would have to navigate to something like `/search/U2`. We would actually need to pass a parameter to match that route.
 
@@ -125,7 +125,7 @@ Now our app supports both `/search` and `/search/U2`.
 
 === Activated route
 
-Next lets import `ActivatedRoute` and inject it into the constructor of our `SearchComponent`, like so:
+Next let's import `ActivatedRoute` and inject it into the constructor of our `SearchComponent`, like so:
 
 [source,typescript]
 ----
@@ -162,7 +162,7 @@ That way the URL matches the state of your app and if you bookmarked or shared t
 
 In our case what this means is that when the user submits a search, instead of calling `doSearch(...)` we instead navigate to the appropriate search URL and then let the `ActivatedRoute` service notify the `SearchComponent` the route changed and let that perform the search.
 
-This way the URL changes _every-time_ we do a search.
+This way the URL changes _every time_ we do a search.
 
 First we make the click handler on the _Search_ button point to another function called `onSearch(...)` instead of `doSearch(...)`.
 
@@ -185,7 +185,7 @@ onSearch(term:string) {
 ----
 <1>  The second parameter to the link params array is a variable, it's the search `term` the user typed in.
 
-Now when we search `Foo` the url changes to `/search/Foo` the `SearchComponent` gets notified through the `ActivatedRoute` service and performs the search, therefore the URL and the _state_ of our application are now in sync.
+Now when we search `Foo` the URL changes to `/search/Foo` the `SearchComponent` gets notified through the `ActivatedRoute` service and performs the search, therefore the URL and the _state_ of our application are now in sync.
 
 === Optional params
 
@@ -201,7 +201,7 @@ Another way to think about the above is that the variable `term` is _optional_. 
 
 Angular has a mechanism to support _optional_ params with only one route defined.
 
-Firstly lets get rid of the second route with the fixed term variable, leaving us with just one route to support our search like so:
+Firstly let's get rid of the second route with the fixed term variable, leaving us with just one route to support our search like so:
 
 [source,typescript]
 ----
@@ -225,7 +225,7 @@ onSearch(term:string) {
 
 Now when we perform a search the URL changes, _but_ it doesn't quite looks like something we are used to, instead of `/search/U2` we see `/search;term=U2`
 
-NOTE: This is called Matrix URL notation, a series of _optional_ key=value pairs separated with the semicolon ; character.
+NOTE: This is called Matrix URL notation, a series of _optional_ key–value pairs separated with the semicolon ; character.
 
 We can see that the param `term` still gets passed along via the `ActivatedRoute` as `{term: "U2"}`.
 
@@ -253,7 +253,7 @@ Will print out
 Object {}
 ----
 
-So now the `term` param is optional, but since it's optional it sometimes can be blank. Lets add a little bit of defensive coding in our subscribe function so we don't call `doSearch` if no term has been provided, like so:
+So now the `term` param is optional, but since it's optional it sometimes can be blank. Let's add a little bit of defensive coding in our subscribe function so we don't call `doSearch` if no term has been provided, like so:
 
 [source,typescript]
 ----
@@ -272,7 +272,7 @@ So now the `term` param is optional, but since it's optional it sometimes can be
 
 Now if we visit `/search` we are shown a blank screen ready for a search.
 
-* If we perform a search for e.g. `U2` the url changes to `/search;term=U2`
+* If we perform a search for e.g. `U2` the URL changes to `/search;term=U2`
 * If we _refresh_ the page then the application performs a search for `U2` again.
 
 
@@ -280,7 +280,7 @@ Now if we visit `/search` we are shown a blank screen ready for a search.
 
 With parameterised routes we can support variable paths in our routes.
 
-Angular also supports _optional_ routes via passing in an object to the navigate function and the matrix url notation.
+Angular also supports _optional_ routes via passing in an object to the navigate function and the matrix URL notation.
 
 So far we've only shown how we can output _one_ component on the page depending on the route. In the next lecture we are going to show how we can have nested routes and output multiple different components on the page depending on the URL.
 

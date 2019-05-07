@@ -8,7 +8,7 @@ lecture_plan_level: free
 
 Our goal in this lecture is to display a _list_ of jokes instead of just one.
 
-NOTE: To add some visual jazz to our application we are going to be using the twitter bootstrap ui framework and specifically the _card_ style for our `JokeComponent`.
+NOTE: To add some visual jazz to our application we are going to be using the Twitter Bootstrap UI framework and specifically the _card_ style for our `JokeComponent`.
 
 == Learning Outcomes
 
@@ -65,9 +65,9 @@ In the constructor we initialise this array with some hilarious cheese jokes.
 
 === Card Element
 
-You might notice in the template we are using some classes called `card`, `card-block` etc… this is from twitter bootstrap and it's a style called a _card_ which displays a rectangle with a border.
+You might notice in the template we are using some classes called `card`, `card-block` etc… this is from Twitter Bootstrap and it's a style called a _card_ which displays a rectangle with a border.
 
-The basic HTML structure for a twitter bootstrap _card element_ is like so:
+The basic HTML structure for a Twitter Bootstrap _card element_ is like so:
 
 [source,html]
 ----
@@ -137,7 +137,7 @@ Since we are now bootstrapping `JokeListComponent` and it's selector is `joke-li
 </body>
 ----
 
-TIP: The classes `container` and `m-t-1` are from twitter bootstrap and add some nice visual padding to the page.
+TIP: The classes `container` and `m-t-1` are from Twitter Bootstrap and add some nice visual padding to the page.
 
 Now if we run the application we see multiple jokes printed to the screen, like so:
 
@@ -151,7 +151,7 @@ We can repeat the same element multiple times in Angular using the `NgFor` direc
 
 == Listing
 
-NOTE: Since we are now using the JokeListComponent as our root component, our root components tag has changed from `<joke></joke>` to `<joke-list></joke-list>`
+NOTE: Since we are now using the JokeListComponent as our root component, our root component's tag has changed from `<joke></joke>` to `<joke-list></joke-list>`
 
 .src/main.ts
 [source,typescript]

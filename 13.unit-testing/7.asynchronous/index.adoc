@@ -64,7 +64,7 @@ Our first attempt might be to try to test our application without taking into ac
     expect(el.nativeElement.textContent.trim()).toBe('Logout'); # <6>
   });
 ----
-<1> We issue our first change detection run so the view does it's initial update.
+<1> We issue our first change detection run so the view does its initial update.
 <2> We expect the button text to display _Login_
 <3> We change our `AuthService` so it returns a promise resolved to `true`.
 <4> We call `component.ngOnInit()`.
@@ -79,7 +79,7 @@ image::./images/failed-async-test.png[]
 
 It's failing on the last expectation. By the time we run the last expectation the `AuthService.isAuthenticated()` function hasn't _yet_ resolved to a value. Therefore the `needsLogin` property on the `LoginComponent` hasn't been updated.
 
-There are a few ways we can handle asynchronous code in our tests, one is the Jasmine way and two are Angular specific, lets start with the Jasmine way.
+There are a few ways we can handle asynchronous code in our tests, one is the Jasmine way and two are Angular specific, let's start with the Jasmine way.
 
 == Jasmines `done` function
 
@@ -101,13 +101,13 @@ it('Button label via jasmine.done', (done) => { # <1>
   });
 });
 ----
-<1> The jasmine test spec function is passed a function as the first param, we usually call this parameter `done`.
+<1> The Jasmine test spec function is passed a function as the first param, we usually call this parameter `done`.
 <2> We can add a callback function (using the spy) which is called when the promise returned from `isAuthenticated` function resolved. In this function we know that the component has the new value of `needsLogin` and we can add our additional expectation here.
 <3> When we are done with our asynchronous tasks we tell Jasmine via the `done` function.
 
 Jasmine lets us create asynchronous tests by giving us an explict `done` function which we call when the test is complete.
 
-Although it works trying to understand the code can be difficult as it jumps about and is not executed in the order it's written in.
+Although it works, trying to understand the code can be difficult as it jumps about and is not executed in the order it's written in.
 
 == `async` and `whenStable`
 
@@ -131,7 +131,7 @@ it('Button label via async() and whenStable()', async(() => { # <1>
 <1> We wrap our test spec function in another function called `async`.
 <2> We place the tests we need to run after the `isAuthenticated` promise resolves inside this function.
 
-This `async` function executes the code inside it's body in a special _async test zone_. This intercepts and _keeps track_ of all promises created in it's body.
+This `async` function executes the code inside its body in a special _async test zone_. This intercepts and _keeps track_ of all promises created in its body.
 
 Only when all of those pending promises have been resolved does it then resolves the promise returned from `whenStable`.
 
@@ -159,7 +159,7 @@ it('Button label via fakeAsync() and tick()', fakeAsync(() => { # <1>
 <2> We call `tick()` when there are pending asynchronous activities we want to complete.
 
 
-Like the `async` function the `fakeAsync` function executes the code inside it's body in a special _fake async test zone_. This intercepts and _keeps track_ of all promises created in it's body.
+Like the `async` function the `fakeAsync` function executes the code inside its body in a special _fake async test zone_. This intercepts and _keeps track_ of all promises created in its body.
 
 The `tick()` function _blocks execution_ and simulates the passage of time until all pending asynchronous activities complete.
 
@@ -176,7 +176,7 @@ If the code we are testing is asynchronous then we need to take this into accoun
 
 There are three mechanisms we can use.
 
-The jasmine `done` function and spy callbacks. We attach specific callbacks to spies so we know when promises are resolves, we add our test code to thos callbacks and then we call the `done` function. This works but means we need to know about all the promises in our application and be able to hook into them.
+The Jasmine `done` function and spy callbacks. We attach specific callbacks to spies so we know when promises are resolves, we add our test code to those callbacks and then we call the `done` function. This works but means we need to know about all the promises in our application and be able to hook into them.
 
 We can use the Angular `async` and `whenStable` functions, we don't need to track the promises ourselves but we still need to lay our code out via callback functions which can be hard to read.
 

@@ -47,14 +47,14 @@ ngOnDestroy::
 This method will be invoked just before Angular destroys the component. +
 Use this hook to unsubscribe observables and detach event handlers to avoid memory leaks.
 
-=== Hooks for the components children
+=== Hooks for the component's children
 
 These hooks are only called for components and not directives.
 
 NOTE: We will cover the difference between Components and Directives in the next section.
 
 ngAfterContentInit::
-Invoked _after_ Angular performs any content projection into the components view (see the previous lecture on _Content Projection_ for more info). +
+Invoked _after_ Angular performs any content projection into the component's view (see the previous lecture on _Content Projection_ for more info). +
 
 ngAfterContentChecked:: Invoked each time the content of the given component has been checked by the change detection mechanism of Angular.
 
@@ -68,7 +68,7 @@ NOTE: We'll dig into the children hooks in more detail in the next lecture.
 
 In order to demonstrate how the hooks work we'll adjust the joke application we've been working with so far.
 
-Firstly lets change the `JokeComponent` so it hooks into all the phases.
+Firstly let's change the `JokeComponent` so it hooks into all the phases.
 
 All we need to do is to add functions to the component class matching the hook names above, like so:
 
@@ -116,7 +116,7 @@ class JokeComponent {
 ----
 
 
-To easily trigger these hooks lets change the rest of the application. We remove the form and change the parent `JokeListComponent` so it has two buttons. One that adds a joke triggering Angular to create a new `JokeComponent` instance. Another button to clear the list of jokes triggering Angular to delete the `JokeComponents`.
+To easily trigger these hooks let's change the rest of the application. We remove the form and change the parent `JokeListComponent` so it has two buttons. One that adds a joke triggering Angular to create a new `JokeComponent` instance. Another button to clear the list of jokes triggering Angular to delete the `JokeComponents`.
 
 [source,typescript]
 ----
@@ -173,7 +173,7 @@ ngAfterViewInit
 ngAfterViewChecked
 ----
 
-For the first 3 hooks we are also printing out the value of the components `joke` input property.
+For the first three hooks we are also printing out the value of the component's `joke` input property.
 
 We can see that in the `constructor` the input property is undefined.
 
@@ -242,7 +242,7 @@ IMPORTANT: When no value has been set for an input property it gets defaulted to
 
 In the sample code so far we are just defining the hook functions directly on the class, but we can take advantage of a feature of TypeScript, interfaces, and be more explicit regarding our intentions.
 
-Each of these lifecycle hooks has an associated typescript `interface` of the same name but without the `ng` prefix. So `ngOnChanges` has an interface called `OnChanges`.
+Each of these lifecycle hooks has an associated TypeScript `interface` of the same name but without the `ng` prefix. So `ngOnChanges` has an interface called `OnChanges`.
 
 Each interface defines just one hook, by making a class implement an interface we are saying we expect the class to have implemented that member function, if it doesn't then TypeScript should throw an error.
 

@@ -17,4 +17,4 @@ We can _nest_ routes, i.e. have a tree of Components nested one inside another b
 
 We can block access to certain routes by using _Router Guards_. Using _Router Guards_ we can even warn the user if they are about to leave a page with unsaved changes.
 
-There are two strategies we can use for performing client side routing in Angular, the HashLocationStrategies which makes use of the _hash fragment_ part of a URL or we can use the `PathLocationStrategy` which takes advantages of the `pushstate` HTML5 API.
+There are two strategies we can use for performing client-side routing in Angular, the HashLocationStrategies which makes use of the _hash fragment_ part of a URL or we can use the `PathLocationStrategy` which takes advantages of the `pushstate` HTML5 API.

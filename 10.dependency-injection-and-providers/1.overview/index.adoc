@@ -19,7 +19,7 @@ image::./images/a-b-dependency.png[,150]
 
 Realistically when writing applications we can't get away from building numerous dependencies between parts of our code.
 
-For example lets imagine we have a class of `EmailSender`, like so:
+For example let's imagine we have a class of `EmailSender`, like so:
 
 [source,typescript]
 ----
@@ -95,7 +95,7 @@ emailSender.sendEmail(mail);
 
 Previously the `EmailSender` constructor was responsible for creating an _instance_ of its dependency the `MailChimpService`.
 
-Now _something else_ is responsible for creating the _instance_ of `MailChimpService` and then passing it into the `EmailSender` via it's constructor.
+Now _something else_ is responsible for creating the _instance_ of `MailChimpService` and then passing it into the `EmailSender` via its constructor.
 
 So if we wanted to create an instance of the `EmailSender` class we now need to pass in all the required dependencies in the constructor.
 
@@ -109,7 +109,7 @@ Flexible/Easier to re-use::
 +
 We can _re-use_ the `EmailSender` class but with a different email service.
 +
-For example if we wanted to use `SendGridService` instead of `MailChimpService`. As long as  `SendGridService` still has a function with the signature `sendEmai(mail)` we can pass into the `EmailSender` constructor an instance of  `SendGridService` instead of `MailChimpService`, like so:
+For example if we wanted to use `SendGridService` instead of `MailChimpService`. As long as `SendGridService` still has a function with the signature `sendEmai(mail)` we can pass into the `EmailSender` constructor an instance of `SendGridService` instead of `MailChimpService`, like so:
 +
 [source,typescript]
 ----
@@ -117,7 +117,7 @@ emailSender = new EmailSender(new SendGridService());
 ----
 
 Easier to test::
-
++
 Following on from the above we can now _test_ our `EmailSender` class much easier.
 +
 We can pass in a _dummy_ class which doesn't actually send emails however _does_ let us check to see if the `sendEmail` function was called, like so:
@@ -142,7 +142,7 @@ Since the `EmailSender` class is not responsible for creating concrete instances
 +
 As long as the `MailChimpService` implements the `sendEmail` function, _how_ it's constructed and functions internally is of no concern to the `EmailSender` class.
 
-This idea of moving the responsibility of creating concrete instances of dependency's to something else is called _Inversion of Control_, or _IoC_.
+This idea of moving the responsibility of creating concrete instances of dependencies to something else is called _Inversion of Control_, or _IoC_.
 
 The specific design pattern for implementing IoC above is called _Dependency Injection_, we injected the dependencies of `EmailSender` in the constructor.
 
@@ -154,11 +154,11 @@ Angular has its own dependency injection framework, and we really can't build an
 
 The DI framework in Angular consists of 4 concepts working together:
 
-Token:: This uniquely identifies something that we want injected. A _dependancy_ of our code.
-Dependancy:: The actual code we want injected.
-Provider:: This is a map between a _token_ and a list of _dependancies_.
+Token:: This uniquely identifies something that we want injected. A _dependency_ of our code.
+Dependency:: The actual code we want injected.
+Provider:: This is a map between a _token_ and a list of _dependencies_.
+Injector:: This is a function which when passed a _token_ returns a _dependency_ (or list of dependencies).
 
-Injector:: This is a function which when passed a _token_ returns a _dependancy_ (or a list of dependencies)
 == Summary
 
 In this section you will learn:

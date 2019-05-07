@@ -4,7 +4,7 @@ lecture_video: 13f_EhTjf2Y
 :toc:
 = Routing Strategies
 
-With client side SPA's we have two strategies we can use to implement client side routing, one is called the `HashLocationStrategy` and the other is called the PathLocationStrategy.
+With client-side SPAs we have two strategies we can use to implement client-side routing, one is called the `HashLocationStrategy` and the other is called the `PathLocationStrategy`.
 
 The default in Angular is the `PathLocationStrategy`, if we do nothing that is the strategy Angular will employ.
 
@@ -24,7 +24,7 @@ RouterModule.forRoot(routes, {useHash: true})
 
 URL can contain some data prepended with a `#` character.
 
-The `#` part of the url is called the _hash fragment_.
+The `#` part of the URL is called the _hash fragment_.
 
 It's normally used so that people can link to a particular section in a HTML page, specifically anchor tags, for example if there is an anchor tag with an name attribute of `routing-strategies` like so:
 
@@ -49,7 +49,7 @@ The `#/foo/moo/loo` part of the URL is *never* sent.
 
 If you were to look at your logs on the server you would never see any reference to `#/foo/moo/loo`
 
-Another way to think about the _hash fragment_, since it's never sent to the server, is that its for storing the state of your _client_ application.
+Another way to think about the _hash fragment_, since it's never sent to the server, is that it's for storing the state of your _client_ application.
 
 It's therefore an ideal solution for implementing _client_ side routing:-
 
@@ -57,7 +57,7 @@ It's therefore an ideal solution for implementing _client_ side routing:-
 * It won't confuse the server side since the hash fragment is never sent to the server.
 * It can be programmatically changed via JavaScript.
 
-And that's exactly why, for a number of years, the primary way of implementing client side routing was via hash fragments.
+And that's exactly why, for a number of years, the primary way of implementing client-side routing was via hash fragments.
 
 Taking a look at the app we've built so far, if running locally the URLs look something like:
 
@@ -93,11 +93,11 @@ By using the `pushstate` API we can change the URL to
 localhost:4040/artist/1234/tracks
 ----
 
-And the browser *won't* make a GET request to the server for `/artist/1234/tracks`
+And the browser *won't* make a GET request to the server for `/artist/1234/tracks`.
 
 // END DEMO
 
-That sounds perfect for client side routing right?
+That sounds perfect for client-side routing right?
 
 * We get a URL that looks just like any other URL so can be bookmarked, shared and so on.
 * The browser doesn't send the request to the server so the routing is handled on the client side.
@@ -148,7 +148,7 @@ For Angular Universal to work URLs need to be passed to the server side which is
 
 == Summary
 
-The default client side routing strategy used in Angular is the `PathLocationStrategy`.
+The default client-side routing strategy used in Angular is the `PathLocationStrategy`.
 
 This changes the URL programmatically using the HTML5 History API in such a way that the browser doesn't make a request to the server for the new URL.
 

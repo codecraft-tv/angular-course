@@ -13,7 +13,7 @@ JavaScript has a prototype-based, object-oriented programming model. It creates 
 
 We normally call the way object orientation is implemented in C++ or Java as the _Classical OO Pattern_ and the way it's implemented in JavaScript as the _Prototype Pattern_.
 
-Although the prototype pattern is a valid way to implement object orientation it can be confusing for newer javascript developers or developers used to the classical pattern. 
+Although the prototype pattern is a valid way to implement object orientation it can be confusing for newer JavaScript developers or developers used to the classical pattern. 
 
 So in ES6 we have an alternative syntax, one that closer matches the classical object orientated pattern as is seen in other languages.
 
@@ -21,13 +21,13 @@ TIP: Under the hood the new syntax still uses the prototype pattern with constru
 
 NOTE: TypeScript supports the ES6 `class` syntax but also adds some other feature like access modifiers and interfaces, so in this lecture we'll be writing TypeScript rather than pure ES6.
 
-// We'll also be coding locally instead of plunker so we can use `tsc` to transpile our typescript into javascript and we'll be using node to execute.
+// We'll also be coding locally instead of in Plunker so we can use `tsc` to transpile our TypeScript into JavaScript and we'll be using Node to execute.
 
 
 
 == Class
 
-A `class` is a blueprint for creating objects with specific functions and properties already attached to it, lets go through a simple example line by line:
+A `class` is a blueprint for creating objects with specific functions and properties already attached to it, let's go through a simple example line by line:
 
 [source,typescript]
 ----
@@ -58,7 +58,7 @@ class Person { # <1>
 
 A class is a _blueprint_ for creating an object, we call that created object an _instance of a class_, or a _class instance_ or just _instance_ for short.
 
-We instantiate a class by using the `new` keyword and when that happens javascript calls the `constructor` function. We can pass to the constructer arguments which it uses to initialise properties or call other function, like so:
+We instantiate a class by using the `new` keyword and when that happens JavaScript calls the `constructor` function. We can pass to the constructer arguments which it uses to initialise properties or call other function, like so:
 
 [source,typescript]
 ----
@@ -156,7 +156,7 @@ let asim = new Student("Asim", "Hussain", "Angular 2");
 console.log(asim.test());
 ----
 
-Compiling the above with typescript prints out this error:
+Compiling the above with TypeScript prints out this error:
 
 [source]
 ----
@@ -165,11 +165,11 @@ error TS2341: Property 'firstName' is private and only accessible within class '
 
 By marking the `firstName` property as `private` it is now only visible from one of the methods on `Person` class.
 
-We can also define _class methods_ as `private` with the same effect. If we tried to call a `private` method from _outside_ of a Person class, the typescript transpiler throws an error.
+We can also define _class methods_ as `private` with the same effect. If we tried to call a `private` method from _outside_ of a Person class, the TypeScript transpiler throws an error.
 
 There are 3 access modifiers:
 
-public:: This is the default and means its visible everywhere.
+public:: This is the default and means it's visible everywhere.
 private:: Only member functions of the class it's declared in can see this.
 protected:: Only the class it's declared in and any class that _inherits_ from that class can see this.
 
@@ -228,7 +228,7 @@ interface Human {
 
 IMPORTANT: Since interfaces are all about the *public* interface of a class they can't have access modifiers, the properties above have to be _public_.
 
-If the Person class then doesn't implement at least a `firstName` and a `lastName` then typescript throws an error like so:
+If the Person class then doesn't implement at least a `firstName` and a `lastName` then TypeScript throws an error like so:
 
 [source]
 ----

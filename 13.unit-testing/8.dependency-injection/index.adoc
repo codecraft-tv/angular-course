@@ -23,7 +23,7 @@ TestBed.configureTestingModule({
 });
 ----
 
-We can then ask the `TestBed` to resolve a token into a dependency using it's internal injector, like so:
+We can then ask the `TestBed` to resolve a token into a dependency using its internal injector, like so:
 
 [source,typescript]
 ----
@@ -45,7 +45,7 @@ it('Service injected via inject(...) and TestBed.get(...) should be the same ins
 
 The `inject` function wraps the test spec function but lets us also _inject_ dependencies using the parent injector in the `TestBed`.
 
-We use it lik so:
+We use it like so:
 
 [source,typescript]
 ----
@@ -60,11 +60,11 @@ The first param is an array of tokens we want to resolve dependencies for, the s
 Using the `inject` function:
 
 * Makes it clear what dependencies each spec function uses.
-* If each test spec requires different mocks and spys this is a better solution that resolving it once per test suite.
+* If each test spec requires different mocks and spies this is a better solution than resolving it once per test suite.
 
 [IMPORTANT]
 ====
-This will eventually move to becoming an function decorator like so:
+This will eventually move to becoming a function decorator like so:
  +
  +
 [source,typescript]
@@ -73,9 +73,9 @@ This will eventually move to becoming an function decorator like so:
 ----
 ====
 
-== Overriding the components providers
+== Overriding the component's providers
 
-_Before_ we create a component via the `TestBed` we can _override_ it's providers. Lets imagine we have a mock `AuthService` like so:
+_Before_ we create a component via the `TestBed` we can _override_ its providers. Let's imagine we have a mock `AuthService` like so:
 
 [source,typescript]
 ----
@@ -86,7 +86,7 @@ class MockAuthService extends AuthService {
 }
 ----
 
-We can override the components providers to use this mocked `AuthService` like so.
+We can override the component's providers to use this mocked `AuthService` like so.
 
 [source,typescript]
 ----
@@ -101,9 +101,9 @@ The syntax is pretty specific, it's called a `MetaDataOverride` and it can have 
 
 == Resolving via the component injector
 
-Now our component has been configured with it's own providers it will therefore have a child injector.
+Now our component has been configured with its own providers it will therefore have a child injector.
 
-When the component is created since it has it's own injector it will resolve the `AuthService` itself and not forward the request to it's parent `TestBed` injector.
+When the component is created since it has its own injector it will resolve the `AuthService` itself and not forward the request to its parent `TestBed` injector.
 
 If we wanted to get the _same_ instance of dependency that was passed to the component constructor we need to resolve using the component injector, we can do that through the component fixture like so:
 
@@ -112,7 +112,7 @@ If we wanted to get the _same_ instance of dependency that was passed to the com
 componentService = fixture.debugElement.injector.get(AuthService);
 ----
 
-The above code resolves the token using the components child injector.
+The above code resolves the token using the component's child injector.
 
 == Summary
 
@@ -124,7 +124,7 @@ We can resolve using the `inject` function at the start of each test spec.
 
 We can also override the default providers for our components using the `TestBed`.
 
-We can then also use the components _child injector_ to resolve tokens.
+We can then also use the component's _child injector_ to resolve tokens.
 
 == Listing
 

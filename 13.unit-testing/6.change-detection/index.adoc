@@ -7,12 +7,12 @@ lecture_video: kWW3O13X6rI
 
 Trying to test whether changes in the state of our application trigger changes in the view without the Angular Test Bed is complicated. However with the ATB it's much simpler.
 
-In this lecture start interacting with our components template. We add a test to make sure that the bindings in the view updates as we expect when variables in our component change.
+In this lecture start interacting with our component's template. We add a test to make sure that the bindings in the view updates as we expect when variables in our component change.
 
 == Learning Objectives
 
-* How to inspect a components view.
-* How to trigger change detection so a components view updates based on state changes in our application.
+* How to inspect a component's view.
+* How to trigger change detection so a component's view updates based on state changes in our application.
 
 == Setup
 
@@ -80,19 +80,19 @@ describe('Component: Login', () => {
   });
 });
 ----
-<1> We've imported a few more classes that are needed when interacting with a components view, `DebugElement` and `By`.
+<1> We've imported a few more classes that are needed when interacting with a component's view, `DebugElement` and `By`.
 <2> We have another variable called `el` which holds something called a `DebugElement`.
 <3> We store a reference to a DOM element in our `el` variable.
 
-The `fixture` as well as holding an instance of the component also holds a reference to something called a `DebugElement`, this is a wrapper to the low level DOM element that represents the components view, via the `debugElement` property.
+The `fixture` as well as holding an instance of the component also holds a reference to something called a `DebugElement`, this is a wrapper to the low-level DOM element that represents the component's view, via the `debugElement` property.
 
-We can get references to other child nodes by querying this `debugElement` with a `By` class. The `By` class lets us query using a a number of methods, one is via a css class like we have in our example another way is to request by a type of directive like `By.directive(MyDirective)`.
+We can get references to other child nodes by querying this `debugElement` with a `By` class. The `By` class lets us query using a number of methods, one is via a CSS class like we have in our example, another way is to request by a type of directive like `By.directive(MyDirective)`.
 
-We request a reference to the `a` tag that exists in the components view, this is the button which either says _Login_ or _Logout_ depending on whether the `AuthService` says the user is authenticated or not.
+We request a reference to the `a` tag that exists in the component's view, this is the button which either says _Login_ or _Logout_ depending on whether the `AuthService` says the user is authenticated or not.
 
 We can find out the text content of the tag by calling `el.nativeElement.textContent.trim()`, we'll be using that snippet in the test specs later on.
 
-Lets now add a basic test spec like so:
+Let's now add a basic test spec like so:
 
 [source,typescript]
 ----
@@ -116,7 +116,7 @@ We initially _expect_ the text inside the `a` tag to be _blank_.
 
 That's because when Angular first loads no change detection has been triggered and therefore the view doesn't show either the `Login` or `Logout` text.
 
-`fixture` is a wrapper for our components environment so we can control things like change detection.
+`fixture` is a wrapper for our component's environment so we can control things like change detection.
 
 To trigger change detection we call the function `fixture.detectChanges()`, now we can update our test spec to:
 
@@ -131,7 +131,7 @@ it('login button hidden when the user is authenticated', () => {
 
 Once we trigger a change detection run Angular checks property bindings and since the `AuthService` defaults to not authenticated we show the text `Login`.
 
-Now lets change the `AuthService` so it now returns authenticated, like so:
+Now let's change the `AuthService` so it now returns authenticated, like so:
 
 [source,typescript]
 ----
@@ -163,7 +163,7 @@ Now we've triggered a second change detection run Angular detected that the `Aut
 
 == Summary
 
-By using the ATB and `fixtures` we can _inspect_ the components view through `fixture.debugElement` and also trigger a change detection run by calling `fixture.detectChanges()`.
+By using the ATB and `fixtures` we can _inspect_ the component's view through `fixture.debugElement` and also trigger a change detection run by calling `fixture.detectChanges()`.
 
 Next up we'll look at how to can test asynchronous functions in Angular.
 

@@ -13,20 +13,20 @@ include::{docdir}/content/courses/angular/CONTRIBUTORS.adoc[]
 
 == StackBlitz
 
-Angular comes with a command line tool which greatly eases the process of creating and building Angular applications locally on your computer.
+Angular comes with a command-line tool which greatly eases the process of creating and building Angular applications locally on your computer.
 
 We cover how to use the CLI in this course however for most of the lectures we will be using an online web editor called http://stackblitz.com[StackBlitz] to edit and run our Angular applications.
 
 * No setup required, everyone can code in the browser instantly.
 * StackBlitz is the name of the site, a *blitz* is an individual project hosted on StackBlitz.
-* Each blitz has it's own unique URL which you can share with others so it's a useful way to show others your work or ask why something isn't working.
-* You _can't_ edit someone elses blitz but you can _fork_ it. Forking creates a new blitz that you own with all the files copied across.
+* Each blitz has its own unique URL which you can share with others so it's a useful way to show others your work or ask why something isn't working.
+* You _can't_ edit someone else's blitz but you can _fork_ it. Forking creates a new blitz that you own with all the files copied across.
 
 === Structure of a Blitz
 
 The file structure of a blitz conform mostly to the standard Angular layout with the key exception that we put as much code as possible into a *single file*. This is so in the associated videos we scroll up and down rather than flip between files. It's far easier to keep a track of where I am in the code if i'm scrolling up and down a file, it's far harder to keep a track of where I am in the code if they are split in multiple files and you blinked for a second when I clicked on a tab to change files.
 
-WARNING: This is *BAD* practice to do in production applications but a *GREAT* practice for teaching especially via video content.
+WARNING: This is *BAD* practice to do in production applications but a *GREAT* practice for teaching, especially via video content.
 
 This isn't going to be to everyone's tastes, but many years of teaching programming has led me to conclude this is the best compromise that appeases most developers.
 
@@ -45,14 +45,14 @@ This isn't going to be to everyone's tastes, but many years of teaching programm
 └── tslint.json <9>
 ----
 <1> This is the main configuration file for Angular, you need this to run the Angular CLI.
-<2> `package.json` is a configuration file that npm uses to install the required dependant libraries (These are libraries that you need in order to *build* your project, the code you need to deploy for your web app will be much smaller)
+<2> `package.json` is a configuration file that npm uses to install the required dependent libraries (These are libraries that you need in order to *build* your project, the code you need to deploy for your web app will be much smaller)
 <3> This is the file where all our code is going to go.
 <4> Polyfills to support older browsers
 <5> The CSS for this web application (we are using Bootstrap 4 *Alpha* Release)
 <6> A configuration file to tell TypeScript how to compile into JavaScript.
 <7> Configuration for the linter, so you can control what warnings you want to see when compiling.
-<8> A top level TypeScript configuration file (subfolders can override, like above)
-<9> A top level TypeScript linter file (subfolders can override, like above)
+<8> A top-level TypeScript configuration file (subfolders can override, like above)
+<9> A top-level TypeScript linter file (subfolders can override, like above)
 
 
 === Running the same code locally
@@ -66,7 +66,6 @@ That would work for most StackBlitz Angular projects but since our project struc
 Instead clone the official repository for this course and run from there, like so:
 
 ----
-
 git clone https://github.com/codecraft-tv/angular-course
 cd angular-course
 cd 1.quickstart/3.first-app/code
@@ -74,7 +73,7 @@ npm install
 npm start
 ----
 
-This will use the Angular CLI to compile the project and run a local devserver listening to port 4200. 
+This will use the Angular CLI to compile the project and run a local development server listening to port 4200.
 
 If you visit http://localhost:4200 in your browser you will see your project running.
 

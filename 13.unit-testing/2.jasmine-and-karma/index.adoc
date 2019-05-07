@@ -5,9 +5,9 @@ lecture_video: Y2k8Ohhf--o
 :toc:
 = Jasmine & Karma
 
-We can test our Angular applications from scratch by writing and executing pure javascript functions. Creating instances of the relevant classes, calling functions and checking the actual versus expected result.
+We can test our Angular applications from scratch by writing and executing pure JavaScript functions. Creating instances of the relevant classes, calling functions and checking the actual versus expected result.
 
-But since testing is such a common activity with javascript there are a number of testing libraries and frameworks we can use which reduce the amount of time it takes to write tests.
+But since testing is such a common activity with JavaScript there are a number of testing libraries and frameworks we can use which reduce the amount of time it takes to write tests.
 
 Two such tools and frameworks that are used when testing Angular is _Jasmine_ and _Karma_ and a discussion of those is the topic of this lecture.
 
@@ -21,7 +21,7 @@ Two such tools and frameworks that are used when testing Angular is _Jasmine_ an
 
 == Jasmine
 
-Jasmine is a javascript testing framework that supports a software development practice called https://en.wikipedia.org/wiki/Behavior-driven_development[Behaviour Driven Development], or BDD for short. It's a specific flavour of https://en.wikipedia.org/wiki/Test-driven_development[Test Driven Development] (TDD).
+Jasmine is a JavaScript testing framework that supports a software development practice called https://en.wikipedia.org/wiki/Behavior-driven_development[Behaviour-Driven Development], or BDD for short. It's a specific flavour of https://en.wikipedia.org/wiki/Test-driven_development[Test-Driven Development] (TDD).
 
 Jasmine, and BDD in general, attempts to describe tests in a human readable format so that non-technical people can understand what is being tested. However even if you _are_ technical reading tests in BDD format makes it a lot easier to understand what's going on.
 
@@ -34,7 +34,7 @@ function helloWorld() {
 }
 ----
 
-We would write a jasmine test _spec_ like so:
+We would write a Jasmine test _spec_ like so:
 
 [source,typescript]
 ----
@@ -49,8 +49,6 @@ describe('Hello world', () => { # <1>
 <2> The `it(string, function)` function defines an individual _Test Spec_, this contains one or more _Test Expectations_.
 <3> The `expect(actual)` expression is what we call an _Expectation_. In conjunction with a _Matcher_ it describes an _expected_ piece of behaviour in the application.
 <4> The `matcher(expected)` expression is what we call a _Matcher_. It does a boolean comparison with the `expected` value passed in vs. the `actual` value passed to the `expect` function, if they are false the _spec_ fails.
-
-
 
 
 === Built-in matchers
@@ -120,7 +118,7 @@ describe('Hello world', () => {
 
 === Running Jasmine tests
 
-To manually run Jasmine tests we would create a HTML file and include the required jasmine javascript and css files like so:
+To manually run Jasmine tests we would create a HTML file and include the required Jasmine JavaScript and CSS files like so:
 
 [source,html]
 ----
@@ -177,23 +175,23 @@ If we wanted to debug the code we would use the developer tools available to us 
 
 == Karma
 
-Manually running Jasmine tests by refreshing a browser tab repeatedly in different browsers every-time we edit some code can become tiresome.
+Manually running Jasmine tests by refreshing a browser tab repeatedly in different browsers every time we edit some code can become tiresome.
 
-Karma is a tool which lets us spawn browsers and run jasmine tests inside of them all from the command line. The results of the tests are also displayed on the command line.
+Karma is a tool which lets us spawn browsers and run Jasmine tests inside of them all from the command line. The results of the tests are also displayed on the command line.
 
 Karma can also watch your development files for changes and re-run the tests automatically.
 
-Karma lets us run jasmine tests as part of a development tool chain which requires tests to be runnable and results inspectable via the command line.
+Karma lets us run Jasmine tests as part of a development tool chain which requires tests to be runnable and results inspectable via the command line.
 
 It's not necessary to know the internals of how Karma works. When using the Angular CLI it handles the configuration for us and for the rest of this section we are going to run the tests using only Jasmine.
 
 == Angular CLI
 
-When creating Angular projects using using the Angular CLI it defaults to creating and running unit tests using Jasmine and Karma.
+When creating Angular projects using the Angular CLI it defaults to creating and running unit tests using Jasmine and Karma.
 
-Whenever we create files using the CLI as well as creating the main code file it also creates simple jasmine spec file named the same as the main code file but ending in .spec.ts, like so:
+Whenever we create files using the CLI, as well as creating the main code file it also creates a simple Jasmine spec file named the same as the main code file but ending in `.spec.ts`.
 
-If we create a Pipe using the CLI like so:
+So if we create a Pipe using the CLI, like so:
 
 ----
 ng generate pipe My
@@ -202,14 +200,12 @@ ng generate pipe My
 This would create two files:
 
 * `my-pipe.ts` - This is the main code file where we put the code for the pipe.
-* `my-pipe.spec.ts` - This is the jasmine test suite for the pipe.
+* `my-pipe.spec.ts` - This is the Jasmine test suite for the pipe.
 
 The spec file will have some code already bootstrapped, like so:
 
 [source,typescript]
 ----
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { MyPipe } from './my.pipe';
 
@@ -237,7 +233,7 @@ However for this section, to give you an easy way to view and play with the code
 
 This so we can easily share code via a Plunker like we have done for all the other sections in this course.
 
-An Angular Jasmine Plunker looks very similar to a normal Jasmine Plunker appart from a few key differences:
+An Angular Jasmine Plunker looks very similar to a normal Jasmine Plunker apart from a few key differences:
 
 1. We also include the required Angular libraries and some patches for Jasmine so it works better with Angular.
 
@@ -265,7 +261,7 @@ var __spec_files__ = [
 ----
 
 [start=3]
-1. We then load a _shim_ javascript file which triggers running the test specs once we have finished transpiling and loading the transpiled files in the browser.
+1. We then load a _shim_ JavaScript file which triggers running the test specs once we have finished transpiling and loading the transpiled files in the browser.
 
 [source,html]
 ----
@@ -302,13 +298,13 @@ fdescribe('Hello world', () => { # <1>
 
 == Summary
 
-Jasmine is a testing framework that supports _Behavior Driven Development_. We write tests in _Test Suites_ which are composed of one or more _Test Specs_ which themselves are composed of one or more _Test Expectations_.
+Jasmine is a testing framework that supports _Behavior-Driven Development_. We write tests in _Test Suites_ which are composed of one or more _Test Specs_ which themselves are composed of one or more _Test Expectations_.
 
-We can run Jasmine tests in a browser ourselves by setting up and loading a HTML file, but more commonly we use a command line tool called Karma. Karma handles the process of creating HTML files, opening browsers and running tests and returning the results of those tests to the command line.
+We can run Jasmine tests in a browser ourselves by setting up and loading a HTML file, but more commonly we use a command-line tool called Karma. Karma handles the process of creating HTML files, opening browsers and running tests and returning the results of those tests to the command line.
 
-If you use the Angular CLI to manage projects it automatically creates stub jasmine spec files for you when generating code. It also handles the Karama configuration, transpilation and bundling of your files so all you need to do in order to run your tests is type the command `ng test`.
+If you use the Angular CLI to manage projects it automatically creates stub Jasmine spec files for you when generating code. It also handles the Karama configuration, transpilation and bundling of your files so all you need to do in order to run your tests is type the command `ng test`.
 
-For the purposes of this section we will be using a simple browser based Jasmine test runner so we can share the code easily via plunker.
+For the purposes of this section we will be using a simple browser based Jasmine test runner so we can share the code easily via Plunker.
 
 == Listing
 

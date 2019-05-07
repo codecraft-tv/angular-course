@@ -21,13 +21,13 @@ If the condition is `false` the element the directive is _attached to_ will be _
 The difference between `[hidden]='false'` and `*ngIf='false'` is that the first method simply _hides_ the element. The second method with `ngIf` _removes_ the element completely from the DOM.
 ====
 
-We define the condition by passing an expression to the directive which is evaluated in the context of it's host component.
+We define the condition by passing an expression to the directive which is evaluated in the context of its host component.
 
 The syntax is: `*ngIf="<condition>"`
 
-Lets use this in an example, we've taken the same code sample as we used for the `NgFor` lecture but changed it slightly. Each person now has an age as well as a name.
+Let's use this in an example, we've taken the same code sample as we used for the `NgFor` lecture but changed it slightly. Each person now has an age as well as a name.
 
-Lets add an `NgIf` directive to the template so we only show the element if the age is less than 30, like so:
+Let's add an `NgIf` directive to the template so we only show the element if the age is less than 30, like so:
 
 [source,typescript]
 ----
@@ -92,9 +92,9 @@ NOTE: This is exactly the same as Angular 1's `ng-if` directive however Angular 
 
 == NgSwitch
 
-Lets imagine we wanted to print peoples names in different colours depending on _where_ they are from. Green for UK, Blue for USA, Red for HK.
+Let's imagine we wanted to print peoples names in different colours depending on _where_ they are from. Green for UK, Blue for USA, Red for HK.
 
-With bootstrap we can change the text color by using the `text-danger`, `text-success`, `text-warning` and `text-primary` classes.
+With Bootstrap we can change the text color by using the `text-danger`, `text-success`, `text-warning` and `text-primary` classes.
 
 We _could_ solve this by having a series of *ngIf statements, like so:
 
@@ -118,7 +118,7 @@ We _could_ solve this by having a series of *ngIf statements, like so:
 
 This initially seems to make sense until we try to create our _else_ style element. We have to check to see if the person is not from any of the countries we have specified before. Resulting in a pretty long `ngIf` expression and it will only get worse the more countries we add.
 
-Most languages, including javascript, have a language construct called a `switch` statement to solve this kind of problem. Angular also provides us with similar functionality via something called the `NgSwitch` directive.
+Most languages, including JavaScript, have a language construct called a `switch` statement to solve this kind of problem. Angular also provides us with similar functionality via something called the `NgSwitch` directive.
 
 This directive allows us to render different elements depending on a given condition, in fact the `NgSwitch` directive is actually a number of directives working in conjunction, like so:
 
@@ -178,7 +178,7 @@ class NgSwitchExampleComponent {
 ----
 1. We bind an expression to the `ngSwitch` directive.
 2. The `ngSwitchCase` directive lets us define a condition which if it matches the expression in (1) will render the element it's attached to.
-3. If no conditions are met in the switch statement it will check to see if there is an ngSwitchDefault directive, if there is it will render the element thats attached to, however it is optional - if it's not present it simply won't display anything if no matching ngSwitchCase directive is found.
+3. If no conditions are met in the switch statement it will check to see if there is an ngSwitchDefault directive, if there is it will render the element that's attached to, however it is optional - if it's not present it simply won't display anything if no matching ngSwitchCase directive is found.
 
 
 The key difference between the `ngIf` solution is that by using `NgSwitch` we evaluate the expression only once and then choose the element to display based on the result.

@@ -8,19 +8,19 @@ lecture_plan_level: free
 
 == Transpile-time type checking
 
-WARNING: The video mentions using the `typings` tool to install 3rd party type definitions. This has been depreciated since `TypeScript` version 2.0 in favour of the `@types` npm packages, see the end of this lecture for information on using `@types`. 
+WARNING: The video mentions using the `typings` tool to install third-party type definitions. This has been deprecated since `TypeScript` version 2.0 in favour of the `@types` npm packages, see the end of this lecture for information on using `@types`. 
 
 Some of the most common mistakes we make while writing JavaScript code is to misspell a property or a method name.
 
 We only find out about the mistake when we get a _runtime error_, that is to say when we are running our application. 
 
-NOTE: This is why testing is so important for javascript applications, only _running_ them can surface errors.
+NOTE: This is why testing is so important for JavaScript applications, only _running_ them can surface errors.
 
 Other languages like C++ or Java have something called _type checking_, during a compilation phase it first checks for some simple mistakes in the code and raises an error if it finds any.
 
 TypeScripts transpilation mechanism also performs _type checking_, however it only works when we tell TypeScript the _type_ of things.
 
-e.g. in javascript we might write:
+e.g. in JavaScript we might write:
 
 [source,typescript]
 ----
@@ -33,7 +33,7 @@ We expected the type of the `a` variable to remain a number over its life. But b
 
 Only if one of the functions which depends on `a` starts misbehaving do we even get a clue that something might be wrong.
 
-However with typescript we can clearly state that we want the `a` variable to always hold a number, like so:
+However with TypeScript we can clearly state that we want the `a` variable to always hold a number, like so:
 
 [source,typescript]
 ----
@@ -54,7 +54,7 @@ We get this error:
 error TS2322: Type 'string' is not assignable to type 'number'.
 ----
 
-If we take advantage of types in typescript the transpiler will warn us with a transpile-time errors.
+If we take advantage of types in TypeScript the transpiler will warn us with a transpile-time errors.
 
 == Supported Types
 
@@ -244,7 +244,7 @@ class Post<T> {
 }
 ----
 
-Finally when we want to create a specific type of Post we can declare it like so:
+Finally, when we want to create a specific type of Post we can declare it like so:
 
 [source,typescript]
 ----
@@ -298,12 +298,12 @@ We can use something called an _ambient type definition_.
 
 This is a file that contains meta-data about the types in another library, a _meta-type_ file.
 
-This repository (https://github.com/DefinitelyTyped/DefinitelyTyped[https://github.com/DefinitelyTyped/DefinitelyTyped]) contains type definitions for some of the most popular 3rd party javascript libraries.
+This repository (https://github.com/DefinitelyTyped/DefinitelyTyped[https://github.com/DefinitelyTyped/DefinitelyTyped]) contains type definitions for some of the most popular third-party JavaScript libraries.
 
 To use them in a file we simply:-
 
 . Download the associated type file, for example `jquery.d.ts`.
-. In the typescript file where we want to _use_ the 3rd party library, add this to the top of the file:
+. In the TypeScript file where we want to _use_ the third-party library, add this to the top of the file:
 [source]
 ----
 /// <reference path="jquery.d.ts" />
@@ -311,7 +311,7 @@ To use them in a file we simply:-
 
 === @types
 
-Thats a bit cumbersome so since TypeScript version 2.0 we can use the `@types` npm packages instead.
+That's a bit cumbersome so since TypeScript version 2.0 we can use the `@types` npm packages instead.
 
 All the type definitions are now available in the npm scope `@types`. Which means if the types exist we can install it like so::
 
@@ -320,7 +320,7 @@ All the type definitions are now available in the npm scope `@types`. Which mean
 npm install --save @types/angular
 ----
 
-The above are the type defintions for AngularJS (Angular version 1.x). 
+The above are the type definitions for AngularJS (Angular version 1.x).
 
 If you were to import `angular` into your project like so:
 
@@ -337,7 +337,7 @@ With transpile-time type checking TypeScript can help uncover bugs much earlier 
 
 Using types is optional but highly recommended by the Angular team.
 
-If using 3rd party libraries that have already been transpiled into javascript, typescript can still perform transpile-time type checking if we include the type definition file for the library.
+If using third-party libraries that have already been transpiled into JavaScript, TypeScript can still perform transpile-time type checking if we include the type definition file for the library.
 
 
 == Listing

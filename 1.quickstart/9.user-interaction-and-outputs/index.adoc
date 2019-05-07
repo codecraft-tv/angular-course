@@ -19,7 +19,7 @@ We _could_ add a form in our `JokeListComponent` it would definitely be easier t
 
 However we are going create a new component to support the form, perhaps we want to re-use this form in other places in our application or perhaps we want this functionality in one component so it's easier to test in isolation later on.
 
-This component renders a bootstrap form on the page with two fields, setup and punchline, and a Create button.
+This component renders a Bootstrap form on the page with two fields, setup and punchline, and a Create button.
 
 When architecting an Angular application I often find it helps to first think about _how_ your component is going to be used.
 
@@ -27,12 +27,12 @@ I believe our form component is best placed in the `JokeListComponent` template,
 
 [source,html]
 ----
-<joke-form> # <1>
+<joke-form # <1>
   (jokeCreated)="addJoke($event)"> # <2>
 </joke-form>
 <joke *ngFor="let j of jokes" [joke]="j"></joke>
 ----
-<1> The components tag, its selector, is going to be `joke-form`.
+<1> The component's tag, its selector, is going to be `joke-form`.
 <2> The component is going to emit an event called `jokeCreated` whenever a user clicks the Create button.
 
 
@@ -42,13 +42,13 @@ When the `jokeCreated` event is emitted I want to call the `addJoke` function.
 
 NOTE: We'll go through what `$event` means a bit later on in this chapter.
 
-The above syntax describes the behaviour we expect from our `JokeFormComponent`, lets now go and create it.
+The above syntax describes the behaviour we expect from our `JokeFormComponent`, let's now go and create it.
 
 == The JokeFormComponent
 
-The component renders a twitter bootstrap formatted form with two fields and a submit button, like so: 
+The component renders a Twitter Bootstrap formatted form with two fields and a submit button, like so: 
 
-[source, typescript]
+[source,typescript]
 ----
 @Component({
   selector: 'joke-form',
@@ -110,7 +110,7 @@ When the `jokeCreated` event fires we are going to pass out an instance of a `Jo
 NOTE: We are initialising the property when it's defined, in one line. Previously we just declared the properties and initialised them in a constructor.
 The method you choose is up to you, with situations like this when the property will never need to change over time I like to initialise and declare on one line.
 
-Lets now create a function called `createJoke()` and have it actually output an event, like so:
+Let's now create a function called `createJoke()` and have it actually output an event, like so:
 
 [source,typescript]
 ----
@@ -175,7 +175,7 @@ Breaking this down, in the template we bind to the jokeCreated property like so:
 This calls the `addJoke` function when the `jokeCreated` property outputs an event.
 
 
-NOTE: `$event` is a special variable and holds whatever was emitted by the jokeCreated EventEmitter, in our case its an instance of a Joke.
+NOTE: `$event` is a special variable and holds whatever was emitted by the jokeCreated EventEmitter, in our case it's an instance of a Joke.
 
 [source,typescript]
 ----
@@ -212,7 +212,7 @@ This tells Angular to bind this `&lt;input&gt;` control to the variable `setup`.
 
 We can then use this variable `setup` in other places in the template.
 
-NOTE: `setup` is only available as a variable in the template, we don't automatically see the variable `setup` inside the javascript code of our `JokeFormComponent` class.
+NOTE: `setup` is only available as a variable in the template, we don't automatically see the variable `setup` inside the JavaScript code of our `JokeFormComponent` class.
 
 `setup` now points to the DOM element that represents an `&lt;input&gt;` control, which is an instance of the type `HTMLInputElement`.
 
@@ -228,7 +228,7 @@ We do the same to the other punchline input control, then we can pass both the s
 </button>
 ----
 
-Finally we change the `createJoke` function so it accepts these new arguments and uses them to construct an instance of a Joke, like so:
+Finally, we change the `createJoke` function so it accepts these new arguments and uses them to construct an instance of a Joke, like so:
 
 [source,typescript]
 ----

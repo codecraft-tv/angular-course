@@ -6,10 +6,10 @@ disable_run_code: true
 :sourcedir: {docdir}/content/{filedir}/code
 = Angular CLI
 
-Angular now comes with a command line interface (CLI) to make it easier and faster to build Angular applications.
+Angular now comes with a command-line interface (CLI) to make it easier and faster to build Angular applications.
 
 ////
-We'll still be using plunker for most of this course. Thats because of plunkers convience in that I can give you a link with some source code and you can view it and run it straight away. And also so you easily ask for help by sharing a link to your plunker, we can't do that with an Angular CLI project.
+We'll still be using Plunker for most of this course. That's because of Plunker's convenience in that I can give you a link with some source code and you can view it and run it straight away. And also so you easily ask for help by sharing a link to your plunker, we can't do that with an Angular CLI project.
 
 However when you start building your own proper Angular projects I expect you to use the Angular CLI. I use it for my projects and it saves a lot of time and standardises the structure and layout of Angular projects meaning that other developers can hit the floor running on your projects.
 ////
@@ -22,18 +22,19 @@ Bootstrapping a project::
 
 It creates the initial project structure with a root `NgModule` and a root component and bootstraps it using the `platformBootstrapDynamic` method.
 +
-The project is also configured to use the _webpack loader_ which handles things like module loading, bundling and minification of dependant code.
+The project is also configured to use the _webpack loader_ which handles things like module loading, bundling and minification of dependent code.
 +
 NOTE: In the course we've used SystemJS for this since webpack doesn't work with Plunker _yet_. We'll continue to use SystemJS for the code samples in Plunker and WebPack for any applications created with the Angular CLI.
 
 Serving and live reloading::
+
 The CLI starts a local web-server so we can view our application in the browser via localhost:4000.
 +
 The CLI also watches for any changes to our files and automatically reloads the webpage if there are any.
 
 Code generation::
 
-Using the CLI we can create components directives, services, pipes etc... all from the command line with all the necessary files, folders and boilerplate code included.
+Using the CLI we can create components, directives, services, pipes, etc... all from the command line with all the necessary files, folders and boilerplate code included.
 +
 All the generated code adheres to the official Angular https://angular.io/styleguide[style guide].
 +
@@ -41,7 +42,7 @@ NOTE: In Angular 1 the Angular team never supported an official style guide. Thi
 
 Testing::
 
-The generated code also comes with bootstrapped jasmine test spec files, we can use the CLI to compile and run all the tests with a single command.
+The generated code also comes with bootstrapped Jasmine test spec files, we can use the CLI to compile and run all the tests with a single command.
 +
 Whenever the CLI detects changes to any file it re-runs all the tests automatically in the background.
 
@@ -81,7 +82,7 @@ os: darwin x64
 
 == Start an application with `ng new`
 
-Lets create a new project called `codecraft`.
+Let's create a new project called `codecraft`.
 
 To bootstrap our new project with `ng` we run this command:
 
@@ -100,10 +101,11 @@ The command generates a number of new files and folders for us:
 
 ----
 codecraft
-// production or development builds of our applicaiton go here.
+
+// Production or development builds of our application go here.
 ├── dist
 
-// main application code goes here.
+// Main application code goes here.
 ├── src
 │   ├── app
 │   │   ├── app.component.css
@@ -112,29 +114,30 @@ codecraft
 │   │   ├── app.component.ts
 │   │   └── app.module.ts
 
-// settings for the different environments, dev, qa, prod.
+// Settings for the different environments, dev, qa, prod.
 │   ├── environments
 │   │   ├── environment.prod.ts
 │   │   └── environment.ts
 
-// main html and typescript file
+// Main HTML and TypeScript files
 │   ├── index.html
 │   ├── main.ts
 
 │   ├── favicon.ico
 │   ├── polyfills.ts
 │   ├── styles.css
-// prepares test environment and runs all the unit tests
+
+// Prepares test environment and runs all unit tests.
 │   ├── test.ts
 
-// typescript configuration file
+// TypeScript configuration file
 │   ├── tsconfig.app.json
 │   ├── tsconfig.spec.json
 
-// typescript type definition file
+// TypeScript type definition file
 │   └── typings.d.ts
 
-// The E2E tests for our application go here
+// The E2E tests for our application go here.
 ├── e2e
 
 ├── angular-cli.json
@@ -154,9 +157,9 @@ As well as creating the files and folders for us; we can see from `package.json`
 include::{sourcedir}/package.json[]
 ----
 
-So far in this course we have bundled all our code into one file on plunker for convenience.
+So far in this course we have bundled all our code into one file on Plunker for convenience.
 
-Lets see how the Angular CLI breaks up the code into multiple files and where those files are located.
+Let's see how the Angular CLI breaks up the code into multiple files and where those files are located.
 
 src/app/app.component.ts::
 
@@ -183,7 +186,7 @@ include::{sourcedir}/src/index.html[]
 
 src/app/app.module.ts::
 
-Our top level module configuration is stored in this file.
+Our top-level module configuration is stored in this file.
 
 [source,typescript]
 --
@@ -192,7 +195,7 @@ include::{sourcedir}/src/app/app.module.ts[]
 
 src/main.ts::
 
-The actual act of importing our main module and boostrapping our Angular web application is left to the `main.ts` file.
+The actual act of importing our main module and bootstrapping our Angular web application is left to the `main.ts` file.
 
 [source,typescript]
 --
@@ -226,9 +229,9 @@ The most exciting part of this is that it automatically generates code that adhe
 
 IMPORTANT: Projects built using the Angular CLI should look like each other. Developers who are used to the way Angular CLI generates files are going to find it easier to work on multiple different projects, as long as they all use the Angular CLI.
 
-With the generate command we can create new components, directives, [.line-through]#routes# _not available in version 1.0.0-beta.15_, pipes, services, classes, interfaces and enums.
+With the `generate` command we can create new components, directives, pipes, services, classes, interfaces and enums, amongst other things.
 
-Each of the above _types of things_ it can create is called a *scaffold*.
+Each of the above _type of thing_ it can create is called a *scaffold*.
 
 We can run this command using `ng generate <scaffold> <name>`
 
@@ -243,10 +246,10 @@ This creates a number of files in a folder called `header` in `src/app`, like so
 ----
 app
 ├── header
-│   ├── header.component.css // The css for this component
+│   ├── header.component.css // The CSS for this component
 │   ├── header.component.html // The template for this component
 │   ├── header.component.spec.ts // The unit test for this component
-│   └── header.component.ts // The component typescript file
+│   └── header.component.ts // The component TypeScript file
 ----
 
 Taking a look at `header.component.ts`:
@@ -336,7 +339,7 @@ The Angular CLI again has us covered in this regard, if we want to create a deve
 ng build
 ----
 
-This bundles all our javascript, css, html into a smaller set of files which we can host on another site simply.
+This bundles all our JavaScript, CSS, HTML into a smaller set of files which we can host on another site simply.
 
 It outputs these files into the `dist` folder:
 
@@ -352,7 +355,7 @@ It outputs these files into the `dist` folder:
 └── styles.map
 ----
 
-To serve our built application site we just need to serve this folder. For example if using python we could simply run `python -m SimpleHTTPServer` from the `dist` folder and view the application from `0.0.0.0:8000`.
+To serve our built application site we just need to serve this folder. For example, if using Python we could simply run `python -m SimpleHTTPServer` from the `dist` folder and view the application from `0.0.0.0:8000`.
 
 === Production Builds
 
@@ -381,24 +384,24 @@ Running with `--prod` changes a few things:
 * The bundles now have random strings appended to them to enable *cache busting*. +
  This ensures that a browser doesn't try to load up previously cached versions of the files and instead load the new ones from the server.
 * The file sizes are much smaller. The files have been processed through a minifier and uglifier.
- * There is a much small `.gz` file, this is a compressed version of the equivalent javascript file. +
+ * There is a much small `.gz` file, this is a compressed version of the equivalent JavaScript file. +
  Browsers will automatically try to download the `.gz` version of files if they are present.
 
-=== Adding a third party module
+=== Adding a third-party module
 
 The build system simplifies the process of serving and releasing your application considerably. It works only because Angular knows about all the files used by your application.
 
-So when we include 3rd party libraries into our application we need to do so in such a way that Angular knows about the libraries and includes them in the build process.
+So when we include third-party libraries into our application we need to do so in such a way that Angular knows about the libraries and includes them in the build process.
 
-==== Bundled with the main application javascript files
+==== Bundled with the main application JavaScript files
 
-If we want to include a module to use in our Angular javascript code, perhaps we want to to use the moment.js library, we just need to install it via npm like so:
+If we want to include a module to use in our Angular JavaScript code, perhaps we want to to use the moment.js library, we just need to install it via npm like so:
 
 ----
 npm install moment --save
 ----
 
-If we also want to include the typescript type definition file for our module we can install it via:
+If we also want to include the TypeScript type definition file for our module we can install it via:
 
 ----
 npm install @types/moment --save
@@ -408,19 +411,19 @@ Now when Angular create a build either when releasing or serving locally, the mo
 
 ==== Global Library Installation
 
-Some javascript libraries need to be added to the global scope, and loaded as if they were in a script tag.
+Some JavaScript libraries need to be added to the global scope, and loaded as if they were in a script tag.
 
 We can do this by editing the `angular-cli.json` file in our project root.
 
-The twitter bootstrap library is a great example of this, we need to incldue css and script files in the global scope.
+The Twitter Bootstrap library is a great example of this, we need to include CSS and script files in the global scope.
 
-First we install the bootstrap library via npm like so:
+First we install the Bootstrap library via npm like so:
 
 ----
 npm install bootstrap@next
 ----
 
-Then we add the required javascript files to the `app.scripts` section or the `app.styles` in  `angular-cli.json` like so:
+Then we add the required JavaScript files to the `app.scripts` section or the `app.styles` in  `angular-cli.json` like so:
 
 
 [source,json]
@@ -458,11 +461,11 @@ Now when the build runs the CLI includes those files in the bundle and injects t
 
 == Testing Angular
 
-Angular has always been synonymous with testing and so there should be no surprise that the command line tool comes with features to make Angular testing easier.
+Angular has always been synonymous with testing and so there should be no surprise that the command-line tool comes with features to make Angular testing easier.
 
-The default mechanism for unit testing in Angular is via jasmine and karma.
+The default mechanism for unit testing in Angular is via Jasmine and Karma.
 
-Whenever we generate code via scaffolds it also generates a `.spec.ts`. The code the CLI bootstraps inside this file depends on the scaffold type but essentially is a jasmine test spec which you can flesh out with more test cases.
+Whenever we generate code via scaffolds it also generates a `.spec.ts`. The code the CLI bootstraps inside this file depends on the scaffold type but essentially is a Jasmine test spec which you can flesh out with more test cases.
 
 NOTE: These types of tests are called _unit tests_ because we should be writing the tests so we only test one _unit_ of code and each test case is independent of the others.
 
@@ -493,4 +496,4 @@ To find out more details about each command and how we can customise the behavio
 
 By handling the setup for us the CLI has made working with Angular much easier.
 
-By standardising  setup and structure it's also made Angular projects fungible. Angular developers used to the Angular CLI should feel comfortable on *all* Angular CLI projects and be able to hit the floor running.
+By standardising setup and structure it's also made Angular projects fungible. Angular developers used to the Angular CLI should feel comfortable on *all* Angular CLI projects and be able to hit the floor running.

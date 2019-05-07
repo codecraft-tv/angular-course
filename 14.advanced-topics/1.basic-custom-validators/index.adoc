@@ -9,8 +9,8 @@ has_code: 'false'
 
 == Learning Objectives
 
-* Know how the built-in validators work in both the model driven and template driven forms.
-* Know how to create a basic _hardcoded_ custom validator for both model driven and template driven forms.
+* Know how the built-in validators work in both the model-driven and template-driven forms.
+* Know how to create a basic _hardcoded_ custom validator for both model-driven and template-driven forms.
 
 == Built in validators
 
@@ -23,7 +23,7 @@ We have a few _built in_ validators in Angular:
 
 We can use these in two ways:
 
-1. As functions we can pass to the `FormControl` constructor in model driven forms.
+1. As functions we can pass to the `FormControl` constructor in model-driven forms.
 
 [source,typescript]
 ----
@@ -33,7 +33,7 @@ new FormControl('', Validators.required)
 The above creates a _form control_ with a _required_ validator function attached
 
 [start=2]
-1. As directives in template driven forms.
+1. As directives in template-driven forms.
 
 [source,typescript]
 ----
@@ -46,9 +46,9 @@ They are a core part of HTML and we don't actually need Angular in order to use 
 
 However we do need a way for Angular to recognise their presence and support the same validation logic in our own Angular forms.
 
-If you remember template driven forms are just model driven forms but with the _creation_ of the model _driven_ by the template, they still have an underlying model.
+If you remember template-driven forms are just model-driven forms but with the _creation_ of the model _driven_ by the template, they still have an underlying model.
 
-Therefore just like model driven forms we need to attach a _validator function_ to the underlying model form control.
+Therefore just like model-driven forms we need to attach a _validator function_ to the underlying model form control.
 
 Angular does this by secretly creating special _validator_ directives which have selectors matching `required`, `minlength`, `maxlength` and `pattern`.
 
@@ -56,9 +56,9 @@ Angular does this by secretly creating special _validator_ directives which have
 
 So if you have imported `FormsModule` into your `NgModule` then anytime Angular sees a `required` tag in the HTML it will link it to an instance of a directive called `RequiredValidator`.
 
-This directive validator applies the same `Validators.required` function as we use in model driven forms.
+This directive validator applies the same `Validators.required` function as we use in model-driven forms.
 
-That's how the built-in validators work, lets try to create our own custom validators that work with both model and template driven forms.
+That's how the built-in validators work, let's try to create our own custom validators that work with both model and template-driven forms.
 
 == Custom model form validator
 
@@ -90,7 +90,7 @@ function emailDomainValidator(control: FormControl) { # <1>
 <5> If the domain is not `codecraft.tv` then return an error object with some perhaps helpful tips as to why it's failing.
 <6> Return `null` because if we have reached here the validator is passing.
 
-To use this validator in our model driven form we pass it into the `FormControl` on construction, like so:
+To use this validator in our model-driven form we pass it into the `FormControl` on construction, like so:
 
 [source,typescript,linenums,highlight='4']
 ----
@@ -101,7 +101,7 @@ this.email = new FormControl('', [
 ]);
 ----
 
-Just like other validators lets add a helpful message to the user if the validator fails so they know how to fix it:
+Just like other validators let's add a helpful message to the user if the validator fails so they know how to fix it:
 
 [source,html,linenums,highlight='6']
 ----
@@ -118,11 +118,11 @@ Now if we try to type in an email address that _doesn't_ end in `codecraft.tv` w
 
 image::./images/custom-validator-mdf-fail.png[]
 
-Next up we'll look at how we can re-package our validator function for use in template driven forms.
+Next up we'll look at how we can re-package our validator function for use in template-driven forms.
 
-== Custom template driven form validator
+== Custom template-driven form validator
 
-To use our validator function in a template driven form we need to:
+To use our validator function in a template-driven form we need to:
 
 1. Create a directive and attach it to the template form control.
 2. Provide the directive with the validator function on the token `NG_VALIDATORS`.
@@ -148,7 +148,7 @@ class EmailDomainValidator {
 ----
 <1> Attached to all input controls which have both the `emailDomain` and `ngModel` attribute.
 <2> We provide on the special token `NG_VALIDATORS`.
-<3> The `emailDomainValidator` function we created for the model driven form is the dependency.
+<3> The `emailDomainValidator` function we created for the model-driven form is the dependency.
 <4> This provider is a special kind of provider called a multi provider.
 
 NOTE: _Multi_ providers return _multiple_ dependencies as a list for a given token. So with our provider above we are just _adding_ to the list of dependencies that are returned when we request the `NG_VALIDATORS` token.
@@ -175,7 +175,7 @@ class AppModule {
 }
 ----
 
-Finally we add this directive to our template form control like so:
+Finally, we add this directive to our template form control like so:
 
 [source,html,linenums,highlight='7']
 ----
@@ -189,7 +189,7 @@ Finally we add this directive to our template form control like so:
        #email="ngModel">
 ----
 
-Now just like the model driven form when we type into the email field an email that doesn't end in codecraft.tv we see the same error:
+Now just like the model-driven form when we type into the email field an email that doesn't end in codecraft.tv we see the same error:
 
 image::./images/custom-validator-tdf-fail.png[]
 
@@ -197,15 +197,15 @@ image::./images/custom-validator-tdf-fail.png[]
 
 A validator in Angular is a function which returns null if a control is valid or an error object if it's invalid.
 
-For model driven forms we create custom validation functions and pass them into the `FormControl` constructor.
+For model-driven forms we create custom validation functions and pass them into the `FormControl` constructor.
 
-For template driven forms we need to create validator directives and provide the validator function to the directive via DI.
+For template-driven forms we need to create validator directives and provide the validator function to the directive via DI.
 
-Through careful planning we can share the same validation code between the model driven and template driven forms.
+Through careful planning we can share the same validation code between the model-driven and template-driven forms.
 
 The validator we created in this lecture hardcodes the _domain_, in the next lecture we will look at how we can make our validators configurable with different domains.
 
-== Model Driven Listing
+== Model-Driven Listing
 
 .main.ts
 [source,typescript]
@@ -213,7 +213,7 @@ The validator we created in this lecture hardcodes the _domain_, in the next lec
 include::{sourcedir}/model-driven/src/main.ts[]
 ----
 
-== Template Driven Listing
+== Template-Driven Listing
 
 .main.ts
 [source,typescript]

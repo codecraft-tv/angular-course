@@ -44,7 +44,7 @@ export const routes: Routes = [
 ];
 ----
 
-We create three components `HomeComponent`, `SearchComponent` and an `AppComponent` with a `<router-outlet>`.
+We create three components: `HomeComponent`, `SearchComponent` and an `AppComponent` with a `<router-outlet>`.
 
 We also create a route configuration where `''` redirects you to `home` and `home` and `search` show their respective components.
 
@@ -82,7 +82,7 @@ describe('Router: App', () => {
 
 Normally to setup routing in an Angular application we import the `RouterModule` and _provide_ the routes to the `NgModule` with  `RouterModule.withRoutes(routes)`.
 
-However when testing routing we use the `RouterTestingModule` instead. This modules sets up the router with a _spy_ implementation of the _Location Strategy_ that doesn't actually change the URL.
+However when testing routing we use the `RouterTestingModule` instead. This module sets up the router with a _spy_ implementation of the _Location Strategy_ that doesn't actually change the URL.
 
 We also need to get the injected `Router` and `Location` so we can use them in the test specs.
 
@@ -125,7 +125,7 @@ We are now ready to create our test specs.
 
 == Testing routing
 
-In our configuration we've set it so if you land on the root _empty_ url you will be redirected to `/home`, lets add a test spec for this:
+In our configuration we've set it so if you land on the root _empty_ URL you will be redirected to `/home`, let's add a test spec for this:
 
 [source,typescript]
 ----
@@ -140,7 +140,7 @@ it('navigate to "" redirects you to /home', fakeAsync(() => { # <1>
 <3> We wait for all pending promises to be resolved.
 <4> We can then inspect the _path_ our application should be at with `location.path()`
 
-Lets also add a test spec for navigating to the search route, like so:
+Let's also add a test spec for navigating to the search route, like so:
 
 [source,typescript]
 ----

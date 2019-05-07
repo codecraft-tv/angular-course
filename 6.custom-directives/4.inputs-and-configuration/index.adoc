@@ -11,7 +11,7 @@ lecture_video: CT-dx7iIB4I
 
 == Configuration
 
-In the last lecture we finished off our `ccCardHover` directive. But its not very re-usable; we now want to be able to _configure_ it so that it can be used in other situations.
+In the last lecture we finished off our `ccCardHover` directive. But it's not very re-usable; we now want to be able to _configure_ it so that it can be used in other situations.
 
 One such configuration parameter is the query selector for the elemenent we want to hide or show, currently it's hard coded to `.card-text`, like so:
 
@@ -31,7 +31,7 @@ config: Object = {
 
 This way if we wanted to add further config params in the future we can just add them as properties to our config object.
 
-Next up lets use this config object instead of our hard coded selector.
+Next up let's use this config object instead of our hard coded selector.
 
 [source,typescript]
 ----
@@ -39,7 +39,7 @@ let part = this.el.nativeElement.querySelector(this.config.querySelector);
 ----
 
 
-Finally lets make our `config` property an _input binding_ on the directive.
+Finally, let's make our `config` property an _input binding_ on the directive.
 
 [source,typescript]
 ----

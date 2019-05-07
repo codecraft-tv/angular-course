@@ -24,7 +24,7 @@ With `AsyncPipe` we can use promises and observables directly in our template, w
 
 === AsyncPipe with promises
 
-Lets first create a component with a promise as a property.
+Let's first create a component with a promise as a property.
 
 [source,typescript]
 ----
@@ -66,7 +66,7 @@ endif::ebook[]
 
 To save time we can use the `async` pipe in the template and bind to the promise _directly_, like so:
 
-[source,typescript]cript.ts
+[source,typescript]
 ----
 @Component({
   selector: 'async-pipe',

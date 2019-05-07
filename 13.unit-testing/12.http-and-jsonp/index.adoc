@@ -11,7 +11,7 @@ lecture_video: R4bQETYxgKU
 
 == Test setup
 
-To demonstrate how to test http requests we will add a test for our iTunes `SearchService` which we created in the section on Http.
+To demonstrate how to test HTTP requests we will add a test for our iTunes `SearchService` which we created in the section on Http.
 
 We will use the promise version of the search service that uses JSONP to get around the issue of CORS.
 
@@ -66,11 +66,11 @@ export class SearchService {
 }
 ----
 
-NOTE: Although we are using JSONP here, testing Http and Jsonp is exactly the same. We just replace instances of `Jsonp` with `Http`.
+NOTE: Although we are using Jsonp here, testing Http and Jsonp is exactly the same. We just replace instances of `Jsonp` with `Http`.
 
 === Configuring the test suite
 
-We want the `Jsonp` and `Http` services to use the `MockBackend` instead of the _real_ `Backend`, this is the underling code that actually sends and handles http.
+We want the `Jsonp` and `Http` services to use the `MockBackend` instead of the _real_ `Backend`, this is the underling code that actually sends and handles HTTP.
 
 By using the `MockBackend` we can intercept real requests and simulate responses with test data.
 
@@ -131,12 +131,12 @@ describe('Service: Search', () => {
   });
 });
 ----
-<1> We grab a reference to the _mock backend_ so we can control the http responses from our test specs.
+<1> We grab a reference to the _mock backend_ so we can control the HTTP responses from our test specs.
 <2> We grab a reference to the `SearchService`, this has been created using the `MockBackend` above.
 
 == Using the `MockBackend` to simulate a response
 
-Just by using the `MockBackend` instead of the real `Backend` we have stopped the tests from triggering real http requests from being sent out.
+Just by using the `MockBackend` instead of the real `Backend` we have stopped the tests from triggering real HTTP requests from being sent out.
 
 Now we need to configure the `MockBackend` to return dummy test data instead, like so:
 
@@ -161,15 +161,15 @@ it('search should return SearchItems', fakeAsync(() => {
   });
 }));
 ----
-<1> We create some fake data we want the API to response with.
-<2> The mock backend `connections` property is an observable that emits an `connection` every time an API request is made.
+<1> We create some fake data we want the API to respond with.
+<2> The mock backend `connections` property is an observable that emits a `connection` every time an API request is made.
 <3> For every connection that is requested we tell it to `mockRespond` with our dummy data.
 
 The above code returns the same dummy data for _every_ API request, regardless of the URL.
 
 == Testing the response
 
-Using HTTP is asynchronous so in order to test we need to use one of the asynchronous testing methods, we'll use the `fakeAsync` method.
+Using Http is asynchronous so in order to test we need to use one of the asynchronous testing methods, we'll use the `fakeAsync` method.
 
 [source,typescript]
 ----
@@ -210,7 +210,7 @@ it('search should return SearchItems', fakeAsync(() => { # <1>
 
 == Summary
 
-We can test code that makes Http requests by using a `MockBackend`.
+We can test code that makes HTTP requests by using a `MockBackend`.
 
 This requires that we configure our `TestBed` so that the `Jsonp` or `Http` services are created using the `MockBackend`.
 

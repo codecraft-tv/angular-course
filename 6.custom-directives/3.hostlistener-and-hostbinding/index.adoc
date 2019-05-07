@@ -8,7 +8,7 @@ lecture_video: qD9eB4oprPI
 == Learning Objectives
 
 * How to respond to output events that occur on the host element the directive is attached to.
-* How to manipulate the host element by binding to it's input properties.
+* How to manipulate the host element by binding to its input properties.
 
 == HostListener
 
@@ -31,7 +31,7 @@ So if we add this function to our directive class:
 
 Hovering over the host element would trigger an alert popup.
 
-Lets change our directive to take advantage of the `@HostListener`.
+Let's change our directive to take advantage of the `@HostListener`.
 
 [source,typescript]
 ----
@@ -140,7 +140,7 @@ Now we need to _link_ this source property to an input property on the host elem
 
 The `@HostBinding` decorator takes one parameter, the name of the property on the host element which we want to bind to.
 
-If you remember we can use the alternative `ngClass` syntax by binding to the `[class.<class-name>]` property. Lets add the `card-outline-primary` class to our host element when the `ishovering` boolean is `true`.
+If you remember we can use the alternative `ngClass` syntax by binding to the `[class.<class-name>]` property. Let's add the `card-outline-primary` class to our host element when the `ishovering` boolean is `true`.
 
 [source,typescript]
 .script.ts

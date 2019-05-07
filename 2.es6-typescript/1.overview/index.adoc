@@ -30,4 +30,4 @@ IMPORTANT: We should be using at least node version 6 to support most of the ES6
 
 TypeScript transpiles down into ES5 so we don't need to worry about browser support.
 
-Code will be provided for all the examples, but also we'll explain how to how to compile typescript locally on your computer with the command line tools.
+Code will be provided for all the examples, but also we'll explain how to how to compile TypeScript locally on your computer with the command-line tools.

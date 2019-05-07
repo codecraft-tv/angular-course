@@ -8,7 +8,7 @@ lecture_video: ly5WSXQFWAM
 == Learning Objectives
 
 * How to call a function on our component when the user clicks submit.
-* How to reset the form back to it's original state.
+* How to reset the form back to its original state.
 
 == Submitting
 
@@ -65,9 +65,9 @@ In a later section we cover how to make HTTP requests, after learning that we wi
 
 == Resetting
 
-In a model driven form to _reset_ the form we just need to call the function `reset()` on our `myform` model.
+In a model-driven form to _reset_ the form we just need to call the function `reset()` on our `myform` model.
 
-For our sample form lets reset the form in the `onSubmit()` function, like so:
+For our sample form let's reset the form in the `onSubmit()` function, like so:
 
 [source,typescript]
 .script.ts
@@ -86,7 +86,7 @@ The form now resets, all the input fields go back to their initial state and any
 
 We can bind to the _ngSubmit_ directives output event to call a function on our component when the user submits a form.
 
-Calling the `reset` function on a form model resets the form back to it's original pristine state.
+Calling the `reset` function on a form model resets the form back to its original pristine state.
 
 We can call functions on our component to process a form. However Angular gives us _another_ way to process a forms values, by using reactive programming and RxJS, we'll cover that in the next lecture.
 

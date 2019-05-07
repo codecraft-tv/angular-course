@@ -34,7 +34,7 @@ for (prop in obj) console.log(prop)
 ----
 
 
-TIP: `Object.create` creates a new objects who's _prototype_ points to the passed in `base` object. If it can't find a requested property on `obj`, javascript then tries to search the `base` object for the same property.
+TIP: `Object.create` creates a new objects who's _prototype_ points to the passed in `base` object. If it can't find a requested property on `obj`, JavaScript then tries to search the `base` object for the same property.
 
 Perhaps this is the behaviour you want? Or perhaps you only want to print out the keys that belong to the current object? 
 
@@ -108,7 +108,7 @@ let map = new Map()
     .set("C",3);
 ----
 
-Or we could initialise the `Map` with a an array of key-value pairs, like so:
+Or we could initialise the `Map` with a an array of key–value pairs, like so:
 
 [source,typescript]
 ----
@@ -247,7 +247,7 @@ IMPORTANT: A distinction between Object and Map is that Maps record the _order i
 
 == Set
 
-Sets are a bit like maps but they only store keys not key-value pairs.
+Sets are a bit like maps but they only store keys not key–value pairs.
 
 They are common in other programming languages but are a new addition to JavaScript in ES6.
 

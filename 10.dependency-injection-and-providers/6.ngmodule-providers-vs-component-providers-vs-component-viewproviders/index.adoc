@@ -17,7 +17,7 @@ Understanding _where_ to configure your provider is a key piece of understanding
 
 == Learning Objectives
 
-* Know the difference between configuring a provider on an `NgModule`, a component or directives `providers` property and a components `viewProviders` property.
+* Know the difference between configuring a provider on an `NgModule`, a component's or directive's `providers` property, and a component's `viewProviders` property.
 
 == Setup
 
@@ -73,11 +73,11 @@ class ParentComponent {
   constructor(private service: SimpleService) { } # <3>
 }
 ----
-<1> We use _two way data binding_ to bind to the `value` property of `SimpleService`.
+<1> We use _two-way data binding_ to bind to the `value` property of `SimpleService`.
 <2> We render the `ChildComponent` inside this `ParentComponent`.
 <3> We _inject_ an instance of `SimpleService` into the constructor.
 
-The `ParentComponent` has just one input box which reads and writes to the `SimpleService` `value` property using two way `ngModel` binding, the `ChildComponent` just renders the `value` to the screen with `{{ }}`.
+The `ParentComponent` has just one input box which reads and writes to the `SimpleService` `value` property using two-way `ngModel` binding, the `ChildComponent` just renders the `value` to the screen with `{{ }}`.
 
 We render two _side by side_ `<parent>` tags in our root `AppComponent` module, like so:
 
@@ -118,7 +118,7 @@ In the end when we run our application we should end up with something that look
 
 image::./images/di-example.png[]
 
-NOTE: We have also added some css styles on our component which has been removed from the above code, the full code can be found in the listing at the end of this lecture.
+NOTE: We have also added some CSS styles on our component which has been removed from the above code, the full code can be found in the listing at the end of this lecture.
 
 == NgModule.providers
 
@@ -142,11 +142,11 @@ So every request to resolve and inject the token `SimpleService` is going to be 
 
 image::./images/ngmodule-providers.png[]
 
-Therefore since we only have one injector which is resolving the dependency, every-time we request an instance of `SimpleService` to be injected into one of our components it's _always_ going to inject the _same_ instance.
+Therefore since we only have one injector which is resolving the dependency, every time we request an instance of `SimpleService` to be injected into one of our components it's _always_ going to inject the _same_ instance.
 
 IMPORTANT: Remember if we request the _same_ token from the _same_ injector we get the _same_ instance.
 
-Since we've bound the input field directly to the simple service `value` field *and* it's the same instance of simple service used everywhere, then when we type into one input control it automatically updates the other input control and also the child components.
+Since we've bound the input field directly to the simple service's `value` field *and* it's the same instance of simple service used everywhere, then when we type into one input control it automatically updates the other input control and also the child components.
 
 image::./images/di-example.gif[]
 
@@ -168,29 +168,29 @@ class ParentComponent {
 }
 ----
 
-Now _each_ `ParentComponent` has it's _own_ child injector with `SimpleService` configured, like so:
+Now _each_ `ParentComponent` has its _own_ child injector with `SimpleService` configured, like so:
 
 image::./images/component-providers.png[]
 
-We can see from the running the code above that if we type into one parent component only _that_ parent component and it's child component automatically updates, like so:
+We can see from the running the code above that if we type into one parent component only _that_ parent component and its child component automatically updates, like so:
 
 image::./images/di-component-providers-example.gif[]
 
-Each instance of `ParentComponent` now has it's _own_ instance of `SimpleService`, so state is not shared globally but only between a `ParentComponent` and it's child components.
+Each instance of `ParentComponent` now has its _own_ instance of `SimpleService`, so state is not shared globally but only between a `ParentComponent` and its child components.
 
-That's because each instance of `ParentComponent` has it's own child injector with `SimpleService` configured as a provider.
+That's because each instance of `ParentComponent` has its own child injector with `SimpleService` configured as a provider.
 
 IMPORTANT: Remember when we request the _same_ token from _different_ injectors we get the _different_ instances.
 
-When we configured the `SimpleService` on the parent component it created a child injector, and when we tried to inject `SimpleService` into the parent component constructor it resolved and created an instance of `SimpleService` from it's own injector.
+When we configured the `SimpleService` on the parent component it created a child injector, and when we tried to inject `SimpleService` into the parent component constructor it resolved and created an instance of `SimpleService` from its own injector.
 
-TIP: If we want to have _one_ instance of a service _per_ component, and shared with all the components children, we configure it on the `providers` property on our component decorator.
+TIP: If we want to have _one_ instance of a service _per_ component, and shared with all the component's children, we configure it on the `providers` property on our component decorator.
 
 == Component.viewProviders
 
 If we now configure the `SimpleService` provider on the `viewProviders` property on the `ParentComponent` nothing changes, we still get the functionality we had before.
 
-But lets use content projection and the `ng-content` component to change the child component from being a _view child_ of parent to to being a _content child_ of parent. i.e. lets pass in `<child></child>` to the parent component like so:
+But let's use content projection and the `ng-content` component to change the child component from being a _view child_ of parent to to being a _content child_ of parent. i.e. let's pass in `<child></child>` to the parent component like so:
 
 [source,html]
 ----
@@ -232,14 +232,14 @@ Change the `ParentComponent` template to _project_ the passed in content to the 
 
 Now even though child is still rendered under parent, it's considered a _content child_ and not a _view child_.
 
-Lets now change the configuration of `ParentComponent` to use `viewProviders` instead.
+Let's now change the configuration of `ParentComponent` to use `viewProviders` instead.
 
 [source,typescript]
 ----
 @Component({
  selector: 'parent',
  template: `...`,
- viewProviders: [SimpleService ]
+ viewProviders: [ SimpleService ]
 })
 class ParentComponent {
   constructor(private service: SimpleService) { }
@@ -257,21 +257,21 @@ If you are a _content child_, as our child component now is, then it uses the in
 
 image::./images/component-viewproviders.png[]
 
-TIP: If we want to have _one_ instance of a service _per_ component, and shared with _only_ the components view children and _not_ the components content children, we configure it on the `viewProviders` property on our component decorator.
+TIP: If we want to have _one_ instance of a service _per_ component, and shared with _only_ the component's view children and _not_ the component's content children, we configure it on the `viewProviders` property of our component decorator.
 
 == Summary
 
 We can configure the DI framework in Angular in three main ways.
 
-We can configure a provider on the NgModule, on a component or directives `providers` property and on a components `viewProviders` property.
+We can configure a provider on the NgModule, on a component's or directive's `providers` property, and on a component's `viewProviders` property.
 
-Deciding where to configure your provider and understanding the different is key in understanding how to architect an Angular application.
+Deciding where to configure your provider and understanding the differences is key to understanding how to architect an Angular application.
 
 If we want an instance of a dependency to be shared globally and share _state_ across the application we configure it on the `NgModule`.
 
-If we want a separate instance of a dependency to be shared across each instance of a component and it's children we configure it on the components `providers` property.
+If we want a separate instance of a dependency to be shared across each instance of a component and its children, we configure it on the component's `providers` property.
 
-If we want a separate instance of a dependency to be shared across each instance of a component and only it's view children we configure it on the components `viewProviders` property.
+If we want a separate instance of a dependency to be shared across each instance of a component and only its view children, we configure it on the component's `viewProviders` property.
 
 == Listing
 

@@ -21,7 +21,7 @@ Now whenever we want to display that joke in our application we simply add the t
 
 But it's not very re-usable, it just shows the same joke over and over again, a more re-usable `JokeComponent` would be one where the developer can use different jokes.
 
-Firstly lets add some properties or our class, like so:
+Firstly let's add some properties to our class, like so:
 
 [source,typescript]
 ----

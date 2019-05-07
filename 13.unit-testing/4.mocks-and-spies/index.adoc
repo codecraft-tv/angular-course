@@ -226,7 +226,7 @@ describe('Component: Login', () => {
 <3> We create a _spy_ on our `service` so that if the `isAuthenticated` function is called it returns `false`.
 <4> We can even check to see if the `isAuthenticated` function was called.
 
-By using the spy feature of jasmine we can make any function return anything we want:
+By using the spy feature of Jasmine we can make any function return anything we want:
 
 [source,typescript]
 ----
@@ -241,7 +241,7 @@ Testing with real instances of dependencies causes our test code to know about t
 
 The goal is to test pieces of code in isolation without needing to know about the inner workings of their dependencies.
 
-We do this by creating Mocks; we can create Mocks using fake classes, extending existing classes or by using real instances of classes but taking control of them with Spys.
+We do this by creating Mocks; we can create Mocks using fake classes, extending existing classes or by using real instances of classes but taking control of them with Spies.
 
 == Listing
 

@@ -5,7 +5,7 @@ lecture_video: QZbih91PH44
 :toc:
 = Configuring Dependency Injection in Angular
 
-So far in this section we've only covered how to use the low level Dependency Injection API.
+So far in this section we've only covered how to use the low-level Dependency Injection API.
 
 With Angular however we'll never need to create injectors ourselves, Angular does this for us automatically when our application is bootstrapped.
 
@@ -14,7 +14,7 @@ All we need to do is to _configure_ Angular with our providers and also tell it 
 == Learning Objectives
 
 * What is the injector tree and how it maps to the component tree.
-* How an where to configure injectors.
+* How and where to configure injectors.
 * Know when to use the `@Inject` and `@Injectable` decorators.
 * Know when we _don't_ need to use the `@Inject` and `@Injectable` decorators.
 
@@ -22,7 +22,7 @@ All we need to do is to _configure_ Angular with our providers and also tell it 
 
 An Angular application will have a tree of injectors mirroring the component tree.
 
-We have a top level parent injector which is attached to our `NgModule`.
+We have a top-level parent injector which is attached to our `NgModule`.
 
 Then we have _child_ injectors descending in a hierarchy matching the component tree.
 
@@ -44,7 +44,7 @@ The `NgModule` decorator has a property called `providers` which accepts a list 
 class AppModule { }
 ----
 
-This creates a top level _parent_ injector and configures it with two class providers, `EmailService` and `JobService`.
+This creates a top-level _parent_ injector and configures it with two class providers, `EmailService` and `JobService`.
 
 We can also configure our _Components_ and _Directives_ the same way using a property called `providers` on the `Component` and `Directive` decorators, like so:
 
@@ -57,9 +57,9 @@ We can also configure our _Components_ and _Directives_ the same way using a pro
 })
 ----
 
-This creates a _child injector_ who's parent injector is the injector on the parent component. If there is no parent component then the parent injector is the top level `NgModule` injector.
+This creates a _child injector_ who's parent injector is the injector on the parent component. If there is no parent component then the parent injector is the top-level `NgModule` injector.
 
-With components we have another property called `viewProviders` which creates a special injector that resolves dependencies only for _this_ components view children and doesn't act as a parent injector for any content children, like so:
+With components we have another property called `viewProviders` which creates a special injector that resolves dependencies only for _this_ component's view children and doesn't act as a parent injector for any content children, like so:
 
 [source,typescript]
 ----
@@ -70,7 +70,7 @@ With components we have another property called `viewProviders` which creates a 
 })
 ----
 
-NOTE: We'll be going through a specific examples of each in the next lecture.
+NOTE: We'll be going through specific examples of each in the next lecture.
 
 == Using Dependency Injection in Angular
 
@@ -105,7 +105,7 @@ export class AppModule {
 }
 ----
 
-Then to make Angular resolve and create a `SimpleService` we add a component which requests an instance of `SimpleService` via it's constructor, like so:
+Then to make Angular resolve and create a `SimpleService` we add a component which requests an instance of `SimpleService` via its constructor, like so:
 
 [source,typescript]
 ----
@@ -120,7 +120,7 @@ class SimpleComponent {
 
 === @Inject decorator
 
-The above works fine but, lets try and inject into `SimpleService` an instance of `OtherService`, like so:
+The above works fine but, let's try and inject into `SimpleService` an instance of `OtherService`, like so:
 
 [source,typescript]
 ----
@@ -221,7 +221,7 @@ TIP: We _only_ need to use `@Injectable` on classes which don't already use one 
 
 == Summary
 
-There is one top level injector created for each `NgModule` and then for each component in our app, from the root component down, there is a tree of injectors created which map to the component tree.
+There is one top-level injector created for each `NgModule` and then for each component in our app, from the root component down, there is a tree of injectors created which map to the component tree.
 
 We configure these injectors with providers by adding the configuration to either the `providers` property on the `NgModule`, `Component` and `Directive` decorators or to the `viewProviders` property on the `Component` decorator.
 

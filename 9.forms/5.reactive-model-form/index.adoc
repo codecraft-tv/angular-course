@@ -69,9 +69,9 @@ To link our `searchField` `FormControl` to our template form control we use anot
 
 [TIP]
 ====
-Previously we used a top level `FormGroup` instance to hold our entire form and then used the `formControlName` directive in the template to link individual template controls to controls on our `FormGroup` instance.
+Previously we used a top-level `FormGroup` instance to hold our entire form and then used the `formControlName` directive in the template to link individual template controls to controls on our `FormGroup` instance.
  +
-But in this example we just have a `FormControl` on it's own, this is why we use the `formControl` directive instead of the `formControlName` directive.
+But in this example we just have a `FormControl` on its own, this is why we use the `formControl` directive instead of the `formControlName` directive.
 ====
 
 == React to changes in our form
@@ -163,17 +163,17 @@ Specifically we only get `Foo2` printed once saving another API call.
 
 == Summary
 
-We can process a model driven form the traditional way by calling a function on submission of the form and then processing the form action there.
+We can process a model-driven form the traditional way by calling a function on submission of the form and then processing the form action there.
 
 But with Angular we also have another option of processing the form by means of an observable chain which we then subscribe to.
 
 By using reactive forms and some RxJS operators we can implement powerful functionality in a few lines of code.
 
-One solution is not better than the other, reactive forms are better when there needs to be some real-time processing of the form as the user types in content. Handling model driven forms with submit handlers is better when there needs to be a discrete action applied when the user presses a button.
+One solution is not better than the other, reactive forms are better when there needs to be some real-time processing of the form as the user types in content. Handling model-driven forms with submit handlers is better when there needs to be a discrete action applied when the user presses a button.
 
 They are not mutually exclusive, you can perform some form processing on the submit function and some processing by subscribing to to the observable.
 
-This brings to a conclusion the model driven approach of creating and handling forms in Angular. In the next lecture we will refactor our model driven form into a template driven form.
+This brings to a conclusion the model-driven approach of creating and handling forms in Angular. In the next lecture we will refactor our model-driven form into a template-driven form.
 
 == Listing
 

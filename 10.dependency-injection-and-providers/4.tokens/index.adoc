@@ -9,7 +9,7 @@ There are a number of different types of tokens we can use when configuring prov
 
 == Learning Objectives
 
-* Know the 3 different ways of defining tokens.
+* Know the three different ways of defining tokens.
 
 === String tokens
 
@@ -101,7 +101,7 @@ let injector = ReflectiveInjector.resolveAndCreate([
 
 let emailService1 = injector.get(SendGridServiceToken);
 let emailService2 = injector.get(MandrillServiceToken);
-console.log(emailService1 === emailService2);
+console.log(emailService1 === emailService2); // true
 ----
 
 In the above code we tried to use the _string_ variables `MandrillServiceToken` and `SendGridServiceToken` as tokens, however they happened to use the same string `"EmailService"`.
@@ -120,7 +120,7 @@ When configuring an injector with the _same_ token multiple times, the last prov
 
 So in the above code the injector returns an instance of `MandrilService` as the dependency for both the `SendGridServiceToken` and the `MandrillServiceToken`.
 
-NOTE: The example above might feel quite forced but the issue is quite real. It's common for different third party libraries built by different people or teams to use the _same_ configuration strings and therefore cause confusing clashes in you application.
+NOTE: The example above might feel quite forced but the issue is quite real. It's common for different third-party libraries built by different people or teams to use the _same_ configuration strings and therefore cause confusing clashes in you application.
 
 `InjectionToken` solves this shortcoming of using string as tokens since each _instance_ of an `InjectionToken` is unique even if the same descriptive string was passed in, like so:
 

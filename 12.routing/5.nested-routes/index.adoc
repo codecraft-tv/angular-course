@@ -223,7 +223,7 @@ A more explicit way of saying you want to route relative to the current URL is t
 ----
 
 
-NOTE: Pre-pending with `./` clearly expresses our intent that the path is relative so lets use this syntax instead.
+NOTE: Pre-pending with `./` clearly expresses our intent that the path is relative so let's use this syntax instead.
 
 The final thing we need to do is to tell Angular where we want the `ArtistTrackListComponent` and `ArtistAlbumListComponent` components to be injected into the page, we do that by adding in another `router-outlet` directive in our Artist template like so:
 
@@ -253,7 +253,7 @@ As a reminder the route configuration for our `ArtistTrackListComponent` is
 {path: 'tracks', component: ArtistTrackListComponent}
 ----
 
-and the route configuration for it's parent is
+and the route configuration for its parent is
 
 [source,json]
 ----
@@ -281,7 +281,7 @@ class ArtistTrackListComponent {
 ----
 
 
-The reason for this is that `ActivatedRoute` only passes you the parameters for the _current_ components route and since the route for `ArtistTrackListComponent` doesn't have any route parameters it gets passed nothing, we want to get the params for the _parent_ route.
+The reason for this is that `ActivatedRoute` only passes you the parameters for the _current_ component's route and since the route for `ArtistTrackListComponent` doesn't have any route parameters it gets passed nothing, we want to get the params for the _parent_ route.
 
 We can do this by calling `parent` on our `ActivatedRoute` like so:
 
@@ -313,7 +313,7 @@ The application above is complete in terms of child routing but still needs roun
 You won't learn anything else about routing from going through the process of finishing off the app, but for your interest i've provided the full listing below.
  +
  +
-As with all our examples they are for illustrative purposes only, to follow the official style guides we should be putting each component in a separate file and our http request should all be wrapped in a separate service.
+As with all our examples they are for illustrative purposes only, to follow the official style guides we should be putting each component in a separate file and our HTTP request should all be wrapped in a separate service.
  +
  +
 I will however leave that as an exercise for the reader if they so wish.
