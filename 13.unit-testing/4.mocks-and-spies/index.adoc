@@ -78,11 +78,11 @@ describe('Component: Login', () => {
   });
 
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns true when the user has not been authenticated', () => {
     expect(component.needsLogin()).toBeTruthy();
   });
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns false when the user has been authenticated', () => {
     localStorage.setItem('token', '12345'); # <3>
     expect(component.needsLogin()).toBeFalsy();
   });
@@ -137,12 +137,12 @@ describe('Component: Login', () => {
   });
 
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns true when the user has not been authenticated', () => {
     service.authenticated = false; # <3>
     expect(component.needsLogin()).toBeTruthy();
   });
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns false when the user has been authenticated', () => {
     service.authenticated = true; # <3>
     expect(component.needsLogin()).toBeFalsy();
   });
@@ -207,14 +207,14 @@ describe('Component: Login', () => {
   });
 
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns true when the user has not been authenticated', () => {
     spy = spyOn(service, 'isAuthenticated').and.returnValue(false); # <3>
     expect(component.needsLogin()).toBeTruthy();
     expect(service.isAuthenticated).toHaveBeenCalled(); # <4>
 
   });
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns false when the user has been authenticated', () => {
     spy = spyOn(service, 'isAuthenticated').and.returnValue(true);
     expect(component.needsLogin()).toBeFalsy();
     expect(service.isAuthenticated).toHaveBeenCalled();
