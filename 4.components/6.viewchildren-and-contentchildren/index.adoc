@@ -309,11 +309,11 @@ Content children are only visible by the time the `AfterContentInit` lifecycle h
 
 == Summary
 
-An Angular application is composed from a number of components nested together.
+An Angular application is composed of a number of components nested together.
 
-These components can nest in two ways, as view children, in the template for that component. Or they can nest as content children, via content projection from a host component.
+These components can be nested in two ways: as view children, in the template of their component; or as content children, via content projection from a host component.
 
-As developers of our components we can get access to these child components via the `@ViewChild` and `@ContentChild` (and `@ViewChildren` and `@ContentChildren`) decorators.
+As developers of our components we can get access to these child components via the `@ViewChild` and `@ContentChild` (or `@ViewChildren` and `@ContentChildren`) decorators.
 
 View children of a component are the components and elements in _this_ component's view.
 

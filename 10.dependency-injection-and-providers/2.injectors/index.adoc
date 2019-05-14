@@ -101,7 +101,7 @@ console.log(injector.get(EmailService) === childInjector.get(EmailService)); // 
 Both injectors are configured with the _same_ `EmailService`. They each resolved the dependency and returned different instances.
 
 
-I've mentioned previously that different injectors return different instances of dependencies, this is also true even if the injector is a _child_ injector, it will still resolve to a different instance to the parent.
+I've mentioned previously that different injectors return different instances of dependencies, this is also true even if the injector is a _child_ injector, it will still resolve to a different instance than the parent's.
 
 
 [upperalpha]

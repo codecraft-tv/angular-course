@@ -85,13 +85,13 @@ Sometimes in order to test a feature we need to perform some setup, perhaps it's
 
 These activities are called _setup_ and _teardown_ (for cleaning up) and Jasmine has a few functions we can use to make this easier:
 
-beforeAll:: This function is called *once*, _before_ all the specs in `describe` test suite are run.
+beforeAll:: This function is called *once*, _before_ all the specs in a test suite (`describe` function) are run.
 
 afterAll:: This function is called *once* _after_ all the specs in a test suite are finished.
 
-beforeEach:: This function is called _before_ *each* test specification, `it` function, has been run.
+beforeEach:: This function is called _before_ *each* test specification (`it` function) is run.
 
-afterEach:: This function is called _after_ *each* test specification has been run.
+afterEach:: This function is called _after_ *each* test specification is run.
 
 We might use these functions like so:
 
@@ -210,7 +210,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { MyPipe } from './my.pipe';
 
 describe('Pipe: My', () => {
-  it('create an instance', () => {
+  it('should create an instance', () => {
     let pipe = new MyPipe();
     expect(pipe).toBeTruthy();
   });

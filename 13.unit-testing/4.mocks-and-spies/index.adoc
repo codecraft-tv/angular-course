@@ -178,9 +178,9 @@ In the above class `MockAuthService` _extends_  `AuthService`. It would have acc
 
 NOTE: The rest of the test suite using mocking via overriding functions is the same as the previous version with fake classes.
 
-== Mock by using a real instance with Spy
+== Mocking with Spies
 
-A _Spy_ is a feature of Jasmine which lets you take an existing class, function, object and _mock_ it in such a way that you can control what gets returned from functions.
+A _Spy_ is a feature of Jasmine which lets you take an existing class, function, or object and _mock_ it in such a way that you can control what gets returned from function calls.
 
 Let's re-write our test to use a Spy on a real instance of `AuthService` instead, like so:
 

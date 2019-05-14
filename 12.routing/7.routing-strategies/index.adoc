@@ -39,7 +39,7 @@ Then if you created a bookmark of
 http://somedomain.com/page#routing-strategies
 ----
 
-Then the browser would open `somedomain.com/page` and then _scroll down_ so that the `<a name="routing-strategies"></a>` tag is at the top of the page.
+The browser would open `somedomain.com/page` and then _scroll down_ so that the `<a name="routing-strategies"></a>` tag is at the top of the page.
 
 However it has another very important characteristic in that anything past the `#` in a URL _never gets sent to the server_.
 
@@ -104,8 +104,7 @@ That sounds perfect for client-side routing right?
 
 // DEMO
 
-Unfortunately it has one big downside, if we then reloaded the page or bookmarked and opened it later the browser *would* make a request to
-the server for e.g. `localhost:4040/artist/1234/tracks`
+Unfortunately it has one big downside: if we reload the page, or bookmark it and open it later, the browser *would* make a request to the server for e.g. `localhost:4040/artist/1234/tracks`.
 
 
 
@@ -136,11 +135,11 @@ The value of the base href gets prepended to every navigation request we make, s
 
 What if we could build an app that rendered the page on the server side and returned that to the client, and from that point on let the client handle the routing?
 
-What if we reloaded the page at `localhost:4040/artist/1234/tracks` and the server at `localhost:4040` rendered the page.
+What if we reloaded the page at `localhost:4040/artist/1234/tracks` and the server at `localhost:4040` rendered the page?
 
-The server called the iTunes APIs and generated the HTML for the tracks page, it returned it to the browser and the browser just displayed it. Then if the user clicked on search the client application takes over and handles the routing on the client side.
+The server could call the iTunes APIs and generate the HTML for the tracks page. It could return the page to the browser and the browser could just display it. Then if the user clicks on search the client application could take over and handle the routing on the client side.
 
-That is something called _Angular Universal_, or _Isomorphic Rendering_ but essentially it's the ability to run Angular in both the _browser_ and the _server side_.
+That is something called _Angular Universal_, or _Isomorphic Rendering_, but essentially it's the ability to run Angular in both the _browser_ and the _server side_.
 
 The big benefit of Angular Universal is that pages can be cached on the server side and applications will then load much faster.
 

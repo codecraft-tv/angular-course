@@ -234,9 +234,9 @@ Now every time we try to activate either the `ArtistTrackListComponent` or `Arti
 
 To help in determining whether or not a guard should accept or deny access the guard function can be passed certain arguments:
 
-. `component: Component` this is the component itself.
-. `route: ActivatedRouteSnapshot` - this is the future route that will be activated if the guard passes, we can use it's params property to extract the route params.
-. `state: RouterStateSnapshot` - this is the future `RouterState` if the guard passes, we can find the URL we are trying to navigate to from the url property.
+. `component: Component` is the component itself.
+. `route: ActivatedRouteSnapshot` is the future route that will be activated if the guard passes. We can use its `params` property to extract the route parameters.
+. `state: RouterStateSnapshot` is the future `RouterState` if the guard passes. We can find the URL we are trying to navigate to from the `url` property.
 
 == CanDeactivate
 
@@ -282,13 +282,13 @@ image::./images/can-deactivate-guard.png[]
 
 [IMPORTANT]
 ====
-As of 18/10/2016 there is a bug in Angular version 2.1.0. The `canDeactivate` function is not passed the _future_ `ActivatedRouteSnapshot` or the future `RouterStateSnapshot`.
+There is a bug in Angular version 2.1.0 where the `canDeactivate` function is not passed the _future_ `ActivatedRouteSnapshot` or the future `RouterStateSnapshot`.
  +
  +
 This is why our example use case is so woefully inadequate.
  +
  +
-If you want to encourage the Angular team to fix this issue then please give a thumbs up to this issue on github https://github.com/angular/angular/issues/9853
+If you want to encourage the Angular team to fix this then please give a thumbs up to https://github.com/angular/angular/issues/9853[this issue on GitHub].
 ====
 
 == Summary

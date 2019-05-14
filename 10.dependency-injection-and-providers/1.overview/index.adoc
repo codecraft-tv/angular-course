@@ -105,7 +105,7 @@ This is called _Inversion of Control_ or _IoC_.
 
 The dependencies are now said to be _decoupled_ from our `EmailSender` class, how does this help us with our 3 points:
 
-Flexible/Easier to re-use::
+Easier to re-use::
 +
 We can _re-use_ the `EmailSender` class but with a different email service.
 +

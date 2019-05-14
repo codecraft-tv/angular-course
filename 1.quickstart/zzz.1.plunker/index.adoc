@@ -18,7 +18,7 @@ The goal of this chapter is to explain how Plunker works and the different files
 * Understand the structure of an Angular plunker.
 * Know what each of the included libraries do.
 
-== What is Plunker and how to use it?
+== What It Is and How to Use It
 
 * It's a web-based editor and development environment. With it you can create, edit and run HTML, CSS and JavaScript files directly from your browser.
 * No setup required, everyone can code in the browser instantly.
@@ -87,11 +87,11 @@ It will become part of the core JavaScript language but until then we use a _mod
 
 NOTE: If we build an application locally with the Angular command-line tools it will use another module loader called https://webpack.github.io/[Webpack].
 
-=== systemjs.config.js
+=== SystemJS Configuration
 
 SystemJS needs help to figure out when and how to load up certain modules, e.g. if we ask for a module called `@angular` what does that mean? What should it load up? Which version? This configuration is stored in the `systemjs.config.js` file.
 
-=== System.import
+=== SystemJS Imports
 
 Now we've loaded up the SystemJS library and configured it by loading up the `systemjs.config.js` file, we can use the `System.import` function to load up our `script.ts` file, like so:
 

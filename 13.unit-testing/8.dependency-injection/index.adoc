@@ -99,13 +99,13 @@ TestBed.overrideComponent(
 The syntax is pretty specific, it's called a `MetaDataOverride` and it can have the properties `set`, `add` and `remove`. We use `set` to completely replace the providers array with the values we've set.
 
 
-== Resolving via the component injector
+== Resolving via the Component's Injector
 
 Now our component has been configured with its own providers it will therefore have a child injector.
 
 When the component is created since it has its own injector it will resolve the `AuthService` itself and not forward the request to its parent `TestBed` injector.
 
-If we wanted to get the _same_ instance of dependency that was passed to the component constructor we need to resolve using the component injector, we can do that through the component fixture like so:
+If we wanted to get the _same_ instance of a dependency that was passed to the component's constructor we would need to resolve it using the component's injector. We can do that through the component fixture like so:
 
 [source,typescript]
 ----

@@ -125,7 +125,7 @@ We are now ready to create our test specs.
 
 == Testing routing
 
-In our configuration we've set it so if you land on the root _empty_ URL you will be redirected to `/home`, let's add a test spec for this:
+In our configuration we've set it so if you land on the _empty_ root URL you will be redirected to `/home`, let's add a test spec for this:
 
 [source,typescript]
 ----

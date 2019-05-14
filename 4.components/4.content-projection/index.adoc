@@ -74,9 +74,9 @@ So the content we are projecting we can't bind to properties or methods of our `
 
 == Multi-content projection
 
-What if we wanted to define _multiple_ content areas, we've got a setup and a punchline lets make both of those content projectable.
+What if we wanted to define _multiple_ content areas? We've got a setup and a punchline, so let's make both pieces of content projectable.
 
-Specifically want the setup line to always end with a `?` character.
+Specifically, we want the setup line to always end with a `?` character.
 
 NOTE: We are using this example for demonstration purposes only. This problem could easily be solved in a number of other ways, all of them easier than using content projection.
 
@@ -114,7 +114,7 @@ To solve this `ng-content` has another attribute called `select`.
 
 If you pass to `select` a CSS matching selector, it will extract _only_ the elements matching the selector from the passed in content to be projected.
 
-Let's explain with an example:
+Let's see with an example:
 
 [source,html]
 ----
