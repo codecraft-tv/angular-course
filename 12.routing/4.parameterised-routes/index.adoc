@@ -65,7 +65,7 @@ If we visited `/blog/moo` we would show `MooComponent` even though it matches th
 
 IMPORTANT: Non-parameterised routes take precedence over parameterised routes.
 
-== Activated route
+== Activated Route
 
 So how do we pass into `BlogComponent` the value of the _id_ variable? If we visited `/blog/1` how does `BlogComponent` know the `id` is `1` and therefore to show the appropriate article.
 
@@ -123,7 +123,7 @@ So to support both `/search` and `/search/U2` we need _two_ routes in our config
 
 Now our app supports both `/search` and `/search/U2`.
 
-=== Activated route
+=== Activated Route
 
 Next let's import `ActivatedRoute` and inject it into the constructor of our `SearchComponent`, like so:
 
@@ -187,7 +187,7 @@ onSearch(term:string) {
 
 Now when we search `Foo` the URL changes to `/search/Foo` the `SearchComponent` gets notified through the `ActivatedRoute` service and performs the search, therefore the URL and the _state_ of our application are now in sync.
 
-=== Optional params
+=== Optional Parameters
 
 Going back to the route config and the solution of having _two_ routes configured, one for when there is a search term and another for when there isn't a search term.
 

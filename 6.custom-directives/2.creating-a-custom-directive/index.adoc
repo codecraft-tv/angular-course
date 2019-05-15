@@ -3,7 +3,7 @@ lecture_video: YAlxSudXg_g
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
-= Creating a custom directive
+= Creating a Custom Directive
 
 In this lecture we are going to create our very own custom directive.
 
@@ -13,7 +13,7 @@ In this lecture we are going to create our very own custom directive.
 * Know how to use selectors to associate an element with a directive based on an _attribute_.
 * Know how to interact with the raw DOM element of the associated element from the directive.
 
-== Directive decorator
+== Directive Decorator
 
 We'll call our directive `ccCardHover` and we'll attach it to the card block like so:
 
@@ -40,7 +40,7 @@ import { Directive } from '@angular/core';
 class CardHoverDirective { }
 ----
 
-== Attribute selector
+== Attribute Selector
 
 The above code is very similar to what we would write if this was a component, the first striking difference is that _the selector is wrapped with `[]`_.
 
@@ -76,7 +76,7 @@ We want to associate the directive to an element which has a certain attribute.
 
 To do that in CSS we wrap the name of the attribute with `[]`, and this is why the selector is called `[ccCardHover]`.
 
-== Directive constructor
+== Directive Constructor
 
 The next thing we do is add a constructor to our directive, like so:
 

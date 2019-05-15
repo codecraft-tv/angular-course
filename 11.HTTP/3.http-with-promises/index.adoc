@@ -17,7 +17,7 @@ We'll be using the freely available iTunes API to perform the search: https://af
 * How to convert the responses into instances of a domain model.
 * How to handle asynchronous work by using promises.
 
-== Cross Origin Resource Sharing
+== Cross-Origin Resource Sharing
 
 To use this API we need to deal with a thorny issue called _CORS_, Cross-Origin Resource Sharing.
 
@@ -40,7 +40,7 @@ If you are using Safari start by enabling the _Develop_ menu from Preferences ->
 
 image::./images/safari-develop-menu.png[]
 
-== Creating the app component
+== Creating the App Component
 
 First let's create a simple app component with our search field:
 
@@ -75,7 +75,7 @@ class AppComponent {
 
 We have a form input control with a search button. When someone presses the search button it calls the `doSearch` function with the _search term_ we want to search the iTunes database with.
 
-== Creating a search service
+== Creating a Search Service
 
 So far in this section we've used the Http client library directly from a component by injecting it into the component's constructor.
 
@@ -107,7 +107,7 @@ class SearchService {
 
 NOTE: We also _provide_ our `SearchService` and make it available globally via the `NgModule` providers list.
 
-== Using promises
+== Using Promises
 
 The `search` function is going to make an _asynchronous_ call using the Http client lib to the iTunes API.
 
@@ -189,7 +189,7 @@ When the API responds it calls the function we pass to `then` with a `Response` 
 );
 ----
 
-== Consuming our search service
+== Consuming Our Search Service
 
 To use the `SearchService` we need to configure it as a provider on our `NgModule`
 
@@ -293,7 +293,7 @@ That's it now when we run the application and search for _Moo_ we get something 
 .iTunes Track Search App
 image::./images/http-promise-app.png[]
 
-== Adding a loading indicator
+== Adding a Loading Indicator
 
 So now it's all working but there is one feature which is important when doing any asynchronous work and that's to show a loading indicator to the end user, so they know the application is working and not _broken_.
 
@@ -340,7 +340,7 @@ doSearch(term:string) {
 
 Now when the `itunes.search()` function completes we set `loading` to `false` and the `"Loading..."` message disappears.
 
-== Using a domain model
+== Using a Domain Model
 
 We now have a functioning app.
 

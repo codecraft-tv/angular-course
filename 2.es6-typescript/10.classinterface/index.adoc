@@ -173,7 +173,7 @@ public:: This is the default and means it's visible everywhere.
 private:: Only member functions of the class it's declared in can see this.
 protected:: Only the class it's declared in and any class that _inherits_ from that class can see this.
 
-== Constructor shortcut
+== Constructor Shortcut
 
 A really common pattern in constructors is to use them to initialise properties via arguments you pass into the constructor, like in our example:
 

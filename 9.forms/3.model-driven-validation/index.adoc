@@ -65,7 +65,7 @@ class ModelFormComponent implements OnInit {
 <4> The `minlength` validator checks to see if the password is a minimum of 8 characters long.
 <5> We don't add any validators to the language select box.
 
-== Form control state
+== Form Control State
 
 The form control instance on our model encapsulates state about the control itself, such as if it is currently valid or if it's been touched.
 
@@ -125,7 +125,7 @@ Again the opposite of `valid` is `invalid`, so we could write:
 This would be `true` if the control was invalid and `false` if it was valid.
 
 
-== Validation styling
+== Validation Styling
 
 Bootstrap has classes for showing visual feedback for form controls when they are invalid.
 
@@ -155,7 +155,7 @@ TIP: The reason we check for the `dirty` property being true is so we don't show
 
 Now the input control shows the _green_ border when it's `valid` and `dirty` and _red_ if it's `invalid` and `dirty`.
 
-=== Writing shorter validation expressions
+=== Writing Shorter Validation Expressions
 
 The above can quickly become cumbersome to use in our templates, especially for things like the nested `firstName` and `lastName` controls.
 
@@ -243,7 +243,7 @@ We can therefore re-write the _wordy_ firstName `ngClass` expression to somethin
 ----
 
 
-== Validation messages
+== Validation Messages
 
 As well as styling a form when it's invalid it's also useful to show the user error messages with helpful hints about how they can make the form valid again.
 

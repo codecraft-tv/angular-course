@@ -12,7 +12,7 @@ lecture_video: 2jdWZhHTbU4
 * How to send custom headers with our requests.
 * How to handle errors.
 
-== Providing the Http dependencies
+== Providing the Http Dependencies
 
 The _Http client_ is a service that you can _inject_ into your classes in Angular, like so:
 
@@ -63,7 +63,7 @@ import { HttpModule } from '@angular/http';
 
 Importing `HttpModule` into our `NgModule` configures our `NgModules` injector with all the providers needed to use Http in our app.
 
-== Demo API & sample app
+== Demo API & Sample App
 
 To demonstrate the Http client lib we will need a test API we can use, one such API is http://httpbin.org this has a number of API end points where we can test different HTTP actions.
 
@@ -205,7 +205,7 @@ GET
 Object {args: Object, headers: Object, origin: "2.139.81.90", url: "http://httpbin.org/get"}
 ----
 
-=== GET with query params
+=== GET with Query Parameters
 
 We can pass to the `get` function a set of optional query parameters as the second argument.
 
@@ -258,7 +258,7 @@ doDELETE() {
 }
 ----
 
-=== POST with data
+=== POST with Data
 
 To perform a _POST_ request we call the `post` function.
 
@@ -297,7 +297,7 @@ doPOST() {
 }
 ----
 
-=== PUT with data
+=== PUT with Data
 
 To perform a PUT request we just call the `put` function. It works in exactly the same was as the `post` function above:
 
@@ -359,7 +359,7 @@ But the above will _unnecessarily_ bloat the application so isn't recommended fo
 
 Running the above promise based application results in the same information being printed to the console as the previous observable based function.
 
-== Handling errors
+== Handling Errors
 
 We can simulate errors from our test server just by performing a `GET` on a `POST` endpoint, like so:
 
@@ -414,7 +414,7 @@ doGETAsObservableError() {
 }
 ----
 
-=== Status codes
+=== Status Codes
 
 If you are looking for a refresher on what each HTTP status codes mean this site is a good reference: https://httpstatuses.com/
 

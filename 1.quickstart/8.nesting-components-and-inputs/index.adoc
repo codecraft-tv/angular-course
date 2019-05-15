@@ -103,7 +103,7 @@ class AppComponent {
 }
 ----
 
-=== Configuring multiple Components
+=== Configuring Multiple Components
 
 In order to use our new components we need to add them to the declarations on our `NgModule`.
 

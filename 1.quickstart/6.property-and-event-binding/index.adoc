@@ -15,7 +15,7 @@ Our goal in this lecture is to hide the punchline of our jokes and only reveal t
 * How to perform input property binding with `[]`
 * How to perform output event binding with `()`
 
-== Hiding and showing elements
+== Hiding and Showing Elements
 
 We can hide any element by adding an _attribute_ called `hidden` to the element in HTML, so we could hide the punchline like so:
 

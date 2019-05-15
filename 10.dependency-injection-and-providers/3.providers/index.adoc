@@ -42,7 +42,7 @@ The other properties of the provider configuration object depend on the _kind_ o
 
 TIP: If all we want to do is providing classes, it's such a common pattern that Angular lets you define a list of class names as the providers.
 
-=== Switching dependencies
+=== Switching Dependencies
 
 The above is an excellent example of how we can use the DI framework to architect our application for _ease of re-use_, _ease of testing_ and less _brittle_ code.
 
@@ -80,11 +80,11 @@ let injector = ReflectiveInjector.resolveAndCreate([
 
 Now the DI framework just returns instances of `SendGridService` whenever the token `"EmailService"` is requested.
 
-=== Provider configurations
+=== Provider Configurations
 
 So far we've only seen how we can configure a provider to provide classes, however, there are four types of dependencies providers can provide in Angular.
 
-==== useClass
+==== `useClass`
 
 We can have a provider which maps a _token_ to a _class_, like so:
 
@@ -102,7 +102,7 @@ The above is so common that there is a shortcut, if all we want to provide is a 
 let injector = ReflectiveInjector.resolveAndCreate([Car]);
 ----
 
-==== useExisting
+==== `useExisting`
 
 We can make two tokens map to the same _thing_ via aliases, like so:
 
@@ -147,7 +147,7 @@ Whenever anyone requests `MandrillService` or `SendGridService` we return an ins
 //This provider is just a useful convenience for when you want to make a token point to the _configuration_ of another token versus copying and pasting the configuration multiple times to different providers.
 //====
 
-==== useValue
+==== `useValue`
 
 We can also provide a simple _value_, like so:
 
@@ -200,7 +200,7 @@ let injector = ReflectiveInjector.resolveAndCreate([
 <1> By using `Object.freeze` that objects values can't be changed, in effect it's read-only.
 
 
-==== useFactory
+==== `useFactory`
 
 We can also configure a provider to call a function every time a token is requested, leaving it to the provider to figure out _what_ to return, like so:
 

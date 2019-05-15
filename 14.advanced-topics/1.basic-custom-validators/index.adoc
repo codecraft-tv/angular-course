@@ -12,7 +12,7 @@ has_code: 'false'
 * Know how the built-in validators work in both the model-driven and template-driven forms.
 * Know how to create a basic _hardcoded_ custom validator for both model-driven and template-driven forms.
 
-== Built in validators
+== Built-In Validators
 
 We have a few _built in_ validators in Angular:
 
@@ -60,7 +60,7 @@ This directive validator applies the same `Validators.required` function as we u
 
 That's how the built-in validators work, let's try to create our own custom validators that work with both model and template-driven forms.
 
-== Custom model form validator
+== Custom Model-Driven Validators
 
 Validators at their core are just functions, they take as input a `FormControl` instance and returns either `null` if it's `valid` or an error object if it's not.
 
@@ -120,7 +120,7 @@ image::./images/custom-validator-mdf-fail.png[]
 
 Next up we'll look at how we can re-package our validator function for use in template-driven forms.
 
-== Custom template-driven form validator
+== Custom Template-Driven Validators
 
 To use our validator function in a template-driven form we need to:
 

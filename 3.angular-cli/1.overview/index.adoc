@@ -80,7 +80,7 @@ node: 8.1.3
 os: darwin x64
 ----
 
-== Start an application with `ng new`
+== Start an Application with `ng new`
 
 Let's create a new project called `codecraft`.
 
@@ -202,7 +202,7 @@ The actual act of importing our main module and bootstrapping our Angular web ap
 include::{sourcedir}/src/main.ts[]
 --
 
-== Serve an application with `ng serve`
+== Serve an Application with `ng serve`
 
 With the CLI we can also easily serve our application using a local web-server.
 
@@ -221,7 +221,7 @@ The command runs the application through a web-server that support HTML5 _push-s
 
 NOTE: The above will make sense once we cover Routing later on in this book.
 
-== Generate code with `ng generate`
+== Generate Code with `ng generate`
 
 The ability to generate stub code is one of the most useful features of the CLI.
 
@@ -327,7 +327,7 @@ ng g enum MyEnum // Creates MyEnum
 By default all generated files go in into `src\app`, _no folder is created_.
 
 
-== Create a build with `ng build`
+== Create a Build with `ng build`
 
 The `ng serve` command does a great job of enabling development locally.
 
@@ -387,13 +387,13 @@ Running with `--prod` changes a few things:
  * There is a much small `.gz` file, this is a compressed version of the equivalent JavaScript file. +
  Browsers will automatically try to download the `.gz` version of files if they are present.
 
-=== Adding a third-party module
+=== Adding a Third-Party Module
 
 The build system simplifies the process of serving and releasing your application considerably. It works only because Angular knows about all the files used by your application.
 
 So when we include third-party libraries into our application we need to do so in such a way that Angular knows about the libraries and includes them in the build process.
 
-==== Bundled with the main application JavaScript files
+==== Bundled with the Main Application JavaScript Files
 
 If we want to include a module to use in our Angular JavaScript code, perhaps we want to to use the moment.js library, we just need to install it via npm like so:
 

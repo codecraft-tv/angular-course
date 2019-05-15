@@ -29,7 +29,7 @@ Our goal in this lecture is not to just replace _Promises_ with _Observables_ bu
 
 Working with Observables does require a different way of thinking about programming, It's my hope that after this lecture you will have a much better idea of how to solve similar problems with RxJS and observables.
 
-== Returning an Observable from the service
+== Returning an Observable from the Service
 
 In the promise example we stored the returned results on the service itself in the `results` property.
 
@@ -135,7 +135,7 @@ We also need to change our template to loop over the local `results` property an
 
 Running the above application works, we can congratulate ourselves for using Observables with HTTP request, but we can go deeper.
 
-== Using the `async` pipe
+== Using the `async` Pipe
 
 The above is a good start but we are not really using `Observables` to their full extent, for one thing we are subscribing to the observable and storing the results locally on the component, we can skip that by just using the `async` pipe in our template like so:
 
@@ -164,7 +164,7 @@ To make the above work we need to use the `async` pipe in our template, like so:
 ----
 
 
-== Observables all the way down
+== Observables All the Way Down
 
 Pressing a _Search_ button every time we want to make a search is so _2012_, let's change our application so it uses a _reactive_ form and performs a search as we type. We've covered reactive forms before so we just need to change our `AppComponent` to add a search field, like so:
 
@@ -274,7 +274,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 ----
 
-=== Linking two observables together
+=== Linking Two Observables Together
 
 We now have an `Observable` on the `AppComponent` which emits a search term every time we want to perform a search.
 
@@ -369,7 +369,7 @@ import 'rxjs/add/operator/switchMap';
 ----
 ====
 
-=== Rendering results
+=== Rendering Results
 
 Now that our observable chain returns `Observable<SearchItem[]>` we can just assign it to our local results property, like so:
 
@@ -387,7 +387,7 @@ ngOnInit() {
 
 NOTE: Remember in our template we are using the `async` pipe. This does a `subscribe` on our behalf so we also removed the `subscribe` from our chain.
 
-=== Loading indicator
+=== Loading Indicator
 
 The final thing we need to do is add our `loading` boolean to the chain, set it to `true` and `false` at the right times so our loading message shows correctly, we can do that by using the `do` operator.
 

@@ -10,7 +10,7 @@ lecture_video: g9s6vTMbf7Y
 * How to create a HTML form with a _dynamic_ select box control.
 * How to define a form _model_ on your component and link it to existing HTML form controls.
 
-== Form setup
+== Form Setup
 
 Whether we are template-driven or model-driven we need some basic form HTML to begin with.
 
@@ -67,7 +67,7 @@ We've added the `novalidate` attribute to the `form` element, by default browser
 
 NOTE: We are using the markup and styles from the Twitter Bootstrap UI framework to structure our form.
 
-=== Dynamic select controls
+=== Dynamic Select Controls
 
 We want the select box to have a list of languages for the user to select.
 
@@ -108,7 +108,7 @@ If we ask a select box what option has been selected it returns us the _value_, 
 
 To set the value of our select box we just bind to the input property of our option using the `[value]` syntax.
 
-== Form model
+== Form Model
 
 We represent the form as a _model_ composed of instances of `FormGroups` and `FormControls`.
 
@@ -150,7 +150,7 @@ In our model we've grouped the `firstName` and `lastName` controls under a `Form
 
 Like the `FormControl` instance, `FormGroup` instances encapsulates the state of all of its inner controls, for example an instance of a `FormGroup` is valid only if _all_ of its inner controls are also valid.
 
-== Linking the form model to the form template
+== Linking the Form Model to the Form Template
 
 We have the HTML template for our form and the form model on our component, next up we need to link the two together.
 
@@ -161,7 +161,7 @@ We do this using a number of directives which are found in the `ReactiveFormsMod
 import { ReactiveFormsModule } from '@angular/forms';
 ----
 
-=== formGroup
+=== `formGroup`
 
 Firstly we bind the `<form>` element to our top-level `myform` property using the `formGroup` directive, like so:
 
@@ -198,7 +198,7 @@ Initially this seems quite exciting but as we enter values into each of the inpu
 
 That's because although we've linked the `form` element to the `myform` model this doesn't automatically link each form control in the model with each form control in the template, we need to do this explicitly with the `formControlName` and `formGroupName` directives.
 
-=== formGroupName & formControlName
+=== `formGroupName` & `formControlName`
 
 We use the `formControlName` directive to map each form control in the template with a named form control in the model, like so:
 
@@ -296,7 +296,7 @@ Now each form control in the template is mapped to form controls in our model an
 
 
 ////
-== form builder
+== Form Builder
 
 Now we've added validators to our model we can start giving visual feedback to the end user to the validity of the form and give helpful error messages hinting at them on how to fix them.
 

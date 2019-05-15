@@ -11,7 +11,7 @@ There are a number of different types of tokens we can use when configuring prov
 
 * Know the three different ways of defining tokens.
 
-=== String tokens
+=== String Tokens
 
 We can use strings as tokens, like so:
 
@@ -35,7 +35,7 @@ In the above example we use the string `"EmailService"` as the token in our clas
 
 Although it's possible to use strings as tokens their use isn't recommended and instead it's preferable to use either type tokens or an instance of an `InjectionToken`.
 
-=== Type tokens
+=== Type Tokens
 
 We can implement the above example but instead of using strings as the token we can use a type, specifically we can use a class name as the _type_.
 

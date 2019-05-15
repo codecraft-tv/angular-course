@@ -230,7 +230,7 @@ We add the guard to the `canActivateChild` child property on our `ArtistComponen
 
 Now every time we try to activate either the `ArtistTrackListComponent` or `ArtistAlbumListComponent` child routes it checks the `AlwaysAuthChildrenGuard` to see if the user has permission.
 
-== Guard function parameters
+== Guard Function Parameters
 
 To help in determining whether or not a guard should accept or deny access the guard function can be passed certain arguments:
 

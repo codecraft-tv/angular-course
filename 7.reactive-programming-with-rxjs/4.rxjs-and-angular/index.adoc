@@ -12,7 +12,7 @@ lecture_video: XXZ-x6XmYQ4
 * Know how to chain common RxJS operators together.
 * Know that you don't need to use observables in Angular and how to implement the same solution without an observable chain.
 
-== Angular observables
+== Angular Observables
 
 There are a few places in Angular where reactive programming and observables are in use.
 
@@ -33,7 +33,7 @@ This is not the only way to implement forms in Angular. This is the reactive _mo
 We'll cover forms in _much_ more detail later on in this course so for now I'm going to _gloss_ over a lot of the details and focus _only_ on the code that deals with RxJS.
 ====
 
-== Reactive form example
+== Reactive Form Example
 
 In our example we have a `FormAppComponent` which renders a form like so:
 
@@ -112,7 +112,7 @@ Then as I type into the form, this below gets printed to the console.
 {"comment":"foo","name":"asim","email":"asim@"}
 ----
 
-=== Processing only valid form values
+=== Processing Only Valid Form Values
 
 Looking at the stream above we can see that _most_ of the stream items are for invalid forms; comment, name and email are required so any form without a value for those is invalid. Also we have some special validation logic for the email field, it's only valid if it contains an _@_ character.
 
@@ -148,7 +148,7 @@ The end result of the above is that when we type into the form the same data as 
 {"comment":"foo","name":"Asim","email":"asim@"}
 ----
 
-=== Cleaning form data
+=== Cleaning Form Data
 
 A comment input box is a dangerous place, hackers try to input things like `<script>` tags and if we are not careful we open ourselves to the possibility of hackers gaming our applications.
 
@@ -205,7 +205,7 @@ Now when we type into our form a comment of `<script>` this is what gets printed
 
 Focusing on the last line `{"comment":"","name":"Asim","email":"asim@"}` we can see that the `<script>` tag the user typed in, is stripped from the comment property.
 
-=== Adding form values
+=== Adding Form Values
 
 A useful feature would be if we could let the user know the last time the form was updated.
 
@@ -244,7 +244,7 @@ If we now ran our application we would see this printed out:
 {"comment":"foo","name":"Asim","email":"asim@","lastUpdateTS":"2016-10-03T20:33:46.364Z"}
 ----
 
-== Not using observables
+== Not Using Observables
 
 In Angular we don't _need_ to use observables, and therefore reactive programming, if we don't want to.
 

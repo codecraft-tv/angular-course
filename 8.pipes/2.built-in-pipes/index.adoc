@@ -4,7 +4,7 @@ lecture_video: lOLnLdzpIj0
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
 
-= Built-in Pipes
+= Built-In Pipes
 
 In this lecture we will cover all of the built-in pipes provided by Angular apart from the _async pipe_ which we will cover in detail in a later lecture.
 
@@ -12,7 +12,7 @@ In this lecture we will cover all of the built-in pipes provided by Angular apar
 
 * Know the different built-in pipes provided by Angular and how to use them.
 
-== Pipes provided by Angular
+== Pipes Provided by Angular
 
 Angular provides the following set of built-in pipes.
 

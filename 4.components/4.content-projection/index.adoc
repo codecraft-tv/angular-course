@@ -72,7 +72,7 @@ The downside of content projection is that the `JokeListComponent` doesn't have 
 
 So the content we are projecting we can't bind to properties or methods of our `JokeComponent`, only the `JokeListComponent`.
 
-== Multi-content projection
+== Multi-Content Projection
 
 What if we wanted to define _multiple_ content areas? We've got a setup and a punchline, so let's make both pieces of content projectable.
 

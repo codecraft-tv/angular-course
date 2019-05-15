@@ -13,7 +13,7 @@ In this lecture we are going to discuss how to test classes which have dependenc
 * How to _Mock_ by extending classes and overriding functions.
 * How to _Mock_ by using a real instance and a _Spy_.
 
-== Sample code
+== Sample Code
 
 Let's imagine we have a `LoginComponent` which works _with_ the `AuthService` we tested in the previous lecture, like so:
 
@@ -52,7 +52,7 @@ export class AuthService {
 }
 ----
 
-== Testing with the real `AuthService`
+== Testing with the Real `AuthService`
 
 We could test the `LoginComponent` by using a real instance of `AuthService` but if you remember to _trick_ `AuthService` into returning `true` for the `isAuthenticated` function we needed to setup some data via `localStorage`.
 
@@ -102,7 +102,7 @@ This is why we need to test classes in _isolation_, we just want to worry about 
 
 We achieve this by _Mocking_ our dependencies. Mocking is the act of creating something that looks like the dependency but is something _we_ control in our test. There are a few methods we can use to create mocks.
 
-== Mocking with fake classes
+== Mocking with Fake Classes
 
 We can create a fake `AuthService` called `MockedAuthService` which just returns whatever we want for our test.
 
@@ -157,7 +157,7 @@ By using a fake `MockAuthService` we:
  * Don't depend on the real `AuthService`, in fact we don't even need to import it into our specs.
  * Make our code less brittle, if the inner workings of the real `AuthService` ever changes our tests will still be valid and still work.
 
-== Mocking by overriding functions
+== Mocking by Overriding Functions
 
 Sometimes creating a complete fake copy of a real class can be complicated, time consuming and unnecessary.
 

@@ -125,7 +125,7 @@ class JokeFormComponent {
 
 We output an event by calling the `emit` function on our `jokeCreated` property. Whatever we pass to the `emit` function is what will be output by the property. We are outputting an instance of a Joke with some dummy data.
 
-=== Gluing it all together
+=== Gluing It All Together
 
 We need to call the `createJoke` function when the user clicks the Create button, like so:
 

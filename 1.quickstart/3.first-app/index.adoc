@@ -3,7 +3,7 @@ lecture_video: RB0UKhBndQU
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
-= Writing our first app
+= Writing Our First App
 
 We want to create a simple app that displays a joke to the user.
 

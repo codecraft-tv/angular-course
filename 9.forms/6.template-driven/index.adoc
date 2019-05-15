@@ -29,7 +29,7 @@ In template-driven we use directives to create the model.
 In model-driven we create a model on the component and then use directives to map elements in the template to our form model.
 ====
 
-== Form setup
+== Form Setup
 
 We create a basic form component, exactly the same as the model form component we started with in this section, with a basic form template, a dynamic select box and a simple component like so:
 
@@ -222,7 +222,7 @@ We can now see that the output of `f.value` matches what we have before
 
 We have now mirrored the model we created in the model-driven form using template-driven forms, with `FormControls` and a nested `FormGroup`.
 
-== Two-way data binding
+== Two-Way Data Binding
 
 Another feature of the `ngModel` directive is that it lets us setup _two-way_ data binding between a template form control and a variable on our component.
 
@@ -269,7 +269,7 @@ But the `[()]` syntax is shorter and clearly shows we are implementing _two-way_
 ====
 
 
-== Domain model
+== Domain Model
 
 In Angular we typically won't data bind to a simple string or object on our component but a _domain model_ we've defined via a class, let's create one for our Signup form called Signup.
 
@@ -344,7 +344,7 @@ The password field also had a _min length_ validator, we can add that via an att
 
 IMPORTANT: The `attributes` we are adding to add validation to our control are parts of the standard HTML5 specification. They are built-in to HTML5 and not part of Angular.
 
-=== Validation styling
+=== Validation Styling
 
 Similar to model-driven forms we can access each model form controls state by going through the top-level form group.
 
@@ -394,7 +394,7 @@ Let's add validation styling to our email field, like so:
 
 The above code displays a red border round the input control when it's invalid and a green border when it's valid.
 
-==== Writing shorter validation expressions
+==== Writing Shorter Validation Expressions
 
 The `NgForm` directive does provide us with a shortcut to the `controls` property so we can write `f.controls.email?.valid` instead of `f.form.controls.email?.valid`.
 
@@ -452,7 +452,7 @@ As long as we named our local reference variables the same name we named our for
 
 =====
 
-=== Validation messages
+=== Validation Messages
 
 As for form validation messages, we can use _exactly the same method_ that we used in model-driven forms. As long as we named the local reference variables the same as the form controls in the model-driven approach we can use exactly the same HTML in our template-driven forms, like so:
 
@@ -465,7 +465,7 @@ As for form validation messages, we can use _exactly the same method_ that we us
 </div>
 ----
 
-== Submitting the form
+== Submitting the Form
 
 Submitting a form is exactly the same in model-driven forms as it is in template-driven forms.
 
@@ -497,7 +497,7 @@ However, we don't want the form submitted when the form is invalid. We can easil
 <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
 ----
 
-== Resetting the form
+== Resetting the Form
 
 In the model-driven approach we reset the form by calling the function `reset()` on our `myform` model.
 

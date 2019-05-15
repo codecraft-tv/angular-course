@@ -14,7 +14,7 @@ In this lecture we will go through a number of other configuration properties in
 
 In the section on Dependency Injection we will cover two other ways of configuring Components with the `providers` and `viewProviders` properties.
 
-== templateURL
+== Template URL
 
 We don't have to write our template code inline with our component code. We can store our HTML template files separately and just refer to them in our component by using the `templateUrl` property.
 
@@ -37,7 +37,7 @@ class JokeFormComponent {
 ----
 <1> We point our component to an external template file by using the `templateUrl` property.
 
-== styles
+== Styles
 
 We can also specify any custom CSS styles for our component with the `styles` property.
 
@@ -217,7 +217,7 @@ We are not encapsulating anything, the style we defined in our card form compone
 
 
 
-== styleURLs
+== Style URLs
 
 Like the `templateUrl` property, with the `styleUrls` property we can externalise the CSS for our component into another file and include it in.
 

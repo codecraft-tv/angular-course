@@ -25,7 +25,7 @@ It allows us to _decorate_ classes and functions, similar to annotations in Java
 
 Specific Angular implementations might be more complex and harder to read and understand but the concept is actually quite simple.
 
-== Simple no-argument decorator
+== Simple No-Argument Decorator
 
 I'm going to explain by creating a decorator called `@course` for our Person class
 
@@ -68,7 +68,7 @@ let asim = new Person("Asim", "Hussain");
 console.log(asim.course()); // Angular 2
 ----
 
-== Decorators with arguments
+== Decorators with Arguments
 
 But how do we pass arguments to our decorator, like the way the `@Component` decorator works?
 

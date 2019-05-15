@@ -32,7 +32,7 @@ testBedService = TestBed.get(AuthService);
 
 If most of our test specs need the same dependency mocked the same way we can resolve it once in the `beforeEach` function and mock it it there.
 
-== Resolving via the `inject` function
+== Resolving via the `inject` Function
 
 [source,typescript]
 ----
@@ -73,7 +73,7 @@ This will eventually move to becoming a function decorator like so:
 ----
 ====
 
-== Overriding the component's providers
+== Overriding the Component's Providers
 
 _Before_ we create a component via the `TestBed` we can _override_ its providers. Let's imagine we have a mock `AuthService` like so:
 

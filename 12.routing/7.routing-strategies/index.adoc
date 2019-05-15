@@ -116,7 +116,7 @@ So with `PathLocationStrategy` we need to co-operate with a server side that sup
 
 TIP: The local development server started by the Angular CLI _does_ support this functionality so if you wanted to try it out you can.
 
-=== base href
+=== Base HRef
 
 When using the `PathLocationStrategy` we need to tell the browser what will be prefixed to the requested path to generate the URL.
 

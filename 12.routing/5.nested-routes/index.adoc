@@ -118,7 +118,7 @@ In our search results listing we add a `routerLink` to the result item so it nav
 ----
 <1> Add `routerLink` directive.
 
-== Relative routes
+== Relative Routes
 
 If we ran the above code you'll notice that searching for U2 transforms the URL to:
 
@@ -158,7 +158,7 @@ Now when we navigate we do so _relative_ to the _root_ URL and when we click the
 
 image::./images/blank-artist-page.png[]
 
-== Child routes
+== Child Routes
 
 When the Artist page is shown we want there to be two menu options, one called _Tracks_ and the other called _Albums_, like so:
 
@@ -242,7 +242,7 @@ The final thing we need to do is to tell Angular where we want the `ArtistTrackL
 
 Now we have two `router-outlets` one nested inside another Angular figures out _which_ outlet to insert the component in by the _nesting level_ of the route and the router outlet.
 
-== Parent route params
+== Parent Route Parameters
 
 To query the list of tracks for an Artist from the iTunes API the `ArtistTrackListComponent` needs the `artistId`.
 

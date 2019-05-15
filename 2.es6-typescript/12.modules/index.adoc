@@ -94,7 +94,7 @@ console.log(utils.square(2));
 utils.cow();
 ----
 
-== Alternative export syntax
+== Alternative Export Syntax
 
 As well as describing the exports by using the export keyword, like so:
 

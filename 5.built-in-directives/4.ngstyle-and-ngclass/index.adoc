@@ -91,7 +91,7 @@ If we ran the above code we would see:
 
 image::./images/ngstyle.png[NgStyle]
 
-=== Alternative syntax
+=== Alternative Syntax
 
 As well as using the `nyStyle` directive we can also set individual style properties using the `[style.<property>]` syntax, for example `[style.color]="getColor(person.country)"`
 
@@ -103,7 +103,7 @@ As well as using the `nyStyle` directive we can also set individual style proper
 </ul>
 ----
 
-=== Points and pixels
+=== Points and Pixels
 
 Let's imagine we wanted to set the font size to 24, we could use:
 
@@ -186,7 +186,7 @@ If we ran the above code we would see:
 
 image::./images/ngclass.png[NgClass]
 
-=== Alternative syntax
+=== Alternative Syntax
 
 We can also set a class on an element by binding to the input property binding called `class`, like so `[class]="'text-success'"`
 

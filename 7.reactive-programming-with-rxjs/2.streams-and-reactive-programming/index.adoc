@@ -9,7 +9,7 @@ lecture_video: eNxWlX8QMHY
 * Know what streams are and how to think about things that happen in an application as streams.
 * Know what reactive programming is and how to start transforming your way of thinking from imperative to reactive.
 
-== What are Streams?
+== What Are Streams?
 
 Streams are a _sequence of values over time_, that's it.
 
@@ -55,7 +55,7 @@ We could have a stream for:
 
 The more you think about it the more _everything_ we do with a web application can be thought of as a stream.
 
-== What is Reactive Programming?
+== What Is Reactive Programming?
 
 Reactive programming is the idea that you can create your entire program just by defining the different streams and the _operations_ that are performed on those streams.
 

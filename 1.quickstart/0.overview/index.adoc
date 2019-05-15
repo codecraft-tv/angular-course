@@ -55,7 +55,7 @@ This isn't going to be to everyone's tastes, but many years of teaching programm
 <9> A top-level TypeScript linter file (subfolders can override, like above)
 
 
-=== Running the same code locally
+=== Running the Same Code Locally
 
 All the code examples can also be run locally on your computer with the Angular CLI.
 

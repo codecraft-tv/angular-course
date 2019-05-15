@@ -25,7 +25,7 @@ image::./images/lifecycle-hooks.png[Lifecycle Hooks, , 300]
 
 These phases are broadly split up into phases that are linked to the component itself and phases that are linked to the _children_ of that component.
 
-=== Hooks for the component
+=== Hooks for the Component
 
 constructor:: This is invoked when Angular creates a component or directive by calling `new` on the class.
 
@@ -47,7 +47,7 @@ ngOnDestroy::
 This method will be invoked just before Angular destroys the component. +
 Use this hook to unsubscribe observables and detach event handlers to avoid memory leaks.
 
-=== Hooks for the component's children
+=== Hooks for the Component's Children
 
 These hooks are only called for components and not directives.
 
@@ -64,7 +64,7 @@ ngAfterViewChecked:: Invoked each time the view of the given component has been 
 
 NOTE: We'll dig into the children hooks in more detail in the next lecture.
 
-== Adding hooks
+== Adding Hooks
 
 In order to demonstrate how the hooks work we'll adjust the joke application we've been working with so far.
 
@@ -190,7 +190,7 @@ When we press the _Clear Jokes_ button, Angular deletes the `JokeComponent` and 
 ngOnDestroy
 ----
 
-== Detecting what has changed
+== Detecting What Has Changed
 
 We can actually tap into the exact changes to the input properties by examining the first param to the `ngOnChanges` function, which we typically call `changes`.
 

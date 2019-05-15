@@ -65,7 +65,7 @@ NOTE: In Angular since we are using modules we'll be adding in RxJS using `impor
 
 We also create a `main.js` where we will start adding our RxJS code.
 
-=== interval
+=== `interval`
 
 The first thing we need to to is get an instance of an RxJS Observable, we do this like so:
 
@@ -108,7 +108,7 @@ let obs = Rx.Observable
 ----
 ====
 
-=== subscribe
+=== `subscribe`
 
 NOTE: In RxJS land no one can hear you _stream_, unless you subscribe.
 
@@ -145,7 +145,7 @@ Subscriber: 9
 Subscriber: 10
 ----
 
-=== take
+=== `take`
 
 But it just keeps on printing, forever, we just want the first 3 items so we use another operator called `take`.
 
@@ -173,7 +173,7 @@ Subscriber: 1
 Subscriber: 2
 ----
 
-=== map
+=== `map`
 
 Finally, I want to add another operator called `map`, this takes as input the output stream from `take`, convert each value to a date and pushes that out onto a third stream like so:
 
@@ -199,7 +199,7 @@ Subscriber: 1475506795286
 Subscriber: 1475506796285
 ----
 
-== Other operators
+== Other Operators
 
 The above example showed a very very small subset of the total number of operators available to you when using RxJS.
 

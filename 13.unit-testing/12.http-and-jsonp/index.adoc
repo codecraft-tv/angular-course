@@ -9,7 +9,7 @@ lecture_video: R4bQETYxgKU
 
 * How to configure a test suite so we can mock the Http service to send back fake responses.
 
-== Test setup
+== Test Setup
 
 To demonstrate how to test HTTP requests we will add a test for our iTunes `SearchService` which we created in the section on Http.
 
@@ -68,7 +68,7 @@ export class SearchService {
 
 NOTE: Although we are using Jsonp here, testing Http and Jsonp is exactly the same. We just replace instances of `Jsonp` with `Http`.
 
-=== Configuring the test suite
+=== Configuring the Test Suite
 
 We want the `Jsonp` and `Http` services to use the `MockBackend` instead of the _real_ `Backend`, this is the underling code that actually sends and handles HTTP.
 
@@ -134,7 +134,7 @@ describe('Service: Search', () => {
 <1> We grab a reference to the _mock backend_ so we can control the HTTP responses from our test specs.
 <2> We grab a reference to the `SearchService`, this has been created using the `MockBackend` above.
 
-== Using the `MockBackend` to simulate a response
+== Using the `MockBackend` to Simulate a Response
 
 Just by using the `MockBackend` instead of the real `Backend` we have stopped the tests from triggering real HTTP requests from being sent out.
 
@@ -167,7 +167,7 @@ it('search should return SearchItems', fakeAsync(() => {
 
 The above code returns the same dummy data for _every_ API request, regardless of the URL.
 
-== Testing the response
+== Testing the Response
 
 Using Http is asynchronous so in order to test we need to use one of the asynchronous testing methods, we'll use the `fakeAsync` method.
 

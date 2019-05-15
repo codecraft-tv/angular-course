@@ -17,7 +17,7 @@ document.getElementById('replaceMe').innerHTML = 'New content!'
 
 * Know how to create advanced _configurable_ custom validators for both model-driven and template-driven forms.
 
-== Configurable model-driven validators
+== Configurable Model-Driven Validators
 
 In the previous lecture we created a custom email validator which checked that emails ended in a certain domain, a domain which we hardcoded in the validator.
 
@@ -96,7 +96,7 @@ this.email = new FormControl('', [
 ]);
 ----
 
-== Configurable template-driven validators
+== Configurable Template-Driven Validators
 
 To configure our directive validator we need to:
 
@@ -212,7 +212,7 @@ The email domain validator now check against this new domain instead:
 
 image::./images/configurable-validator-tdf-fail.png[]
 
-== Bindable template-driven validators
+== Bindable Template-Driven Validators
 
 We can also configure out template validator directive via property binding in the template instead, like so:
 

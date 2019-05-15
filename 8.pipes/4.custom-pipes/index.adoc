@@ -10,7 +10,7 @@ lecture_video: 1B2e6u-jqDw
 * Know how to use the `@Pipe` decorator to create pipes.
 * Know how to pass in parameters to custom pipes.
 
-== Pipe decorator
+== Pipe Decorator
 
 One pipe I really find useful when building web applications is a _default_ pipe, which I use for things like avatar images.
 
@@ -39,7 +39,7 @@ class DefaultPipe { }
 
 The name parameter for the `Pipe` decorator is how the pipe will be called in templates.
 
-== Transform function
+== Transform Function
 
 The actual logic for the pipe is put in a function called `transform` on the class, like so:
 
@@ -83,7 +83,7 @@ When we run the above, since `imageUrl` is blank the `default` pipe uses the def
 
 image::./images/default-pipe-part1.png[]
 
-== Multiple parameters
+== Multiple Parameters
 
 Finally, we want to support an _optional_ third parameter to our pipe called `forceHttps`, if the image selected doesn't use _HTTPS_ the pipe will convert the URL to one that does use _HTTPS_.
 

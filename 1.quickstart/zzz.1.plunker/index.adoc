@@ -57,7 +57,7 @@ This library enables a browser which doesn't have support for ES6 to run ES6 cod
 
 For further details take a look at the project homepage: https://github.com/zloirock/core-js
 
-=== zone
+=== Zone
 
 "Zone is a mechanism for intercepting and keeping track of asynchronous work" - https://github.com/angular/zone.js
 
@@ -71,7 +71,7 @@ No matter how experienced you were with Angular 1 bugs with these kinds of issue
 
 _Zone_ solves this problem, it keeps track of all _pending_ asynchronous work and tells Angular when things happen. So in Angular you don't have to worry about whether Angular knows about your callback or not, Zone tracks this for you and notifies Angular when something happens.
 
-=== reflect
+=== Reflect
 
 Angular is written in TypeScript, this file lets us use a feature of TypeScript called annotations (or decorators).
 

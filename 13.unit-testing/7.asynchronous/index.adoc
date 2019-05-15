@@ -11,7 +11,7 @@ lecture_video: V50kMQ5QhgA
 * Know how to use the Jasmine `done` function to handle async code.
 * Know how to use the alternative Angular only solutions for testing async code.
 
-== Test setup
+== Test Setup
 
 We want to see how we can test _asynchronous_ functions.
 
@@ -49,7 +49,7 @@ We've changed `needsLogin` from a function into a property and we set the value 
 
 Importantly we've done the above in the `ngOnInit()` lifecycle function. Probably not the _best_ place to put this functionality given that the value might change over time but good for demonstration purposes.
 
-== No asynchronous handling
+== No Asynchronous Handling
 
 Our first attempt might be to try to test our application without taking into account the asynchronous nature of our app, like so:
 
@@ -81,7 +81,7 @@ It's failing on the last expectation. By the time we run the last expectation th
 
 There are a few ways we can handle asynchronous code in our tests, one is the Jasmine way and two are Angular specific, let's start with the Jasmine way.
 
-== Jasmines `done` function
+== Jasmine's `done` Function
 
 Jasmine has a built-in way to handle async code and that's by the passed in `done` function in the test specs.
 

@@ -6,7 +6,7 @@ lecture_plan_level: free
 :toc:
 = Types
 
-== Transpile-time type checking
+== Transpile-Time Type Checking
 
 WARNING: The video mentions using the `typings` tool to install third-party type definitions. This has been deprecated since `TypeScript` version 2.0 in favour of the `@types` npm packages, see the end of this lecture for information on using `@types`. 
 
@@ -271,7 +271,7 @@ This behaviour is controlled by the `noImplicitAny` flag in `tsconfig.json`. If 
 Opinion is split as to whether to keep this to `true` or `false`, by default it's set to `false` which is more forgiving but then doesn't force developers to use types which is the point of TypeScript.
 ====
 
-== Type Inference.
+== Type Inference
 
 If a variable is _declared and initialised on one line_ TypeScript will try to infer, _guess_, the type of a variable by how it's declared, for example:
 
@@ -288,7 +288,7 @@ TypeScript inferred that the type of answer was number by the fact we initialise
 error TS2322: Type 'string' is not assignable to type 'number'.
 ----
 
-== Types for external libraries
+== Types for External Libraries
 
 This is all fine for code that's written in TypeScript and has types.
 

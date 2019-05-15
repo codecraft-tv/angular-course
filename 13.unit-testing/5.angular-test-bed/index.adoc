@@ -84,7 +84,7 @@ describe('Component: Login', () => {
 
 NOTE: Since the `LoginComponent` doesn't have its own child injector the AuthService that gets injected in is the same one as we get from the `TestBed` above.
 
-== Test specs
+== Test Specs
 
 Now we've configured the `TestBed` and extracted the component and service we can run through the same test specs as before:
 
@@ -104,7 +104,7 @@ it('needsLogin returns false when the user has been authenticated', () => {
 ----
 
 
-== When to use ATB
+== When to Use ATB
 
 We will continue to use ATB for the rest of this section because:
 

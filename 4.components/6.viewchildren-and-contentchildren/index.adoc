@@ -10,7 +10,7 @@ lecture_video: y3f_Fjsvi1U
 * Understand the difference between view children and content children of a component.
 * Know how to get references to child components in host components.
 
-== Example application
+== Example Application
 
 The view children of a given component are the elements used _within_ its template, its view.
 
@@ -202,7 +202,7 @@ Array[2]
 
 IMPORTANT: The reason we see two jokes printed out instead of three is because only two of the jokes are _view children_ the other joke is a _content child_. We cover content children in the end of this lecture.
 
-== ViewChild referencing a template local variable
+== ViewChild Referencing a Template Local Variable
 
 One practical application of `@ViewChild` is to get access to template local variables in our component class.
 

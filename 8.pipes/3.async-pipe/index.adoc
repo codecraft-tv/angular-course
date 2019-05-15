@@ -22,7 +22,7 @@ With `AsyncPipe` we can use promises and observables directly in our template, w
 
 `AsyncPipe` accepts as argument an observable or a promise, calls `subcribe` or attaches a `then` handler, then waits for the asynchronous result before passing it through to the caller.
 
-=== AsyncPipe with promises
+=== AsyncPipe with Promises
 
 Let's first create a component with a promise as a property.
 
@@ -97,7 +97,7 @@ class AsyncPipeComponent {
 The above results in the same behaviour as before, we just saved ourselves from writing a `then` callback and storing intermediate data on the component.
 
 
-=== AsyncPipe with observables
+=== AsyncPipe with Observables
 
 To demonstrate how this works with _observables_ we first need to setup our component with a simple _observable_, like so:
 

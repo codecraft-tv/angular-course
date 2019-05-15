@@ -9,7 +9,7 @@ lecture_video: XYtLG9HVVfk
 
 How to navigate between the different routes in an Angular application.
 
-== Navigating by hardcoded URLS
+== Navigating by Hardcoded URLs
 
 We could simply _hardcode_ the URLs in the `href` anchor attributes on our navigation header, like so:
 
@@ -40,7 +40,7 @@ If we were using that strategy clicking one of those links would result in the b
 
 // ?? Hardcoding links also doesn't let us use variables in our URLs, for example imagine the URL "/artist/123456/tracks" which might return tracks for a given artist, the 123456 is a variable that would change for each artist.
 
-== Navigating programmatically via the router
+== Navigating Programmatically via the Router
 
 In Angular we can also programmatically navigate via a `Router` service we inject into our component, like so:
 
@@ -84,7 +84,7 @@ class HeaderComponent {
 
 
 
-=== Link params array
+=== Link Parameters Array
 
 The value we pass into the `navigate` function might look a bit strange, we call it a _link params array_ and it's equivalent to the URL split by the `/` character into an array.
 
@@ -121,7 +121,7 @@ this.router.navigate(['search', part, 'moo']);
 
 NOTE: This becomes a _lot_ more useful when we start dealing with parametrised routes later on in this section.
 
-== Navigating via a routerLink directive
+== Navigating via a `routerLink` Directive
 
 We can also control navigation by using the `routerLink` directive in the template itself, like so:
 
@@ -143,7 +143,7 @@ We can also control navigation by using the `routerLink` directive in the templa
 
 The `routerLink` directive takes as input the same link params array format that the `router.navigate(...)` function takes.
 
-=== routerLinkActive
+=== `routerLinkActive`
 
 An important feature of any navigation component is giving the user feedback about _which_ menu item they are currently viewing. Another way to describe this is giving the user feedback about which _route_ is currently _active_.
 

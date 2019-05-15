@@ -51,7 +51,7 @@ describe('Hello world', () => { # <1>
 <4> The `matcher(expected)` expression is what we call a _Matcher_. It does a boolean comparison with the `expected` value passed in vs. the `actual` value passed to the `expect` function, if they are false the _spec_ fails.
 
 
-=== Built-in matchers
+=== Built-In Matchers
 
 Jasmine comes with a few pre-built matchers like so:
 
@@ -79,7 +79,7 @@ expect(spy).toHaveBeenCalledWith(...arguments);
 
 You can see concrete examples of how these matchers are used by looking at the Jasmine docs here: http://jasmine.github.io/edge/introduction.html#section-Included_Matchers
 
-=== Setup and teardown
+=== Setup and Teardown
 
 Sometimes in order to test a feature we need to perform some setup, perhaps it's creating some test objects. Also we may need to perform some cleanup activities after we have finished testing, perhaps we need to delete some files from the hard drive.
 
@@ -116,7 +116,7 @@ describe('Hello world', () => {
 });
 ----
 
-=== Running Jasmine tests
+=== Running Jasmine Tests
 
 To manually run Jasmine tests we would create a HTML file and include the required Jasmine JavaScript and CSS files like so:
 
@@ -268,7 +268,7 @@ var __spec_files__ = [
 <script src="browser-test-shim.js"></script>
 ----
 
-=== Disabled and focused tests
+=== Disabled and Focused Tests
 
 You can disable tests without commenting them out by just pre-pending `x` to the `describe` or `it` functions, like so:
 

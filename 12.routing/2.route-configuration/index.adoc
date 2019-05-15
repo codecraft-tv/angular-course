@@ -163,7 +163,7 @@ NOTE: For the special case of an _empty_ URL we also need to add the `pathMatch:
 
 We've also added a redirect from `/find` to `/search`, since this isn't empty we don't need to add the `pathMatch` property.
 
-== Catch-all route
+== Catch-All Route
 
 We can also add a _catch-all_ route by using the path `**`, if the URL doesn't match _any_ of the other routes it will match this route.
 

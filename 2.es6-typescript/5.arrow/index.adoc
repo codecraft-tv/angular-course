@@ -60,7 +60,7 @@ let add = (a,b) => a + b;
 
 TIP: In the first example we write `return a + b` but in the _fat arrow_ version we just wrote `a + b`. That's because in the fat arrow syntax if it is on one line, the statement gets returned automatically without the need to use the `return` keyword.
 
-== this
+== `this`
 
 Let's imagine we have an `object` with a function called `sayLater`, like so:
 

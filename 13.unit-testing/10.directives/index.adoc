@@ -9,7 +9,7 @@ lecture_video: GsSpiwSFwp8
 
 * Understand how to test directives using wrapper components.
 
-== Test setup
+== Test Setup
 
 We are going to test a directive called the `HoverFocusDirective`. It has an attribute selector of `hoverfocus` and if it's attached to an element hovering over that element sets the background color to `blue`.
 
@@ -56,7 +56,7 @@ describe('Directive: HoverFocus', () => {
 });
 ----
 
-== Test wrapper component
+== Test Wrapper Component
 
 To test a directive we typically create a _dummy_ testing component so we can interact with the directive and test it's effect on the component's view, like so:
 
@@ -94,7 +94,7 @@ describe('Directive: HoverFocus', () => {
 <2> We grab a reference to the component fixture as well as the component and the input `DebugElement` from the component view.
 
 
-== Interacting and inspecting the the view
+== Interacting and Inspecting the View
 
 We now have all the pieces we need to create a test spec for the directive itself:
 

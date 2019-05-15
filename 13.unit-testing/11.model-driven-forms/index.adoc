@@ -11,7 +11,7 @@ lecture_video: tJP_L2msRoo
 * How to create test specs that test form validity.
 * How to test form submission.
 
-== Test setup
+== Test Setup
 
 To test forms we'll extend the `LoginComponent` we've been working with so far in this section. However we'll convert the simple email, password field form into a model-driven form and we'll drop the input `enabled` property.
 
@@ -99,7 +99,7 @@ describe('Component: Login', () => {
 
 Now let's look at how we can test our forms validity.
 
-== Form validity
+== Form Validity
 
 The first test spec we may want to check is that a blank form is invalid. Since we are using model-driven forms we can just check the `valid` property on the form model itself, like so:
 
@@ -120,7 +120,7 @@ This one of the reasons model-driven forms are easier to test than template-driv
 With template-driven forms the state is in the _view_ and unless the component has a reference to the template form with a `ViewChild` decorator there is no way to test the form using a unit test. We would have to perform a full E2E test simulating button clicks and typing in values into forms.
 ====
 
-== Field validity
+== Field Validity
 
 We can also check to see if individual fields are valid, for example the email field should initially be invalid.
 
@@ -134,7 +134,7 @@ it('email field validity', () => {
 <1> We grab a reference to the actual field itself from the `form.controls` property.
 <2> Just like the form we can check if the field is valid through `email.valid`.
 
-=== Field errors
+=== Field Errors
 
 As well as checking to see if the field is valid we can also see what specific validators are failing through the `email.errors` property.
 
@@ -168,7 +168,7 @@ errors = email.errors || {};
 expect(errors['pattern']).toBeTruthy();
 ----
 
-== Submitting a form
+== Submitting a Form
 
 We can submit a form by clicking on the submit button, but we've already covered this in a previous lecture.
 

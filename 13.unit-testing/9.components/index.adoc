@@ -10,7 +10,7 @@ lecture_video: ZDVAYBKa1ro
 * How to test a component's inputs as well as its outputs.
 * How to interact with a component's view.
 
-== Test setup
+== Test Setup
 
 We'll continue with our example of testing a `LoginComponent`. We are going to change our component into a more complex version with inputs, outputs, a domain model and a form, like so:
 
