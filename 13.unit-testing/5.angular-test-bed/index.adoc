@@ -110,7 +110,7 @@ it('canLogin returns false when the user is not authenticated', () => {
 
 We will continue to use ATB for the rest of this section because:
 
-* It allows us to test the interaction of a directive or component with it's template.
+* It allows us to test the interaction of a directive or component with its template.
 * It allows us to easily test change detection.
 * It allows us to test and use Angulars DI framework,
 * It allows us to test using the `NgModule` configuration we use in our application.
@@ -120,7 +120,7 @@ We will continue to use ATB for the rest of this section because:
 
 The ATB lets us test parts of our code as if it is being run in the context of a real Angular app.
 
-It's usefulness will become more apparent in future lectures, the next one being how to use the ATB to test change detection and property binding.
+Its usefulness will become more apparent in future lectures, the next one being how to use the ATB to test change detection and property binding.
 
 == Listing
 
