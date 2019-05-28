@@ -189,7 +189,7 @@ It's not necessary to know the internals of how Karma works. When using the Angu
 
 == Angular CLI
 
-When creating Angular projects using using the Angular CLI it defaults to creating and running unit tests using Jasmine and Karma.
+When creating Angular projects using the Angular CLI it defaults to creating and running unit tests using Jasmine and Karma.
 
 Whenever we create files using the CLI as well as creating the main code file it also creates simple jasmine spec file named the same as the main code file but ending in .spec.ts, like so:
 
