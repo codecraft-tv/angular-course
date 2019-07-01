@@ -181,7 +181,7 @@ The `keys` method returns the keys in the map as an array which we can loop over
 
 [source,typescript]
 ----
-for (let key of map.keys()) {
+for (let key of Array.from(map.keys())) {
     console.log(key);
 }
 // APPLE
@@ -195,7 +195,7 @@ The `values` method returns the values in the map as an array which we can loop 
 
 [source,typescript]
 ----
-for (let value of map.values()) {
+for (let value of Array.from(map.values())) {
     console.log(value);
 }
 // 1:
@@ -209,7 +209,7 @@ The `entries` method returns the [key,value] pairs in the map as an array which 
 
 [source,typescript]
 ----
-for (let entry of map.entries()) {
+for (let entry of Array.from(map.entries())) {
     console.log(entry[0], entry[1]);
 }
 // "APPLE" 1
