@@ -50,7 +50,7 @@ That's our intention at least but we need to adjust our search function to make 
 
 [source,typescript]
 ----
-search(term:string): Obervable<SearchItem[]> {
+search(term:string): Observable<SearchItem[]> {
   let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
   return this.http.get(apiURL)
 }
