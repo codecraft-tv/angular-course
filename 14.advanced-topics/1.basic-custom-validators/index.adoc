@@ -108,7 +108,7 @@ Just like other validators let's add a helpful message to the user if the valida
 <div class="form-control-feedback"
      *ngIf="email.errors && (email.dirty || email.touched)">
   <p *ngIf="email.errors.required">Email is required</p>
-  <p *ngIf="password.errors.pattern">The email address must contain at least the @ character</p>
+  <p *ngIf="email.errors.pattern">The email address must contain at least the @ character</p>
   <p *ngIf="email.errors.emailDomain">Email must be on the codecraft.tv domain</p> # <1>
 </div>
 ----
