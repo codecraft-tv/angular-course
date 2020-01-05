@@ -8,7 +8,7 @@ It was initially released in 2012.
 TypeScript is a super-set of ES6.
 That means whatever features we have in ES6 are also in TypeScript with some extra features on top, such as static typing and richer syntax.
 
-In this section will cover both; we will go over some of the key features of ES6 and then we will cover some of the key features of TypeScript.
+In this section we will cover both; we will go over some of the key features of ES6 and then we will cover some of the key features of TypeScript.
 
 == ES6 Support
 
