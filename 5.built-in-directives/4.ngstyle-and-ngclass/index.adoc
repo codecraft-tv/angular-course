@@ -93,7 +93,7 @@ image::./images/ngstyle.png[NgStyle]
 
 === Alternative Syntax
 
-As well as using the `nyStyle` directive we can also set individual style properties using the `[style.<property>]` syntax, for example `[style.color]="getColor(person.country)"`
+As well as using the `ngStyle` directive we can also set individual style properties using the `[style.<property>]` syntax, for example `[style.color]="getColor(person.country)"`
 
 [source,html]
 ----

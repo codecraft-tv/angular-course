@@ -15,7 +15,7 @@ lecture_video: ZjPhSvhABNY
 Normally to render the result of a promise or an observable we have to:
 
 1. Wait for a _callback_.
-2. Store the result of the callback is a _variable_.
+2. Store the result of the callback in a _variable_.
 3. _Bind_ to that variable in the template.
 
 With `AsyncPipe` we can use promises and observables directly in our template, without having to store the result on an intermediate property or variable.

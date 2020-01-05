@@ -37,7 +37,7 @@ We create a basic form component, exactly the same as the model form component w
 ----
 @Component({
     selector: 'template-form',
-    templateUrl: `
+    template: `
 <form novalidate>
   <fieldset>
     <div class="form-group">

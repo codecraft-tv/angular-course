@@ -8,7 +8,7 @@ lecture_video: THvZfVee4qc
 == Learning Objectives
 
 * Understand what a structural directive is.
-* Know why we use the `\*` character for some directives only.
+* Know why we use the `*` character for some directives only.
 
 == Long-Form Structural Directives
 

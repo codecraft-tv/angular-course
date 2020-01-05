@@ -29,7 +29,6 @@ Until then we need to use a library that gives us the _Observable_ primitive and
 
 == RxJS
 
-
 _RxJS_ stands for *R*eactive E*x*tensions for *J*ava*S*cript, and it's a library that gives us an implementation of Observables for JavaScript.
 
 NOTE: Observables might become a core part of the JavaScript language in the future, so we can think of RxJS as a placeholder for when that arrives.
@@ -38,53 +37,82 @@ RxJS is the JavaScript _implementation_ of the ReactiveX API, which can be found
 
 The API has _multiple_ implementations in _different languages_, so if you learn RxJS you'll know how to write RxJAVA, Rx.NET, RxPY etc...
 
-=== Library
+=== Using RxJS with ES6
 
-Let's explain RxJS by working through a simple example.
+There are a couple of ways that you can add the RxJS library to your project.
 
-To reduce file size the RxJS library is broken up into many different parts, one main one and one for each operation you want to use.
+With `npm` you can use the following command:
+[source]
+npm install rxjs
 
-For our example we'll add the `rx.all.js` library which contains _all_ the operators.
+Alternately, you can also import RxJS from a CDN by including it in your HTML document:
 
-We create a simple index.html file and add the `rx.all.js` library in via a `script` tag.
-
-NOTE: In Angular since we are using modules we'll be adding in RxJS using `import` statements. We are using script tags here just for simplicity of setup.
-
-[source,html]
+[source, html]
 ----
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.1.0/rx.all.js"></script>
-  <script src="main.js"></script>
-</head>
-<body>
-</body>
-</html>
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
 ----
 
-We also create a `main.js` where we will start adding our RxJS code.
+NOTE: RxJS 6 is a mandatory dependency starting from Angular 6, so you don't need to install it manually.
 
-=== `interval`
+The RxJS library also provides a number of Observable creation functions and operators (to build on the observables foundation) that can be added to your application via import statements like so:
 
-The first thing we need to to is get an instance of an RxJS Observable, we do this like so:
-
-[source,javascript]
+[source, javascript]
 ----
-let obs = Rx.Observable;
+import { map, filter, take } from "rxjs/operators";
+import { interval, pipe } from "rxjs";
 ----
 
+=== A Simple Example
+Let’s understand the use of RxJS by working through a simple example.
+
+Before we start adding any RxJS code, lets create a `main.js` file with a barebones Angular implementation. This will hold our RxJS code; Specifically within the `ngOnInit` function,  a life cycle hook that is called once Angular is done creating the component.
+
+[source, javascript]
+----
+import { NgModule, Component } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+
+@Component({
+  selector: "app",
+  template: `
+    <div>
+      <p>Observables & RxJS Example</p>
+      <p>(Please check the console)</p>
+    </div>
+  `
+})
+class AppComponent {
+  constructor() {}
+
+  ngOnInit() {
+  }
+}
+
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+class AppModule {}
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+----
+
+Next, we need to get an instance of an RxJS observable. There are numerous methods provided by the RxJS library for this, but for our example we will be using the `interval` operator.
+
+==== interval
 An observable *isn't* a stream. An observable is a _blueprint_ which describes a _set_ of streams and how they are connected together with `operations`.
 
-I want our observable to create a _single_ stream and push onto that stream a number every second, incremented by 1.
+Lets assume for our use case, we want our observable to create a _single_ stream and push onto that stream a number every second, incremented by 1.
 
-With RxJS to define an observable to achieve the above we would use the operator `interval`, like so:
-
+For this purpose, we can use the `interval` operator which creates an Observable that emits numbers in sequence based on the provided time interval like so:
 
 [source,javascript]
 ----
-let obs = Rx.Observable
-    .interval(1000);
+import { interval } from 'rxjs';
+
+const numbers = interval(1000);
 ----
 
 The operation `interval` takes as the first param the number of milliseconds between each _push_ of the number onto the stream.
@@ -93,22 +121,7 @@ ifndef::ebook[]
 image::./images/rxjs-interval.gif[RxJS Interval]
 endif::ebook[]
 
-[TIP]
-====
-In RxJS operators act on an observable and return an observable with the operator applied, so we can `chain` operators together creating an _Observable Chain_, like so:
-
-[source,javascript]
-----
-let obs = Rx.Observable
-    .operator1();
-    .operator2();
-    .operator3();
-    .operator4();
-    .operator5();
-----
-====
-
-=== `subscribe`
+==== subscribe
 
 NOTE: In RxJS land no one can hear you _stream_, unless you subscribe.
 
@@ -118,10 +131,11 @@ The observable will become _hot_ and start pushing numbers onto it's first strea
 
 [source,javascript]
 ----
-let obs = Rx.Observable
-    .interval(1000);
+import { interval } from 'rxjs';
 
-obs.subscribe(value => console.log("Subscriber: " + value));
+const numbers = interval(1000);
+
+numbers.subscribe(value => console.log("Subscriber: " + value));
 ----
 
 By calling `subscribe` onto an observable it:
@@ -145,7 +159,7 @@ Subscriber: 9
 Subscriber: 10
 ----
 
-=== `take`
+==== take
 
 But it just keeps on printing, forever, we just want the first 3 items so we use another operator called `take`.
 
@@ -158,11 +172,13 @@ endif::ebook[]
 
 [source,javascript]
 ----
-let obs = Rx.Observable
-    .interval(1000)
-    .take(3);
+import { interval } from 'rxjs';
+import { take } from 'rxjs/operators';
 
-obs.subscribe(value => console.log("Subscriber: " + value));
+const numbers = interval(1000);
+const takeThree = numbers.pipe(take(3));
+
+takeThree.subscribe(value => console.log("Subscriber: " + value));
 ----
 
 This now prints out the below, and then stops:
@@ -173,7 +189,9 @@ Subscriber: 1
 Subscriber: 2
 ----
 
-=== `map`
+TIP: `pipe` is an Observable method which is used for composing operators. In more simpler terms, this allows us to chain operators together.
+
+==== map
 
 Finally, I want to add another operator called `map`, this takes as input the output stream from `take`, convert each value to a date and pushes that out onto a third stream like so:
 
@@ -183,13 +201,18 @@ endif::ebook[]
 
 [source,javascript]
 ----
-let obs = Rx.Observable
-    .interval(1000)
-    .take(3)
-    .map((v) => Date.now());
+import { interval } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 
-obs.subscribe(value => console.log("Subscriber: " + value));
+const numbers = interval(1000);
+const takeThree = numbers.pipe(
+  take(3),
+  map((v) => Date.now())
+);
+
+takeThree.subscribe(value => console.log("Subscriber: " + value));
 ----
+NOTE: Notice the use of `pipe` to chain multiple operators together.
 
 This now prints out the time in milliseconds, every second, like so:
 
@@ -199,7 +222,21 @@ Subscriber: 1475506795286
 Subscriber: 1475506796285
 ----
 
-== Other Operators
+[TIP]
+====
+Without declaring separate constants, we can also write the same code in a single statement like so:
+[source, javascript]
+----
+interval(1000)
+  .pipe(
+    take(3),
+    map(v => Date.now())
+  )
+  .subscribe(value =>     console.log("Subscriber: " + value));
+----
+====
+
+== Other operators
 
 The above example showed a very very small subset of the total number of operators available to you when using RxJS.
 
