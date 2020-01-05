@@ -97,7 +97,7 @@ Going back to our example, we convert the variables `A`, `B` and `C` into _strea
 
 `A` is now _not_ an individual value at one point in time, it’s a _stream_ of values over time.
 
-The function `add` we think of an an _operation_ we perform which connects the output of streams `A` and `B` to the input of stream `C`, a visual representation would be something like the below:
+The function `add` we think of an _operation_ we perform which connects the output of streams `A` and `B` to the input of stream `C`, a visual representation would be something like the below:
 
 image::./images/streams-animation.2.png[Streams Animation 2]
 
