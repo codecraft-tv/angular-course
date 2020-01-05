@@ -35,7 +35,7 @@ To make sure everything worked correctly type:
 
 [source]
 ----
-tsc –v
+tsc -v
 ----
 
 And it should print something like
