@@ -123,7 +123,7 @@ console.log(injector.get(EmailService) === childInjector.get(EmailService)); // 
 <2> We create a child injector from the parent injector, this child injector is not configured with any providers.
 <3> The parent and child injectors resolve the same token and both return the _same_ instance of the dependency.
 
-We request the token `EmailService` from the `childInjector`, it can't find that token locally so it asks it's parent injector which returns the instance it had cached from a previous direct reqeust.
+We request the token `EmailService` from the `childInjector`, it can't find that token locally so it asks it's parent injector which returns the instance it had cached from a previous direct request.
 
 Therefore the dependency returned by the child and the parent is exactly the same instance .
 
