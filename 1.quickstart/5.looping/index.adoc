@@ -94,7 +94,7 @@ So we add a special syntax called an `NgFor` on the card element, like so:
 
 `*ngFor=&quot;let joke of jokes&quot;` will create a new HTML element, using the div element it's attached to as a template, for every joke in the jokes array.
 
-It will also make available to the element a variable called `joke` which is he item in the joke array it's currently looping over.
+It will also make available to the element a variable called `joke` which is the item in the joke array it's currently looping over.
 
 The syntax translates to `let &lt;name-i-want-to-call-each-item&gt; of &lt;array-property-on-component&gt;`
 
