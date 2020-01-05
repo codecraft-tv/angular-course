@@ -23,7 +23,7 @@ One way to set styles is by using the `NgStyle` directive and assigning it an _o
 
 This sets the background color of the `div` to green.
 
-`ngStyle` becomes much more useful when the value is _dynamic_. The _values_ in the object literal that we assign to `ngStyle` can be javascript expressions which are evaluated and the result of that expression is used as the value of the css property, like this:
+`ngStyle` becomes much more useful when the value is _dynamic_. The _values_ in the object literal that we assign to `ngStyle` can be JavaScript expressions which are evaluated and the result of that expression is used as the value of the CSS property, like this:
 
 [source,html]
 ----
@@ -34,7 +34,7 @@ The above code uses the ternary operator to set the background color to green if
 
 But the expression doesn't have to be _inline_, we can call a function on the component instead.
 
-To demonstrate this lets flesh out a full example. Similar to the ones we've created before lets loop through an array of people and print out there names in different colors depending on the country they are from.
+To demonstrate this let's flesh out a full example. Similar to the ones we've created before let's loop through an array of people and print out there names in different colors depending on the country they are from.
 
 [source,typescript]
 ----
@@ -91,7 +91,7 @@ If we ran the above code we would see:
 
 image::./images/ngstyle.png[NgStyle]
 
-=== Alternative syntax
+=== Alternative Syntax
 
 As well as using the `ngStyle` directive we can also set individual style properties using the `[style.<property>]` syntax, for example `[style.color]="getColor(person.country)"`
 
@@ -103,9 +103,9 @@ As well as using the `ngStyle` directive we can also set individual style proper
 </ul>
 ----
 
-=== Points and pixels
+=== Points and Pixels
 
-Lets imagine we wanted to set the font size to 24, we could use:
+Let's imagine we wanted to set the font size to 24, we could use:
 
 [source,html]
 ----
@@ -163,7 +163,7 @@ The value can also be an _expression_, so we can re-write the above to be.
 [ngClass]="{'text-success':person.country === 'UK'}"
 ----
 
-Lets implement the colored names demo app using `ngClass` instead of `ngStyle`.
+Let's implement the colored names demo app using `ngClass` instead of `ngStyle`.
 
 [source,html]
 ----
@@ -186,17 +186,17 @@ If we ran the above code we would see:
 
 image::./images/ngclass.png[NgClass]
 
-=== Alternative syntax
+=== Alternative Syntax
 
 We can also set a class on an element by binding to the input property binding called `class`, like so `[class]="'text-success'"`
 
-NOTE: The `'text-success'` is wrapped with single quotes so when it's evaluated as javascript it doesn't try to treat `text-success` as a variable.
+NOTE: The `'text-success'` is wrapped with single quotes so when it's evaluated as JavaScript it doesn't try to treat `text-success` as a variable.
 
 IMPORTANT: The above syntax removes *all* the existing classes for that element and replaces them with just 'text-success'.
 
 If we want to just add `text-success` to the list of classes already set on the element we can use the extended syntax `[class.<class-name>]='truthy expression'`
 
-So for instanace to add text-success to the list of classes for an element we can use:
+So for instance to add text-success to the list of classes for an element we can use:
 
 [source,html]
 ----

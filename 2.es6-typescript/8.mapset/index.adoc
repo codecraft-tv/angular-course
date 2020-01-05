@@ -34,7 +34,7 @@ for (prop in obj) console.log(prop)
 ----
 
 
-TIP: `Object.create` creates a new objects who's _prototype_ points to the passed in `base` object. If it can't find a requested property on `obj`, javascript then tries to search the `base` object for the same property.
+TIP: `Object.create` creates a new objects who's _prototype_ points to the passed in `base` object. If it can't find a requested property on `obj`, JavaScript then tries to search the `base` object for the same property.
 
 Perhaps this is the behaviour you want? Or perhaps you only want to print out the keys that belong to the current object? 
 
@@ -64,7 +64,7 @@ obj.hasOwnProperty("test");
 // TypeError: Property 'hasOwnProperty' is not a function
 ----
 
-=== `__proto__` property
+=== `__proto__` Property
 
 `__proto__` holds a special meaning with respect to an objects prototype chain so we can't use it as the name of a key.
 
@@ -79,7 +79,7 @@ for (prop in obj) console.log(prop)
 
 Map is a new data structure introduced in ES6 which lets you map keys to values without the drawbacks of using Objects.
 
-=== Creating, getting and setting
+=== Creating, Getting and Setting
 
 We create a map using the `new` keyword, like so
 
@@ -108,7 +108,7 @@ let map = new Map()
     .set("C",3);
 ----
 
-Or we could initialise the `Map` with a an array of key-value pairs, like so:
+Or we could initialise the `Map` with a an array of key–value pairs, like so:
 
 [source,typescript]
 ----
@@ -175,7 +175,7 @@ let map = new Map([
 ]);
 ----
 
-==== Using keys()
+==== Using `keys()`
 
 The `keys` method returns the keys in the map as an array which we can loop over using `for-of` like so:
 
@@ -189,7 +189,7 @@ for (let key of map.keys()) {
 // MANGO
 ----
 
-==== Using values()
+==== Using `values()`
 
 The `values` method returns the values in the map as an array which we can loop over using `for-of` like so:
 
@@ -203,7 +203,7 @@ for (let value of map.values()) {
 // 3
 ----
 
-==== Using entries()
+==== Using `entries()`
 
 The `entries` method returns the [key,value] pairs in the map as an array which we can loop over using `for-of` like so:
 
@@ -247,11 +247,11 @@ IMPORTANT: A distinction between Object and Map is that Maps record the _order i
 
 == Set
 
-Sets are a bit like maps but they only store keys not key-value pairs.
+Sets are a bit like maps but they only store keys not key–value pairs.
 
 They are common in other programming languages but are a new addition to JavaScript in ES6.
 
-=== Creating, getting and setting
+=== Creating, Getting and Setting
 
 We create a Set using the `new` keyword, like so
 

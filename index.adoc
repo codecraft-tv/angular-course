@@ -29,25 +29,25 @@ reviews:
 After taking this course, you are going to be able to:
 
 - Understand the latest features of *ES6 JavaScript* and *TypeScript*.
-- Build an Angular application from scratch using TypeScript and the Angular command line interface.
+- Build an Angular application from scratch using TypeScript and the Angular command-line interface.
 - Write code using the paradigm of reactive programming with RxJS and Observables.
-- Know how to Unit Test Angular using Jasmine, Karma and the Angular Test Bed
+- Know how to Unit Test Angular using Jasmine, Karma and the Angular Test Bed.
 
 IMPORTANT: This courses teaches you Angular v2+ from scratch, you don't need to know AngularJS 1.x.
 
-The first chapter in the course is a _quickstart_ where you dive straight into writing your first Angular application. We use the web editor plunker so you can get stuck in writing code ASAP.
+The first chapter in the course is a _quickstart_ where you dive straight into writing your first Angular application. We use the web editor Plunker so you can get stuck in writing code ASAP.
 
-In this quickstart you'll get a 50,000 foot view of the major features of Angular v2+.
+In this quickstart you'll get a 50,000-foot view of the major features of Angular v2+.
 
-Then chapter by chapter we go much deeper into each of these features. We first cover the theory, using plunker as much as possible so you can try out the code yourself in a browser. Then you'll practice what you've learnt with either an online quiz or a set of flash cards.
+Then chapter by chapter we go much deeper into each of these features. We first cover the theory, using Plunker as much as possible so you can try out the code yourself in a browser. Then you'll practice what you've learnt with either an online quiz or a set of flash cards.
 
 You are going to learn all about:
 
-- Typescript & ES6 Javascript.
+- TypeScript & ES6 JavaScript
 - Components & Binding
 - Directives
 - Dependency Injection & Services
-- Angular Modules & Bootstrapping your Angular application.
+- Angular Modules & Bootstrapping your Angular application
 - SPAs & Routing
 - Angular CLI
 - Forms
@@ -62,4 +62,4 @@ Or perhaps you are an existing Angular 1 developer who wants to level up to Angu
 
 You do need to be comfortable with at least the ES5 version of JavaScript.
 
-We'll be using a UI framework called twitter bootstrap throughout the course but you still _must know HTML and some CSS_.
+We'll be using a UI framework called Twitter Bootstrap throughout the course but you still _must know HTML and some CSS_.

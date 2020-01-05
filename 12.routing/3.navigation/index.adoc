@@ -9,7 +9,7 @@ lecture_video: XYtLG9HVVfk
 
 How to navigate between the different routes in an Angular application.
 
-== Navigating by hardcoded URLS
+== Navigating by Hardcoded URLs
 
 We could simply _hardcode_ the URLs in the `href` anchor attributes on our navigation header, like so:
 
@@ -38,9 +38,9 @@ If we were using that strategy clicking one of those links would result in the b
 ====
 
 
-// ?? Hardcoding links also doesn't let us use variables in our URLS, for example imagine the URL "/artist/123456/tracks" which might return tracks for a given artist, the 123456 is a variable that would change for each artist.
+// ?? Hardcoding links also doesn't let us use variables in our URLs, for example imagine the URL "/artist/123456/tracks" which might return tracks for a given artist, the 123456 is a variable that would change for each artist.
 
-== Navigating programmatically via the router
+== Navigating Programmatically via the Router
 
 In Angular we can also programmatically navigate via a `Router` service we inject into our component, like so:
 
@@ -84,9 +84,9 @@ class HeaderComponent {
 
 
 
-=== Link params array
+=== Link Parameters Array
 
-The value we pass into the `navigate` function might look a bit strange, we call it a _link params array_ and it equivalent to the URL split by the `/` character into an array.
+The value we pass into the `navigate` function might look a bit strange, we call it a _link params array_ and it's equivalent to the URL split by the `/` character into an array.
 
 IMPORTANT: We don't have to pass in the `&#35;` character in the parameters to the `navigate` function, it automatically adds them in if we are using the `HashLocationStrategy`.
 
@@ -104,7 +104,7 @@ to
 {path: 'search/foo/moo', component: SearchComponent},
 ----
 
-Then to navigate to our search page we pass into the navigate function an link params array like so:
+Then to navigate to our search page we pass into the navigate function a link params array like so:
 
 [source,typescript]
 ----
@@ -121,7 +121,7 @@ this.router.navigate(['search', part, 'moo']);
 
 NOTE: This becomes a _lot_ more useful when we start dealing with parametrised routes later on in this section.
 
-== Navigating via a routerLink directive
+== Navigating via a `routerLink` Directive
 
 We can also control navigation by using the `routerLink` directive in the template itself, like so:
 
@@ -143,11 +143,11 @@ We can also control navigation by using the `routerLink` directive in the templa
 
 The `routerLink` directive takes as input the same link params array format that the `router.navigate(...)` function takes.
 
-=== routerLinkActive
+=== `routerLinkActive`
 
 An important feature of any navigation component is giving the user feedback about _which_ menu item they are currently viewing. Another way to describe this is giving the user feedback about which _route_ is currently _active_.
 
-With the twitter bootstrap navigation styles we give this feedback by adding a class of `active` to the _parent_ element to the anchor tag, like so:
+With the Twitter Bootstrap navigation styles we give this feedback by adding a class of `active` to the _parent_ element to the anchor tag, like so:
 
 [source,typescript]
 ----
@@ -175,7 +175,7 @@ It takes as input an array of classes which it will add to the element it's atta
 
 The above will add a class of `active` to the anchor tag if we are currently viewing the home route.
 
-However this isn't so useful for us in twitter bootstrap since we need the `active` class set on the _parent_ `li` element.
+However this isn't so useful for us in Twitter Bootstrap since we need the `active` class set on the _parent_ `li` element.
 
 But that's fine, the `routerLinkActive` directive can be set on a _parent_ element of the `routerLink` directive and it will still associate itself with the route, like so:
 

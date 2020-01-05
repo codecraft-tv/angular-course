@@ -50,7 +50,7 @@ class Joke {
 }
 ----
 
-As we've mentioned before we can instantiate a class by using the `new` keyword and when that happens javascript calls the `constructor` function where we can have code that initialises the properties.
+As we've mentioned before we can instantiate a class by using the `new` keyword and when that happens JavaScript calls the `constructor` function where we can have code that initialises the properties.
 
 However the constructors we've used so far have not had any arguments, the one for the joke class above does. It initialises the properties of the joke instance from the arguments passed into the constructor.
 
@@ -69,7 +69,7 @@ NOTE: We use `this` in a class function to distinguish between properties that a
 So `this.joke` in our toggle function is explicitly saying the `joke` property on the class instance.
 
 
-Now lets change our `JokeListComponent` so it uses our domain model, like so:
+Now let's change our `JokeListComponent` so it uses our domain model, like so:
 
 [source,javascript]
 ----
@@ -101,7 +101,7 @@ The final thing to do is to change the markup in the template so we call the `jo
 
 == Summary
 
-Although its possible to store all your data as objects it's both recommend and simple to encapsulate your data into domain models in Angular.
+Although it's possible to store all your data as objects it's both recommend and simple to encapsulate your data into domain models in Angular.
 
 Using a domain model clarifies for all developers where you should put functions that need to act on the data, like our toggle function.
 

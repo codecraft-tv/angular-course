@@ -13,7 +13,7 @@ In this lecture we are going to discuss how to test classes which have dependenc
 * How to _Mock_ by extending classes and overriding functions.
 * How to _Mock_ by using a real instance and a _Spy_.
 
-== Sample code
+== Sample Code
 
 Let's imagine we have a `LoginComponent` which works _with_ the `AuthService` we tested in the previous lecture, like so:
 
@@ -52,7 +52,7 @@ export class AuthService {
 }
 ----
 
-== Testing with the real `AuthService`
+== Testing with the Real `AuthService`
 
 We could test the `LoginComponent` by using a real instance of `AuthService` but if you remember to _trick_ `AuthService` into returning `true` for the `isAuthenticated` function we needed to setup some data via `localStorage`.
 
@@ -78,11 +78,11 @@ describe('Component: Login', () => {
   });
 
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns true when the user has not been authenticated', () => {
     expect(component.needsLogin()).toBeTruthy();
   });
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns false when the user has been authenticated', () => {
     localStorage.setItem('token', '12345'); # <3>
     expect(component.needsLogin()).toBeFalsy();
   });
@@ -102,7 +102,7 @@ This is why we need to test classes in _isolation_, we just want to worry about 
 
 We achieve this by _Mocking_ our dependencies. Mocking is the act of creating something that looks like the dependency but is something _we_ control in our test. There are a few methods we can use to create mocks.
 
-== Mocking with fake classes
+== Mocking with Fake Classes
 
 We can create a fake `AuthService` called `MockedAuthService` which just returns whatever we want for our test.
 
@@ -137,12 +137,12 @@ describe('Component: Login', () => {
   });
 
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns true when the user has not been authenticated', () => {
     service.authenticated = false; # <3>
     expect(component.needsLogin()).toBeTruthy();
   });
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns false when the user has been authenticated', () => {
     service.authenticated = true; # <3>
     expect(component.needsLogin()).toBeFalsy();
   });
@@ -157,7 +157,7 @@ By using a fake `MockAuthService` we:
  * Don't depend on the real `AuthService`, in fact we don't even need to import it into our specs.
  * Make our code less brittle, if the inner workings of the real `AuthService` ever changes our tests will still be valid and still work.
 
-== Mocking by overriding functions
+== Mocking by Overriding Functions
 
 Sometimes creating a complete fake copy of a real class can be complicated, time consuming and unnecessary.
 
@@ -178,9 +178,9 @@ In the above class `MockAuthService` _extends_  `AuthService`. It would have acc
 
 NOTE: The rest of the test suite using mocking via overriding functions is the same as the previous version with fake classes.
 
-== Mock by using a real instance with Spy
+== Mocking with Spies
 
-A _Spy_ is a feature of Jasmine which lets you take an existing class, function, object and _mock_ it in such a way that you can control what gets returned from functions.
+A _Spy_ is a feature of Jasmine which lets you take an existing class, function, or object and _mock_ it in such a way that you can control what gets returned from function calls.
 
 Let's re-write our test to use a Spy on a real instance of `AuthService` instead, like so:
 
@@ -207,14 +207,14 @@ describe('Component: Login', () => {
   });
 
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns true when the user has not been authenticated', () => {
     spy = spyOn(service, 'isAuthenticated').and.returnValue(false); # <3>
     expect(component.needsLogin()).toBeTruthy();
     expect(service.isAuthenticated).toHaveBeenCalled(); # <4>
 
   });
 
-  it('canLogin returns false when the user is not authenticated', () => {
+  it('needsLogin returns false when the user has been authenticated', () => {
     spy = spyOn(service, 'isAuthenticated').and.returnValue(true);
     expect(component.needsLogin()).toBeFalsy();
     expect(service.isAuthenticated).toHaveBeenCalled();
@@ -226,7 +226,7 @@ describe('Component: Login', () => {
 <3> We create a _spy_ on our `service` so that if the `isAuthenticated` function is called it returns `false`.
 <4> We can even check to see if the `isAuthenticated` function was called.
 
-By using the spy feature of jasmine we can make any function return anything we want:
+By using the spy feature of Jasmine we can make any function return anything we want:
 
 [source,typescript]
 ----
@@ -241,7 +241,7 @@ Testing with real instances of dependencies causes our test code to know about t
 
 The goal is to test pieces of code in isolation without needing to know about the inner workings of their dependencies.
 
-We do this by creating Mocks; we can create Mocks using fake classes, extending existing classes or by using real instances of classes but taking control of them with Spys.
+We do this by creating Mocks; we can create Mocks using fake classes, extending existing classes or by using real instances of classes but taking control of them with Spies.
 
 == Listing
 

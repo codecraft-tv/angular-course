@@ -10,7 +10,7 @@ Components have all the features of Directives but also have a view, that is to 
 
 Another difference is that a single HTML element can only have a _single component_ associated with it. However a single element can have _multiple directives_ associated with it.
 
-Lets continue with our joke example app and create a directive which shows the punchline of the joke when the user hovers over the card.
+Let's continue with our joke example app and create a directive which shows the punchline of the joke when the user hovers over the card.
 
 In this section you will learn:
 

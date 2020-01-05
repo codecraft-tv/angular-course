@@ -7,7 +7,7 @@ has_code: 'false'
 = Configurable Custom Form Validators
 
 ++++
-<p><span id="replaceMe">Sample content</span> replaced by Javascript</p>
+<p><span id="replaceMe">Sample content</span> replaced by JavaScript</p>
 <script>
 document.getElementById('replaceMe').innerHTML = 'New content!'
 </script>
@@ -15,9 +15,9 @@ document.getElementById('replaceMe').innerHTML = 'New content!'
 
 == Learning Objectives
 
-* Know how to create advanced _configurable_ custom validators for both model driven and template driven forms.
+* Know how to create advanced _configurable_ custom validators for both model-driven and template-driven forms.
 
-== Configurable model driven validators
+== Configurable Model-Driven Validators
 
 In the previous lecture we created a custom email validator which checked that emails ended in a certain domain, a domain which we hardcoded in the validator.
 
@@ -96,7 +96,7 @@ this.email = new FormControl('', [
 ]);
 ----
 
-== Configurable template driven validators
+== Configurable Template-Driven Validators
 
 To configure our directive validator we need to:
 
@@ -108,7 +108,7 @@ To configure our directive validator we need to:
 Numbers 1 & 2 are quite simple. For numbers 3 & 4 we need to take advantage of another fact. A validator as well as being a function can also be a class with a member function called `validate`. So we can actually turn our directives class into a validator class.
 
 
-Firstly lets provide the configurable domain name in our `NgModule` like so:
+Firstly let's provide the configurable domain name in our `NgModule` like so:
 
 [source,typescript,linenums,highlight='']
 ----
@@ -122,7 +122,7 @@ Firstly lets provide the configurable domain name in our `NgModule` like so:
 })
 ----
 
-Then lets update our directive so that it uses both the provided `RequiredDomain` and the `CodeCraftValidators.emailDomain` factory function.
+Then let's update our directive so that it uses both the provided `RequiredDomain` and the `CodeCraftValidators.emailDomain` factory function.
 
 [source,typescript,linenums,highlight='']
 ----
@@ -212,7 +212,7 @@ The email domain validator now check against this new domain instead:
 
 image::./images/configurable-validator-tdf-fail.png[]
 
-== Bindable template driven validators
+== Bindable Template-Driven Validators
 
 We can also configure out template validator directive via property binding in the template instead, like so:
 
@@ -270,15 +270,15 @@ Our directive needs one more change in order to function, we are providing this 
 })
 ----
 
-Now we have a template driven form validator which can be configured via input property binding.
+Now we have a template-driven form validator which can be configured via input property binding.
 
 == Summary
 
-For model driven forms we use a factory function which returns a validator function configured as we want.
+For model-driven forms we use a factory function which returns a validator function configured as we want.
 
-For template driven forms we create a validator class, often re-using the same factory function as was used in model driven forms.
+For template-driven forms we create a validator class, often re-using the same factory function as was used in model-driven forms.
 
-== Model Driven Listing
+== Model-Driven Listing
 
 .main.ts
 [source,typescript]
@@ -286,7 +286,7 @@ For template driven forms we create a validator class, often re-using the same f
 include::{sourcedir}/model-driven/src/main.ts[]
 ----
 
-== Template Driven Listing
+== Template-Driven Listing
 
 .main.ts
 [source,typescript]

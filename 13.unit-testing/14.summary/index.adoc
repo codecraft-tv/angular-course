@@ -9,15 +9,15 @@ We initially covered the basics of how to test classes with just Jasmine and in 
 
 But to go deeper we need to be able to test behaviours that require the Angular framework and that is where the Angular Test Bed comes in.
 
-It lets us test behaviours that require a component interacting with it's view and gives us fine grained control on change detection and asynchronous processing.
+It lets us test behaviours that require a component interacting with its view and gives us fine grained control on change detection and asynchronous processing.
 
 We covered specific recipes for testing:
 
-* Using Mocks and Spys.
+* Using Mocks and Spies.
 * Asynchronous code.
 * Dependency injection.
 * Components.
 * Directives.
-* Model Driven Forms
+* Model-Driven Forms
 * Http and Jsonp.
 * Routing.

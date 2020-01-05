@@ -107,7 +107,7 @@ If this syntax looks a bit strange to you:
 })();
 ----
 
-Know its just a shorter way of writing:
+Know it's just a shorter way of writing:
 
 [source,javascript]
 ----
@@ -139,7 +139,7 @@ hello();
 
 Now the `a` declared in the for loop body only exists between the `{` and `}`, and the code snippet above prints out `function` as expected.
 
-== Using let in for loops
+== Using `let` in `for` Loops
 
 So a classic interview question to test JavaScript developers knowledge of the lack of block level scope is this one:
 
@@ -211,7 +211,7 @@ And so executing this now results in:
 4
 ----
 
-== The for loop short-cut
+== The `for` Loop Shortcut
 
 The above construct is so common we have a shortcut, we can declare the index variable `i` with `let` in the for loop expression, like so:
 
@@ -233,7 +233,7 @@ Even though `let i = 0` is strictly declared _outside_ of the for block `{ }`, a
 
 == Summary
 
-`let` is a very important addition the javascript language in ES6.
+`let` is a very important addition the JavaScript language in ES6.
 
 It's not a replacement to `var`, `var` can still be used even in ES6 and has the same semantics as ES5.
 

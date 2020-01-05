@@ -10,4 +10,4 @@ We covered the mechanism of content projection in Angular with the `ng-content` 
 
 We explained the various component lifecycle phases, when they are run and how to hook into them with functions on the component.
 
-Finally we covered the idea of view and content children and how to get references to each in a component.
+Finally, we covered the idea of view and content children and how to get references to each in a component.

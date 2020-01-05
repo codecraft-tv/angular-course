@@ -3,33 +3,33 @@ lecture_video: VWTE7n-75fs
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
-= Template Driven Forms
+= Template-Driven Forms
 
-In this lecture we'll be converting the model driven form we've been building so far in this section into a _template driven_ form.
+In this lecture we'll be converting the model-driven form we've been building so far in this section into a _template-driven_ form.
 
 == Learning Objectives
 
-* Know the differences and similarities between template driven forms and model driven forms.
+* Know the differences and similarities between template-driven forms and model-driven forms.
 * How to use the `ngModel` directive to link template input controls to properties on the component.
-* How to implement form validation in the template driven approach.
-* How to submit and reset a form in the template driven approach.
+* How to implement form validation in the template-driven approach.
+* How to submit and reset a form in the template-driven approach.
 
 == Overview
 
-The key in understanding the _template driven_ approach is that it _still_ uses the same models as the _model driven_ approach. In the template driven approach Angular creates the models, the `FormGroups` and `FormControls`, for us via directives we add to the template.
+The key in understanding the _template-driven_ approach is that it _still_ uses the same models as the _model-driven_ approach. In the template-driven approach Angular creates the models, the `FormGroups` and `FormControls`, for us via directives we add to the template.
 
-That's why in this course we teach the model driven approach first. So you'll have a good knowledge of the underlying model structure that is still present in template driven forms.
+That's why in this course we teach the model-driven approach first. So you'll have a good knowledge of the underlying model structure that is still present in template-driven forms.
 
 [TIP]
 ====
-Template Drive Forms are just Model Driven Form but _driven_ by directives in the the template versus code in the component.
+Template-driven forms are just model-driven forms but _driven_ by directives in the the template versus code in the component.
  +
-In template driven we use directives to create the model.
+In template-driven we use directives to create the model.
  +
-In model driven we create a model on the component and then use directives to map elements in the template to our form model.
+In model-driven we create a model on the component and then use directives to map elements in the template to our form model.
 ====
 
-== Form setup
+== Form Setup
 
 We create a basic form component, exactly the same as the model form component we started with in this section, with a basic form template, a dynamic select box and a simple component like so:
 
@@ -91,11 +91,11 @@ class TemplateFormComponent implements OnInit {
 }
 ----
 
-IMPORTANT: Remove all the `formGroup`, `formGroupName`, `formControl` and `formControlName` directives from our template, these are from the `ReactiveFormsModule` and used for model driven forms.
+IMPORTANT: Remove all the `formGroup`, `formGroupName`, `formControl` and `formControlName` directives from our template, these are from the `ReactiveFormsModule` and used for model-driven forms.
 
 == Directives
 
-The directives we need to build template driven forms are in the `FormsModule` not the `ReactiveFormsModule`, so lets import that and add it to our `NgModule` as an import and remove the `ReactiveFormsModule`.
+The directives we need to build template-driven forms are in the `FormsModule` not the `ReactiveFormsModule`, so let's import that and add it to our `NgModule` as an import and remove the `ReactiveFormsModule`.
 
 [source,typescript]
 ----
@@ -107,7 +107,7 @@ One of the directives pulled in via the `FormsModule` is called `NgForm`.
 
 This directive has a selector which matches the `<form>` tag.
 
-So just by adding `FormsModule` to our `NgModule` imports our template form is already associated wth an instance of the `NgForm` directive.
+So just by adding `FormsModule` to our `NgModule` imports, our template form is already associated with an instance of the `NgForm` directive.
 
 This instance of `ngForm` is _hidden_ but we can expose it with a local template reference variable attached to the form element, like so:
 
@@ -118,11 +118,11 @@ This instance of `ngForm` is _hidden_ but we can expose it with a local template
 
 Now we can use the variable `f` in our template and it will point to our instance of the `ngForm` directive.
 
-One of the things the `ngForm` directive does is create a top level `FormGroup` and lets us call functions as if it was an instance of a `FormGroup`.
+One of the things the `ngForm` directive does is create a top-level `FormGroup` and lets us call functions as if it was an instance of a `FormGroup`.
 
 If you remember one of the properties on a `FormGroup` was value, this is an object representation of all the forms controls.
 
-So just like model driven forms we can output that to screen simply with a pre tag and the json pipe, like so:
+So just like model-driven forms we can output that to screen simply with a `pre` tag and the `json` pipe, like so:
 
 [source,html]
 ----
@@ -131,13 +131,13 @@ So just like model driven forms we can output that to screen simply with a pre t
 
 If you ran this code now all that would get printed out is `{}`. The forms value is an empty object, even if you started typing into the input fields the value would not update.
 
-This is because the `ngForm` directive doesn't _automatically_ detect all the controls that exist inside the `<form>` tag it's linked to. So although it's created a top level `FormGroup`, it's empty.
+This is because the `ngForm` directive doesn't _automatically_ detect all the controls that exist inside the `<form>` tag it's linked to. So although it's created a top-level `FormGroup`, it's empty.
 
 We need go through and _explicitly_ register each template control with the `ngForm` directive. `ngForm` will then create a `FormControl` instance and map that to the `FormGroup`.
 
-In model driven forms we added `formControlName` directives to map template form controls to existing model form controls on the component.
+In model-driven forms we added `formControlName` directives to map template form controls to existing model form controls on the component.
 
-In template driven forms we need Angular to create the model form controls for us for each template form control. To do that we need to do two things to each template form control:
+In template-driven forms we need Angular to create the model form controls for us for each template form control. To do that we need to do two things to each template form control:
 
 1. Add the `NgModel` directive
 2. Add the `name` attribute.
@@ -195,9 +195,9 @@ If we now added the `name` attribute and ngModel directive to all of our templat
 ----
 
 
-This isn't exactly the same as before, in our model driven form we wanted to group `firstName` and `lastName` into a nested `FormGroup` called `name`.
+This isn't exactly the same as before, in our model-driven form we wanted to group `firstName` and `lastName` into a nested `FormGroup` called `name`.
 
-We can do the same in template driven forms with the `ngModelGroup` directive, lets add that to the parent `fieldset` element of our `firstName` and `lastName` template form controls, like so:
+We can do the same in template-driven forms with the `ngModelGroup` directive, let's add that to the parent `fieldset` element of our `firstName` and `lastName` template form controls, like so:
 
 
 [source,html]
@@ -220,11 +220,11 @@ We can now see that the output of `f.value` matches what we have before
 }
 ----
 
-We have now mirrored the model we created in the model driven form using template driven forms, with `FormControls` and a nested `FormGroup`.
+We have now mirrored the model we created in the model-driven form using template-driven forms, with `FormControls` and a nested `FormGroup`.
 
-== Two way data binding
+== Two-Way Data Binding
 
-Another feature of the `ngModel` directive is that it lets us setup _two way_ data binding between a template form control and a variable on our component.
+Another feature of the `ngModel` directive is that it lets us setup _two-way_ data binding between a template form control and a variable on our component.
 
 So when the user changes the value in the template form control the value of the variable on the component automatically updates and when we change the variable on the component the template form control automatically updates.
 
@@ -247,7 +247,7 @@ class TemplateFormComponent implements OnInit {
 <1> We add an `email` property so we can store the email the user enters on the component.
 
 
-Then we setup _two way_ data binding by changing our email `ngModel` directive to:
+Then we setup _two-way_ data binding by changing our email `ngModel` directive to:
 
 [source,html]
 ----
@@ -257,7 +257,7 @@ Then we setup _two way_ data binding by changing our email `ngModel` directive t
 
 [NOTE]
 ====
-The `[( )]` syntax is a combination of the syntax for input property binding `[]` and output event binding `()`
+The `[( )]` syntax is a combination of the syntax for input property binding `[]` and output event binding `()`.
 
 The long form of writing the above would be:
 [source,html]
@@ -265,13 +265,13 @@ The long form of writing the above would be:
 <input ... [ngModel]="email" (ngModelChange)="email = $event" >
 ----
 
-But the `[()]` syntax is shorter and clearly shows we are implementing _two way_ data binding on this input control.
+But the `[()]` syntax is shorter and clearly shows we are implementing _two-way_ data binding on this input control.
 ====
 
 
-== Domain model
+== Domain Model
 
-In Angular we typically won't data bind to a simple string or object on our component but a _domain model_ we've defined via a class, lets create one for our Signup form called Signup.
+In Angular we typically won't data bind to a simple string or object on our component but a _domain model_ we've defined via a class, let's create one for our Signup form called Signup.
 
 [source,typescript]
 ----
@@ -293,7 +293,7 @@ Then on our component we replace our `email` property with:
 model: Signup = new Signup();
 ----
 
-Now lets bind all our input controls to our model directly, like so:
+Now let's bind all our input controls to our model directly, like so:
 
 [source,html]
 ----
@@ -302,9 +302,9 @@ Now lets bind all our input controls to our model directly, like so:
 
 == Validation
 
-In the model driven approach we defined the validators via code in the component.
+In the model-driven approach we defined the validators via code in the component.
 
-In the template driven approach we define the validators via `directives` and HTML5 attributes in our template itself, lets add validators to our form template.
+In the template-driven approach we define the validators via `directives` and HTML5 attributes in our template itself, let's add validators to our form template.
 
 All the fields apart from the language were _required_, so we'll just add the `required` attribute to those input fields, like so:
 
@@ -344,11 +344,11 @@ The password field also had a _min length_ validator, we can add that via an att
 
 IMPORTANT: The `attributes` we are adding to add validation to our control are parts of the standard HTML5 specification. They are built-in to HTML5 and not part of Angular.
 
-=== Validation styling
+=== Validation Styling
 
-Similar to model driven forms we can access each model form controls state by going through the top level form group.
+Similar to model-driven forms we can access each model form controls state by going through the top-level form group.
 
-The `ngForm` directive makes the top level `FormGroup` available to us via the `.form` property, so we can show the _valid_, _dirty_ or _touched_ state of our email field like so:
+The `ngForm` directive makes the top-level `FormGroup` available to us via its `form` property, so we can show the _valid_, _dirty_ or _touched_ state of our email field like so:
 
 [source,html]
 ----
@@ -362,18 +362,18 @@ The `ngForm` directive makes the top level `FormGroup` available to us via the `
 The `?` is called the _elvis_ operator, it means:
  +
  +
-_"Only try to call the property on the right of `?` if the property on the left of `?` is *not* null"_
+_"Only try to call the property on the right of `?` if the property on the left of `?` is *not* null."_
  +
  +
 So if `form.controls.email` was `null` or `undefined` it would not try to call `form.controls.email.valid` (which would throw an error).
  +
  +
-In template driven forms the controls can sometimes be `null` when Angular is building the page, so to be safe we use the _elvis_ operator. We don't need to use this in model driven forms since the models are created already in our component by the time the HTML form is shown on the page.
+In template-driven forms the controls can sometimes be `null` when Angular is building the page, so to be safe we use the _elvis_ operator. We don't need to use this in model-driven forms since the models are created already in our component by the time the HTML form is shown on the page.
 ====
 
-So again similar to model driven forms we can use this in conjunction with the `ngClass` directive and the validation classes from twitter bootstrap to style our form to give visual feedback to the user when it's invalid.
+So again similar to model-driven forms we can use this in conjunction with the `ngClass` directive and the validation classes from Twitter Bootstrap to style our form to give visual feedback to the user when it's invalid.
 
-Lets add validation styling to our email field, like so:
+Let's add validation styling to our email field, like so:
 
 [source,html]
 ----
@@ -394,7 +394,7 @@ Lets add validation styling to our email field, like so:
 
 The above code displays a red border round the input control when it's invalid and a green border when it's valid.
 
-==== Writing shorter validation expressions
+==== Writing Shorter Validation Expressions
 
 The `NgForm` directive does provide us with a shortcut to the `controls` property so we can write `f.controls.email?.valid` instead of `f.form.controls.email?.valid`.
 
@@ -439,7 +439,7 @@ So now our template is a lot less _verbose_.
 
 [IMPORTANT]
 =====
-As long as we named our local reference variables the same name we named our form controls in the _model driven version of this form_ we can just re-use the same `ngClass` syntax, like so:
+As long as we named our local reference variables the same name we named our form controls in the _model-driven version of this form_ we can just re-use the same `ngClass` syntax, like so:
 
 [source,html]
 ----
@@ -452,9 +452,9 @@ As long as we named our local reference variables the same name we named our for
 
 =====
 
-=== Validation messages
+=== Validation Messages
 
-As for form validation messages, we can use _exactly the same method_ that we used in model driven forms. As long as we named the local reference variables the same as the form controls in the model driven approach we can use exactly the same HTML in our template driven forms, like so:
+As for form validation messages, we can use _exactly the same method_ that we used in model-driven forms. As long as we named the local reference variables the same as the form controls in the model-driven approach we can use exactly the same HTML in our template-driven forms, like so:
 
 [source,html]
 ----
@@ -465,9 +465,9 @@ As for form validation messages, we can use _exactly the same method_ that we us
 </div>
 ----
 
-== Submitting the form
+== Submitting the Form
 
-Submitting a form is exactly the same in model driven forms as it is in template driven forms.
+Submitting a form is exactly the same in model-driven forms as it is in template-driven forms.
 
 We need a submit button, this is just  button with a `type="submit"` somewhere between the opening and closing `form` tags.
 
@@ -497,11 +497,11 @@ However, we don't want the form submitted when the form is invalid. We can easil
 <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
 ----
 
-== Resetting the form
+== Resetting the Form
 
-In the model driven approach we reset the form by calling the function `reset()` on our `myform` model.
+In the model-driven approach we reset the form by calling the function `reset()` on our `myform` model.
 
-We need to do the same in our template driven approach but we don't have access to the underlying form model in our component. We only have access to it in our template via our local reference variable `f.form`
+We need to do the same in our template-driven approach but we don't have access to the underlying form model in our component. We only have access to it in our template via our local reference variable `f.form`
 
 However, we can get a reference to the `ngForm` instance in our component code by using a `ViewChild` decorator which we covered in the section on components earlier on in this course.
 
@@ -521,14 +521,14 @@ Then we import the `ViewChild` decorator from `@angular/core`, like so:
 import { ViewChild } from '@angular/core';
 ----
 
-Finally we decorate our property with the `ViewChild` decorator. We pass to `ViewChild` the _name_ of the local reference variable we want to link to, like so:
+Finally, we decorate our property with the `ViewChild` decorator. We pass to `ViewChild` the _name_ of the local reference variable we want to link to, like so:
 
 [source,typescript]
 ----
 @ViewChild('f') form: any;
 ----
 
-And then in our `onSubmit()` function we can just call `form.reset()` like we did in the model driven approach.
+And then in our `onSubmit()` function we can just call `form.reset()` like we did in the model-driven approach.
 
 The full listing for our component is now:
 
@@ -558,19 +558,19 @@ Now when we submit the form it _blanks out_ all the fields and also resets the s
 
 == Summary
 
-In this lecture we converted our model driven form into a template driven form.
+In this lecture we converted our model-driven form into a template-driven form.
 
-We learnt that the template driven form still uses the same classes as the model driven form but in the template drive approach the models are created by directives in the template instead of explicitly created on the component.
+We learnt that the template-driven form still uses the same classes as the model-driven form but in the template drive approach the models are created by directives in the template instead of explicitly created on the component.
 
-The `ngForm` directive automatically attaches to `<form>` and creates a top level `FormGroup`.
+The `ngForm` directive automatically attaches to `<form>` and creates a top-level `FormGroup`.
 
 We learnt about the `?` elvis operator and how we can use it when some properties in a dot chain can be undefined or null.
 
-We learnt how to use the ngModel directive, how it creates the FormControl instance for us and how we can use it to implement two way data binding to a domain model on our component.
+We learnt how to use the `ngModel` directive, how it creates `FormControl` instances for us, and how we can use it to implement two-way data binding to a domain model on our component.
 
 We learnt how to use a domain model in Angular.
 
-We learnt how to implement validation in template driven forms as well as how to submit and reset a form.
+We learnt how to implement validation in template-driven forms as well as how to submit and reset a form.
 
 == Listing
 

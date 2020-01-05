@@ -8,13 +8,13 @@ lecture_video: 2jdWZhHTbU4
 == Learning Objectives
 
 * How to setup our application so we can inject and use the Http client library.
-* How to send the various types of http requests.
+* How to send the various types of HTTP requests.
 * How to send custom headers with our requests.
 * How to handle errors.
 
-== Providing the Http dependencies
+== Providing the Http Dependencies
 
-The _http client_ is a service that you can _inject_ into your classes in Angular, like so:
+The _Http client_ is a service that you can _inject_ into your classes in Angular, like so:
 
 [source,typescript]
 ----
@@ -24,7 +24,7 @@ class MyClass {
 }
 ----
 
-It lives in the `@angular/http` module along side a number of other classes which are helpful when working with http.
+It lives in the `@angular/http` module along side a number of other classes which are helpful when working with HTTP.
 
 [source,typescript]
 ----
@@ -33,9 +33,9 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 Importing these classes isn't enough though. Like all things you can _inject_, these are dependencies and therefore must be configured via a provider on the DI framework.
 
-We want it configured into our root `NgModule` since we want to use the http client potentially everywhere.
+We want it configured into our root `NgModule` since we want to use the Http client potentially everywhere.
 
-The immediate thought might be to add it to the providers param on our NgModule like so:
+The immediate thought might be to add it to the `providers` parameter on our NgModule like so:
 
 [source,typescript]
 ----
@@ -63,11 +63,11 @@ import { HttpModule } from '@angular/http';
 
 Importing `HttpModule` into our `NgModule` configures our `NgModules` injector with all the providers needed to use Http in our app.
 
-== Demo API & sample app
+== Demo API & Sample App
 
-To demonstrate the http client lib we will need a test API we can use, one such API is http://httpbin.org this has a number of API end points where we can test different HTTP actions.
+To demonstrate the Http client lib we will need a test API we can use, one such API is http://httpbin.org this has a number of API end points where we can test different HTTP actions.
 
-For this lecture we'll be fleshing out this simple component. It is a series of buttons which call functions on the component with each function performing a different action using the http client lib.
+For this lecture we'll be fleshing out this simple component. It is a series of buttons which call functions on the component with each function performing a different action using the Http client lib.
 
 [source,typescript]
 ----
@@ -139,21 +139,21 @@ class AppComponent {
 <1> We store the root of our API in a variable so we can easily refer to it in our functions.
 <2> We've injected the `Http` service onto our component and stored it as a private property.
 
-Running the above we wil see an application like so:
+Running the above we will see an application like so:
 
 image::./images/application-demo.png[]
 
 == HTTP Verbs
 
-Now we have http setup we can inject it into a class and start making HTTP calls.
+Now that we have Http setup we can inject it into a class and start making HTTP calls.
 
-In the HTTP protocol describes a set of _verbs_ for each URL. For a given URL we can perform a `GET`, `PUT`, `POST`, `DELETE`, `HEAD` and `OPTIONS` request.
+The HTTP protocol describes a set of _verbs_ for each URL. For a given URL we can perform a `GET`, `PUT`, `POST`, `DELETE`, `HEAD` and `OPTIONS` request.
 
-Lets flesh out the functions in our component to demonstrate the various features.
+Let's flesh out the functions in our component to demonstrate the various features.
 
 === GET
 
-To perform a `GET` request we simply call the `get` function on our http client. This returns an observable which for now we are just going to subscribe to and print the response to the console, like so:
+To perform a `GET` request we simply call the `get` function on our Http client. This returns an observable which for now we are just going to subscribe to and print the response to the console, like so:
 
 [source,typescript]
 ----
@@ -205,7 +205,7 @@ GET
 Object {args: Object, headers: Object, origin: "2.139.81.90", url: "http://httpbin.org/get"}
 ----
 
-=== GET with query params
+=== GET with Query Parameters
 
 We can pass to the `get` function a set of optional query parameters as the second argument.
 
@@ -258,7 +258,7 @@ doDELETE() {
 }
 ----
 
-=== POST with data
+=== POST with Data
 
 To perform a _POST_ request we call the `post` function.
 
@@ -283,7 +283,7 @@ POST
 Object {args: Object, data: "{↵  "moo": "foo",↵  "goo": "loo"↵}", files: Object, form: Object, headers: Object…}
 ----
 
-If we wanted to post to the url but add query params we can do the same as we did with `get` but we pass the query params in the third param instead, like so:
+If we wanted to post to the URL but add query params we can do the same as we did with `get` but we pass the query params in the third param instead, like so:
 
 [source,typescript]
 ----
@@ -297,7 +297,7 @@ doPOST() {
 }
 ----
 
-=== PUT with data
+=== PUT with Data
 
 To perform a PUT request we just call the `put` function. It works in exactly the same was as the `post` function above:
 
@@ -359,7 +359,7 @@ But the above will _unnecessarily_ bloat the application so isn't recommended fo
 
 Running the above promise based application results in the same information being printed to the console as the previous observable based function.
 
-== Handling errors
+== Handling Errors
 
 We can simulate errors from our test server just by performing a `GET` on a `POST` endpoint, like so:
 
@@ -414,7 +414,7 @@ doGETAsObservableError() {
 }
 ----
 
-=== Status codes
+=== Status Codes
 
 If you are looking for a refresher on what each HTTP status codes mean this site is a good reference: https://httpstatuses.com/
 
@@ -422,22 +422,22 @@ If you are looking for a refresher on what each HTTP status codes mean this site
 
 HTTP headers are bits of meta-data which the browser attaches to your HTTP requests when it sends them to the server. Things like your IP address, the type of browser you are using and so on are added to your headers.
 
-In fact the test API we are using echos the headers our browser sends in the response it sends back - so we can see what was sent.
+In fact the test API we are using echoes the headers our browser sends in the response it sends back - so we can see what was sent.
 
-Some APIs require that we send some _custom_ headers with our requests and we can do that easily with the Angular http client.
+Some APIs require that we send some _custom_ headers with our requests and we can do that easily with the Angular Http client.
 
-To send headers with our requests we first need to import two helper classes from the http module.
+To send headers with our requests we first need to import two helper classes from the HTTP module.
 
 [source,typescript]
 ----
 import { Headers, RequestOptions } from '@angular/http';
 ----
 
-For our sample lets send a basic _Authorization_ header. This is just a header called `Authorization` with a value that is a username and password converted to base64, no need to worry too much about the specifics just understand that the built in javascript function `btoa` converts a `string` to `base64`.
+For our sample let's send a basic _Authorization_ header. This is just a header called `Authorization` with a value that is a username and password converted to base64, no need to worry too much about the specifics just understand that the built in JavaScript function `btoa` converts a `string` to `base64`.
 
 NOTE: This is a really poor way to authenticate with your server, we are just using it as an example. We covert `username:password` to a base64 string and pass that to the server via a header called `Authorization`
 
-The full listing for sending a http request with header is like so:
+The full listing for sending a HTTP request with header is like so:
 
 [source,typescript]
 ----
@@ -471,7 +471,7 @@ let opts = new RequestOptions();
 opts.headers = headers;
 ----
 
-And finally we pass the options to the appropriate http function, in this example we are using `get` and for `get` the options are passed as the _second_ parameter, for `put` and `post` however it's the _third_ parameter
+And finally we pass the options to the appropriate Http function, in this example we are using `get` and for `get` the options are passed as the _second_ parameter, for `put` and `post` however it's the _third_ parameter
 
 And now when we press the `GET WITH HEADERS` button and look at the network panel we can see that the authorisation header was sent along with our request.
 
@@ -483,15 +483,15 @@ We inject the Http client library into our classes, it's a dependency that needs
 
 Rather than separately setup each provider for all the different parts of the Http client library we can instead import the `HttpModule` and add to our `NgModule` imports list. This sets up the injector on our `NgModule` with all the necessary providers.
 
-We make requests for all the HTTP verbs by calling matching functions on our Http client library.
+We make requests for all the HTTP verbs by calling matching functions in our Http client library.
 
 By default these requests return observables which we can subscribe to, we can also convert these observables into promises and handle the asynchronous responses that way.
 
 We handle errors using the typical observable or promise error handlers.
 
-We send custom headers alongside our requests by passing in an appropriately configured `RequestOptions` object to our http functions.
+We send custom headers alongside our requests by passing in an appropriately configured `RequestOptions` object to our HTTP functions.
 
-This lecture covered the basics of using the http client library, in the next lecture we'll go through a specific example using promises.
+This lecture covered the basics of using the Http client library, in the next lecture we'll go through a specific example using promises.
 
 == Listing
 

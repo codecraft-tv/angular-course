@@ -3,7 +3,7 @@ layout: activity-lecture.hbs
 ---
 = Activity
 
-Create a set of components with work together to create a _Carousel_ which we can use to display different images in rotation.
+Create a set of components which work together to create a _Carousel_ which we can use to display different images in rotation.
 
 ifndef::ebook[]
 

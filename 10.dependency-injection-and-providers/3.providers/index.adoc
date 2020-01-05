@@ -3,12 +3,12 @@ lecture_video: zulQMNg5ymQ
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
-= Provider
+= Providers
 
 == Learning Objectives
 
 * Know how we can configure injectors with providers.
-* Know the 4 different types of dependencies we can configure provider to provide.
+* Know the four different types of dependencies we can configure providers to provide.
 
 == Providers
 
@@ -42,13 +42,13 @@ The other properties of the provider configuration object depend on the _kind_ o
 
 TIP: If all we want to do is providing classes, it's such a common pattern that Angular lets you define a list of class names as the providers.
 
-=== Switching dependencies
+=== Switching Dependencies
 
 The above is an excellent example of how we can use the DI framework to architect our application for _ease of re-use_, _ease of testing_ and less _brittle_ code.
 
 If we wanted to _re-use_ our application and move from `Mandrill` to `SendGrid` without using DI we would have to search through all the code for where we have requested `MandrillService` to be injected and replace with `SendGridService`.
 
-A better solution is to configure the DI framework to return either `MandrilService` or `SendGridService` depending on the context, like so:
+A better solution is to configure the DI framework to return either `MandrillService` or `SendGridService` depending on the context, like so:
 
 [source,typescript]
 ----
@@ -80,11 +80,11 @@ let injector = ReflectiveInjector.resolveAndCreate([
 
 Now the DI framework just returns instances of `SendGridService` whenever the token `"EmailService"` is requested.
 
-=== Provider configurations
+=== Provider Configurations
 
-So far we've only seen how we can configure a provider to provide classes however there are 4 types of dependencies providers can provide in Angular.
+So far we've only seen how we can configure a provider to provide classes, however, there are four types of dependencies providers can provide in Angular.
 
-==== useClass
+==== `useClass`
 
 We can have a provider which maps a _token_ to a _class_, like so:
 
@@ -102,7 +102,7 @@ The above is so common that there is a shortcut, if all we want to provide is a 
 let injector = ReflectiveInjector.resolveAndCreate([Car]);
 ----
 
-==== useExisting
+==== `useExisting`
 
 We can make two tokens map to the same _thing_ via aliases, like so:
 
@@ -126,7 +126,7 @@ let emailService2 = injector.get(MandrillService); # <4>
 console.log(emailService2); // GenericEmailService {}
 let emailService3 = injector.get(GenericEmailService); # <4>
 console.log(emailService3); // GenericEmailService {}
-console.log(emailService1 === emailService2 &&  emailService2 === emailService3); // true # <5>
+console.log(emailService1 === emailService2 && emailService2 === emailService3); // true # <5>
 ----
 <1> The token `GenericEmailService` resolves to an instance of `GenericEmailService`.
 <2> This provider maps the token `MandrillService` to whatever the existing `GenericEmailService` provider points to.
@@ -147,7 +147,7 @@ Whenever anyone requests `MandrillService` or `SendGridService` we return an ins
 //This provider is just a useful convenience for when you want to make a token point to the _configuration_ of another token versus copying and pasting the configuration multiple times to different providers.
 //====
 
-==== useValue
+==== `useValue`
 
 We can also provide a simple _value_, like so:
 
@@ -200,9 +200,9 @@ let injector = ReflectiveInjector.resolveAndCreate([
 <1> By using `Object.freeze` that objects values can't be changed, in effect it's read-only.
 
 
-==== useFactory
+==== `useFactory`
 
-We can also configure a provider to call a function every-time a token is requested, leaving it to the provider to figure out _what_ to return, like so:
+We can also configure a provider to call a function every time a token is requested, leaving it to the provider to figure out _what_ to return, like so:
 
 
 [source,typescript]
@@ -244,7 +244,7 @@ console.log(emailService2 === emailService2); // true # <1>
 
 == Summary
 
-We can configure providers to return 4 different kinds of dependencies: classes, values, aliases and factories.
+We can configure providers to return four different kinds of dependencies: classes, values, aliases and factories.
 
 In the next lecture we will look at the different ways we can define _tokens_.
 

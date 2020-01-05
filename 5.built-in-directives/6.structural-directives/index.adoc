@@ -10,11 +10,11 @@ lecture_video: THvZfVee4qc
 * Understand what a structural directive is.
 * Know why we use the `*` character for some directives only.
 
-== Long form structural directives
+== Long-Form Structural Directives
 
 _Structural Directives_ are directives which _change_ the structure of the DOM by adding or removing elements.
 
-There are three built in structural directives, `NgIf`, `NgFor` and `NgSwitch`.
+There are three built-in structural directives, `NgIf`, `NgFor` and `NgSwitch`.
 
 These directives work by using the HTML5 `<ng-template>` tag. This is a new tag in HTML which is specifically designed to hold _template_ code. It can sit under the `body` element but any content inside it is not shown in the browser.
 
@@ -52,7 +52,7 @@ The `NgFor` version is slightly more complex:
 <2> This is another way of declaring a template local reference variable, equivalent to `#j`.
 <3> `[ngForOf]` is an _input property_ of the `NgFor` directive.
 
-== Syntax sugar and `*`
+== Syntactic Sugar and `*`
 
 So if we can write `ngIf` with `ng-template` what is all the fuss about `*`.
 
@@ -77,7 +77,7 @@ Looking at the `NgIf` example from above, these two snippets of code are equival
 </p>
 ----
 
-Finally looking at the more complex `NgFor` example from above, these two snippets of code are also equivalent:
+Finally, looking at the more complex `NgFor` example from above, these two snippets of code are also equivalent:
 
 [source,typescript]
 ----

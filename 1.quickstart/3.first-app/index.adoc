@@ -3,7 +3,7 @@ lecture_video: RB0UKhBndQU
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 :toc:
-= Writing our first app
+= Writing Our First App
 
 We want to create a simple app that displays a joke to the user.
 
@@ -33,7 +33,7 @@ HTML comes with a bunch of pre-built tags like `&lt;input&gt;` and `&lt;form&gt;
 
 An Angular application is therefore just a set of custom tags that interact with each other, we call these tags _Components_.
 
-TIP: If you are coming from Angular 1 then Components are the same as Components in Angular 1.5 and the same as element directives in Angular <1.5
+TIP: If you are coming from Angular 1 then Components are the same as Components in Angular 1.5 and the same as element directives in Angular <{nbsp}1.5.
 
 The code that controls a component we put into a class like the `JokeComponent` above, but how do we _link_ this class with a HTML tag, say a tag called `&lt;joke&gt;`?
 
@@ -48,7 +48,7 @@ class JokeComponent {
 }
 ----
 
-The `@Component` is an annotation, an annotation automatically adds some boilerplate code to the class, function or property its attached to.
+The `@Component` is an annotation, an annotation automatically adds some boilerplate code to the class, function or property it's attached to.
 
 
 TIP: You can write Angular without using annotations you would just have to write the boilerplate code yourself.
@@ -72,7 +72,7 @@ The line above is saying we want to import the `Component` code from the module 
 
 We leave to SystemJS to figure out _how_ to load that component from @angular/core or even _where_ @angular/core is.
 
-NOTE: The above might not look like javascript but it is, the `{ Component }` part is something called destructuring and that's a feature of ES6, more on that later.
+NOTE: The above might not look like JavaScript but it is, the `{ Component }` part is something called destructuring and that's a feature of ES6, more on that later.
 
 If you are coming from a language like Python or Java you'll be used to the concept of imports. Basically we are pulling in dependencies from another file and making it available in this file.
 
@@ -99,7 +99,7 @@ So far this isn't doing much yet though, we want Angular to replace <joke></joke
 
 That's hard to read though, the HTML is all written on one line but i'd like to read it on multiple lines.
 
-There is a new feature of ES6 JavaScript called `template strings` which lets us define multi-line strings, lets use it:
+There is a new feature of ES6 JavaScript called `template strings` which lets us define multi-line strings, let's use it:
 
 [source,typescript]
 ----
@@ -129,7 +129,7 @@ In Angular your code is structured into `packages` called Angular Modules, or `N
 
 NOTE: We are using the term _module_ for two different concepts. In JavaScript the term module generally refers to code which exists in a single file. An NgModule is a different concept, it combines code from different files together into one package. An NgModule therefore contains functionality from multiple files a module refers to functionality in a single file.
 
-Lets create our root Angular Module, like so:
+Let's create our root Angular Module, like so:
 
 [source,typescript]
 ----
@@ -226,7 +226,7 @@ This means you forgot to add the tag for your root component to your `index.html
 
 A _Component_ is the building block of an Angular application.
 
-It lets us create a new HTML language of custom tags and link them with javascript classes which describe the behaviour of that tag.
+It lets us create a new HTML language of custom tags and link them with JavaScript classes which describe the behaviour of that tag.
 
 An application is composed of a tree of such Components glued together all depending from one root component.
 

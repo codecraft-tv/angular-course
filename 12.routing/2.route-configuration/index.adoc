@@ -8,15 +8,15 @@ lecture_video: lHWEGb7AE4s
 == Learning Objectives
 
 * How to configure and setup the Angular router.
-* How to handle _redirects_ and _catch all_ routes in Angular.
+* How to handle _redirects_ and _catch-all_ routes in Angular.
 
 == Components
 
 ////
 
-So far in this course we've been using plunker to edit and run files.
+So far in this course we've been using Plunker to edit and run files.
 
-Plunker is pefect for simple demostrations but dosn't work so well with routing, for that it's better to download the plunker files and run locally.
+Plunker is perfect for simple demonstrations but doesn't work so well with routing, for that it's better to download the plunker files and run locally.
 
 http://plnkr.co/edit/oGV8bOKHJWQofFiv9SjY?p=preview
 
@@ -24,23 +24,23 @@ This is the application we are going to build in this lecture.
 
 To run this application we simply download the zip file, unzip it.
 
-Then using the terminal cd into the folder were you downloaded the file and run a local webserver.
+Then using the terminal `cd` into the folder where you downloaded the file and run a local webserver.
 
-If you have python installed you can just use
+If you have Python installed you can just use
 
 python -m SimpleHTTPServer
 
-If you don't have python then you can use a node local webserver called http-server.
+If you don't have Python then you can use a local node webserver called http-server.
 
 npm install http-server -g
 
 http-server
 
-The application will tell you what host/port to vist, open a browser and vist that host/port.
+The application will tell you what host/port to visit, open a browser and visit that host/port.
 
 Now you can run the code locally and view the results in the browser.
 
-Since we are running locally i'm going to be using my favorite IDE (WebStorm) to edit the files.
+Since we are running locally I'm going to be using my favorite IDE (WebStorm) to edit the files.
 ////
 
 To explain routing in Angular we start with an app very similar to the one we created in the section on Http.
@@ -59,7 +59,7 @@ In one configuration, the main `AppComponent` renders these two components like 
 </div>
 ----
 
-NOTE: `m-t-1` above is a class from twitter bootstrap which adds a top margin to the element so we can clearly distinguish the different elements.
+NOTE: `m-t-1` above is a class from Twitter Bootstrap which adds a top margin to the element so we can clearly distinguish the different elements.
 
 The above is the structure we want when the user navigates to `/search`, this renders the page with the header and the search component.
 
@@ -81,7 +81,7 @@ image::./images/app-home.png[]
 
 == Routes & RouterModule
 
-Our goal with routing is to have the `HomeComponent` rendered when the url is `/` and the `SearchComponent` shown when the url is `/search`
+Our goal with routing is to have the `HomeComponent` rendered when the URL is `/` and the `SearchComponent` shown when the URL is `/search`
 
 First we need to setup some imports, like so:
 
@@ -102,7 +102,7 @@ const routes: Routes = [
 * The `path` property describes the URL this route will handle.
 * The `component` property is the name of the component we want to display when the URL in the browser matches this path.
 
-NOTE: `Routes` is a typescript type of `Route[]`, an array of individual `Route` instances.
+NOTE: `Routes` is a TypeScript type of `Route[]`, an array of individual `Route` instances.
 
 We then _install_ these routes into our application by importing `RouterModule.forRoot(routes)` into our `NgModule`, like so:
 
@@ -121,11 +121,11 @@ We then _install_ these routes into our application by importing `RouterModule.f
 class AppModule { }
 ----
 
-IMPORTANT: We'll go through the meaning of the `{useHash: true}` argument when we cover _Path Location Strategies_ later on in this section. For now just know that this prepends `/&#35;` to all of our urls, so our root url would be `/&#35;/` and our search url would be `/&#35;/search`
+IMPORTANT: We'll go through the meaning of the `{useHash: true}` argument when we cover _Path Location Strategies_ later on in this section. For now just know that this prepends `/&#35;` to all of our URLs, so our root URL would be `/&#35;/` and our search URL would be `/&#35;/search`.
 
 == RouterOutlet Directive
 
-We've configured our application so if the user navigates to `/&#35;/search` we want the `SearchComponent` shown or if they navigate to the root url `/&#35;/` then we want the `HomeComponent` shown.
+We've configured our application so if the user navigates to `/&#35;/search` we want the `SearchComponent` shown or if they navigate to the root URL `/&#35;/` then we want the `HomeComponent` shown.
 
 _But where exactly do we want the component shown?_
 
@@ -163,9 +163,9 @@ NOTE: For the special case of an _empty_ URL we also need to add the `pathMatch:
 
 We've also added a redirect from `/find` to `/search`, since this isn't empty we don't need to add the `pathMatch` property.
 
-== Catch all route
+== Catch-All Route
 
-We can also add a _catch all_ route by using the path `**`, if the URL doesn't match _any_ of the other routes it will match this route.
+We can also add a _catch-all_ route by using the path `**`, if the URL doesn't match _any_ of the other routes it will match this route.
 
 [source,typescript]
 ----
@@ -189,7 +189,7 @@ A route in our application is defined by a mapping of a URL to a component or a 
 
 We can create an array of `Routes` and then install them in our application by importing them into our `NgModule` using `RouterModule.forRoot(routes)`.
 
-In this lecture we've shown how we can configure routes and manually type in the different urls in the address bar to make the application render different components depending on which URL the user visits.
+In this lecture we've shown how we can configure routes and manually type in the different URLs in the address bar to make the application render different components depending on which URL the user visits.
 
 Next we'll show how you can navigate between these different routes in Angular without having to manually type the URL into the browser address bar.
 

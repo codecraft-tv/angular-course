@@ -2,7 +2,7 @@
 
 In this quick start section you created your first Angular Application!
 
-You should now have at least a top level view of what an Angular application is, how it functions and how to go about architecting it.
+You should now have at least a top-level view of what an Angular application is, how it functions and how to go about architecting it.
 
 We covered:
 

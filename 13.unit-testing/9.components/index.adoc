@@ -7,10 +7,10 @@ lecture_video: ZDVAYBKa1ro
 
 == Learning Objectives
 
-* How to test a components inputs as well as it's outputs.
-* How to interact with a components view.
+* How to test a component's inputs as well as its outputs.
+* How to interact with a component's view.
 
-== Test setup
+== Test Setup
 
 We'll continue with our example of testing a `LoginComponent`. We are going to change our component into a more complex version with inputs, outputs, a domain model and a form, like so:
 
@@ -105,7 +105,7 @@ To test inputs we need to do things:
 
 Solving the first is actually very easy.
 
-Just because it's an `@Input` doesn't change the fact it's a still just a simple property which we can change like any other property, like so:
+Just because it's an `@Input` doesn't change the fact it's still just a simple property which we can change like any other property, like so:
 
 [source,typescript]
 ----
@@ -129,9 +129,9 @@ NOTE: We also need to call `fixture.detectChanges()` to trigger change detection
 
 == Testing `@Outputs`
 
-Testing outputs it somewhat trickier, especially if we want to test from the view.
+Testing outputs is somewhat trickier, especially if we want to test from the view.
 
-Firstly lets see how we can track what gets emmitted by the output event and add some expectations for it.
+Firstly let's see how we can track what gets emitted by the output event and add some expectations for it.
 
 [source,typescript]
 ----
@@ -158,7 +158,7 @@ We store the emitted value to a user object and then add some _expectations_ on 
 
 How do we actually trigger an event to be fired? We _could_ call the `component.login(...)` function ourselves but for the purposes of this lecture we want to trigger the function from the view.
 
-Firstly lets set some values to our email and password input controls in the view. We've already got references to both those fields in our setup function so we just set the values like so:
+Firstly let's set some values to our email and password input controls in the view. We've already got references to both those fields in our setup function so we just set the values like so:
 
 [source,typescript]
 ----
@@ -190,7 +190,7 @@ it('Entering email and password emits loggedIn event', () => {
 
 == Summary
 
-We can test _inputs_ by just setting values on a components input properties.
+We can test _inputs_ by just setting values on a component's input properties.
 
 We can test _outputs_ by subscribing to an _EventEmitters_ observable and storing the emitted values on local variables.
 

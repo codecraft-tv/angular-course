@@ -16,13 +16,13 @@ The process of converting TypeScript into ES5 is called _transpilation_ and we u
 ====
 It's useful to have the `tsc` tool so you can try out TypeScript yourself and transpile on the command line but it's _not_ necessary to do this in your everyday Angular development.
 
-Projects built using the Angular command line tools use the webpack bundler which handles transpilation of your TypeScript for you.
+Projects built using the Angular command-line tools use the webpack bundler which handles transpilation of your TypeScript for you.
 
 It is good however to have `tsc` installed especially if you want quickly try our some TypeScript features and see how they are transpiled into ES5 or ES6.
 ====
 == Installing TypeScript
 
-We can install typescript via `npm`
+We can install TypeScript via `npm`
 
 [source]
 ----
@@ -51,7 +51,7 @@ Create a file called `hello.ts`.
 
 Inside that file add `console.log(&#39;hello world&#39;);`
 
-We can compile a typescript file into a javascript file by calling:
+We can compile a TypeScript file into a JavaScript file by calling:
 
 [source]
 ----
@@ -67,7 +67,7 @@ And we can execute that file by using node, like so:
 node hello.js
 ----
 
-We can watch a typescript file for changes and compile it automatically with:
+We can watch a TypeScript file for changes and compile it automatically with:
 
 [source]
 ----
@@ -81,7 +81,7 @@ We can provide configuration on the command line, like so:
 tsc -t ES6 -w hello.ts
 ----
 
-TIP: The above `-t ES6` is a flag to tell typescript to transpile into ES6 instead of the default ES5.
+TIP: The above `-t ES6` is a flag to tell TypeScript to transpile into ES6 instead of the default ES5.
 
 However if we are want to watch a whole directory we need to use a configuration file.
 
@@ -99,4 +99,4 @@ If we want to watch all files in a directory we can just type:
 tsc -w
 ----
 
-WARNING: If there are errors, by default TypeScript will still output the javascript file if it can, this behaviour can be changed in the config.
+WARNING: If there are errors, by default TypeScript will still output the JavaScript file if it can, this behaviour can be changed in the config.

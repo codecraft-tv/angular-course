@@ -15,7 +15,7 @@ Our goal in this lecture is to hide the punchline of our jokes and only reveal t
 * How to perform input property binding with `[]`
 * How to perform output event binding with `()`
 
-== Hiding and showing elements
+== Hiding and Showing Elements
 
 We can hide any element by adding an _attribute_ called `hidden` to the element in HTML, so we could hide the punchline like so:
 
@@ -81,10 +81,10 @@ Looking back at our use of the hidden property:
 
 The _target_ inside `[]` is the name of the property. In the example above the target is the `hidden` DOM property.
 
-The _text_ to the right of `=` is javascript code that gets executed and the resulting value is assigned to the target. 
+The _text_ to the right of `=` is JavaScript code that gets executed and the resulting value is assigned to the target.
 
 
-TIP: `true` is still javascript code which if executed returns `true`.
+TIP: `true` is still JavaScript code which if executed returns `true`.
 
 
 So in summary, we are binding to the DOM property `hidden` and setting it to `true` so the element is hidden.
@@ -130,7 +130,7 @@ Now we can set the hidden input property to `joke.hide` in the template, like so
 
 == Output Event Binding
 
-We want to show or hide the punchline when a user clicks a button, so lets add a button with the label _Tell Me_ to the bottom of each card, like so:
+We want to show or hide the punchline when a user clicks a button, so let's add a button with the label _Tell Me_ to the bottom of each card, like so:
 
 [source,html]
 ----
@@ -156,7 +156,7 @@ To have Angular call some code every time someone clicks on the button we add so
 
 We have some new syntax with `()`. The _target_ inside the `()` is an event we want to listen for, we are listening for the click event.
 
-The _text_ to the right of `=` is some javascript which will be called every time a click event occurs.
+The _text_ to the right of `=` is some JavaScript which will be called every time a click event occurs.
 
 `joke.hide = !joke.hide` toggles the value of `joke.hide`, so if it's false clicking the button will change it to true, if it's true clicking it will change it to false.
 

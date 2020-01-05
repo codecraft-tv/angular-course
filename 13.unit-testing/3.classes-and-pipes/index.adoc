@@ -9,7 +9,7 @@ lecture_video: ufgEiGj1gpQ
 
 * How to unit test an instance of a class.
 
-== Sample class & test suite
+== Sample Class & Test Suite
 
 We'll start our unit testing journey with all you will ever need to know, how to test a `class`.
 
@@ -42,7 +42,7 @@ describe('Service: Auth', () => { # <2>
 <1> We first import the `AuthService` class we want to run our tests against.
 <2> We add a `describe` test suite function to hold all our individual test specs.
 
-== Setup & teardown
+== Setup & Teardown
 
 We want to run our test specs against _fresh_ instances of `AuthService` so we use the `beforeEach` and `afterEach` functions to setup and clean instances like so:
 
@@ -65,9 +65,9 @@ describe('Service: Auth', () => {
 <1> Before each test spec is run we create a new instance of `AuthService` and store on the `service` variable.
 <2> After each test spec is finished we null out our `service` and also remove any tokens we stored in localStorage.
 
-== Creating test specs
+== Creating Test Specs
 
-Now we create some test specs, the first spec I want to create should check if the `isAuthenticated` function returns `true` when there is a token.
+Now we create some test specs. The first spec I want to create should check if the `isAuthenticated` function returns `true` when there is a token.
 
 [source,typescript]
 ----
@@ -93,7 +93,7 @@ We _know_ that in this function the `token` isn't set since we make sure to clea
 
 We now test an expectation that the `service.isAuthenticated()` function returns something that resolves to `false`.
 
-== Running the tests
+== Running the Tests
 
 To run our tests we simply open up the HTML file in the browser, you can just click the plunker link and make sure to press run in the toolbar.
 
@@ -173,7 +173,7 @@ TIP: If your _Pipe_ requires dependencies to be injected into the constructor it
 
 == Summary
 
-That's it really, we can test any _isolated_ class that doesn't require anything else with a simple jasmine spec file, nothing more complex required.
+That's it really, we can test any _isolated_ class that doesn't require anything else with a simple Jasmine spec file, nothing more complex required.
 
 Since everything in Angular is represented as classes, we could stop here - you have most of the tools already to write tests for directives, components, pipes and so on.
 

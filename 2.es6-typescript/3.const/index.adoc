@@ -7,7 +7,7 @@ lecture_video: LpTi1OIsbFI
 
 `const` is a new keyword which declares a variable as _constant over time_.
 
-== Declaring a const variable
+== Declaring a `const` Variable
 
 We can use `const` to declare a variable but unlike `let` and `var` it must be _immediately_ initialised, with a value that can’t be changed afterwards.
 
@@ -26,7 +26,7 @@ const foo = 1;
 foo = 2; // TypeError: Assignment to constant variable
 ----
 
-== Block scoping
+== Block Scoping
 
 Both `let` and `const` create variables that are block-scoped – they only exist within the innermost block that surrounds them.
 
@@ -41,7 +41,7 @@ function func() {
 func();
 ----
 
-== Immutable variable
+== Immutable Variable
 
 Variables created by `let` and `var` are _mutable_:
 

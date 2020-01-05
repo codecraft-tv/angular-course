@@ -10,7 +10,7 @@ lecture_video: y3f_Fjsvi1U
 * Understand the difference between view children and content children of a component.
 * Know how to get references to child components in host components.
 
-== Example application
+== Example Application
 
 The view children of a given component are the elements used _within_ its template, its view.
 
@@ -18,7 +18,7 @@ We can get a reference to these view children in our component class by using th
 
 We'll explain how all this works using the joke application we've been working with so far in this course.
 
-We've changed the application so that the `JokeListComponent` shows two jokes in it's own view and one joke which is content projected from it's host `AppComponent`, like so:
+We've changed the application so that the `JokeListComponent` shows two jokes in its own view and one joke which is content projected from its host `AppComponent`, like so:
 
 .JokeListComponent
 [source,typescript]
@@ -33,7 +33,7 @@ We've changed the application so that the `JokeListComponent` shows two jokes in
 </joke>
 
 <h4>Content Jokes</h4>
-<ng-content></ng-content>  <2>
+<ng-content></ng-content> <2>
 `
 })
 class JokeListComponent  {
@@ -43,8 +43,8 @@ class JokeListComponent  {
   ];
 }
 ----
-<1> The component renders jokes in it's _own_ view.
-<2> It also projects some content from it's host component, in our example the other content is going to be a third joke.
+<1> The component renders jokes in its _own_ view.
+<2> It also projects some content from its host component, in our example the other content is going to be a third joke.
 
 
 .AppComponent
@@ -73,7 +73,7 @@ image::./images/viewcontentchildren-app.png[,,400]
 
 == ViewChild
 
-In our `JokeListComponent` lets add a reference to the child `JokeComponents` that exists in it's view.
+In our `JokeListComponent` let's add a reference to the child `JokeComponents` that exists in its view.
 
 We do this by using the `@ViewChild` decorator like so:
 
@@ -111,11 +111,11 @@ class JokeListComponent {
 ----
 <1> We are storing a reference to the child `JokeComponent` in a property called `jokeViewChild`.
 
-NOTE: `jokeViewChild` isn't an instance of a `Joke` class, it is the actual instance of the child `JokeComponent` that exists inside _this_ components view.
+NOTE: `jokeViewChild` isn't an instance of a `Joke` class, it is the actual instance of the child `JokeComponent` that exists inside _this_ component's view.
 
 We create a new property called `jokeViewChild` and we pre-pend this with a decorator of `@ViewChild`. This decorator tells Angular _how_ to find the child component that we want to bind to this property.
 
-A `@ViewChild` decorator means, search inside this components template, it's view, for this child component.
+A `@ViewChild` decorator means, search inside this component's template, its view, for this child component.
 
 The parameter we pass as the first argument to `@ViewChild` is the _type_ of the component we want to search for, if it finds more than one it will just give us the first one it finds.
 
@@ -200,9 +200,9 @@ Array[2]
 > 1: JokeComponent
 ----
 
-IMPORTANT: The reason we see 2 jokes printed out and 3 is because only two of the jokes are _view children_ the other joke is a _content child_. We cover content children in the end of ths lecture.
+IMPORTANT: The reason we see two jokes printed out instead of three is because only two of the jokes are _view children_ the other joke is a _content child_. We cover content children in the end of this lecture.
 
-== ViewChild referencing a template local variable
+== ViewChild Referencing a Template Local Variable
 
 One practical application of `@ViewChild` is to get access to template local variables in our component class.
 
@@ -242,12 +242,12 @@ class JokeListComponent implements AfterViewInit {
     console.log(jokes);
 
     console.log(`ngAfterViewInit - headerEl is ${this.headerEl}`);
-    //noinspection TypeScriptUnresolvedVariable
+
     this.headerEl.nativeElement.textContent = "Best Joke Machine"; # <2>
   }
 }
 ----
-<1> The type of our template variable is an `ElementRef`, which is a low level reference to any element in the DOM. We are requesting a reference to the header template variable which points to the first `<h4>` element in the template.
+<1> The type of our template variable is an `ElementRef`, which is a low-level reference to any element in the DOM. We are requesting a reference to the header template variable which points to the first `<h4>` element in the template.
 <2> Since `headerEl` is an `ElementRef` we can interact with the DOM directly and change the title of our header to _Best Joke Machine_.
 
 NOTE: It's not recommended to interact with the DOM directly with an `ElementRef` since that results in code that's not very portable.
@@ -260,7 +260,7 @@ In our example application we are projecting one joke in from the host `AppCompo
 
 To get a reference to that child we can use either the `@ContentChild` or the `@ContentChildren` decorators. They work in similar ways to the view child counterparts, `@ContentChild` returns one child and `@ContentChildren` returns a `QueryList`.
 
-Lets use `@ContentChild` to get a reference to the third joke that is projected in, like so:
+Let's use `@ContentChild` to get a reference to the third joke that is projected in, like so:
 
 [source,typescript]
 ----
@@ -292,6 +292,7 @@ class JokeListComponent implements AfterContentInit, AfterViewInit { <1>
     console.log(jokes);
 
     console.log(`ngAfterViewInit - headerEl is ${this.headerEl}`);
+
     this.headerEl.nativeElement.textContent = "Best Joke Machine";
   }
 }
@@ -308,15 +309,15 @@ Content children are only visible by the time the `AfterContentInit` lifecycle h
 
 == Summary
 
-An Angular application is composed from a number of components nested together.
+An Angular application is composed of a number of components nested together.
 
-These components can nest in two ways, as view children, in the template for that component. Or they can nest as content children, via content projection from a host component.
+These components can be nested in two ways: as view children, in the template of their component; or as content children, via content projection from a host component.
 
-As developers of our components we can get access to these child components via the `@ViewChild` and `@ContentChild` (and `@ViewChildren` and `@ContentChildren`) decorators.
+As developers of our components we can get access to these child components via the `@ViewChild` and `@ContentChild` (or `@ViewChildren` and `@ContentChildren`) decorators.
 
-View children of a component are the components and elements in _this_ components view.
+View children of a component are the components and elements in _this_ component's view.
 
-Content children of a component are the components and elements that are _projected_ into _this_ components view by a host component.
+Content children of a component are the components and elements that are _projected_ into _this_ component's view by a host component.
 
 View children are only initialised by the time the `AfterViewInit` lifecycle phase has been run.
 

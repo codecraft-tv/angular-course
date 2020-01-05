@@ -41,12 +41,12 @@ import {AuthService} from "./auth.service";
 // 	});
 //
 //
-// 	it('canLogin returns false when the user is not authenticated', () => {
+// 	it('needsLogin returns true when the user has not been authenticated', () => {
 // 		service.authenticated = false;
 // 		expect(component.needsLogin()).toBeTruthy();
 // 	});
 //
-// 	it('canLogin returns false when the user is not authenticated', () => {
+// 	it('needsLogin returns false when the user has been authenticated', () => {
 // 		service.authenticated = true;
 // 		expect(component.needsLogin()).toBeFalsy();
 // 	});
@@ -75,11 +75,11 @@ import {AuthService} from "./auth.service";
 // 	});
 //
 //
-// 	it('canLogin returns false when the user is not authenticated', () => {
+// 	it('needsLogin returns true when the user has not been authenticated', () => {
 // 		expect(component.needsLogin()).toBeTruthy();
 // 	});
 //
-// 	it('canLogin returns false when the user is not authenticated', () => {
+// 	it('needsLogin returns false when the user has been authenticated', () => {
 // 		localStorage.setItem('token', '12345');
 // 		expect(component.needsLogin()).toBeFalsy();
 // 	});

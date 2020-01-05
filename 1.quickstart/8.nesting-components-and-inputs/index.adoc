@@ -15,7 +15,7 @@ Breaking up an application into multiple logical components makes it easier to:
 * Architect an application as it grows in complexity.
 * Re-use common components in multiple places.
 
-The goal of this lecture is to break up our small application into 3 components and start _gluing_ them together.
+The goal of this lecture is to break up our small application into three components and start _gluing_ them together.
 
 == Learning Outcomes
 
@@ -89,7 +89,7 @@ class JokeListComponent {
 
 === AppComponent
 
-Our final component is our new top level `AppComponent`, this just holds an instance of the `JokeListComponent`.
+Our final component is our new top-level `AppComponent`, this just holds an instance of the `JokeListComponent`.
 
 [source,typescript]
 ----
@@ -103,11 +103,11 @@ class AppComponent {
 }
 ----
 
-=== Configuring multiple Components
+=== Configuring Multiple Components
 
 In order to use our new components we need to add them to the declarations on our `NgModule`.
 
-And since we've changed our top level component we need to set that in the bootstrap property as well as change our `index.html` to use the `&lt;app&gt;&lt;/app&gt;` root component instead.
+And since we've changed our top-level component we need to set that in the bootstrap property as well as change our `index.html` to use the `&lt;app&gt;&lt;/app&gt;` root component instead.
 
 [source,typescript ]
 ----
@@ -133,9 +133,9 @@ export class AppModule {
 
 In Angular we need to be explicit regarding what components &amp; directives are going to use in our Angular Module by either adding them to the `imports` or `declarations` property.
 
-In Angular 1 each directive when added via a script tag was globally available, which made it convenient for smaller projects but a problem for larger ones. Issues like name clashes came up often as different third party libraries often used the same names. 
+In Angular 1 each directive when added via a script tag was globally available, which made it convenient for smaller projects but a problem for larger ones. Issues like name clashes came up often as different third-party libraries often used the same names. 
 
-With Angular two third party libraries can export the same name for components but only the version we explicitly include into our Angular Module will be used.
+With Angular two third-party libraries can export the same name for components but only the version we explicitly include into our Angular Module will be used.
 
 TIP: The built-in directives we are using such as `NgFor` are all defined in `CommonModule` which is again included in `BrowserModule` which we have already added to our `NgModule` imports.
 
@@ -215,7 +215,7 @@ This tells Angular that the `joke` property is an _input_ property and therefore
 
 This `@Input` now becomes part of the _public interface_ of our component.
 
-Lets say at some future point we decided to change the `joke` property of our JokeComponent to perhaps just `data`, like so:
+Let's say at some future point we decided to change the `joke` property of our JokeComponent to perhaps just `data`, like so:
 
 [source,typescript]
 ----

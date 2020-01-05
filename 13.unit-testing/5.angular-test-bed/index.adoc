@@ -18,11 +18,10 @@ This lecture will be an introduction to the ATB and we will continue to use it f
 
 == Configuring
 
-Lets demonstrate how to use the _ATB_ by converting the component we tested with plain vanilla Jasmine to one that uses the _ATB_.
+Let's demonstrate how to use the _ATB_ by converting the component we tested with plain vanilla Jasmine to one that uses the _ATB_.
 
 [source,typescript]
 ----
-/* tslint:disable:no-unused-variable */
 import {TestBed, ComponentFixture} from '@angular/core/testing';
 import {LoginComponent} from './login.component';
 import {AuthService} from "./auth.service";
@@ -42,7 +41,7 @@ In the `beforeEach` function for our test suite we _configure_ a testing module 
 
 This creates a test _Angular Module_ which we can use to instantiate components, perform dependency injection and so on.
 
-We configure it in exactly the same way as we would configure a normal `NgModule`. On this case we pass in the `LoginComponent` in the declarations and the `AuthService` in the providers.
+We configure it in exactly the same way as we would configure a normal `NgModule`. In this case we pass in the `LoginComponent` in the declarations and the `AuthService` in the providers.
 
 == Fixtures and DI
 
@@ -50,7 +49,6 @@ Once the ATB is setup we can then use it to instantiate components and resolve d
 
 [source,typescript]
 ----
-/* tslint:disable:no-unused-variable */
 import {TestBed, ComponentFixture} from '@angular/core/testing';
 import {LoginComponent} from './login.component';
 import {AuthService} from "./auth.service";
@@ -79,26 +77,26 @@ describe('Component: Login', () => {
   });
 });
 ----
-<1> A `fixture` is a wrapper for a component _and_ it's template.
+<1> A `fixture` is a wrapper for a component _and_ its template.
 <2> We create an instance of a component fixture through the `TestBed`, this injects the `AuthService` into the component constructor.
 <3> We can find the actual _component_ from the `componentInstance` on the `fixture`.
 <4> We can get resolve dependencies using the TestBed injector by using the `get` function.
 
-NOTE: Since the `LoginComponent` doesn't have it's own child injector the AuthService that gets injected in is the same one as we get from the `TestBed` above.
+NOTE: Since the `LoginComponent` doesn't have its own child injector the AuthService that gets injected in is the same one as we get from the `TestBed` above.
 
-== Test specs
+== Test Specs
 
 Now we've configured the `TestBed` and extracted the component and service we can run through the same test specs as before:
 
 [source,typescript]
 ----
-it('canLogin returns false when the user is not authenticated', () => {
+it('needsLogin returns true when the user has not been authenticated', () => {
   spyOn(authService, 'isAuthenticated').and.returnValue(false);
   expect(component.needsLogin()).toBeTruthy();
   expect(authService.isAuthenticated).toHaveBeenCalled();
 });
 
-it('canLogin returns false when the user is not authenticated', () => {
+it('needsLogin returns false when the user has been authenticated', () => {
   spyOn(authService, 'isAuthenticated').and.returnValue(true);
   expect(component.needsLogin()).toBeFalsy();
   expect(authService.isAuthenticated).toHaveBeenCalled();
@@ -106,21 +104,21 @@ it('canLogin returns false when the user is not authenticated', () => {
 ----
 
 
-== When to use ATB
+== When to Use ATB
 
 We will continue to use ATB for the rest of this section because:
 
-* It allows us to test the interaction of a directive or component with it's template.
+* It allows us to test the interaction of a directive or component with its template.
 * It allows us to easily test change detection.
-* It allows us to test and use Angulars DI framework,
+* It allows us to test and use Angular's DI framework.
 * It allows us to test using the `NgModule` configuration we use in our application.
-* It allows us to test user interaction via clicks & input fields
+* It allows us to test user interaction via clicks and input fields
 
 == Summary
 
 The ATB lets us test parts of our code as if it is being run in the context of a real Angular app.
 
-It's usefulness will become more apparent in future lectures, the next one being how to use the ATB to test change detection and property binding.
+Its usefulness will become more apparent in future lectures, the next one being how to use the ATB to test change detection and property binding.
 
 == Listing
 

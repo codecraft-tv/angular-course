@@ -8,7 +8,7 @@ In this lecture we are going to examine how we can loop over arrays, using the m
 
 == For &amp; ForEach
 
-We have a couple of ways of looping through Arrays in ES5 javascript.
+We have a couple of ways of looping through Arrays in ES5 JavaScript.
 
 For one we have the classic `for` loop, like so:
 
@@ -82,7 +82,7 @@ The `index` variable is a _string_ and not a _number_, using `for-in` with array
 
 IMPORTANT: If you are expecting a number but in fact have a string this can cause problems, for example `"1" + "2"` is the string `"12"` and not the number `3`.
 
-== For-of loop
+== For-Of loop
 
 Rather than change the way the `for-in` loops work in ES6 and in the process create a breaking change, instead in ES6 we have a new syntax called `for-of`.
 

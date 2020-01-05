@@ -7,13 +7,13 @@ lecture_video: uLWFjOysvn8
 
 == Module Loading
 
-By default javascript doesn't have a module system like other languages, e.g. Java or Python.
+By default JavaScript doesn't have a module system like other languages, e.g. Java or Python.
 
 This means that if you wanted to call a function in some other file, you have to remember to _explicitly_ load that file via script tags _before_ you call the function. 
 
-If you tried to use code that you forgot to add via a script tag, then javascript would complain.
+If you tried to use code that you forgot to add via a script tag, then JavaScript would complain.
 
-Other languages have a module loading system e.g. in python if you wanted to use some code from another file you would type something like
+Other languages have a module loading system e.g. in Python if you wanted to use some code from another file you would type something like
 
 [source,python]
 ----
@@ -29,9 +29,9 @@ This feature was missing in JavaScript so the community developed their own solu
 
 ES6 took the best of the existing module systems and introduced this concept on a language level.
 
-Although it's made it into the ES6 standard it's up to the javascript engine makers to _actually_ implement it natively and they _haven't_… _yet_.
+Although it's made it into the ES6 standard it's up to the JavaScript engine makers to _actually_ implement it natively and they _haven't_… _yet_.
 
-So until that happens we code using the ES6 module syntax in TypeScript. When typescript transpiles the code to ES5 it uses the CommonJS module loading system which we touched on above.
+So until that happens we code using the ES6 module syntax in TypeScript. When TypeScript transpiles the code to ES5 it uses the CommonJS module loading system which we touched on above.
 
 
 NOTE: We can configure TypeScript to use other module loaders, but the default is CommonJS.
@@ -71,7 +71,7 @@ console.log(square(2));
 cow();
 ----
 
-TIP: To compile with typescript we need to provide both files on the command line `tsc -t ES5 -w utils.ts script.ts`
+TIP: To compile with TypeScript we need to provide both files on the command line: `tsc -t ES5 -w utils.ts script.ts`
 
 We again use that destructuring syntax to import the functions we want from the utils module, we provide a path relative to _this_ module.
 
@@ -94,7 +94,7 @@ console.log(utils.square(2));
 utils.cow();
 ----
 
-== Alternative export syntax
+== Alternative Export Syntax
 
 As well as describing the exports by using the export keyword, like so:
 
@@ -139,9 +139,9 @@ import square, { cow } from './utils';
 
 == Summary
 
-With ES6 modules we finally have a mechanism for letting the language deal with loading of dependant files for us.
+With ES6 modules we finally have a mechanism for letting the language deal with loading of dependent files for us.
 
-This isn't baked into javascript engines yet. So to solve this problem in Angular we still use the ES6 module loading syntax but leave it to TypeScript to transpile to CommonJS.
+This isn't baked into JavaScript engines yet. So to solve this problem in Angular we still use the ES6 module loading syntax but leave it to TypeScript to transpile to CommonJS.
 
 == Listing
 
