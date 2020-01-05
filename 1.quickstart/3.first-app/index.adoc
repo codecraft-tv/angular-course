@@ -93,7 +93,7 @@ So far this isn't doing much yet though, we want Angular to replace <joke></joke
 ----
 @Component({
   selector: 'joke',
-  template: '<h1>What did the cheese say when it looked in the mirror?</h1><p>Halloumi (hello me)</p>'
+  template: '<h1>What did the cheese say when it looked in the mirror?</h1><p>Halloumi (Hello Me)</p>'
 })
 ----
 
@@ -107,7 +107,7 @@ There is a new feature of ES6 JavaScript called `template strings` which lets us
   selector: 'joke',
   template: `
   <h1>What did the cheese say when it looked in the mirror?</h1>
-  <p>Halloumi (hello me)</p>
+  <p>Halloumi (Hello Me)</p>
   `
 })
 ----
