@@ -1,5 +1,6 @@
 ---
 lecture_video: nVqbL8IFgq0
+has_code: "no"
 ---
 :sourcedir: {docdir}/content/{filedir}/code
 
