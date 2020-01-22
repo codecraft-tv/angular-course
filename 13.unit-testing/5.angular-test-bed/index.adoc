@@ -71,7 +71,7 @@ describe('Component: Login', () => {
     // get test component from the fixture
     component = fixture.componentInstance; # <3>
 
-    // UserService provided to the TestBed
+    // AuthService provided to the TestBed
     authService = TestBed.get(AuthService); # <4>
 
   });
