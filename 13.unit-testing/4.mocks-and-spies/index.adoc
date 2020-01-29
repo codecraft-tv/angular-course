@@ -113,7 +113,7 @@ We can even remove the `AuthService` import if we want, there really is no depen
 ----
 import {LoginComponent} from './login.component';
 
-class MockAuthService { # <1>
+class MockAuthService extends AuthService { # <1>
   authenticated = false;
 
   isAuthenticated() {
