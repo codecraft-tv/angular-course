@@ -184,7 +184,7 @@ addJoke(joke) {
 }
 ----
 
-All the the addJoke function does is add the joke that got output to the front of the jokes array.
+All the addJoke function does is add the joke that got output to the front of the jokes array.
 
 Angular automatically detects that the jokes array changed and then updated the view so it shows the new joke.
 
