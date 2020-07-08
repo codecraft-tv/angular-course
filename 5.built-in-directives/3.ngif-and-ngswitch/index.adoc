@@ -68,7 +68,7 @@ class NgIfExampleComponent {
   ];
 }
 ----
-<1> The `NgIf` directive _removes_ the `li` element from the DOM if `person.age` is less than 30.
+<1> The `NgIf` directive _removes_ the `li` element from the DOM if `person.age` is greater than or equal to 30.
 
 If we ran the above we would see:
 
