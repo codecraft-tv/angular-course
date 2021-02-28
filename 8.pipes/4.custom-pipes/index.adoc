@@ -27,14 +27,14 @@ To create a pipe we use the `@Pipe` decorator and annotate a class like so:
 
 [source,typescript]
 ----
-import { Pipe } from '@angular/core';
+import { Pipe , PipeTransform } from '@angular/core';
 .
 .
 .
 @Pipe({
   name:"default"
 })
-class DefaultPipe { }
+class DefaultPipe implements PipeTransform { }
 ----
 
 The name parameter for the `Pipe` decorator is how the pipe will be called in templates.
@@ -45,7 +45,7 @@ The actual logic for the pipe is put in a function called `transform` on the cla
 
 [source,typescript]
 ----
-class DefaultPipe {
+class DefaultPipe implements PipeTransform  {
   transform(value: string, fallback: string): string {
     let image = "";
     if (value) {
@@ -61,6 +61,8 @@ class DefaultPipe {
 The first argument to the transform function is the _value_ that is passed _into_ the pipe, i.e. the thing that goes _before_ the `|` in the expression.
 
 The second parameter to the transform function is the first param we pass into our pipe, i.e. the thing that goes after the `:` in the expression.
+
+Usually, to guide the tooling and compiler , we should add an interface called PipeTransform to the class. Just like life cycle hooks, this interface is also optional, but it is a good practice.
 
 Specifically with this example:
 
@@ -93,7 +95,7 @@ Because this one is optional and we are using TypeScript we can define the new p
 
 [source,typescript]
 ----
-class DefaultPipe {
+class DefaultPipe implements PipeTransform {
   transform(value: string, fallback: string, forceHttps: boolean = false): string {
     let image = "";
     if (value) {
