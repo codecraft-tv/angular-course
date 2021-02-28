@@ -6,3 +6,17 @@ I would like to especially thank the people in the list below.
 
 https://github.com/shant24k[Shantanu Kulkarni]
 - For updating all the code for all lectures to work with StackBlitz and Angular 6.
+
+https://github.com/david-russo[David A. Russo]
+- For a huge update to fix lots of grammatical errors and typos on my part.
+
+https://github.com/tamilsweet[Tamilmozhi Gunasekar]
+- For several updates to fix errors in the code examples and typos in the content.
+
+https://github.com/alicexinyun[alicexinyun]
+- For some deep grammatical corrections and code updates.
+
+https://github.com/Beno922[Beno922]
+- For several commits to fix typos.
+
+For a full list of the contributors please visit: https://github.com/codecraft-tv/angular-course/graphs/contributors
