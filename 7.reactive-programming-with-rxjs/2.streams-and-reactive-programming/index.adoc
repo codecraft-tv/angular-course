@@ -128,4 +128,4 @@ Streams are just a _sequence of values_ over time.
 
 Reactive programming is the idea we can define an application as a series of different streams with operations that connect the different streams together and which are automatically called when new values are pushed onto those streams.
 
-In this this lecture we just covered the idea, the concept of reactive programming, in the next lecture we'll cover how to actually program reactively using observables and the RxJS library.
+In this lecture we just covered the idea, the concept of reactive programming, in the next lecture we'll cover how to actually program reactively using observables and the RxJS library.
