@@ -17,7 +17,7 @@ lecture_video: kqxTB7duHTs
 
 Streams so far are just a _concept_, an idea.
 
-We link streams together using operators, so in in our previous example the `add` function is an operation, specifically it's an operation which combines two streams to create a third.
+We link streams together using operators, so in our previous example the `add` function is an operation, specifically it's an operation which combines two streams to create a third.
 
 _Observables_ is a new primitive type which acts as a _blueprint_ for how we want to create streams, subscribe to them, react to new values, and combine streams together to build new ones.
 
