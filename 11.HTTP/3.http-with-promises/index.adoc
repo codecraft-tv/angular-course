@@ -426,7 +426,7 @@ export class SearchService {
 
 The results property is now an array of `SearchItems`.
 
-The names of the properties on our model have also changed, for instance `trackName` in the raw JSON returned from iTunes is now `track` on our `SearchItem` so we need to change our template bindings to match, like so:
+The names of the properties on our model have also changed, for instance `trackName` in the raw JSON returned from iTunes is now `name` on our `SearchItem` so we need to change our template bindings to match, like so:
 
 [source,html]
 ----
