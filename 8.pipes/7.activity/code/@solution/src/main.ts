@@ -1,6 +1,6 @@
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {Component, NgModule, Input, Output, EventEmitter, Pipe} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { Component, NgModule, Input, Output, EventEmitter, Pipe } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Pipe({
   name: "clean"
@@ -10,7 +10,8 @@ class CleanPipe {
     let badWordsList = badWords.split(',').map((item) => item.trim());
     console.log(badWordsList);
     for (let badWord of badWordsList) {
-      value = value.replace(badWord, "$%#@!")
+      const regex = new RegExp(badWord, "g");
+      value = value.replace(regex, "$%#@!");
     }
     return value;
   }
