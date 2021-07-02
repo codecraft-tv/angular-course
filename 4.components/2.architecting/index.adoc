@@ -13,7 +13,7 @@ lecture_plan_level: free
 When building a new Angular application, we start by:
 
 . Breaking down an applications into seperate Components.
-. For each component we describe its _resonsibilities_.
+. For each component we describe its _responsibilities_.
 . Once we've desribed the responsibilites we then describe its _inputs & outputs_, its public facing interface.
 
 Take for instance this simple example.
