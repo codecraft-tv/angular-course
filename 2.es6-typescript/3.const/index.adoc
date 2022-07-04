@@ -54,7 +54,7 @@ console.log(foo);
 
 TIP: _Mutable_ in this case means _can change over time_.
 
-Variables created by `const` however are _immutable_, they don't change over time, specifically the the const variable can't _point to_ another thing later on.
+Variables created by `const` however are _immutable_, they don't change over time, specifically the const variable can't _point to_ another thing later on.
 
 [source,javascript]
 ----
