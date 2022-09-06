@@ -83,7 +83,7 @@ tsc -t ES6 -w hello.ts
 
 TIP: The above `-t ES6` is a flag to tell TypeScript to transpile into ES6 instead of the default ES5.
 
-However if we are want to watch a whole directory we need to use a configuration file.
+However if we want to watch a whole directory we need to use a configuration file.
 
 We can create a config file with the most common settings like so:
 
