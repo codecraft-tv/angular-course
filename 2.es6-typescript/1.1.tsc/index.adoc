@@ -18,7 +18,7 @@ It's useful to have the `tsc` tool so you can try out TypeScript yourself and tr
 
 Projects built using the Angular command-line tools use the webpack bundler which handles transpilation of your TypeScript for you.
 
-It is good however to have `tsc` installed especially if you want quickly try our some TypeScript features and see how they are transpiled into ES5 or ES6.
+It is good however to have `tsc` installed especially if you want quickly try out some TypeScript features and see how they are transpiled into ES5 or ES6.
 ====
 == Installing TypeScript
 
