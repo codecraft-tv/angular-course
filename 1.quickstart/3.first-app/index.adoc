@@ -55,7 +55,7 @@ TIP: You can write Angular without using annotations you would just have to writ
 
 We are going to use other annotations later on, however the main one for working with components is `@Component`.
 
-You can configure the @Component annotation by passing it an object with various parameters. In our example above @Component has one parameter called `selector`, this tells Angular which tag to link this class too.
+You can configure the @Component annotation by passing it an object with various parameters. In our example above @Component has one parameter called `selector`, this tells Angular which tag to link this class to.
 
 By setting the selector to `joke` we've told angular that whenever it finds a tag in the HTML like `&lt;joke&gt;&lt;/joke&gt;` to use an instance of the JokeComponent class to control it.
 
