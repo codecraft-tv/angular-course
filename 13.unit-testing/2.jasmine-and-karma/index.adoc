@@ -302,7 +302,7 @@ Jasmine is a testing framework that supports _Behavior-Driven Development_. We w
 
 We can run Jasmine tests in a browser ourselves by setting up and loading a HTML file, but more commonly we use a command-line tool called Karma. Karma handles the process of creating HTML files, opening browsers and running tests and returning the results of those tests to the command line.
 
-If you use the Angular CLI to manage projects it automatically creates stub Jasmine spec files for you when generating code. It also handles the Karama configuration, transpilation and bundling of your files so all you need to do in order to run your tests is type the command `ng test`.
+If you use the Angular CLI to manage projects it automatically creates stub Jasmine spec files for you when generating code. It also handles the Karma configuration, transpilation and bundling of your files so all you need to do in order to run your tests is type the command `ng test`.
 
 For the purposes of this section we will be using a simple browser based Jasmine test runner so we can share the code easily via Plunker.
 
