@@ -29,7 +29,7 @@ These phases are broadly split up into phases that are linked to the component i
 
 constructor:: This is invoked when Angular creates a component or directive by calling `new` on the class.
 
-ngOnChanges:: Invoked *every* time there is a change in one of th _input_ properties of the component.
+ngOnChanges:: Invoked *every* time there is a change in one of the _input_ properties of the component.
 
 ngOnInit::
 Invoked when given component has been initialized. +
