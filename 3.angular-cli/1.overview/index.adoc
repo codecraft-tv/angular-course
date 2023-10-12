@@ -28,7 +28,7 @@ NOTE: In the course we've used SystemJS for this since webpack doesn't work with
 
 Serving and live reloading::
 
-The CLI starts a local web-server so we can view our application in the browser via localhost:4000.
+The CLI starts a local web-server so we can view our application in the browser via localhost:4200.
 +
 The CLI also watches for any changes to our files and automatically reloads the webpage if there are any.
 
