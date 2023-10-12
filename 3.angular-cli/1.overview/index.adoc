@@ -457,7 +457,7 @@ Then we add the required JavaScript files to the `app.scripts` section or the `a
 }
 ----
 
-Now when the build runs the CLI includes those files in the bundle and injects then in the global scope.
+Now when the build runs the CLI includes those files in the bundle and injects them in the global scope.
 
 == Testing Angular
 
