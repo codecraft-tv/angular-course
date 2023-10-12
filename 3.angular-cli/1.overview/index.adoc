@@ -259,7 +259,7 @@ Taking a look at `header.component.ts`:
 include::{sourcedir}/src/app/header/header.component.ts[]
 --
 
-TIP: Don't name your component `HeaderComponent`. Angular CLI automatically appends `Component` to the name, so you component class would end up being `HeaderComponentComponent`.
+TIP: Don't name your component `HeaderComponent`. Angular CLI automatically appends `Component` to the name, so your component class would end up being `HeaderComponentComponent`.
 
 
 The command above can be shortened to:
