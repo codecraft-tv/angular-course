@@ -395,7 +395,7 @@ So when we include third-party libraries into our application we need to do so i
 
 ==== Bundled with the Main Application JavaScript Files
 
-If we want to include a module to use in our Angular JavaScript code, perhaps we want to to use the moment.js library, we just need to install it via npm like so:
+If we want to include a module to use in our Angular JavaScript code, perhaps we want to use the moment.js library, we just need to install it via npm like so:
 
 ----
 npm install moment --save
